@@ -22,7 +22,7 @@ const TeamSection = () => {
             The Crew
           </span>
           <h2 className="font-heading text-6xl md:text-8xl text-foreground mt-2 leading-none">
-            The<br />Crew<span className="text-primary">.</span>
+            Meet The<br />Team<span className="text-primary">.</span>
           </h2>
         </div>
 
