@@ -4,13 +4,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ArrowUpRight } from "lucide-react";
-import { ReactNode, forwardRef } from "react";
+import { ReactNode } from "react";
 
 interface BookingDialogProps {
   children: ReactNode;
 }
 
-const BookingDialog = forwardRef<HTMLDivElement, BookingDialogProps>(({ children }, ref) => {
+const BookingDialog = ({ children }: BookingDialogProps) => {
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
@@ -51,8 +51,6 @@ const BookingDialog = forwardRef<HTMLDivElement, BookingDialogProps>(({ children
       </DialogContent>
     </Dialog>
   );
-});
-
-BookingDialog.displayName = "BookingDialog";
+};
 
 export default BookingDialog;
