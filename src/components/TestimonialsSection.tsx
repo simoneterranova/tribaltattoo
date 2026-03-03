@@ -22,7 +22,7 @@ const TestimonialsSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 md:py-40 border-t border-border" ref={ref}>
+    <section id="testimonials" className="py-24 md:py-40 border-t border-border" ref={ref}>
       <div className="container mx-auto px-6">
         <div className="mb-16">
           <span className="font-body text-xs tracking-[0.4em] text-primary uppercase">
