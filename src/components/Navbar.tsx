@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -15,12 +15,31 @@ const navLinks = [
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("");
+
+  const handleScroll = useCallback(() => {
+    setScrolled(window.scrollY > 50);
+
+    // Determine active section based on scroll position
+    const sections = navLinks.map((link) => link.href.replace("#", ""));
+    let current = "";
+    for (const id of sections) {
+      const el = document.getElementById(id);
+      if (el) {
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= 120) {
+          current = id;
+        }
+      }
+    }
+    setActiveSection(current);
+  }, []);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
 
   return (
     <motion.nav
@@ -44,19 +63,35 @@ const Navbar = () => {
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-1">
-          {navLinks.map((link, i) => (
-            <motion.a
-              key={link.href}
-              href={link.href}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.1 * i + 0.3 }}
-              className="relative px-5 py-2 font-body text-[11px] tracking-[0.25em] text-muted-foreground hover:text-foreground transition-colors uppercase group"
-            >
-              {link.label}
-              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary scale-0 group-hover:scale-100 transition-transform duration-200" />
-            </motion.a>
-          ))}
+          {navLinks.map((link, i) => {
+            const isActive = activeSection === link.href.replace("#", "");
+            return (
+              <motion.a
+                key={link.href}
+                href={link.href}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.1 * i + 0.3 }}
+                className={`relative px-5 py-2 font-body text-[11px] tracking-[0.25em] uppercase transition-colors duration-300 ${
+                  isActive
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {link.label}
+                {/* Animated active indicator */}
+                <motion.span
+                  className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-primary rounded-full"
+                  initial={false}
+                  animate={{
+                    width: isActive ? 16 : 0,
+                    opacity: isActive ? 1 : 0,
+                  }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                />
+              </motion.a>
+            );
+          })}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -92,20 +127,25 @@ const Navbar = () => {
             className="md:hidden overflow-hidden bg-background/95 backdrop-blur-2xl border-t border-border"
           >
             <div className="px-6 pb-8 pt-6 space-y-1">
-              {navLinks.map((link, i) => (
-                <motion.a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: 0.05 * i }}
-                  className="flex items-center justify-between py-4 border-b border-border/50 font-heading text-3xl text-foreground hover:text-primary transition-colors"
-                >
-                  {link.label}
-                  <ArrowUpRight className="h-5 w-5 text-muted-foreground" />
-                </motion.a>
-              ))}
+              {navLinks.map((link, i) => {
+                const isActive = activeSection === link.href.replace("#", "");
+                return (
+                  <motion.a
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: 0.05 * i }}
+                    className={`flex items-center justify-between py-4 border-b border-border/50 font-heading text-3xl transition-colors ${
+                      isActive ? "text-primary" : "text-foreground hover:text-primary"
+                    }`}
+                  >
+                    {link.label}
+                    <ArrowUpRight className={`h-5 w-5 transition-colors ${isActive ? "text-primary" : "text-muted-foreground"}`} />
+                  </motion.a>
+                );
+              })}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
