@@ -6,9 +6,9 @@ import BookingDialog from "./BookingDialog";
 
 const navLinks = [
   { label: "Services", href: "#services" },
-  { label: "Team", href: "#team" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "Gallery", href: "#gallery" },
+  { label: "The Crew", href: "#team" },
+  { label: "Reviews", href: "#testimonials" },
+  { label: "Our Work", href: "#gallery" },
   { label: "Contact", href: "#contact" },
 ];
 
