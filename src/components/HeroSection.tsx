@@ -1,42 +1,71 @@
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { ArrowUpRight } from "lucide-react";
 import BookingDialog from "./BookingDialog";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
-      {/* Background image */}
+    <section className="relative min-h-screen flex flex-col justify-end overflow-hidden pb-16 md:pb-24">
+      {/* Background */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${heroBg})` }}
       />
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-background/70" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/30" />
 
-      <div className="relative z-10 container mx-auto px-6 text-center">
-        <p className="mb-4 font-body text-sm tracking-[0.3em] text-primary uppercase animate-fade-in-up">
-          Est. 2018 — Premium Grooming
-        </p>
-        <h1 className="mb-6 font-heading text-5xl font-bold uppercase leading-tight text-foreground md:text-7xl lg:text-8xl animate-fade-in-up" style={{ animationDelay: "0.15s" }}>
-          Precision Cuts<br />
-          <span className="text-gradient-gold">for the Modern Man</span>
-        </h1>
-        <p className="mx-auto mb-10 max-w-lg font-body text-lg text-muted-foreground animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
-          Where craftsmanship meets confidence. Experience grooming the way it was meant to be.
-        </p>
-        <div className="animate-fade-in-up" style={{ animationDelay: "0.45s" }}>
+      <div className="relative z-10 container mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="mb-6"
+        >
+          <span className="font-body text-xs tracking-[0.4em] text-primary uppercase">
+            Brooklyn, NY — Est. 2018
+          </span>
+        </motion.div>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 60 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="font-heading text-[clamp(3.5rem,12vw,11rem)] leading-[0.85] tracking-tight text-foreground"
+        >
+          Precision
+          <br />
+          Cuts<span className="text-primary">.</span>
+        </motion.h1>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.8 }}
+          className="mt-8 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-8"
+        >
+          <p className="max-w-sm font-body text-sm leading-relaxed text-muted-foreground">
+            Where craftsmanship meets confidence. Premium grooming
+            for the modern man who demands nothing less.
+          </p>
           <BookingDialog>
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading text-lg tracking-widest uppercase px-10 py-6 gold-glow">
-              Book Your Seat
+            <Button variant="hero" size="lg">
+              Book Your Seat <ArrowUpRight className="ml-2 h-5 w-5" />
             </Button>
           </BookingDialog>
-        </div>
+        </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="h-10 w-6 rounded-full border-2 border-muted-foreground/40 flex items-start justify-center pt-2">
-          <div className="h-2 w-1 rounded-full bg-primary" />
+      {/* Marquee strip */}
+      <div className="absolute bottom-0 left-0 right-0 border-t border-border bg-background/60 backdrop-blur-sm overflow-hidden">
+        <div className="animate-marquee flex whitespace-nowrap py-3">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <span
+              key={i}
+              className="mx-8 font-heading text-sm tracking-[0.3em] text-muted-foreground/40 uppercase"
+            >
+              Haircuts • Fades • Beard Grooming • Hot Towel Shave • Styling
+            </span>
+          ))}
         </div>
       </div>
     </section>

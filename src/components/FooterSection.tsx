@@ -1,66 +1,77 @@
-import { MapPin, Clock, Phone, Mail, Instagram, Facebook } from "lucide-react";
+import { MapPin, Clock, Phone, Mail, Instagram, ArrowUpRight } from "lucide-react";
 
 const FooterSection = () => {
   return (
-    <footer id="contact" className="border-t border-border bg-background py-16 md:py-24">
+    <footer id="contact" className="border-t border-border py-20 md:py-32">
       <div className="container mx-auto px-6">
-        <div className="grid gap-12 md:grid-cols-3">
+        {/* Big CTA text */}
+        <div className="mb-20 md:mb-32">
+          <h2 className="font-heading text-5xl md:text-[8rem] leading-none text-foreground">
+            Let's<br />Work<span className="text-primary">.</span>
+          </h2>
+        </div>
+
+        <div className="grid gap-12 md:grid-cols-4">
           {/* Location */}
           <div>
-            <h3 className="mb-6 font-heading text-lg font-semibold uppercase text-foreground flex items-center gap-2">
-              <MapPin className="h-5 w-5 text-primary" /> Location
+            <h3 className="font-body text-xs tracking-[0.3em] text-primary uppercase mb-4">
+              Location
             </h3>
-            <p className="font-body text-sm leading-relaxed text-muted-foreground">
+            <p className="font-body text-sm text-muted-foreground leading-relaxed">
               742 Barber Lane, Suite 3<br />
               Brooklyn, NY 11201
             </p>
-            <div className="mt-4 h-40 overflow-hidden rounded-lg border border-border bg-muted flex items-center justify-center">
-              <p className="font-body text-xs text-muted-foreground">Google Maps Placeholder</p>
-            </div>
           </div>
 
           {/* Hours */}
           <div>
-            <h3 className="mb-6 font-heading text-lg font-semibold uppercase text-foreground flex items-center gap-2">
-              <Clock className="h-5 w-5 text-primary" /> Opening Hours
+            <h3 className="font-body text-xs tracking-[0.3em] text-primary uppercase mb-4">
+              Hours
             </h3>
-            <ul className="space-y-2 font-body text-sm text-muted-foreground">
-              <li className="flex justify-between"><span>Monday – Friday</span><span className="text-foreground">9:00 AM – 8:00 PM</span></li>
-              <li className="flex justify-between"><span>Saturday</span><span className="text-foreground">9:00 AM – 6:00 PM</span></li>
-              <li className="flex justify-between"><span>Sunday</span><span className="text-foreground">Closed</span></li>
-            </ul>
+            <div className="space-y-1 font-body text-sm text-muted-foreground">
+              <p>Mon – Fri: 9AM – 8PM</p>
+              <p>Saturday: 9AM – 6PM</p>
+              <p>Sunday: Closed</p>
+            </div>
           </div>
 
           {/* Contact */}
           <div>
-            <h3 className="mb-6 font-heading text-lg font-semibold uppercase text-foreground flex items-center gap-2">
-              <Phone className="h-5 w-5 text-primary" /> Get in Touch
+            <h3 className="font-body text-xs tracking-[0.3em] text-primary uppercase mb-4">
+              Contact
             </h3>
-            <ul className="space-y-3 font-body text-sm text-muted-foreground">
-              <li className="flex items-center gap-3">
-                <Phone className="h-4 w-4 text-primary" />
-                <a href="tel:+15551234567" className="hover:text-primary transition-colors">+1 (555) 123-4567</a>
-              </li>
-              <li className="flex items-center gap-3">
-                <Mail className="h-4 w-4 text-primary" />
-                <a href="mailto:hello@thegentry.com" className="hover:text-primary transition-colors">hello@thegentry.com</a>
-              </li>
-            </ul>
-
-            <div className="mt-8 flex gap-4">
-              <a href="#" className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground hover:border-primary hover:text-primary transition-colors" aria-label="Instagram">
-                <Instagram className="h-5 w-5" />
+            <div className="space-y-2 font-body text-sm text-muted-foreground">
+              <a href="tel:+15551234567" className="block hover:text-foreground transition-colors">
+                +1 (555) 123-4567
               </a>
-              <a href="#" className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground hover:border-primary hover:text-primary transition-colors" aria-label="Facebook">
-                <Facebook className="h-5 w-5" />
+              <a href="mailto:hello@thegentry.com" className="block hover:text-foreground transition-colors">
+                hello@thegentry.com
+              </a>
+            </div>
+          </div>
+
+          {/* Social */}
+          <div>
+            <h3 className="font-body text-xs tracking-[0.3em] text-primary uppercase mb-4">
+              Social
+            </h3>
+            <div className="space-y-2">
+              <a href="#" className="flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-foreground transition-colors group">
+                Instagram <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+              </a>
+              <a href="#" className="flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-foreground transition-colors group">
+                Facebook <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
             </div>
           </div>
         </div>
 
-        <div className="mt-16 border-t border-border pt-8 text-center">
-          <p className="font-heading text-sm tracking-widest text-muted-foreground uppercase">
-            © 2025 The Gentry. All rights reserved.
+        <div className="mt-20 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
+          <span className="font-heading text-2xl tracking-[0.15em] text-foreground">
+            THE GENTRY
+          </span>
+          <p className="font-body text-xs text-muted-foreground tracking-widest uppercase">
+            © 2025 All rights reserved
           </p>
         </div>
       </div>
