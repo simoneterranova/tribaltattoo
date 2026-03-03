@@ -29,7 +29,7 @@ const GallerySection = () => {
               Our Work
             </span>
             <h2 className="font-heading text-6xl md:text-8xl text-foreground mt-2 leading-none">
-              Gallery<span className="text-primary">.</span>
+              Our Work<span className="text-primary">.</span>
             </h2>
           </div>
           <span className="hidden md:block font-body text-xs text-muted-foreground tracking-widest uppercase">
