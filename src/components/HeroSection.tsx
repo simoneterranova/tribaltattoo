@@ -1,18 +1,31 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
 import BookingDialog from "./BookingDialog";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0.3]);
+
   return (
-    <section className="relative min-h-screen flex flex-col justify-end overflow-hidden pb-16 md:pb-24">
-      {/* Background */}
-      <div
+    <section ref={sectionRef} id="hero" className="relative min-h-screen flex flex-col justify-end overflow-hidden pb-16 md:pb-24">
+      {/* Background with parallax */}
+      <motion.div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroBg})` }}
+        style={{ backgroundImage: `url(${heroBg})`, y }}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/30" />
+      <motion.div 
+        className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/30" 
+        style={{ opacity }}
+      />
 
       <div className="relative z-10 container mx-auto px-6">
         <motion.div

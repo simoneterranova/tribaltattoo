@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import ScrollReveal from "./ScrollReveal";
 import gallery1 from "@/assets/gallery-1.jpg";
 import gallery2 from "@/assets/gallery-2.jpg";
 import gallery3 from "@/assets/gallery-3.jpg";
@@ -19,55 +20,86 @@ const images = [
 const GalleryImage = ({
   img,
   index,
-  scrollYProgress,
 }: {
   img: { src: string; alt: string; label: string };
   index: number;
-  scrollYProgress: any;
 }) => {
-  // All images reveal quickly with a tiny stagger
-  const delay = index * 0.02;
-  const start = 0.01 + delay;
-  const mid = start + 0.06;
+  const containerVariants = {
+    initial: {},
+    hover: {
+      y: -12,
+      transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] }
+    }
+  };
 
-  const scale = useTransform(scrollYProgress, [start, mid, 1], [0.9, 1, 1]);
-  const opacity = useTransform(scrollYProgress, [start, mid, 1], [0, 1, 1]);
-  const y = useTransform(scrollYProgress, [start, mid, 1], [30, 0, 0]);
-  const rotate = useTransform(scrollYProgress, [start, mid, 1], [1.5, 0, 0]);
-  const clipTop = useTransform(scrollYProgress, [start, mid], [100, 0]);
+  const imageVariants = {
+    initial: {},
+    hover: {
+      scale: 1.08,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
+  const overlayVariants = {
+    initial: { backgroundColor: "rgba(212, 175, 55, 0)" },
+    hover: { 
+      backgroundColor: "rgba(212, 175, 55, 0.08)",
+      transition: { duration: 0.4 }
+    }
+  };
+
+  const labelVariants = {
+    initial: { x: 0 },
+    hover: { 
+      x: 4,
+      transition: { duration: 0.3 }
+    }
+  };
 
   return (
     <motion.div
-      style={{ scale, opacity, y, rotate }}
-      className="flex-shrink-0 w-[75vw] md:w-[35vw] aspect-[3/4] overflow-hidden group relative"
+      className="flex-shrink-0 w-[75vw] md:w-[35vw] aspect-[3/4] max-h-[65vh] overflow-hidden relative rounded-sm cursor-pointer"
+      variants={containerVariants}
+      initial="initial"
+      whileHover="hover"
     >
-      {/* Clip-path reveal mask */}
-      <motion.div
-        style={{
-          clipPath: useTransform(clipTop, (v) => `inset(${v}% 0 0 0)`),
+      <motion.img
+        src={img.src}
+        alt={img.alt}
+        className="h-full w-full object-cover grayscale"
+        loading="lazy"
+        variants={imageVariants}
+        style={{ 
+          filter: "grayscale(100%)",
         }}
-        className="h-full w-full"
-      >
-        <img
-          src={img.src}
-          alt={img.alt}
-          className="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
-          loading="lazy"
-        />
-      </motion.div>
+        whileHover={{ 
+          filter: "grayscale(0%)",
+          transition: { duration: 0.6 }
+        }}
+      />
 
       {/* Hover overlay */}
-      <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-500" />
+      <motion.div 
+        className="absolute inset-0 pointer-events-none"
+        variants={overlayVariants}
+      />
 
       {/* Image label */}
       <motion.div
-        style={{ opacity }}
-        className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-background/80 to-transparent"
+        className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-background/80 to-transparent pointer-events-none"
       >
-        <span className="font-body text-xs tracking-[0.3em] text-primary uppercase">
+        <motion.span 
+          className="font-body text-xs tracking-[0.3em] text-primary uppercase inline-block"
+          variants={labelVariants}
+        >
           {String(index + 1).padStart(2, "0")}
-        </span>
-        <p className="font-heading text-lg text-foreground mt-1">{img.label}</p>
+        </motion.span>
+        <motion.p 
+          className="font-heading text-lg text-foreground mt-1"
+          variants={labelVariants}
+        >
+          {img.label}
+        </motion.p>
       </motion.div>
     </motion.div>
   );
@@ -82,41 +114,41 @@ const GallerySection = () => {
     offset: ["start start", "end end"],
   });
 
-  // Horizontal translation driven by scroll
-  const x = useTransform(scrollYProgress, [0.05, 0.95], ["0%", "-83%"]);
+  // Horizontal translation driven by scroll - extended range for smoother animation
+  const x = useTransform(scrollYProgress, [0.1, 0.9], ["0%", "-83%"]);
 
-  // Header animation driven by scroll
-  const headerOpacity = useTransform(scrollYProgress, [0, 0.08], [0, 1]);
-  const headerY = useTransform(scrollYProgress, [0, 0.08], [40, 0]);
+  // Header animation driven by scroll - visible from the start
+  const headerOpacity = useTransform(scrollYProgress, [0, 0.08], [1, 1]);
+  const headerY = useTransform(scrollYProgress, [0, 0.08], [0, 0]);
 
   // Progress bar
-  const progressWidth = useTransform(scrollYProgress, [0.05, 0.95], ["0%", "100%"]);
+  const progressWidth = useTransform(scrollYProgress, [0.1, 0.9], ["0%", "100%"]);
 
   return (
     <div
+      id="gallery"
       ref={sectionRef}
-      style={{ height: `${images.length * 100}vh` }}
+      style={{ height: `${images.length * 150}vh` }}
       className="relative border-t border-border"
     >
-      <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center">
+      <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-start pt-28">
         {/* Header */}
-        <div className="container mx-auto px-6 mb-8" ref={headerRef}>
-          <motion.div
-            style={{ opacity: headerOpacity, y: headerY }}
-            className="flex items-end justify-between"
-          >
-            <div>
-              <span className="font-body text-xs tracking-[0.4em] text-primary uppercase">
-                Our Work
+        <div className="container mx-auto px-6 mb-6" ref={headerRef}>
+          <ScrollReveal direction="up" duration={0.7}>
+            <div className="flex items-end justify-between">
+              <div>
+                <span className="font-body text-xs tracking-[0.4em] text-primary uppercase">
+                  Our Work
+                </span>
+                <h2 className="font-heading text-6xl md:text-8xl text-foreground mt-2 leading-none">
+                  Gallery<span className="text-primary">.</span>
+                </h2>
+              </div>
+              <span className="hidden md:block font-body text-xs text-muted-foreground tracking-widest uppercase">
+                Scroll ↓
               </span>
-              <h2 className="font-heading text-6xl md:text-8xl text-foreground mt-2 leading-none">
-                Gallery<span className="text-primary">.</span>
-              </h2>
             </div>
-            <span className="hidden md:block font-body text-xs text-muted-foreground tracking-widest uppercase">
-              Scroll ↓
-            </span>
-          </motion.div>
+          </ScrollReveal>
         </div>
 
         {/* Horizontal track */}
@@ -126,7 +158,6 @@ const GallerySection = () => {
               key={i}
               img={img}
               index={i}
-              scrollYProgress={scrollYProgress}
             />
           ))}
         </motion.div>

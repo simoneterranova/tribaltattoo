@@ -1,8 +1,9 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import BookingDialog from "./BookingDialog";
+import { useScrollSpy } from "@/hooks/useScrollSpy";
 
 const navLinks = [
   { label: "Services", href: "#services" },
@@ -15,31 +16,22 @@ const navLinks = [
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState<string>("");
 
-  const handleScroll = useCallback(() => {
-    setScrolled(window.scrollY > 50);
-
-    // Determine active section based on scroll position
-    const sections = navLinks.map((link) => link.href.replace("#", ""));
-    let current = "";
-    for (const id of sections) {
-      const el = document.getElementById(id);
-      if (el) {
-        const rect = el.getBoundingClientRect();
-        if (rect.top <= 120) {
-          current = id;
-        }
-      }
-    }
-    setActiveSection(current);
-  }, []);
+  // Extract section IDs from nav links
+  const sectionIds = ["hero", ...navLinks.map((link) => link.href.replace("#", ""))];
+  
+  // Use scroll-spy hook to track active section and update URL
+  const activeSection = useScrollSpy({ sectionIds, offset: 120, updateUrl: true });
 
   useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [handleScroll]);
+  }, []);
 
   return (
     <motion.nav
@@ -54,9 +46,9 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between px-6 py-4">
         {/* Logo */}
-        <a href="#" className="relative group">
+        <a href="#hero" className="relative group">
           <span className="font-heading text-2xl md:text-3xl tracking-[0.2em] text-foreground">
-            THE GENTRY
+            GENTRY
           </span>
           <span className="absolute -bottom-1 left-0 w-full h-px bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
         </a>

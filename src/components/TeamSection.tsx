@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import ScrollReveal from "./ScrollReveal";
 import barber1 from "@/assets/barber-1.jpg";
 import barber2 from "@/assets/barber-2.jpg";
 import barber3 from "@/assets/barber-3.jpg";
@@ -17,22 +18,24 @@ const TeamSection = () => {
   return (
     <section id="team" className="py-24 md:py-40 border-t border-border" ref={ref}>
       <div className="container mx-auto px-6">
-        <div className="mb-16">
-          <span className="font-body text-xs tracking-[0.4em] text-primary uppercase">
-            The Crew
-          </span>
-          <h2 className="font-heading text-6xl md:text-8xl text-foreground mt-2 leading-none">
-            Meet The<br />Team<span className="text-primary">.</span>
-          </h2>
-        </div>
+        <ScrollReveal direction="up" duration={0.7}>
+          <div className="mb-16">
+            <span className="font-body text-xs tracking-[0.4em] text-primary uppercase">
+              The Crew
+            </span>
+            <h2 className="font-heading text-6xl md:text-8xl text-foreground mt-2 leading-none">
+              Meet The<br />Team<span className="text-primary">.</span>
+            </h2>
+          </div>
+        </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-1">
           {team.map((member, i) => (
             <motion.div
               key={member.name}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 60 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: i * 0.15 }}
+              transition={{ duration: 0.7, delay: i * 0.2, ease: [0.25, 0.4, 0.25, 1] }}
               className="group relative overflow-hidden aspect-[3/4]"
             >
               <img

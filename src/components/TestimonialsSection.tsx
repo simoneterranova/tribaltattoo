@@ -1,6 +1,7 @@
 import { Star, Quote } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import ScrollReveal from "./ScrollReveal";
 
 const testimonials = [
   {
@@ -24,22 +25,24 @@ const TestimonialsSection = () => {
   return (
     <section id="testimonials" className="py-24 md:py-40 border-t border-border" ref={ref}>
       <div className="container mx-auto px-6">
-        <div className="mb-16">
-          <span className="font-body text-xs tracking-[0.4em] text-primary uppercase">
-            Reviews
-          </span>
-          <h2 className="font-heading text-6xl md:text-8xl text-foreground mt-2 leading-none">
-            Words<span className="text-primary">.</span>
-          </h2>
-        </div>
+        <ScrollReveal direction="up" duration={0.7}>
+          <div className="mb-16">
+            <span className="font-body text-xs tracking-[0.4em] text-primary uppercase">
+              Reviews
+            </span>
+            <h2 className="font-heading text-6xl md:text-8xl text-foreground mt-2 leading-none">
+              Words<span className="text-primary">.</span>
+            </h2>
+          </div>
+        </ScrollReveal>
 
         <div className="grid gap-px md:grid-cols-3 bg-border">
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.12 }}
+              transition={{ duration: 0.7, delay: i * 0.15, ease: [0.25, 0.4, 0.25, 1] }}
               className="bg-background p-8 md:p-10 flex flex-col justify-between"
             >
               <div>
