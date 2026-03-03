@@ -4,8 +4,13 @@ const FooterSection = () => {
   return (
     <footer id="contact" className="border-t border-border py-20 md:py-32">
       <div className="container mx-auto px-6">
+        {/* Section label */}
+        <span className="font-body text-xs tracking-[0.4em] text-primary uppercase">
+          Contact
+        </span>
+
         {/* Big CTA text */}
-        <div className="mb-20 md:mb-32">
+        <div className="mt-6 mb-20 md:mb-32">
           <h2 className="font-heading text-5xl md:text-[8rem] leading-none text-foreground">
             Let's<br />Work<span className="text-primary">.</span>
           </h2>
