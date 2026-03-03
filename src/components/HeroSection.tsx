@@ -8,12 +8,11 @@ const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex flex-col justify-end overflow-hidden pb-16 md:pb-24">
       {/* Background */}
-      <img
-        src={heroBg}
-        alt="Barber at work"
-        className="absolute inset-0 w-full h-full object-cover"
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${heroBg})` }}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/20" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/30" />
 
       <div className="relative z-10 container mx-auto px-6">
         <motion.div
