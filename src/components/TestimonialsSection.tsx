@@ -1,4 +1,6 @@
-import { Star } from "lucide-react";
+import { Star, Quote } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const testimonials = [
   {
@@ -11,38 +13,52 @@ const testimonials = [
   },
   {
     name: "Chris P.",
-    text: "Clean shop, skilled barbers, and they actually listen to what you want. I've been coming here for two years now.",
+    text: "Clean shop, skilled barbers, and they actually listen to what you want. Two years and counting.",
   },
 ];
 
 const TestimonialsSection = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-24 md:py-40 border-t border-border" ref={ref}>
       <div className="container mx-auto px-6">
-        <div className="mb-16 text-center">
-          <p className="mb-2 font-body text-sm tracking-[0.3em] text-primary uppercase">
-            What They Say
-          </p>
-          <h2 className="font-heading text-4xl font-bold uppercase text-foreground md:text-5xl">
-            Testimonials
+        <div className="mb-16">
+          <span className="font-body text-xs tracking-[0.4em] text-primary uppercase">
+            Reviews
+          </span>
+          <h2 className="font-heading text-6xl md:text-8xl text-foreground mt-2 leading-none">
+            Words<span className="text-primary">.</span>
           </h2>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-3 max-w-5xl mx-auto">
-          {testimonials.map((t) => (
-            <div key={t.name} className="glass rounded-lg p-8 flex flex-col">
-              <div className="mb-4 flex gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-primary text-primary" />
-                ))}
+        <div className="grid gap-px md:grid-cols-3 bg-border">
+          {testimonials.map((t, i) => (
+            <motion.div
+              key={t.name}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: i * 0.12 }}
+              className="bg-background p-8 md:p-10 flex flex-col justify-between"
+            >
+              <div>
+                <Quote className="h-6 w-6 text-primary/30 mb-6" />
+                <p className="font-body text-base leading-relaxed text-secondary-foreground">
+                  {t.text}
+                </p>
               </div>
-              <p className="mb-6 flex-1 font-body text-sm leading-relaxed text-secondary-foreground italic">
-                "{t.text}"
-              </p>
-              <p className="font-heading text-sm font-semibold uppercase text-foreground">
-                — {t.name}
-              </p>
-            </div>
+              <div className="mt-8 flex items-center justify-between">
+                <span className="font-heading text-lg text-foreground">
+                  {t.name}
+                </span>
+                <div className="flex gap-0.5">
+                  {[...Array(5)].map((_, j) => (
+                    <Star key={j} className="h-3 w-3 fill-primary text-primary" />
+                  ))}
+                </div>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>
