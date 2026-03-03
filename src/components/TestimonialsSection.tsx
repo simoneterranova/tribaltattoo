@@ -29,7 +29,7 @@ const TestimonialsSection = () => {
             Reviews
           </span>
           <h2 className="font-heading text-6xl md:text-8xl text-foreground mt-2 leading-none">
-            Words<span className="text-primary">.</span>
+            Reviews<span className="text-primary">.</span>
           </h2>
         </div>
 
