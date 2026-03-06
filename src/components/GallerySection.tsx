@@ -1,6 +1,7 @@
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
+import { useIsMobile } from "@/hooks/use-mobile";
 import gallery1 from "@/assets/gallery-1.jpg";
 import gallery2 from "@/assets/gallery-2.jpg";
 import gallery3 from "@/assets/gallery-3.jpg";
@@ -105,7 +106,90 @@ const GalleryImage = ({
   );
 };
 
-const GallerySection = () => {
+const MobileGalleryCard = ({
+  img,
+  index,
+}: {
+  img: { src: string; alt: string; label: string };
+  index: number;
+}) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(index === 0);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setVisible(true);
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <motion.div
+      ref={ref}
+      className="flex-shrink-0 w-[80vw] aspect-[3/4] snap-center overflow-hidden relative rounded-sm"
+      animate={visible ? { opacity: 1, scale: 1 } : { opacity: 0.3, scale: 0.93 }}
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <img
+        src={img.src}
+        alt={img.alt}
+        className="h-full w-full object-cover"
+        loading="lazy"
+      />
+      <motion.div
+        className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-background/80 to-transparent pointer-events-none"
+        animate={visible ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+        transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
+      >
+        <span className="font-body text-xs tracking-[0.3em] text-primary uppercase inline-block">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+        <p className="font-heading text-lg text-foreground mt-1">{img.label}</p>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+const MobileGallery = () => {
+  return (
+    <section id="gallery" className="border-t border-border py-20 px-6">
+      {/* Header */}
+      <ScrollReveal direction="up" duration={0.7}>
+        <div className="mb-8">
+          <span className="font-body text-xs tracking-[0.4em] text-primary uppercase">
+            Our Work
+          </span>
+          <h2 className="font-heading text-6xl text-foreground mt-2 leading-none">
+            Gallery<span className="text-primary">.</span>
+          </h2>
+        </div>
+      </ScrollReveal>
+
+      {/* Swipeable snap carousel */}
+      <div
+        className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-6 px-6"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+      >
+        {images.map((img, i) => (
+          <MobileGalleryCard key={i} img={img} index={i} />
+        ))}
+      </div>
+
+      {/* Swipe hint */}
+      <p className="font-body text-xs text-muted-foreground tracking-widest uppercase mt-4 text-center">
+        Swipe →
+      </p>
+    </section>
+  );
+};
+
+const DesktopGallery = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef(null);
 
@@ -114,14 +198,7 @@ const GallerySection = () => {
     offset: ["start start", "end end"],
   });
 
-  // Horizontal translation driven by scroll - extended range for smoother animation
   const x = useTransform(scrollYProgress, [0.1, 0.9], ["0%", "-83%"]);
-
-  // Header animation driven by scroll - visible from the start
-  const headerOpacity = useTransform(scrollYProgress, [0, 0.08], [1, 1]);
-  const headerY = useTransform(scrollYProgress, [0, 0.08], [0, 0]);
-
-  // Progress bar
   const progressWidth = useTransform(scrollYProgress, [0.1, 0.9], ["0%", "100%"]);
 
   return (
@@ -144,7 +221,7 @@ const GallerySection = () => {
                   Gallery<span className="text-primary">.</span>
                 </h2>
               </div>
-              <span className="hidden md:block font-body text-xs text-muted-foreground tracking-widest uppercase">
+              <span className="font-body text-xs text-muted-foreground tracking-widest uppercase">
                 Scroll ↓
               </span>
             </div>
@@ -154,11 +231,7 @@ const GallerySection = () => {
         {/* Horizontal track */}
         <motion.div style={{ x }} className="flex gap-4 pl-6">
           {images.map((img, i) => (
-            <GalleryImage
-              key={i}
-              img={img}
-              index={i}
-            />
+            <GalleryImage key={i} img={img} index={i} />
           ))}
         </motion.div>
 
@@ -174,6 +247,11 @@ const GallerySection = () => {
       </div>
     </div>
   );
+};
+
+const GallerySection = () => {
+  const isMobile = useIsMobile();
+  return isMobile ? <MobileGallery /> : <DesktopGallery />;
 };
 
 export default GallerySection;

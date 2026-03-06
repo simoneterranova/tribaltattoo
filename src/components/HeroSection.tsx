@@ -1,11 +1,14 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, LayoutDashboard } from "lucide-react";
 import BookingDialog from "./BookingDialog";
+import { useAuth } from "@/contexts/AuthContext";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
+  const { isBarber } = useAuth();
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -60,11 +63,19 @@ const HeroSection = () => {
             Where craftsmanship meets confidence. Premium grooming
             for the modern man who demands nothing less.
           </p>
-          <BookingDialog>
-            <Button variant="hero" size="lg">
-              Book Your Seat <ArrowUpRight className="ml-2 h-5 w-5" />
-            </Button>
-          </BookingDialog>
+          {isBarber ? (
+            <Link to="/dashboard">
+              <Button variant="hero" size="lg">
+                Dashboard <LayoutDashboard className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+          ) : (
+            <BookingDialog>
+              <Button variant="hero" size="lg">
+                Book Your Seat <ArrowUpRight className="ml-2 h-5 w-5" />
+              </Button>
+            </BookingDialog>
+          )}
         </motion.div>
       </div>
 
