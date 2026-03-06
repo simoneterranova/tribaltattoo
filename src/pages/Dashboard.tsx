@@ -11,6 +11,8 @@ import {
   type BookingWithCustomer,
 } from "@/hooks/useBarber";
 import { useShopSettings, useUpdateShopSettings } from "@/hooks/useShopSettings";
+import { useBarberNotifications } from "@/hooks/useBarberNotifications";
+import { NotificationBell } from "@/components/NotificationBell";
 import { getServiceById, generateTimeSlots, services, SLOT_DURATION } from "@/lib/services";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -107,6 +109,8 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const { data: allBookings, isLoading: bookingsLoading } = useAllBookings();
   const updateStatus = useUpdateBookingStatus();
+  const { notifications, unreadCount, markAllRead, clearNotification, clearAll } =
+    useBarberNotifications();
 
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [blockDialogOpen, setBlockDialogOpen] = useState(false);
@@ -406,6 +410,13 @@ const Dashboard = () => {
               Barber
             </span>
           </div>
+          <NotificationBell
+            notifications={notifications}
+            unreadCount={unreadCount}
+            onMarkAllRead={markAllRead}
+            onClear={clearNotification}
+            onClearAll={clearAll}
+          />
           <Button
             variant="ghost"
             size="sm"
