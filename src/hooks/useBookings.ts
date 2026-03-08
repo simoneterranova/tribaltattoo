@@ -24,6 +24,8 @@ export function useBookings() {
       return (data as unknown as Booking[]) ?? [];
     },
     enabled: !!user,
+    refetchInterval: 30_000,
+    refetchIntervalInBackground: false,
   });
 }
 
@@ -69,12 +71,36 @@ export function useCancelBooking() {
 
   return useMutation({
     mutationFn: async (bookingId: string) => {
+      // Read details first so we can broadcast to the barber reliably.
+      // postgres_changes UPDATE events are unreliable with RLS for non-owner
+      // subscribers (barber), so we use Realtime broadcast as the primary path.
+      const { data: booking } = await supabase
+        .from("bookings")
+        .select("id, service_name, date, time, guest_name")
+        .eq("id", bookingId)
+        .maybeSingle();
+
       const { error } = await supabase
         .from("bookings")
         .update({ status: "cancelled" } as never)
         .eq("id", bookingId);
 
       if (error) throw error;
+
+      // Broadcast so the barber's notification hook picks it up regardless of page.
+      if (booking) {
+        const ch = supabase.channel("barber-booking-notifications");
+        ch.subscribe((status) => {
+          if (status === "SUBSCRIBED") {
+            ch.send({
+              type: "broadcast",
+              event: "booking_cancelled",
+              payload: booking,
+            });
+            setTimeout(() => supabase.removeChannel(ch), 2000);
+          }
+        });
+      }
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: BOOKINGS_KEY });
@@ -128,12 +154,37 @@ export function useDeleteBooking() {
 
   return useMutation({
     mutationFn: async (bookingId: string) => {
+      // Read details before deletion so the barber can be notified via broadcast.
+      // postgres_changes DELETE events are unreliable with RLS when the subscriber
+      // doesn't own the row, so we use Realtime broadcast as the reliable path.
+      const { data: booking } = await supabase
+        .from("bookings")
+        .select("id, service_name, date, time, guest_name")
+        .eq("id", bookingId)
+        .maybeSingle();
+
       const { error } = await supabase
         .from("bookings")
         .delete()
         .eq("id", bookingId);
 
       if (error) throw error;
+
+      // Broadcast so the barber's notification hook picks it up regardless of page.
+      if (booking) {
+        const ch = supabase.channel("barber-booking-notifications");
+        ch.subscribe((status) => {
+          if (status === "SUBSCRIBED") {
+            ch.send({
+              type: "broadcast",
+              event: "booking_deleted",
+              payload: booking,
+            });
+            // Clean up after enough time for the message to be delivered
+            setTimeout(() => supabase.removeChannel(ch), 2000);
+          }
+        });
+      }
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: BOOKINGS_KEY });

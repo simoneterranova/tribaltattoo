@@ -460,7 +460,7 @@ function BookingCard({
         <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" className="rounded-none text-xs sm:flex-none">
+              <Button variant="outline" size="sm" className="rounded-none text-xs flex-1 sm:flex-none">
                 <CalendarPlus className="h-3.5 w-3.5 mr-1.5" />
                 Add to Calendar
               </Button>
@@ -485,7 +485,7 @@ function BookingCard({
             </DropdownMenuContent>
           </DropdownMenu>
 
-          {/* <Button
+          <Button
             variant="outline"
             size="sm"
             className="rounded-none text-xs flex-1 sm:flex-none"
@@ -493,7 +493,7 @@ function BookingCard({
           >
             <RefreshCw className="h-3.5 w-3.5 mr-1.5" />
             Reschedule
-          </Button> */}
+          </Button>
 
           <AlertDialog>
             <AlertDialogTrigger asChild>

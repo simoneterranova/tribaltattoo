@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import {
@@ -17,6 +17,8 @@ import { getServiceById, generateTimeSlots, services, SLOT_DURATION } from "@/li
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Calendar } from "@/components/ui/calendar";
+import { Textarea } from "@/components/ui/textarea";
 import {
   Dialog,
   DialogContent,
@@ -36,6 +38,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import {
   ArrowLeft,
+  ArrowUpRight,
   CheckCircle2,
   Clock,
   Loader2,
@@ -61,7 +64,7 @@ import {
   startOfWeek,
   isToday,
 } from "date-fns";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 // ---- Status config ----
@@ -115,6 +118,7 @@ const Dashboard = () => {
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [blockDialogOpen, setBlockDialogOpen] = useState(false);
   const [settingsDialogOpen, setSettingsDialogOpen] = useState(false);
+  const [activeStatIdx, setActiveStatIdx] = useState(0);
 
   // Shop settings
   const { data: shopSettings } = useShopSettings();
@@ -187,6 +191,7 @@ const Dashboard = () => {
   const [manualGuestName, setManualGuestName] = useState("");
   const [manualPhone, setManualPhone] = useState("");
   const [manualNotes, setManualNotes] = useState("");
+  const [manualStep, setManualStep] = useState<"client" | "service" | "datetime" | "confirm" | "success">("client");
   const barberCreateBooking = useBarberCreateBooking();
 
   const manualFormattedDate = format(manualDate, "yyyy-MM-dd");
@@ -271,6 +276,18 @@ const Dashboard = () => {
     return isBefore(d, addDays(new Date(), 7));
   }).length;
 
+  // Mobile stat carousel: auto-cycle every 2.5s
+  const statCards = useMemo(() => [
+    { label: "Today's Bookings", value: String(todayBookingsCount) },
+    { label: "Today's Revenue", value: `$${todayRevenue}` },
+    { label: "Week's Bookings", value: String(weekUpcoming) },
+  ], [todayBookingsCount, todayRevenue, weekUpcoming]);
+
+  useEffect(() => {
+    const timer = setInterval(() => setActiveStatIdx((i) => (i + 1) % 3), 2500);
+    return () => clearInterval(timer);
+  }, []);
+
   // Block dialog: available slots for blockDate
   const blockFormattedDate = format(blockDate, "yyyy-MM-dd");
   const slotsForBlockDate = generateTimeSlots(
@@ -332,12 +349,7 @@ const Dashboard = () => {
       time: manualTime,
       notes: manualNotes.trim() || undefined,
     });
-    setManualGuestName("");
-    setManualPhone("");
-    setManualService(null);
-    setManualTime(null);
-    setManualNotes("");
-    setManualBookingOpen(false);
+    setManualStep("success");
   };
 
   const openManualBookingDialog = (date?: Date, prefillTime?: string | null) => {
@@ -347,6 +359,7 @@ const Dashboard = () => {
     setManualGuestName("");
     setManualPhone("");
     setManualNotes("");
+    setManualStep("client");
     setManualBookingOpen(true);
   };
 
@@ -386,10 +399,24 @@ const Dashboard = () => {
     }
     return true;
   });
+  const manualVisibleSlots = manualDateSlots.filter((t) => {
+    if (manualIsToday) {
+      const now = new Date();
+      const [h, m] = t.split(":").map(Number);
+      if (h < now.getHours() || (h === now.getHours() && m <= now.getMinutes())) return false;
+    }
+    return true;
+  });
 
   // Week navigation
   const prevWeek = () => setSelectedDate((d) => addDays(d, -7));
   const nextWeek = () => setSelectedDate((d) => addDays(d, 7));
+
+  const stepVariants = {
+    initial: { opacity: 0, x: 30 },
+    animate: { opacity: 1, x: 0 },
+    exit: { opacity: 0, x: -30 },
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -435,7 +462,7 @@ const Dashboard = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-8"
+          className="flex flex-wrap items-end justify-between gap-4 sm:gap-8"
         >
           <div>
             <span className="font-body text-xs tracking-[0.4em] text-primary uppercase">
@@ -446,7 +473,8 @@ const Dashboard = () => {
             </h1>
           </div>
 
-          <div className="flex items-end gap-6 sm:gap-8 pb-1 sm:pb-2">
+          {/* Desktop: all 3 stats side by side */}
+          <div className="hidden sm:flex items-end gap-6 sm:gap-8 pb-1 sm:pb-2">
             <div>
               <p className="font-body text-[10px] tracking-[0.2em] text-muted-foreground uppercase">Today's Bookings</p>
               <p className="font-heading text-3xl sm:text-5xl text-foreground mt-0.5">{todayBookingsCount}</p>
@@ -458,8 +486,43 @@ const Dashboard = () => {
             </div>
             <div className="w-px self-stretch bg-border/60" />
             <div>
-              <p className="font-body text-[10px] tracking-[0.2em] text-muted-foreground uppercase">This Week</p>
+              <p className="font-body text-[10px] tracking-[0.2em] text-muted-foreground uppercase">Week's Bookings</p>
               <p className="font-heading text-3xl sm:text-5xl text-foreground mt-0.5">{weekUpcoming}</p>
+            </div>
+          </div>
+
+          {/* Mobile: single animated stat card cycling through all 3 */}
+          <div className="flex sm:hidden items-end pb-1">
+            <div className="relative" style={{ minWidth: 130 }}>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeStatIdx}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <p className="font-body text-[10px] tracking-[0.2em] text-muted-foreground uppercase">
+                    {statCards[activeStatIdx].label}
+                  </p>
+                  <p className="font-heading text-3xl text-foreground mt-0.5">
+                    {statCards[activeStatIdx].value}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+              {/* Dot indicators */}
+              <div className="flex gap-1.5 mt-2">
+                {statCards.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveStatIdx(i)}
+                    className={cn(
+                      "h-1 rounded-full transition-all duration-300",
+                      i === activeStatIdx ? "w-4 bg-primary" : "w-1.5 bg-border"
+                    )}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </motion.div>
@@ -473,7 +536,7 @@ const Dashboard = () => {
             transition={{ delay: 0.2 }}
           >
             {/* Week navigation header */}
-            <div className="flex items-center justify-between mb-4 sm:mb-6 gap-3">
+            <div className="flex flex-wrap items-center justify-between mb-4 sm:mb-6 gap-3">
               <div className="shrink-0">
                 <h2 className="font-heading text-2xl sm:text-3xl text-foreground">
                   {format(weekStart, "MMMM yyyy")}
@@ -484,7 +547,7 @@ const Dashboard = () => {
                 </p>
               </div>
 
-              <div className="hidden sm:flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2 order-last w-full sm:order-none sm:w-auto">
                 <Button
                   variant="outline"
                   size="sm"
@@ -546,9 +609,9 @@ const Dashboard = () => {
                 {/* Day header row */}
                 <div
                   className="grid border-b border-border bg-muted/20"
-                  style={{ gridTemplateColumns: "56px repeat(7, 1fr)" }}
+                  style={{ gridTemplateColumns: "44px repeat(7, 1fr)" }}
                 >
-                  <div className="border-r border-border/50 py-3" />
+                  <div className="border-r border-border/50 py-2" />
                   {weekDays.map((day) => {
                     const todayDay = isToday(day);
                     const closed = closedDays.includes(day.getDay());
@@ -557,24 +620,24 @@ const Dashboard = () => {
                         key={day.toISOString()}
                         onClick={() => setSelectedDate(day)}
                         className={cn(
-                          "py-2 px-1 text-center border-r border-border/50 last:border-r-0 cursor-pointer hover:bg-muted/30 transition-colors select-none",
+                          "py-1 px-1 text-center border-r border-border/50 last:border-r-0 cursor-pointer hover:bg-muted/30 transition-colors select-none",
                           todayDay && "bg-primary/5",
                           closed && "opacity-40"
                         )}
                       >
-                        <p className="font-body text-[10px] tracking-widest uppercase text-muted-foreground">
+                        <p className="font-body text-[9px] tracking-widest uppercase text-muted-foreground">
                           {format(day, "EEE")}
                         </p>
                         <p
                           className={cn(
-                            "font-heading text-xl leading-tight mt-0.5",
+                            "font-heading text-base leading-tight",
                             todayDay ? "text-primary" : "text-foreground"
                           )}
                         >
                           {format(day, "d")}
                         </p>
                         {closed && (
-                          <p className="font-body text-[8px] text-destructive/60 uppercase tracking-wider">
+                          <p className="font-body text-[7px] text-destructive/60 uppercase tracking-wider">
                             Closed
                           </p>
                         )}
@@ -583,17 +646,17 @@ const Dashboard = () => {
                   })}
                 </div>
 
-                {/* Scrollable time rows */}
-                <div className="overflow-y-auto overflow-x-hidden" style={{ maxHeight: "540px" }}>
+                {/* Time rows */}
+                <div>
                   {gridSlots.map((time) => {
                     return (
                       <div
                         key={time}
                         className="grid border-b border-border/40 last:border-b-0"
-                        style={{ gridTemplateColumns: "56px repeat(7, 1fr)" }}
+                        style={{ gridTemplateColumns: "44px repeat(7, 1fr)" }}
                       >
                         {/* Time label */}
-                        <div className="flex items-center justify-end pr-2 border-r border-border/50 shrink-0 select-none font-body text-[11px] text-muted-foreground">
+                        <div className="flex items-center justify-end pr-1.5 border-r border-border/50 shrink-0 select-none font-body text-[9px] text-muted-foreground">
                           {time}
                         </div>
 
@@ -612,7 +675,7 @@ const Dashboard = () => {
                             <div
                               key={dateStr}
                               className={cn(
-                                "relative h-14 border-r border-border/30 last:border-r-0 group",
+                                "relative h-8 border-r border-border/30 last:border-r-0 group",
                                 closed || !withinHours ? "bg-muted/15" : todayDay ? "bg-primary/[0.02]" : ""
                               )}
                             >
@@ -623,23 +686,23 @@ const Dashboard = () => {
                                     setBookingDetailOpen(true);
                                   }}
                                   className={cn(
-                                    "absolute inset-[2px] flex flex-col justify-center px-1.5 text-left overflow-hidden transition-opacity",
+                                    "absolute inset-[1px] flex flex-col justify-center px-1 text-left overflow-hidden transition-opacity",
                                     isWalkIn(booking)
                                       ? "bg-amber-400/15 border border-amber-400/40 hover:bg-amber-400/25"
                                       : "bg-primary/20 border border-primary/40 hover:bg-primary/30"
                                   )}
                                 >
-                                  <p className="font-body text-[11px] font-medium text-foreground truncate leading-tight">
+                                  <p className="font-body text-[10px] font-medium text-foreground truncate leading-none">
                                     {getDisplayName(booking)}
                                   </p>
-                                  <p className="font-body text-[9px] text-muted-foreground truncate leading-tight mt-0.5">
+                                  <p className="font-body text-[8px] text-muted-foreground truncate leading-none mt-0.5">
                                     {booking.service_name}
                                   </p>
                                 </button>
                               ) : blocked ? (
-                                <div className="absolute inset-[2px] flex items-center gap-1.5 px-1.5 bg-muted/40 border border-border/60 group/block overflow-hidden">
-                                  <Lock className="h-2.5 w-2.5 text-muted-foreground/60 shrink-0" />
-                                  <span className="font-body text-[9px] text-muted-foreground/70 truncate flex-1">
+                                <div className="absolute inset-[1px] flex items-center gap-1 px-1 bg-muted/40 border border-border/60 group/block overflow-hidden">
+                                  <Lock className="h-2 w-2 text-muted-foreground/60 shrink-0" />
+                                  <span className="font-body text-[8px] text-muted-foreground/70 truncate flex-1">
                                     {blocked.reason || "Blocked"}
                                   </span>
                                   <AlertDialog>
@@ -695,47 +758,13 @@ const Dashboard = () => {
             )}
 
             {/* Upcoming across all dates */}
+
             {upcomingAll.length > 0 && (
               <div className="mt-10 sm:mt-16">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 sm:mb-6">
                   <h2 className="font-heading text-2xl sm:text-3xl text-foreground">
                     All Upcoming<span className="text-primary">.</span>
                   </h2>
-                  {/* Mobile-only action buttons (hidden on sm+ where they appear in the week nav bar) */}
-                  <div className="flex sm:hidden flex-wrap items-center gap-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="rounded-none text-xs tracking-wider uppercase"
-                      onClick={() => openManualBookingDialog()}
-                    >
-                      <UserPlus className="h-3.5 w-3.5 mr-2" />
-                      Add Booking
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="rounded-none text-xs tracking-wider uppercase"
-                      onClick={() => {
-                        setBlockDate(selectedDate);
-                        setBlockTime(null);
-                        setBlockReason("");
-                        setBlockDialogOpen(true);
-                      }}
-                    >
-                      <Lock className="h-3.5 w-3.5 mr-2" />
-                      Block Time Slot
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="rounded-none text-xs tracking-wider uppercase"
-                      onClick={openSettingsDialog}
-                    >
-                      <Settings className="h-3.5 w-3.5 mr-2" />
-                      Shop Settings
-                    </Button>
-                  </div>
                 </div>
                 <div className="space-y-2">
                   {upcomingAll.slice(0, 20).map((booking, i) => {
@@ -1246,181 +1275,407 @@ const Dashboard = () => {
       </Dialog>
 
       {/* Manual Booking Dialog */}
-      <Dialog open={manualBookingOpen} onOpenChange={setManualBookingOpen}>
-        <DialogContent className="border-border bg-card p-0 overflow-hidden sm:max-w-md rounded-none max-h-[90dvh] flex flex-col">
-          <DialogHeader className="p-6 pb-0 shrink-0">
-            <DialogTitle className="font-heading text-3xl text-foreground">
-              Add Booking<span className="text-primary">.</span>
-            </DialogTitle>
-            <p className="font-body text-sm text-muted-foreground mt-1">
-              Create a booking for a walk-in or phone client.
-            </p>
-          </DialogHeader>
+      <Dialog
+        open={manualBookingOpen}
+        onOpenChange={(val) => {
+          if (!val) {
+            setManualGuestName("");
+            setManualPhone("");
+            setManualService(null);
+            setManualTime(null);
+            setManualNotes("");
+            setManualStep("client");
+          }
+          setManualBookingOpen(val);
+        }}
+      >
+        <DialogContent className="border-border bg-card p-0 overflow-hidden sm:max-w-2xl lg:max-w-3xl rounded-none max-h-[90dvh]">
+          <div className="flex flex-col lg:flex-row min-h-[520px] max-h-[90dvh]">
 
-          <div className="p-6 space-y-4 overflow-y-auto flex-1 min-h-0">
-            {/* Customer name */}
-            <div className="space-y-1.5">
-              <Label className="font-body text-xs tracking-widest uppercase text-muted-foreground">
-                Customer Name
-              </Label>
-              <Input
-                placeholder="Full name"
-                value={manualGuestName}
-                onChange={(e) => setManualGuestName(e.target.value)}
-                className="bg-muted border-border rounded-none h-10 font-body"
-                maxLength={100}
-              />
-            </div>
+            {/* Sidebar */}
+            <div className="bg-muted/50 border-b lg:border-b-0 lg:border-r border-border p-6 lg:w-56 shrink-0">
+              <h3 className="font-heading text-3xl text-foreground leading-none">
+                Add a<br />Client<span className="text-primary">.</span>
+              </h3>
 
-            {/* Phone number */}
-            <div className="space-y-1.5">
-              <Label className="font-body text-xs tracking-widest uppercase text-muted-foreground">
-                Phone Number
-              </Label>
-              <Input
-                placeholder="+1 234 567 8900"
-                value={manualPhone}
-                onChange={(e) => setManualPhone(e.target.value)}
-                className="bg-muted border-border rounded-none h-10 font-body"
-                maxLength={20}
-                type="tel"
-              />
-            </div>
-
-            {/* Service selection */}
-            <div>
-              <Label className="font-body text-xs tracking-widest uppercase text-muted-foreground">
-                Service
-              </Label>
-              <div className="grid grid-cols-1 gap-1.5 mt-2">
-                {services.map((s) => (
-                  <button
-                    key={s.id}
-                    onClick={() => setManualService(s.id)}
-                    className={cn(
-                      "py-2 px-3 border font-body text-sm transition-all text-left flex items-center justify-between",
-                      manualService === s.id
-                        ? "border-primary bg-primary text-primary-foreground"
-                        : "border-border text-foreground hover:border-primary/50"
-                    )}
-                  >
-                    <span>{s.name}</span>
-                    <span className="text-xs opacity-75">${s.price}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Date — compact row with arrows */}
-            <div>
-              <Label className="font-body text-xs tracking-widest uppercase text-muted-foreground">
-                Date
-              </Label>
-              <div className="flex items-center justify-between mt-2 border border-border p-2">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="h-8 w-8 p-0"
-                  onClick={() => {
-                    const prev = addDays(manualDate, -1);
-                    if (!isBefore(startOfDay(prev), startOfDay(new Date())) && !closedDays.includes(prev.getDay())) {
-                      setManualDate(prev);
-                      setManualTime(null);
-                    }
-                  }}
-                  disabled={isBefore(startOfDay(addDays(manualDate, -1)), startOfDay(new Date()))}
-                >
-                  <ChevronLeft className="h-4 w-4" />
-                </Button>
-                <span className="font-body text-sm font-medium text-foreground">
-                  {format(manualDate, "EEE, MMM d yyyy")}
-                </span>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="h-8 w-8 p-0"
-                  onClick={() => {
-                    let next = addDays(manualDate, 1);
-                    // Skip closed days forward
-                    while (closedDays.includes(next.getDay())) next = addDays(next, 1);
-                    setManualDate(next);
-                    setManualTime(null);
-                  }}
-                >
-                  <ChevronRight className="h-4 w-4" />
-                </Button>
-              </div>
-            </div>
-
-            {/* Time slot picker */}
-            <div>
-              <Label className="font-body text-xs tracking-widest uppercase text-muted-foreground">
-                Time
-              </Label>
-              {isClosedDay(manualDate) ? (
-                <p className="font-body text-sm text-muted-foreground text-center py-4">
-                  Shop is closed on {format(manualDate, "EEEE")}s.
-                </p>
-              ) : manualAvailableSlots.length === 0 ? (
-                <p className="font-body text-sm text-muted-foreground text-center py-4">
-                  No available slots on this date.
-                </p>
-              ) : (
-                <div className="grid grid-cols-3 gap-2 mt-2 max-h-[180px] overflow-y-auto">
-                  {manualAvailableSlots.map((time) => (
-                    <button
-                      key={time}
-                      onClick={() => setManualTime(time)}
-                      className={cn(
-                        "py-2 px-3 border font-body text-sm transition-all text-center",
-                        manualTime === time
-                          ? "border-primary bg-primary text-primary-foreground"
-                          : "border-border text-foreground hover:border-primary/50"
+              {/* Live summary */}
+              <div className="mt-6 space-y-3">
+                {manualGuestName.trim() && (
+                  <div className="flex items-start gap-2">
+                    <User className="h-3.5 w-3.5 text-primary mt-0.5 shrink-0" />
+                    <div>
+                      <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">Client</p>
+                      <p className="font-body text-sm text-foreground">{manualGuestName}</p>
+                      {manualPhone && (
+                        <p className="font-body text-xs text-muted-foreground">{manualPhone}</p>
                       )}
-                    >
-                      {time}
-                    </button>
-                  ))}
-                </div>
-              )}
+                    </div>
+                  </div>
+                )}
+                {manualService && (
+                  <div className="flex items-start gap-2">
+                    <Scissors className="h-3.5 w-3.5 text-primary mt-0.5 shrink-0" />
+                    <div>
+                      <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">Service</p>
+                      <p className="font-body text-sm text-foreground">{getServiceById(manualService)?.name}</p>
+                      <p className="font-body text-xs text-muted-foreground">
+                        {getServiceById(manualService)?.duration} · ${getServiceById(manualService)?.price}
+                      </p>
+                    </div>
+                  </div>
+                )}
+                {manualTime && (
+                  <div className="flex items-start gap-2">
+                    <Clock className="h-3.5 w-3.5 text-primary mt-0.5 shrink-0" />
+                    <div>
+                      <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">Date & Time</p>
+                      <p className="font-body text-sm text-foreground">{format(manualDate, "EEE, MMM d")}</p>
+                      <p className="font-body text-xs text-muted-foreground">{manualTime}</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Step indicators */}
+              <div className="mt-8 flex lg:flex-col gap-2">
+                {(["client", "service", "datetime", "confirm"] as const).map((s, i) => {
+                  const allSteps = ["client", "service", "datetime", "confirm"];
+                  const currentIdx = allSteps.indexOf(
+                    manualStep === "success" ? "confirm" : manualStep
+                  );
+                  const manualStepLabels: Record<string, string> = {
+                    client: "Client",
+                    service: "Service",
+                    datetime: "Date & Time",
+                    confirm: "Confirm",
+                  };
+                  return (
+                    <div key={s} className="flex items-center gap-2">
+                      <div
+                        className={cn(
+                          "w-6 h-6 rounded-full flex items-center justify-center font-body text-xs border transition-colors",
+                          manualStep === s || (manualStep === "success" && s === "confirm")
+                            ? "bg-primary text-primary-foreground border-primary"
+                            : currentIdx > i
+                            ? "bg-primary/20 text-primary border-primary/30"
+                            : "bg-muted text-muted-foreground border-border"
+                        )}
+                      >
+                        {i + 1}
+                      </div>
+                      <span className="hidden lg:inline font-body text-xs text-muted-foreground">
+                        {manualStepLabels[s]}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
 
-            {/* Notes */}
-            <div className="space-y-1.5">
-              <Label className="font-body text-xs tracking-widest uppercase text-muted-foreground">
-                Notes (optional)
-              </Label>
-              <Input
-                placeholder="Any extra notes..."
-                value={manualNotes}
-                onChange={(e) => setManualNotes(e.target.value)}
-                className="bg-muted border-border rounded-none h-10 font-body"
-                maxLength={200}
-              />
+            {/* Main content area */}
+            <div className="flex-1 p-6 overflow-y-auto min-h-0">
+              <AnimatePresence mode="wait">
+
+                {/* Step 1: Client Details */}
+                {manualStep === "client" && (
+                  <motion.div key="client" {...stepVariants} transition={{ duration: 0.2 }} className="space-y-4">
+                    <p className="font-body text-xs tracking-[0.3em] text-primary uppercase mb-4">Client Details</p>
+                    <div className="space-y-1.5">
+                      <Label className="font-body text-xs tracking-widest uppercase text-muted-foreground">
+                        Customer Name
+                      </Label>
+                      <Input
+                        placeholder="Full name"
+                        value={manualGuestName}
+                        onChange={(e) => setManualGuestName(e.target.value)}
+                        className="bg-muted border-border rounded-none h-12 font-body"
+                        maxLength={100}
+                      />
+                    </div>
+                    <div className="space-y-1.5">
+                      <Label className="font-body text-xs tracking-widest uppercase text-muted-foreground">
+                        Phone Number
+                      </Label>
+                      <Input
+                        placeholder="+1 234 567 8900"
+                        value={manualPhone}
+                        onChange={(e) => setManualPhone(e.target.value)}
+                        className="bg-muted border-border rounded-none h-12 font-body"
+                        maxLength={20}
+                        type="tel"
+                      />
+                    </div>
+                    <Button
+                      variant="hero"
+                      size="lg"
+                      className="w-full rounded-none"
+                      disabled={!manualGuestName.trim() || !manualPhone.trim()}
+                      onClick={() => setManualStep("service")}
+                    >
+                      Continue <ChevronRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </motion.div>
+                )}
+
+                {/* Step 2: Service Selection */}
+                {manualStep === "service" && (
+                  <motion.div key="service" {...stepVariants} transition={{ duration: 0.2 }}>
+                    <div className="flex items-center gap-3 mb-4">
+                      <button
+                        onClick={() => setManualStep("client")}
+                        className="text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        <ArrowLeft className="h-4 w-4" />
+                      </button>
+                      <p className="font-body text-xs tracking-[0.3em] text-primary uppercase">Select Service</p>
+                    </div>
+                    <div className="space-y-2">
+                      {services.map((s) => (
+                        <button
+                          key={s.id}
+                          onClick={() => {
+                            setManualService(s.id);
+                            setManualStep("datetime");
+                          }}
+                          className={cn(
+                            "w-full flex items-center justify-between p-4 border transition-all group text-left",
+                            manualService === s.id
+                              ? "border-primary bg-primary/5"
+                              : "border-border hover:border-primary/50 bg-transparent"
+                          )}
+                        >
+                          <div>
+                            <p className="font-body text-sm text-foreground font-medium">{s.name}</p>
+                            <p className="font-body text-xs text-muted-foreground mt-0.5">{s.duration}</p>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="font-heading text-2xl text-foreground">${s.price}</span>
+                            <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* Step 3: Date & Time */}
+                {manualStep === "datetime" && (
+                  <motion.div key="datetime" {...stepVariants} transition={{ duration: 0.2 }} className="flex flex-col h-full">
+                    <div className="flex items-center gap-3 mb-4">
+                      <button
+                        onClick={() => setManualStep("service")}
+                        className="text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        <ArrowLeft className="h-4 w-4" />
+                      </button>
+                      <p className="font-body text-xs tracking-[0.3em] text-primary uppercase">Pick Date & Time</p>
+                    </div>
+
+                    <div className="flex flex-col md:flex-row gap-6 flex-1 min-h-0 overflow-y-auto">
+                      <div className="shrink-0">
+                        <Calendar
+                          mode="single"
+                          selected={manualDate}
+                          onSelect={(date) => {
+                            if (date) {
+                              setManualDate(date);
+                              setManualTime(null);
+                            }
+                          }}
+                          disabled={(date) =>
+                            closedDays.includes(date.getDay()) ||
+                            isBefore(startOfDay(date), startOfDay(new Date()))
+                          }
+                          className="p-3 pointer-events-auto border border-border"
+                        />
+                      </div>
+
+                      <div className="flex-1 min-w-0">
+                        <p className="font-body text-sm text-foreground mb-3 font-medium">
+                          {format(manualDate, "EEEE, MMMM d")}
+                        </p>
+                        {isClosedDay(manualDate) ? (
+                          <p className="font-body text-sm text-muted-foreground">
+                            Shop is closed on {format(manualDate, "EEEE")}s.
+                          </p>
+                        ) : manualVisibleSlots.length === 0 ? (
+                          <p className="font-body text-sm text-muted-foreground">
+                            No slots on this date. Try another day.
+                          </p>
+                        ) : manualAvailableSlots.length === 0 ? (
+                          <p className="font-body text-sm text-muted-foreground">
+                            All slots are taken on this date. Try another day.
+                          </p>
+                        ) : (
+                          <div className="grid grid-cols-3 md:grid-cols-2 gap-2 max-h-[160px] md:max-h-[280px] overflow-y-auto pr-1">
+                            {manualVisibleSlots.map((time) => {
+                              const isTaken =
+                                manualDateBookedTimes.has(time) ||
+                                manualDateBlockedTimes.has(time);
+                              return (
+                                <button
+                                  key={time}
+                                  onClick={() => !isTaken && setManualTime(time)}
+                                  disabled={isTaken}
+                                  className={cn(
+                                    "py-2.5 px-3 border font-body text-sm transition-all text-center",
+                                    isTaken
+                                      ? "border-destructive/30 bg-destructive/5 text-destructive/60 cursor-not-allowed line-through"
+                                      : manualTime === time
+                                      ? "border-primary bg-primary text-primary-foreground"
+                                      : "border-border text-foreground hover:border-primary/50"
+                                  )}
+                                >
+                                  {time}
+                                </button>
+                              );
+                            })}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {manualTime && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="pt-4 shrink-0"
+                      >
+                        <Button
+                          variant="hero"
+                          size="lg"
+                          className="w-full rounded-none"
+                          onClick={() => setManualStep("confirm")}
+                        >
+                          Continue <ChevronRight className="ml-2 h-4 w-4" />
+                        </Button>
+                      </motion.div>
+                    )}
+                  </motion.div>
+                )}
+
+                {/* Step 4: Review & Confirm */}
+                {manualStep === "confirm" && (
+                  <motion.div key="confirm" {...stepVariants} transition={{ duration: 0.2 }}>
+                    <div className="flex items-center gap-3 mb-6">
+                      <button
+                        onClick={() => setManualStep("datetime")}
+                        className="text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        <ArrowLeft className="h-4 w-4" />
+                      </button>
+                      <p className="font-body text-xs tracking-[0.3em] text-primary uppercase">Review & Confirm</p>
+                    </div>
+
+                    <div className="space-y-4 mb-6">
+                      <div className="border border-border p-4">
+                        <div className="flex items-center gap-3">
+                          <div className="h-9 w-9 bg-muted flex items-center justify-center shrink-0">
+                            <User className="h-4 w-4 text-muted-foreground" />
+                          </div>
+                          <div>
+                            <p className="font-body text-sm font-medium text-foreground">{manualGuestName}</p>
+                            {manualPhone && (
+                              <p className="font-body text-xs text-muted-foreground flex items-center gap-1 mt-0.5">
+                                <Phone className="h-3 w-3" />
+                                {manualPhone}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="border border-border p-4">
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <p className="font-body text-sm font-medium text-foreground">
+                              {getServiceById(manualService ?? "")?.name}
+                            </p>
+                            <p className="font-body text-xs text-muted-foreground mt-0.5">
+                              {getServiceById(manualService ?? "")?.duration}
+                            </p>
+                          </div>
+                          <span className="font-heading text-3xl text-foreground">
+                            ${getServiceById(manualService ?? "")?.price}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="border border-border p-4">
+                        <div className="flex items-center gap-4">
+                          <div>
+                            <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">Date</p>
+                            <p className="font-body text-sm text-foreground">
+                              {format(manualDate, "EEEE, MMMM d, yyyy")}
+                            </p>
+                          </div>
+                          <div className="ml-auto">
+                            <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">Time</p>
+                            <p className="font-body text-sm text-foreground">{manualTime}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="space-y-2 mb-6">
+                      <Label className="font-body text-xs tracking-widest uppercase text-muted-foreground">
+                        Notes (optional)
+                      </Label>
+                      <Textarea
+                        placeholder="Any special requests or notes..."
+                        value={manualNotes}
+                        onChange={(e) => setManualNotes(e.target.value)}
+                        className="bg-muted border-border rounded-none font-body resize-none min-h-[80px]"
+                        maxLength={500}
+                      />
+                    </div>
+
+                    <Button
+                      variant="hero"
+                      size="lg"
+                      className="w-full rounded-none"
+                      onClick={handleManualBooking}
+                      disabled={barberCreateBooking.isPending}
+                    >
+                      {barberCreateBooking.isPending ? (
+                        <Loader2 className="h-5 w-5 animate-spin" />
+                      ) : (
+                        <>
+                          Confirm Booking <ArrowUpRight className="ml-2 h-5 w-5" />
+                        </>
+                      )}
+                    </Button>
+                  </motion.div>
+                )}
+
+                {/* Step 5: Success */}
+                {manualStep === "success" && (
+                  <motion.div
+                    key="success"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3 }}
+                    className="flex flex-col items-center justify-center text-center h-full min-h-[400px]"
+                  >
+                    <CheckCircle2 className="h-16 w-16 text-primary mb-6" />
+                    <h3 className="font-heading text-4xl text-foreground">
+                      Booked<span className="text-primary">.</span>
+                    </h3>
+                    <p className="font-body text-sm text-muted-foreground mt-3 max-w-sm">
+                      {manualGuestName}'s {getServiceById(manualService ?? "")?.name} is confirmed for{" "}
+                      {format(manualDate, "EEEE, MMMM d")} at {manualTime}.
+                    </p>
+                    <Button
+                      variant="outline"
+                      className="rounded-none mt-6"
+                      onClick={() => setManualBookingOpen(false)}
+                    >
+                      Done
+                    </Button>
+                  </motion.div>
+                )}
+
+              </AnimatePresence>
             </div>
           </div>
-
-          {/* Sticky submit */}
-          {manualGuestName.trim() && manualPhone.trim() && manualService && manualTime && (
-            <div className="p-6 pt-0 shrink-0">
-              <Button
-                variant="hero"
-                size="lg"
-                className="w-full rounded-none"
-                onClick={handleManualBooking}
-                disabled={barberCreateBooking.isPending}
-              >
-                {barberCreateBooking.isPending ? (
-                  <Loader2 className="h-5 w-5 animate-spin" />
-                ) : (
-                  <>
-                    <Plus className="h-4 w-4 mr-2" />
-                    Book {manualTime} — {getServiceById(manualService)?.name}
-                  </>
-                )}
-              </Button>
-            </div>
-          )}
         </DialogContent>
       </Dialog>
     </div>

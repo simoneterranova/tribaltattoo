@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { BarberNotificationsProvider } from "@/hooks/useBarberNotifications";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import MyBookings from "./pages/MyBookings";
@@ -36,7 +37,8 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-        <TooltipProvider>
+        <BarberNotificationsProvider>
+          <TooltipProvider>
           <Toaster />
           <Sonner />
           {isLoading && (
@@ -53,6 +55,7 @@ const App = () => {
             </Routes>
           </BrowserRouter>
         </TooltipProvider>
+        </BarberNotificationsProvider>
       </AuthProvider>
     </QueryClientProvider>
   );
