@@ -1,77 +1,81 @@
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Settings2 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const CookiePolicy = () => {
+    // Triggers the event listened to by the CookieBanner
+    const openCookieSettings = () => {
+        window.dispatchEvent(new Event("openCookiePreferences"));
+    };
+
     return (
         <div className="min-h-screen bg-background text-foreground selection:bg-primary/30">
             <div className="container mx-auto px-6 py-12 md:py-24 max-w-4xl">
                 <div className="mb-12">
-                    <Link
-                        to="/"
-                        className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
-                    >
-                        <ArrowLeft className="h-4 w-4" />
-                        Back to Home
+                    <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8">
+                        <ArrowLeft className="h-4 w-4" /> Back to Home
                     </Link>
-                    <h1 className="font-heading text-4xl md:text-6xl mb-4">
-                        Cookie <span className="text-primary">Policy</span>.
-                    </h1>
+                    <h1 className="font-heading text-4xl md:text-6xl mb-4">Cookie <span className="text-primary">Policy</span>.</h1>
                     <p className="text-muted-foreground">Last updated: March 2026</p>
                 </div>
 
                 <div className="space-y-8 font-body text-muted-foreground leading-relaxed">
                     <section className="space-y-4">
                         <h2 className="text-2xl font-heading text-foreground">1. What Are Cookies?</h2>
-                        <p>
-                            Cookies are small text files that are placed on your computer or mobile device when you browse websites. They are widely used to make websites work, or work more efficiently, as well as to provide information to the owners of the site. Our website uses cookies to distinguish you from other users of our website. This helps us to provide you with a good experience when you browse our website and also allows us to improve our site.
-                        </p>
+                        <p>Cookies are small text files that are placed on your computer or mobile device when you browse websites. They are widely used to make websites work efficiently, as well as to provide information to the owners of the site.</p>
                     </section>
 
                     <section className="space-y-4">
-                        <h2 className="text-2xl font-heading text-foreground">2. How We Use Cookies</h2>
-                        <p>
-                            We use different types of cookies for different purposes:
-                        </p>
+                        <h2 className="text-2xl font-heading text-foreground">2. Detailed Cookie List</h2>
+                        <p>Below is a detailed list of the cookies we use on our website, as required by the Italian Data Protection Authority (Garante per la Protezione dei Dati Personali).</p>
 
-                        <div className="space-y-6 mt-4">
-                            <div className="bg-muted/30 p-6 rounded-lg border border-border">
-                                <h3 className="text-lg font-heading text-foreground mb-2">Essential Cookies (Strictly Necessary)</h3>
-                                <p className="mb-2">These cookies are essential for the website to function properly. They enable basic functions like page navigation, secure areas access (like your bookings dashboard), and authentication. The website cannot function properly without these cookies. You cannot opt-out of these cookies.</p>
-                                <div className="text-sm">
-                                    <strong>Examples:</strong> Session management, security tokens, acceptance of this policy.
-                                </div>
-                            </div>
-
-                            <div className="bg-muted/30 p-6 rounded-lg border border-border">
-                                <h3 className="text-lg font-heading text-foreground mb-2">Analytical / Performance Cookies</h3>
-                                <p className="mb-2">These allow us to recognise and count the number of visitors and to see how visitors move around our website when they are using it. This helps us to improve the way our website works, for example, by ensuring that users are finding what they are looking for easily.</p>
-                                <div className="text-sm">
-                                    <strong>Examples:</strong> Google Analytics (anonymized IPs).
-                                </div>
-                            </div>
-
-                            <div className="bg-muted/30 p-6 rounded-lg border border-border">
-                                <h3 className="text-lg font-heading text-foreground mb-2">Marketing Cookies</h3>
-                                <p className="mb-2">These cookies record your visit to our website, the pages you have visited and the links you have followed. We will use this information to make our website and the advertising displayed on it more relevant to your interests.</p>
-                                <div className="text-sm">
-                                    <strong>Examples:</strong> Facebook Pixel, retargeting cookies.
-                                </div>
-                            </div>
+                        <div className="overflow-x-auto mt-4">
+                            <table className="w-full text-sm text-left border border-border rounded-lg overflow-hidden">
+                                <thead className="bg-muted text-foreground">
+                                    <tr>
+                                        <th className="p-3">Category</th>
+                                        <th className="p-3">Name</th>
+                                        <th className="p-3">Provider</th>
+                                        <th className="p-3">Purpose</th>
+                                        <th className="p-3">Duration</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="divide-y divide-border">
+                                    {/* Edit these to match your actual cookies */}
+                                    <tr>
+                                        <td className="p-3 font-medium text-foreground">Essential</td>
+                                        <td className="p-3">cookie-consent-preferences</td>
+                                        <td className="p-3">Our Website</td>
+                                        <td className="p-3">Stores your cookie consent preferences.</td>
+                                        <td className="p-3">1 Year</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="p-3 font-medium text-foreground">Analytics</td>
+                                        <td className="p-3">_ga, _ga_XXXXXXX</td>
+                                        <td className="p-3">Google LLC</td>
+                                        <td className="p-3">Used to distinguish users and analyze site traffic.</td>
+                                        <td className="p-3">2 Years</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="p-3 font-medium text-foreground">Marketing</td>
+                                        <td className="p-3">_fbp</td>
+                                        <td className="p-3">Meta Platforms Inc.</td>
+                                        <td className="p-3">Used to track visits across websites to deliver targeted advertising.</td>
+                                        <td className="p-3">3 Months</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </section>
 
                     <section className="space-y-4">
-                        <h2 className="text-2xl font-heading text-foreground">3. Managing Your Cookie Preferences</h2>
-                        <p>
-                            You can manage your cookie preferences at any time by clicking the "Cookie Settings" link in the footer of our website. Alternatively, most web browsers allow some control of most cookies through the browser settings. To find out more about cookies, including how to see what cookies have been set and how to manage and delete them, visit <a href="https://www.aboutcookies.org/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">aboutcookies.org</a> or <a href="https://www.allaboutcookies.org/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">allaboutcookies.org</a>.
-                        </p>
-                    </section>
-
-                    <section className="space-y-4 pt-8 border-t border-border">
-                        <h2 className="text-2xl font-heading text-foreground">Contact Us</h2>
-                        <p>
-                            If you have any questions about our use of cookies, please contact us.
-                        </p>
+                        <h2 className="text-2xl font-heading text-foreground">3. Managing Your Preferences</h2>
+                        <p>You can change or withdraw your consent at any time. Click the button below to reopen the cookie preferences panel.</p>
+                        <button
+                            onClick={openCookieSettings}
+                            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded hover:bg-primary/90 transition-colors mt-2"
+                        >
+                            <Settings2 className="w-4 h-4" /> Open Cookie Settings
+                        </button>
                     </section>
                 </div>
             </div>

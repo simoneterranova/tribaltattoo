@@ -282,6 +282,12 @@ const shopConfig = {
     postalAddress: "[Insert Address]",
     /** VAT / tax identification number. */
     vatNumber: "[Insert VAT Number]",
+    /** REA Number (Numero REA) - Mandatory if registered with Chamber of Commerce. */
+    reaNumber: "RM-123456",
+    /** Share Capital (Capitale Sociale) - Mandatory for Corporations (S.r.l., S.p.A.). */
+    shareCapital: "€ 10.000,00",
+    /** Certified email (PEC) - Strongly recommended/mandatory to display for Italian Companies. */
+    pecEmail: "thegentry@pec.it",
   },
 
   // ── INTERNAL / STORAGE ──────────────────────────────────────────────────────
