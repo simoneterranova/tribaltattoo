@@ -32,13 +32,29 @@ export const CookieBanner = () => {
         marketing: false,
     });
 
+    // 6-Month Expiration Logic (Required by Garante)
     useEffect(() => {
-        const savedConsent = localStorage.getItem(CONSENT_KEY);
-        if (!savedConsent) {
+        const savedData = localStorage.getItem(CONSENT_KEY);
+        if (savedData) {
+            try {
+                const { preferences, timestamp } = JSON.parse(savedData);
+                const sixMonthsInMs = 180 * 24 * 60 * 60 * 1000;
+
+                // Check if the consent is older than 6 months or if timestamp is missing
+                if (!timestamp || Date.now() - timestamp > sixMonthsInMs) {
+                    localStorage.removeItem(CONSENT_KEY);
+                    setShowBanner(true);
+                } else {
+                    setPreferences(preferences);
+                }
+            } catch (error) {
+                // Fallback in case the old format (without timestamp) was saved
+                localStorage.removeItem(CONSENT_KEY);
+                setShowBanner(true);
+            }
+        } else {
             const timer = setTimeout(() => setShowBanner(true), 1500);
             return () => clearTimeout(timer);
-        } else {
-            setPreferences(JSON.parse(savedConsent));
         }
     }, []);
 
@@ -50,7 +66,13 @@ export const CookieBanner = () => {
     }, []);
 
     const saveConsent = (consentOptions: CookieConsent) => {
-        localStorage.setItem(CONSENT_KEY, JSON.stringify(consentOptions));
+        // FIXED BUG: Wrapping preferences and timestamp to avoid infinite banner loop
+        const dataToSave = {
+            preferences: consentOptions,
+            timestamp: Date.now()
+        };
+
+        localStorage.setItem(CONSENT_KEY, JSON.stringify(dataToSave));
         setPreferences(consentOptions);
         window.dispatchEvent(new CustomEvent('cookieConsentUpdate', { detail: consentOptions }));
         setShowBanner(false);
@@ -75,7 +97,7 @@ export const CookieBanner = () => {
                                     We Value Your Privacy
                                 </div>
                                 <p className="text-xs sm:text-sm text-muted-foreground font-body leading-relaxed">
-                                    We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies. Read our <Link to="/cookie-policy" className="text-primary hover:underline">Cookie Policy</Link> and <Link to="/privacy-policy" className="text-primary hover:underline">Privacy Policy</Link> to learn more.
+                                    We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies. Closing this banner via the "X" will leave default settings unchanged, blocking non-essential cookies. Read our <Link to="/cookie-policy" className="text-primary hover:underline">Cookie Policy</Link> and <Link to="/privacy-policy" className="text-primary hover:underline">Privacy Policy</Link> to learn more.
                                 </p>
                             </div>
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">

@@ -17,19 +17,33 @@ const PrivacyPolicy = () => {
                 <div className="space-y-8 font-body text-muted-foreground leading-relaxed">
 
                     <section className="space-y-4">
-                        <h2 className="text-2xl font-heading text-foreground">1. Data Controller (Titolare del Trattamento)</h2>
+                        <h2 className="text-2xl font-heading text-foreground">1. Data Controller & DPO</h2>
                         <p>
-                            Under the GDPR, the Data Controller responsible for your personal data is <strong>{shopConfig.legal.legalName}</strong>. If you have any questions regarding this privacy policy or your data, you can contact us at the details provided at the bottom of this page.
+                            Under the GDPR, the Data Controller responsible for your personal data is <strong>{shopConfig.legal.legalName}</strong>.
+                            The Data Controller has not appointed a Data Protection Officer (DPO / RPD) as the mandatory conditions under Art. 37 of the GDPR are not met.
                         </p>
                     </section>
 
                     <section className="space-y-4">
-                        <h2 className="text-2xl font-heading text-foreground">2. The Data We Collect</h2>
-                        <ul className="list-disc pl-6 space-y-2">
-                            <li><strong>Identity Data:</strong> first name, last name, username.</li>
-                            <li><strong>Contact Data:</strong> email address and telephone number.</li>
-                            <li><strong>Transaction Data:</strong> details about payments and services purchased (e.g., booking history).</li>
-                            <li><strong>Technical Data:</strong> IP address, browser type, location, and device technology.</li>
+                        <h2 className="text-2xl font-heading text-foreground">2. The Data We Collect, Purpose, and Legal Basis</h2>
+                        <p>We process your personal data for the following purposes, based on specific legal grounds defined by the GDPR:</p>
+                        <ul className="list-disc pl-6 space-y-4">
+                            <li>
+                                <strong>Fulfilling Orders & Bookings:</strong> Identity data (name), Contact data (email, phone), and Transaction data.
+                                <br /><span className="text-sm text-muted-foreground"><strong>Legal Basis:</strong> Contractual necessity (Art. 6.1.b GDPR). Providing this data is mandatory to use our services; refusal means we cannot process your booking.</span>
+                            </li>
+                            <li>
+                                <strong>Legal & Accounting Obligations:</strong> Billing details and transaction records.
+                                <br /><span className="text-sm text-muted-foreground"><strong>Legal Basis:</strong> Legal obligation (Art. 6.1.c GDPR). Providing this data is mandatory for compliance with Italian tax laws.</span>
+                            </li>
+                            <li>
+                                <strong>Marketing & Profiling:</strong> Email address and browsing data (via cookies).
+                                <br /><span className="text-sm text-muted-foreground"><strong>Legal Basis:</strong> Explicit Consent (Art. 6.1.a GDPR). Providing this data is entirely optional and does not affect your ability to purchase our services. If you consent, your data may be subject to profiling to show personalized ads.</span>
+                            </li>
+                            <li>
+                                <strong>Security & Fraud Prevention:</strong> Technical data (IP address, browser type).
+                                <br /><span className="text-sm text-muted-foreground"><strong>Legal Basis:</strong> Legitimate Interest (Art. 6.1.f GDPR) to ensure the security of our website.</span>
+                            </li>
                         </ul>
                     </section>
 
@@ -63,14 +77,9 @@ const PrivacyPolicy = () => {
 
                     <section className="space-y-4">
                         <h2 className="text-2xl font-heading text-foreground">6. Your Legal Rights</h2>
-                        <p>Under the GDPR, you have the right to:</p>
-                        <ul className="list-disc pl-6 space-y-2">
-                            <li>Request access, correction, or erasure of your data.</li>
-                            <li>Object to or restrict the processing of your data.</li>
-                            <li>Request data portability.</li>
-                            <li>Withdraw consent at any time.</li>
-                            <li><strong>Lodge a complaint:</strong> You have the right to lodge a complaint with the Italian Supervisory Authority: <em>Garante per la protezione dei dati personali</em> (www.garanteprivacy.it).</li>
-                        </ul>
+                        <p>Under the GDPR, you have the right to request access, correction, erasure, restriction, or data portability. You may also withdraw consent at any time.</p>
+                        <p><strong>How to exercise your rights:</strong> You can exercise these rights at any time, free of charge, by sending an email to <a href={`mailto:${shopConfig.legal.privacyEmail}`} className="text-primary hover:underline">{shopConfig.legal.privacyEmail}</a>.</p>
+                        <p><strong>Lodge a complaint:</strong> You have the right to lodge a complaint with the Italian Supervisory Authority: <em>Garante per la protezione dei dati personali</em> (www.garanteprivacy.it).</p>
                     </section>
 
                     <section className="space-y-4 pt-8 border-t border-border bg-muted/30 p-6 rounded-lg">
@@ -79,11 +88,9 @@ const PrivacyPolicy = () => {
                             <p><strong>Legal Entity:</strong> {shopConfig.legal.legalName}</p>
                             <p><strong>Registered Office (Sede Legale):</strong> {shopConfig.legal.postalAddress}</p>
                             <p><strong>VAT Number (Partita IVA):</strong> {shopConfig.legal.vatNumber}</p>
-                            {/* IF YOU HAVE A REA NUMBER OR SHARE CAPITAL, ADD THEM IN CONFIG AND HERE */}
                             {shopConfig.legal.reaNumber && <p><strong>REA:</strong> {shopConfig.legal.reaNumber}</p>}
                             {shopConfig.legal.shareCapital && <p><strong>Capitale Sociale:</strong> {shopConfig.legal.shareCapital} i.v.</p>}
                             <p><strong>Email:</strong> <a href={`mailto:${shopConfig.legal.privacyEmail}`} className="text-primary hover:underline">{shopConfig.legal.privacyEmail}</a></p>
-                            {/* Certified email is heavily recommended for Italian businesses */}
                             {shopConfig.legal.pecEmail && <p><strong>PEC:</strong> <a href={`mailto:${shopConfig.legal.pecEmail}`} className="text-primary hover:underline">{shopConfig.legal.pecEmail}</a></p>}
                         </div>
                     </section>

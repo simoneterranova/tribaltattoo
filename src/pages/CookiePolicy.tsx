@@ -40,7 +40,6 @@ const CookiePolicy = () => {
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-border">
-                                    {/* Edit these to match your actual cookies */}
                                     <tr>
                                         <td className="p-3 font-medium text-foreground">Essential</td>
                                         <td className="p-3">cookie-consent-preferences</td>
@@ -76,6 +75,26 @@ const CookiePolicy = () => {
                         >
                             <Settings2 className="w-4 h-4" /> Open Cookie Settings
                         </button>
+                    </section>
+
+                    <section className="space-y-4">
+                        <h2 className="text-2xl font-heading text-foreground">4. Third-Party Privacy Policies</h2>
+                        <p>For more information on how our third-party providers use your data, please refer to their respective privacy policies:</p>
+                        <ul className="list-disc pl-6 space-y-2">
+                            <li><strong>Google Analytics:</strong> <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Privacy Policy</a> | <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Opt-out Add-on</a></li>
+                            <li><strong>Meta (Facebook/Instagram):</strong> <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Privacy Policy</a></li>
+                        </ul>
+                    </section>
+
+                    <section className="space-y-4">
+                        <h2 className="text-2xl font-heading text-foreground">5. Managing Cookies via Browser Settings</h2>
+                        <p>You can also disable cookies directly from your browser settings. Be aware that disabling all cookies may break essential functionality of this website. Here are the guides for major browsers:</p>
+                        <ul className="list-disc pl-6 space-y-2">
+                            <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Google Chrome</a></li>
+                            <li><a href="https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Mozilla Firefox</a></li>
+                            <li><a href="https://support.apple.com/guide/safari/manage-cookies-sfri11471/mac" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Apple Safari</a></li>
+                            <li><a href="https://support.microsoft.com/en-us/windows/microsoft-edge-browsing-data-and-privacy-bb8174ba-9d73-dcf2-9b4a-c582b4e640dd" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Microsoft Edge</a></li>
+                        </ul>
                     </section>
                 </div>
             </div>
