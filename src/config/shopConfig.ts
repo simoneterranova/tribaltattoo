@@ -128,7 +128,7 @@ const shopConfig = {
       index: "04",
       name: "Cut + Beard Combo",
       price: "€65",
-      duration: "60 min",
+      duration: "30 min",
       durationMinutes: 30,
       description:
         "Our signature cut paired with a full beard groom. The complete, unbeatable package.",
@@ -139,7 +139,7 @@ const shopConfig = {
       index: "05",
       name: "The Deluxe",
       price: "€95",
-      duration: "90 min",
+      duration: "30 min",
       durationMinutes: 30,
       description:
         "Cut, straight-razor shave, facial treatment, and scalp massage. Leave transformed.",
