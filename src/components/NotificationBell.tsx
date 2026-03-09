@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/drawer";
 import { cn } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useLanguage } from "@/contexts/LanguageContext";
 import type { BarberNotification } from "@/hooks/useBarberNotifications";
 
 interface NotificationBellProps {
@@ -61,13 +62,14 @@ function NotificationHeader({
   onMarkAllRead: () => void;
   onClearAll: () => void;
 }) {
+  const { t } = useLanguage();
   return (
     <div className="flex items-center justify-between px-4 py-3 border-b border-border">
       <h3 className="font-heading text-sm text-foreground tracking-wide">
-        Notifications
+        {t.notifications.title}
         {unreadCount > 0 && (
           <span className="ml-2 text-[10px] font-body text-primary">
-            {unreadCount} new
+            {t.notifications.new(unreadCount)}
           </span>
         )}
       </h3>
@@ -80,7 +82,7 @@ function NotificationHeader({
             onClick={onMarkAllRead}
           >
             <CheckCheck className="h-3 w-3 mr-1" />
-            Mark read
+            {t.notifications.markRead}
           </Button>
         )}
         {hasNotifications && (
@@ -90,7 +92,7 @@ function NotificationHeader({
             className="h-7 text-xs text-muted-foreground hover:text-foreground px-2 font-body"
             onClick={onClearAll}
           >
-            Clear all
+            {t.notifications.clearAll}
           </Button>
         )}
       </div>
@@ -106,13 +108,14 @@ function NotificationList({
   notifications: BarberNotification[];
   onClear: (id: string) => void;
 }) {
+  const { t } = useLanguage();
   if (notifications.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-10 text-center px-4">
         <Bell className="h-8 w-8 text-muted-foreground/25 mb-3" />
-        <p className="text-sm text-muted-foreground font-body">No notifications yet</p>
+        <p className="text-sm text-muted-foreground font-body">{t.notifications.empty}</p>
         <p className="text-xs text-muted-foreground/50 font-body mt-1">
-          New bookings and cancellations will appear here in real-time.
+          {t.notifications.emptyDesc}
         </p>
       </div>
     );
@@ -146,17 +149,17 @@ function NotificationList({
               {n.type === "new_booking" ? (
                 <>
                   <span className="font-semibold">{n.customerName}</span>
-                  {" booked "}
+                  {` ${t.notifications.actionBooked} `}
                   <span className="text-muted-foreground">{n.serviceName}</span>
                 </>
               ) : n.type === "cancelled_booking" ? (
                 <>
                   <span className="font-semibold">{n.customerName}</span>
-                  {" cancelled "}
+                  {` ${t.notifications.actionCancelled} `}
                   <span className="text-muted-foreground">{n.serviceName}</span>
                 </>
               ) : (
-                <span className="text-muted-foreground">A booking was removed from your calendar.</span>
+                <span className="text-muted-foreground">{t.notifications.deleted}</span>
               )}
             </p>
             {n.date !== "" && (
@@ -179,7 +182,7 @@ function NotificationList({
               size="icon"
               className="h-5 w-5 text-muted-foreground/40 hover:text-muted-foreground"
               onClick={() => onClear(n.id)}
-              aria-label="Dismiss notification"
+              aria-label={t.notifications.dismissLabel}
             >
               <X className="h-3 w-3" />
             </Button>
@@ -199,6 +202,7 @@ export function NotificationBell({
   onClearAll,
 }: NotificationBellProps) {
   const isMobile = useIsMobile();
+  const { t } = useLanguage();
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   if (isMobile) {
@@ -209,7 +213,7 @@ export function NotificationBell({
         </DrawerTrigger>
         <DrawerContent className="max-h-[85vh]">
           <DrawerHeader className="p-0 text-left">
-            <DrawerTitle className="sr-only">Notifications</DrawerTitle>
+            <DrawerTitle className="sr-only">{t.notifications.title}</DrawerTitle>
             <NotificationHeader
               unreadCount={unreadCount}
               hasNotifications={notifications.length > 0}

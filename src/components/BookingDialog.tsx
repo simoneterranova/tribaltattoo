@@ -29,6 +29,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { buildGoogleCalendarUrl, downloadIcsFile } from "@/lib/calendar";
 import { useAuth } from "@/contexts/AuthContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { useCreateBooking, useBookedSlots } from "@/hooks/useBookings";
 import { useShopSettings } from "@/hooks/useShopSettings";
 import { services, generateTimeSlots } from "@/lib/services";
@@ -62,6 +63,7 @@ type RegisterValues = z.infer<typeof registerSchema>;
 
 const BookingDialog = ({ children }: BookingDialogProps) => {
   const { user, signIn, signUp } = useAuth();
+  const { t, dateLocale } = useLanguage();
   const navigate = useNavigate();
   const createBooking = useCreateBooking();
 
@@ -203,10 +205,10 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
     : (["auth", "service", "datetime", "confirm"] as const);
 
   const stepLabels: Record<string, string> = {
-    auth: "Sign In",
-    service: "Service",
-    datetime: "Date & Time",
-    confirm: "Confirm",
+    auth: t.bookingDialog.signInTitle,
+    service: t.bookingDialog.stepService,
+    datetime: t.bookingDialog.stepDatetime,
+    confirm: t.bookingDialog.stepConfirm,
   };
 
   const inputClass = "bg-muted border-border rounded-none h-12 font-body";
@@ -220,14 +222,14 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
           {/* Sidebar summary */}
           <div className="bg-muted/50 border-b lg:border-b-0 lg:border-r border-border p-6 lg:w-56 shrink-0">
             <h3 className="font-heading text-3xl text-foreground leading-none">
-              Book a<br />Seat<span className="text-primary">.</span>
+              {t.bookingDialog.sidebarTitle.split('\n')[0]}<br />{t.bookingDialog.sidebarTitle.split('\n')[1]}<span className="text-primary">.</span>
             </h3>
             <div className="mt-6 space-y-3">
               {service && (
                 <div className="flex items-start gap-2">
                   <Scissors className="h-3.5 w-3.5 text-primary mt-0.5 shrink-0" />
                   <div>
-                    <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">Service</p>
+                    <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">{t.bookingDialog.sidebarService}</p>
                     <p className="font-body text-sm text-foreground">{service.name}</p>
                     <p className="font-body text-xs text-muted-foreground">{service.duration} · ${service.price}</p>
                   </div>
@@ -237,8 +239,8 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
                 <div className="flex items-start gap-2">
                   <Clock className="h-3.5 w-3.5 text-primary mt-0.5 shrink-0" />
                   <div>
-                    <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">Date & Time</p>
-                    <p className="font-body text-sm text-foreground">{format(selectedDate, "EEE, MMM d")}</p>
+                    <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">{t.bookingDialog.sidebarDatetime}</p>
+                    <p className="font-body text-sm text-foreground">{format(selectedDate, "EEE, MMM d", { locale: dateLocale })}</p>
                     {selectedTime && (
                       <p className="font-body text-xs text-muted-foreground">{selectedTime}</p>
                     )}
@@ -286,29 +288,29 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
                     <div className="flex flex-col items-center justify-center text-center min-h-[380px]">
                       <Mail className="h-12 w-12 text-primary mb-4" />
                       <h3 className="font-heading text-3xl text-foreground">
-                        Check Your Email<span className="text-primary">.</span>
+                        {t.bookingDialog.checkEmail}<span className="text-primary">.</span>
                       </h3>
                       <p className="font-body text-sm text-muted-foreground mt-3 max-w-sm">
-                        We've sent a confirmation link. Click it to verify your account, then sign in to continue booking.
+                        {t.bookingDialog.checkEmailDesc}
                       </p>
                       <Button
                         variant="outline"
                         className="rounded-none mt-6"
                         onClick={() => switchAuthMode("login")}
                       >
-                        Back to Sign In
+                        {t.bookingDialog.backToSignIn}
                       </Button>
                     </div>
                   ) : (
                     <>
                       <div className="mb-6">
                         <p className="font-body text-xs tracking-[0.3em] text-primary uppercase mb-2">
-                          {authMode === "login" ? "Sign In" : "Create Account"}
+                          {authMode === "login" ? t.bookingDialog.signInTitle : t.bookingDialog.registerTitle}
                         </p>
                         <p className="font-body text-sm text-muted-foreground">
                           {authMode === "login"
-                            ? "Sign in to book your appointment."
-                            : "Create an account to get started."}
+                            ? t.bookingDialog.signInDesc
+                            : t.bookingDialog.registerDesc}
                         </p>
                       </div>
 
@@ -346,7 +348,7 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
                               )}
                             </div>
                             <div className="space-y-1.5">
-                              <Label className={labelClass}>Password</Label>
+                              <Label className={labelClass}>{t.bookingDialog.password}</Label>
                               <Input
                                 type="password"
                                 placeholder="••••••••"
@@ -367,7 +369,7 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
                               {loginForm.formState.isSubmitting ? (
                                 <Loader2 className="h-5 w-5 animate-spin" />
                               ) : (
-                                <>Sign In & Continue <ChevronRight className="ml-2 h-4 w-4" /></>
+                                <>{t.bookingDialog.signInContinue} <ChevronRight className="ml-2 h-4 w-4" /></>
                               )}
                             </Button>
                           </motion.form>
@@ -383,9 +385,9 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
                           >
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                               <div className="space-y-1.5">
-                                <Label className={labelClass}>Full Name</Label>
+                                <Label className={labelClass}>{t.bookingDialog.fullName}</Label>
                                 <Input
-                                  placeholder="John Doe"
+                                  placeholder={t.bookingDialog.namePlaceholder}
                                   className={inputClass}
                                   {...registerForm.register("fullName")}
                                 />
@@ -394,7 +396,7 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
                                 )}
                               </div>
                               <div className="space-y-1.5">
-                                <Label className={labelClass}>Phone (optional)</Label>
+                                <Label className={labelClass}>{t.bookingDialog.phonePlaceholder}</Label>
                                 <Input
                                   placeholder="+1 (555) 000-0000"
                                   className={inputClass}
@@ -403,10 +405,10 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
                               </div>
                             </div>
                             <div className="space-y-1.5">
-                              <Label className={labelClass}>Email</Label>
+                              <Label className={labelClass}>{t.bookingDialog.email}</Label>
                               <Input
                                 type="email"
-                                placeholder="john@example.com"
+                                placeholder={t.bookingDialog.emailPlaceholder}
                                 className={inputClass}
                                 {...registerForm.register("email")}
                               />
@@ -416,7 +418,7 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
                             </div>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                               <div className="space-y-1.5">
-                                <Label className={labelClass}>Password</Label>
+                                <Label className={labelClass}>{t.bookingDialog.password}</Label>
                                 <Input
                                   type="password"
                                   placeholder="••••••••"
@@ -428,7 +430,7 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
                                 )}
                               </div>
                               <div className="space-y-1.5">
-                                <Label className={labelClass}>Confirm Password</Label>
+                                <Label className={labelClass}>{t.bookingDialog.confirmPassword}</Label>
                                 <Input
                                   type="password"
                                   placeholder="••••••••"
@@ -450,7 +452,7 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
                               {registerForm.formState.isSubmitting ? (
                                 <Loader2 className="h-5 w-5 animate-spin" />
                               ) : (
-                                <>Create Account <ChevronRight className="ml-2 h-4 w-4" /></>
+                                <>{t.bookingDialog.createAccount} <ChevronRight className="ml-2 h-4 w-4" /></>
                               )}
                             </Button>
                           </motion.form>
@@ -459,13 +461,13 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
 
                       <div className="mt-5 text-center">
                         <p className="font-body text-xs text-muted-foreground">
-                          {authMode === "login" ? "Don't have an account? " : "Already have an account? "}
+                          {authMode === "login" ? t.bookingDialog.noAccount + " " : t.bookingDialog.haveAccount + " "}
                           <button
                             type="button"
                             onClick={() => switchAuthMode(authMode === "login" ? "register" : "login")}
                             className="text-primary hover:text-primary/80 transition-colors font-medium"
                           >
-                            {authMode === "login" ? "Sign Up" : "Sign In"}
+                            {authMode === "login" ? t.bookingDialog.signUp : t.bookingDialog.signIn}
                           </button>
                         </p>
                       </div>
@@ -477,7 +479,7 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
               {/* Step 1: Service Selection */}
               {step === "service" && (
                 <motion.div key="service" {...stepVariants} transition={{ duration: 0.2 }}>
-                  <p className="font-body text-xs tracking-[0.3em] text-primary uppercase mb-4">Select Service</p>
+                  <p className="font-body text-xs tracking-[0.3em] text-primary uppercase mb-4">{t.bookingDialog.selectService}</p>
                   <div className="space-y-2">
                     {services.map((s) => (
                       <button
@@ -514,7 +516,7 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
                     <button onClick={() => setStep("service")} className="text-muted-foreground hover:text-foreground transition-colors">
                       <ArrowLeft className="h-4 w-4" />
                     </button>
-                    <p className="font-body text-xs tracking-[0.3em] text-primary uppercase">Pick Date & Time</p>
+                    <p className="font-body text-xs tracking-[0.3em] text-primary uppercase">{t.bookingDialog.pickDateTime}</p>
                   </div>
 
                   <div className="flex flex-col md:flex-row gap-6 flex-1 min-h-0 overflow-y-auto">
@@ -529,6 +531,7 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
                         disabled={(date) =>
                           closedDays.includes(date.getDay()) || isBefore(startOfDay(date), startOfDay(new Date()))
                         }
+                        locale={dateLocale}
                         className="p-3 pointer-events-auto border border-border"
                       />
                     </div>
@@ -537,15 +540,15 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
                       {selectedDate ? (
                         <>
                           <p className="font-body text-sm text-foreground mb-3 font-medium">
-                            {format(selectedDate, "EEEE, MMMM d")}
+                            {format(selectedDate, "EEEE, MMMM d", { locale: dateLocale })}
                           </p>
                           {visibleSlots.length === 0 ? (
                             <p className="font-body text-sm text-muted-foreground">
-                              No slots on this date. Try another day.
+                              {t.bookingDialog.noSlotsDate}
                             </p>
                           ) : availableSlots.length === 0 ? (
                             <p className="font-body text-sm text-muted-foreground">
-                              All slots are taken on this date. Try another day.
+                              {t.bookingDialog.allSlotsTaken}
                             </p>
                           ) : (
                             <div className="grid grid-cols-3 md:grid-cols-2 gap-2 max-h-[160px] md:max-h-[280px] overflow-y-auto pr-1">
@@ -574,7 +577,7 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
                         </>
                       ) : (
                         <div className="flex items-center justify-center h-full">
-                          <p className="font-body text-sm text-muted-foreground">Select a date to see available times</p>
+                          <p className="font-body text-sm text-muted-foreground">{t.bookingDialog.selectDatePrompt}</p>
                         </div>
                       )}
                     </div>
@@ -588,7 +591,7 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
                         className="w-full rounded-none"
                         onClick={() => setStep("confirm")}
                       >
-                        Continue <ChevronRight className="ml-2 h-4 w-4" />
+                        {t.bookingDialog.continue} <ChevronRight className="ml-2 h-4 w-4" />
                       </Button>
                     </motion.div>
                   )}
@@ -602,7 +605,7 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
                     <button onClick={() => setStep("datetime")} className="text-muted-foreground hover:text-foreground transition-colors">
                       <ArrowLeft className="h-4 w-4" />
                     </button>
-                    <p className="font-body text-xs tracking-[0.3em] text-primary uppercase">Review & Confirm</p>
+                    <p className="font-body text-xs tracking-[0.3em] text-primary uppercase">{t.bookingDialog.reviewConfirm}</p>
                   </div>
 
                   <div className="space-y-4 mb-6">
@@ -618,13 +621,13 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
                     <div className="border border-border p-4">
                       <div className="flex items-center gap-4">
                         <div>
-                          <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">Date</p>
+                          <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">{t.bookingDialog.date}</p>
                           <p className="font-body text-sm text-foreground">
-                            {selectedDate && format(selectedDate, "EEEE, MMMM d, yyyy")}
+                            {selectedDate && format(selectedDate, "EEEE, MMMM d, yyyy", { locale: dateLocale })}
                           </p>
                         </div>
                         <div className="ml-auto">
-                          <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">Time</p>
+                          <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">{t.bookingDialog.time}</p>
                           <p className="font-body text-sm text-foreground">{selectedTime}</p>
                         </div>
                       </div>
@@ -633,10 +636,10 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
 
                   <div className="space-y-2 mb-6">
                     <Label className="font-body text-xs tracking-widest uppercase text-muted-foreground">
-                      Notes (optional)
+                      {t.bookingDialog.notesOptional}
                     </Label>
                     <Textarea
-                      placeholder="Any special requests..."
+                      placeholder={t.bookingDialog.notesPlaceholder}
                       value={notes}
                       onChange={(e) => setNotes(e.target.value)}
                       className="bg-muted border-border rounded-none font-body resize-none min-h-[80px]"
@@ -655,7 +658,7 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
                       <Loader2 className="h-5 w-5 animate-spin" />
                     ) : (
                       <>
-                        Confirm Booking{" "}
+                        {t.bookingDialog.confirmBtn}{" "}
                         <ArrowUpRight className="ml-2 h-5 w-5" />
                       </>
                     )}
@@ -674,18 +677,21 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
                 >
                   <CheckCircle2 className="h-16 w-16 text-primary mb-6" />
                   <h3 className="font-heading text-4xl text-foreground">
-                    You're Booked<span className="text-primary">.</span>
+                    {t.bookingDialog.successTitle}<span className="text-primary">.</span>
                   </h3>
                   <p className="font-body text-sm text-muted-foreground mt-3 max-w-sm">
-                    Your {service?.name} is confirmed for{" "}
-                    {selectedDate && format(selectedDate, "EEEE, MMMM d")} at {selectedTime}.
+                    {t.bookingDialog.successDesc(
+                      service?.name ?? '',
+                      selectedDate ? format(selectedDate, "EEEE, MMMM d", { locale: dateLocale }) : '',
+                      selectedTime ?? ''
+                    )}
                   </p>
                   {createBooking.data && (
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
                         <Button variant="outline" className="rounded-none mt-6 text-xs">
                           <CalendarPlus className="h-3.5 w-3.5 mr-1.5" />
-                          Add to Calendar
+                          {t.bookingDialog.addToCalendar}
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="center" className="rounded-none border-border">
@@ -696,14 +702,14 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
                             rel="noopener noreferrer"
                             className="cursor-pointer font-body text-xs"
                           >
-                            Google Calendar
+                            {t.bookingDialog.googleCalendar}
                           </a>
                         </DropdownMenuItem>
                         <DropdownMenuItem
                           className="cursor-pointer font-body text-xs"
                           onClick={() => downloadIcsFile(createBooking.data!)}
                         >
-                          Apple Calendar (.ics)
+                          {t.bookingDialog.appleCalendar}
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
@@ -717,14 +723,14 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
                         navigate("/my-bookings");
                       }}
                     >
-                      View My Bookings <ArrowUpRight className="ml-2 h-4 w-4" />
+                      {t.bookingDialog.viewMyBookings} <ArrowUpRight className="ml-2 h-4 w-4" />
                     </Button>
                     <Button
                       variant="outline"
                       className="rounded-none"
                       onClick={() => handleOpenChange(false)}
                     >
-                      Done
+                      {t.bookingDialog.done}
                     </Button>
                   </div>
                 </motion.div>

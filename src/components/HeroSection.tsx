@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowUpRight, LayoutDashboard } from "lucide-react";
 import BookingDialog from "./BookingDialog";
 import { useAuth } from "@/contexts/AuthContext";
-import heroBg from "@/assets/hero-bg.jpg";
+import shopConfig from "@/config/shopConfig";
 
 const HeroSection = () => {
   const { isBarber } = useAuth();
@@ -23,7 +23,7 @@ const HeroSection = () => {
       {/* Background with parallax */}
       <motion.div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroBg})`, y }}
+        style={{ backgroundImage: `url(${shopConfig.hero.backgroundImage})`, y }}
       />
       <motion.div 
         className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/30" 
@@ -38,7 +38,7 @@ const HeroSection = () => {
           className="mb-6"
         >
           <span className="font-body text-xs tracking-[0.4em] text-primary uppercase">
-            Brooklyn, NY — Est. 2018
+            {shopConfig.city} — Est. {shopConfig.established}
           </span>
         </motion.div>
 
@@ -48,9 +48,9 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="font-heading text-[clamp(3.5rem,12vw,11rem)] leading-[0.85] tracking-tight text-foreground"
         >
-          Precision
+          {shopConfig.hero.headline[0]}
           <br />
-          Cuts<span className="text-primary">.</span>
+          {shopConfig.hero.headline[1]}<span className="text-primary">.</span>
         </motion.h1>
 
         <motion.div
@@ -60,8 +60,7 @@ const HeroSection = () => {
           className="mt-8 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-8"
         >
           <p className="max-w-sm font-body text-sm leading-relaxed text-muted-foreground">
-            Where craftsmanship meets confidence. Premium grooming
-            for the modern man who demands nothing less.
+            {shopConfig.hero.subheadline}
           </p>
           {isBarber ? (
             <Link to="/dashboard">
@@ -87,7 +86,7 @@ const HeroSection = () => {
               key={i}
               className="mx-8 font-heading text-sm tracking-[0.3em] text-muted-foreground/40 uppercase"
             >
-              Haircuts • Fades • Beard Grooming • Hot Towel Shave • Styling
+              {shopConfig.hero.marqueeItems.join(" • ")}
             </span>
           ))}
         </div>

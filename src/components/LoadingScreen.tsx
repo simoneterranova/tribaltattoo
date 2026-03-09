@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import shopConfig from "@/config/shopConfig";
 
 interface LoadingScreenProps {
   onLoadingComplete: () => void;
@@ -7,11 +8,10 @@ interface LoadingScreenProps {
 
 const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
   const [progress, setProgress] = useState(0);
-  const [scrambledText, setScrambledText] = useState(["_", "_", "_", "_", "_", "_"]);
+  const targetText = Array.from(shopConfig.name);
+  const [scrambledText, setScrambledText] = useState(targetText.map(() => "_"));
   const [isComplete, setIsComplete] = useState(false);
-  const [lettersRevealed, setLettersRevealed] = useState<boolean[]>([false, false, false, false, false, false]);
-
-  const targetText = ["G", "E", "N", "T", "R", "Y"];
+  const [lettersRevealed, setLettersRevealed] = useState<boolean[]>(targetText.map(() => false));
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
   // Letter scramble animation - scrambles then reveals correct letter
@@ -141,7 +141,7 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
             transition={{ duration: 0.6 }}
             className="font-body text-xs tracking-[0.4em] text-muted-foreground uppercase"
           >
-            Brooklyn's Premier Barbershop
+            {shopConfig.city}
           </motion.div>
 
           {/* Progress Bar Container */}

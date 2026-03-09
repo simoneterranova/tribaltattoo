@@ -6,14 +6,9 @@ import { Button } from "@/components/ui/button";
 import BookingDialog from "./BookingDialog";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 import { useAuth } from "@/contexts/AuthContext";
+import shopConfig from "@/config/shopConfig";
 
-const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "The Crew", href: "#team" },
-  { label: "Reviews", href: "#testimonials" },
-  { label: "Our Work", href: "#gallery" },
-  { label: "Contact", href: "#contact" },
-];
+const navLinks = shopConfig.nav.links;
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -52,7 +47,7 @@ const Navbar = () => {
         {/* Logo */}
         <a href="#hero" className="relative group shrink-0">
           <span className="font-heading text-2xl md:text-3xl tracking-[0.2em] text-foreground">
-            GENTRY
+            {shopConfig.name}
           </span>
           <span className="absolute -bottom-1 left-0 w-full h-px bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
         </a>
@@ -167,7 +162,7 @@ const Navbar = () => {
                 onClick={() => setMobileOpen(false)}
                 className="font-heading text-2xl tracking-[0.2em] text-foreground"
               >
-                GENTRY
+                {shopConfig.name}
               </a>
               <button
                 className="text-foreground p-2 hover:bg-muted/50 rounded-sm transition-colors"

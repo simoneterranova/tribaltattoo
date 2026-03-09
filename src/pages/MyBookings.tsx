@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 import {
   useBookings,
   useCancelBooking,
@@ -55,20 +56,6 @@ import { buildGoogleCalendarUrl, downloadIcsFile } from "@/lib/calendar";
 import type { Booking } from "@/types/supabase";
 import BookingDialog from "@/components/BookingDialog";
 
-const statusConfig = {
-  confirmed: {
-    label: "Confirmed",
-    color: "text-green-400 bg-green-400/10 border-green-400/30",
-  },
-  cancelled: {
-    label: "Cancelled",
-    color: "text-muted-foreground bg-muted/50 border-border",
-  },
-  completed: {
-    label: "Completed",
-    color: "text-primary bg-primary/10 border-primary/30",
-  },
-};
 
 function isPastBooking(booking: Booking): boolean {
   const bookingDate = parseISO(booking.date);
@@ -79,6 +66,7 @@ function isPastBooking(booking: Booking): boolean {
 
 const MyBookings = () => {
   const { user, profile, loading: authLoading, signOut, isBarber } = useAuth();
+  const { lang, setLang, t, dateLocale } = useLanguage();
   const navigate = useNavigate();
   const { data: bookings, isLoading: bookingsLoading } = useBookings();
   const cancelBooking = useCancelBooking();
@@ -105,6 +93,12 @@ const MyBookings = () => {
 
   if (!user) return <Navigate to="/auth" replace />;
   if (isBarber) return <Navigate to="/dashboard" replace />;
+
+  const statusConfig = {
+    confirmed: { label: t.common.confirmed, color: "text-green-400 bg-green-400/10 border-green-400/30" },
+    cancelled: { label: t.common.cancelled, color: "text-muted-foreground bg-muted/50 border-border" },
+    completed: { label: t.common.completed, color: "text-primary bg-primary/10 border-primary/30" },
+  };
 
   const loading = bookingsLoading;
 
@@ -152,12 +146,26 @@ const MyBookings = () => {
           className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors font-body text-sm"
         >
           <ArrowLeft className="h-4 w-4" />
-          Back to Home
+          {t.common.backToHome}
         </Link>
         <div className="flex items-center gap-4">
           <div className="hidden sm:flex items-center gap-2 text-sm font-body text-muted-foreground">
             <User className="h-4 w-4" />
             <span>{profile?.full_name || user.email}</span>
+          </div>
+          <div className="flex items-center border border-border text-xs font-body">
+            <button
+              onClick={() => setLang('it')}
+              className={cn("px-2 py-1 transition-colors", lang === 'it' ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:text-foreground')}
+            >
+              IT
+            </button>
+            <button
+              onClick={() => setLang('en')}
+              className={cn("px-2 py-1 transition-colors", lang === 'en' ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:text-foreground')}
+            >
+              EN
+            </button>
           </div>
           <Button
             variant="ghost"
@@ -166,7 +174,7 @@ const MyBookings = () => {
             className="text-muted-foreground hover:text-foreground"
           >
             <LogOut className="h-4 w-4 mr-1.5" />
-            Sign Out
+            {t.common.signOut}
           </Button>
         </div>
       </div>
@@ -179,13 +187,13 @@ const MyBookings = () => {
           transition={{ duration: 0.5 }}
         >
           <span className="font-body text-xs tracking-[0.4em] text-primary uppercase">
-            My Account
+            {t.myBookings.sectionLabel}
           </span>
           <h1 className="font-heading text-6xl md:text-8xl text-foreground mt-2 leading-none">
-            My Bookings<span className="text-primary">.</span>
+            {t.myBookings.title}<span className="text-primary">.</span>
           </h1>
           <p className="font-body text-sm text-muted-foreground mt-3 max-w-md">
-            View, reschedule, or cancel your upcoming appointments.
+            {t.myBookings.subtitle}
           </p>
         </motion.div>
 
@@ -198,7 +206,7 @@ const MyBookings = () => {
         >
           <BookingDialog>
             <Button variant="hero" size="lg" className="rounded-none">
-              New Booking <ArrowUpRight className="ml-2 h-5 w-5" />
+              {t.myBookings.newBooking} <ArrowUpRight className="ml-2 h-5 w-5" />
             </Button>
           </BookingDialog>
         </motion.div>
@@ -212,14 +220,14 @@ const MyBookings = () => {
             {/* Upcoming */}
             <div className="mt-16">
               <h2 className="font-heading text-3xl text-foreground mb-6">
-                Upcoming<span className="text-primary">.</span>
+                {t.myBookings.upcoming}<span className="text-primary">.</span>
               </h2>
 
               {upcoming.length === 0 ? (
                 <div className="border border-dashed border-border p-8 text-center">
                   <CalendarDays className="h-10 w-10 text-muted-foreground/40 mx-auto mb-3" />
                   <p className="font-body text-sm text-muted-foreground">
-                    No upcoming bookings. Book your next appointment above.
+                    {t.myBookings.noUpcoming}
                   </p>
                 </div>
               ) : (
@@ -248,7 +256,7 @@ const MyBookings = () => {
             {past.length > 0 && (
               <div className="mt-16">
                 <h2 className="font-heading text-3xl text-foreground mb-6">
-                  History<span className="text-primary">.</span>
+                  {t.myBookings.history}<span className="text-primary">.</span>
                 </h2>
                 <div className="space-y-3">
                   {past.map((booking, i) => (
@@ -282,14 +290,12 @@ const MyBookings = () => {
         <DialogContent className="border-border bg-card p-0 overflow-hidden sm:max-w-xl rounded-none">
           <DialogHeader className="p-6 pb-0">
             <DialogTitle className="font-heading text-3xl text-foreground">
-              Reschedule<span className="text-primary">.</span>
+              {t.myBookings.rescheduleTitle}<span className="text-primary">.</span>
             </DialogTitle>
             <p className="font-body text-sm text-muted-foreground mt-1">
-              Pick a new date and time for your{" "}
-              <span className="text-foreground">
-                {rescheduleTarget?.service_name}
-              </span>{" "}
-              appointment.
+              {t.myBookings.rescheduleDesc(
+                rescheduleTarget?.service_name ?? ""
+              )}
             </p>
           </DialogHeader>
 
@@ -306,6 +312,7 @@ const MyBookings = () => {
                   isSunday(date) ||
                   isBefore(startOfDay(date), startOfDay(new Date()))
                 }
+                locale={dateLocale}
                 className="p-3 pointer-events-auto border border-border"
               />
             </div>
@@ -313,11 +320,11 @@ const MyBookings = () => {
               {rescheduleDate ? (
                 <>
                   <p className="font-body text-sm text-foreground mb-3 font-medium">
-                    {format(rescheduleDate, "EEEE, MMMM d")}
+                    {format(rescheduleDate, "EEEE, MMMM d", { locale: dateLocale })}
                   </p>
                   {availableSlots.length === 0 ? (
                     <p className="font-body text-sm text-muted-foreground">
-                      No available slots on this date.
+                      {t.myBookings.noSlotsDate}
                     </p>
                   ) : (
                     <div className="grid grid-cols-2 gap-2 max-h-[280px] overflow-y-auto pr-1">
@@ -341,7 +348,7 @@ const MyBookings = () => {
               ) : (
                 <div className="flex items-center justify-center h-full">
                   <p className="font-body text-sm text-muted-foreground">
-                    Select a date to see available times
+                    {t.myBookings.selectDate}
                   </p>
                 </div>
               )}
@@ -361,7 +368,7 @@ const MyBookings = () => {
                   <Loader2 className="h-5 w-5 animate-spin" />
                 ) : (
                   <>
-                    Confirm Reschedule{" "}
+                    {t.myBookings.confirmReschedule}{" "}
                     <ArrowUpRight className="ml-2 h-5 w-5" />
                   </>
                 )}
@@ -399,6 +406,12 @@ function BookingCard({
   isCancelling,
   isDeleting,
 }: BookingCardProps) {
+  const { t, dateLocale } = useLanguage();
+  const statusConfig = {
+    confirmed: { label: t.common.confirmed, color: "text-green-400 bg-green-400/10 border-green-400/30" },
+    cancelled: { label: t.common.cancelled, color: "text-muted-foreground bg-muted/50 border-border" },
+    completed: { label: t.common.completed, color: "text-primary bg-primary/10 border-primary/30" },
+  };
   const service = getServiceById(booking.service_id);
   const config = statusConfig[booking.status as keyof typeof statusConfig];
   const bookingDate = parseISO(booking.date);
@@ -421,7 +434,7 @@ function BookingCard({
             {format(bookingDate, "dd")}
           </p>
           <p className="font-body text-xs text-muted-foreground uppercase">
-            {format(bookingDate, "MMM")}
+            {format(bookingDate, "MMM", { locale: dateLocale })}
           </p>
         </div>
 
@@ -462,7 +475,7 @@ function BookingCard({
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="sm" className="rounded-none text-xs sm:flex-none">
                 <CalendarPlus className="h-3.5 w-3.5 mr-1.5" />
-                Add to Calendar
+                {t.myBookings.addToCalendar}
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="rounded-none border-border">
@@ -473,14 +486,14 @@ function BookingCard({
                   rel="noopener noreferrer"
                   className="cursor-pointer font-body text-xs"
                 >
-                  Google Calendar
+                  {t.myBookings.googleCalendar}
                 </a>
               </DropdownMenuItem>
               <DropdownMenuItem
                 className="cursor-pointer font-body text-xs"
                 onClick={() => downloadIcsFile(booking)}
               >
-                Apple Calendar (.ics)
+                {t.myBookings.appleCalendar}
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -503,29 +516,25 @@ function BookingCard({
                 className="rounded-none text-xs text-destructive hover:text-destructive hover:bg-destructive/10"
               >
                 <XCircle className="h-3.5 w-3.5 mr-1.5" />
-                Cancel
+                {t.myBookings.cancel}
               </Button>
             </AlertDialogTrigger>
             <AlertDialogContent className="border-border bg-card rounded-none">
               <AlertDialogHeader>
                 <AlertDialogTitle className="font-heading text-2xl">
-                  Cancel Booking?
+                  {t.myBookings.cancelBookingTitle}
                 </AlertDialogTitle>
                 <AlertDialogDescription className="font-body text-sm text-muted-foreground">
-                  This will cancel your{" "}
-                  <span className="text-foreground font-medium">
-                    {booking.service_name}
-                  </span>{" "}
-                  on{" "}
-                  <span className="text-foreground font-medium">
-                    {format(bookingDate, "EEEE, MMMM d")} at {booking.time}
-                  </span>
-                  . This action cannot be undone.
+                  {t.myBookings.cancelBookingDesc(
+                    booking.service_name,
+                    format(bookingDate, "EEEE, MMMM d", { locale: dateLocale }),
+                    booking.time
+                  )}
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
                 <AlertDialogCancel className="rounded-none font-body">
-                  Keep It
+                  {t.myBookings.keepIt}
                 </AlertDialogCancel>
                 <AlertDialogAction
                   onClick={onCancel}
@@ -535,7 +544,7 @@ function BookingCard({
                   {isCancelling ? (
                     <Loader2 className="h-4 w-4 animate-spin" />
                   ) : (
-                    "Yes, Cancel"
+                    t.myBookings.yesCancel
                   )}
                 </AlertDialogAction>
               </AlertDialogFooter>
@@ -555,29 +564,24 @@ function BookingCard({
                 className="rounded-none text-xs text-muted-foreground hover:text-destructive hover:bg-destructive/10"
               >
                 <Trash2 className="h-3.5 w-3.5 mr-1.5" />
-                Remove
+                {t.myBookings.remove}
               </Button>
             </AlertDialogTrigger>
             <AlertDialogContent className="border-border bg-card rounded-none">
               <AlertDialogHeader>
                 <AlertDialogTitle className="font-heading text-2xl">
-                  Remove from History?
+                  {t.myBookings.removeFromHistoryTitle}
                 </AlertDialogTitle>
                 <AlertDialogDescription className="font-body text-sm text-muted-foreground">
-                  This will permanently delete your{" "}
-                  <span className="text-foreground font-medium">
-                    {booking.service_name}
-                  </span>{" "}
-                  booking from{" "}
-                  <span className="text-foreground font-medium">
-                    {format(bookingDate, "MMMM d")}
-                  </span>
-                  .
+                  {t.myBookings.removeFromHistoryDesc(
+                    booking.service_name,
+                    format(bookingDate, "MMMM d", { locale: dateLocale })
+                  )}
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
                 <AlertDialogCancel className="rounded-none font-body">
-                  Keep It
+                  {t.myBookings.keepIt}
                 </AlertDialogCancel>
                 <AlertDialogAction
                   onClick={onDelete}
@@ -587,7 +591,7 @@ function BookingCard({
                   {isDeleting ? (
                     <Loader2 className="h-4 w-4 animate-spin" />
                   ) : (
-                    "Yes, Remove"
+                    t.myBookings.yesRemove
                   )}
                 </AlertDialogAction>
               </AlertDialogFooter>

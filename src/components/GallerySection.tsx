@@ -2,21 +2,9 @@ import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import { useIsMobile } from "@/hooks/use-mobile";
-import gallery1 from "@/assets/gallery-1.jpg";
-import gallery2 from "@/assets/gallery-2.jpg";
-import gallery3 from "@/assets/gallery-3.jpg";
-import gallery4 from "@/assets/gallery-4.jpg";
-import gallery5 from "@/assets/gallery-5.jpg";
-import gallery6 from "@/assets/gallery-6.jpg";
+import shopConfig from "@/config/shopConfig";
 
-const images = [
-  { src: gallery1, alt: "Barbershop interior", label: "Interior" },
-  { src: gallery2, alt: "Fresh fade haircut", label: "Fades" },
-  { src: gallery3, alt: "Barber tools", label: "Tools" },
-  { src: gallery4, alt: "Hot towel shave", label: "Shaves" },
-  { src: gallery5, alt: "Beard grooming", label: "Grooming" },
-  { src: gallery6, alt: "Shop exterior", label: "Exterior" },
-];
+const images = shopConfig.gallery;
 
 const GalleryImage = ({
   img,

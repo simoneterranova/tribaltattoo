@@ -1,6 +1,7 @@
 import { useState, useMemo, useEffect } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 import {
   useAllBookings,
   useUpdateBookingStatus,
@@ -67,22 +68,6 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-// ---- Status config ----
-
-const statusConfig = {
-  confirmed: {
-    label: "Confirmed",
-    color: "text-green-400 bg-green-400/10 border-green-400/30",
-  },
-  cancelled: {
-    label: "Cancelled",
-    color: "text-muted-foreground bg-muted/50 border-border",
-  },
-  completed: {
-    label: "Completed",
-    color: "text-primary bg-primary/10 border-primary/30",
-  },
-};
 
 // ---- Helper: time string to minutes for sorting ----
 function timeToMinutes(t: string): number {
@@ -109,6 +94,7 @@ function isPastBooking(booking: BookingWithCustomer): boolean {
 
 const Dashboard = () => {
   const { user, profile, loading: authLoading, isBarber, signOut } = useAuth();
+  const { lang, setLang, t, dateLocale } = useLanguage();
   const navigate = useNavigate();
   const { data: allBookings, isLoading: bookingsLoading } = useAllBookings();
   const updateStatus = useUpdateBookingStatus();
@@ -209,6 +195,12 @@ const Dashboard = () => {
 
   const loading = bookingsLoading;
 
+  const statusConfig = {
+    confirmed: { label: t.common.confirmed, color: "text-green-400 bg-green-400/10 border-green-400/30" },
+    cancelled: { label: t.common.cancelled, color: "text-muted-foreground bg-muted/50 border-border" },
+    completed: { label: t.common.completed, color: "text-primary bg-primary/10 border-primary/30" },
+  };
+
   // ---- Derived data ----
 
   // Week grid: start of week (Monday-based) and all 7 days
@@ -278,10 +270,11 @@ const Dashboard = () => {
 
   // Mobile stat carousel: auto-cycle every 2.5s
   const statCards = useMemo(() => [
-    { label: "Today's Bookings", value: String(todayBookingsCount) },
-    { label: "Today's Revenue", value: `$${todayRevenue}` },
-    { label: "Week's Bookings", value: String(weekUpcoming) },
-  ], [todayBookingsCount, todayRevenue, weekUpcoming]);
+    { label: t.dashboard.todayBookings, value: String(todayBookingsCount) },
+    { label: t.dashboard.todayRevenue, value: `$${todayRevenue}` },
+    { label: t.dashboard.weekBookings, value: String(weekUpcoming) },
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  ], [todayBookingsCount, todayRevenue, weekUpcoming, lang]);
 
   useEffect(() => {
     const timer = setInterval(() => setActiveStatIdx((i) => (i + 1) % 3), 2500);
@@ -427,15 +420,29 @@ const Dashboard = () => {
           className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors font-body text-sm"
         >
           <ArrowLeft className="h-4 w-4" />
-          <span className="hidden sm:inline">Back to Home</span>
+          <span className="hidden sm:inline">{t.common.backToHome}</span>
         </Link>
         <div className="flex items-center gap-2 sm:gap-4">
           <div className="hidden sm:flex items-center gap-2 text-sm font-body text-muted-foreground">
             <User className="h-4 w-4" />
             <span>{profile?.full_name || user.email}</span>
             <span className="ml-1 text-[10px] tracking-wider uppercase px-1.5 py-0.5 bg-primary/10 text-primary border border-primary/30">
-              Barber
+              {t.dashboard.badge}
             </span>
+          </div>
+          <div className="flex items-center border border-border text-xs font-body">
+            <button
+              onClick={() => setLang('it')}
+              className={cn("px-2 py-1 transition-colors", lang === 'it' ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:text-foreground')}
+            >
+              IT
+            </button>
+            <button
+              onClick={() => setLang('en')}
+              className={cn("px-2 py-1 transition-colors", lang === 'en' ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:text-foreground')}
+            >
+              EN
+            </button>
           </div>
           <NotificationBell
             notifications={notifications}
@@ -451,7 +458,7 @@ const Dashboard = () => {
             className="text-muted-foreground hover:text-foreground"
           >
             <LogOut className="h-4 w-4 mr-1.5" />
-            Sign Out
+            {t.common.signOut}
           </Button>
         </div>
       </div>
@@ -466,27 +473,27 @@ const Dashboard = () => {
         >
           <div>
             <span className="font-body text-xs tracking-[0.4em] text-primary uppercase">
-              Barber Dashboard
+              {t.dashboard.sectionLabel}
             </span>
             <h1 className="font-heading text-4xl sm:text-6xl md:text-8xl text-foreground mt-2 leading-none">
-              Dashboard<span className="text-primary">.</span>
+              {t.dashboard.title}<span className="text-primary">.</span>
             </h1>
           </div>
 
           {/* Desktop: all 3 stats side by side */}
           <div className="hidden sm:flex items-end gap-6 sm:gap-8 pb-1 sm:pb-2">
             <div>
-              <p className="font-body text-[10px] tracking-[0.2em] text-muted-foreground uppercase">Today's Bookings</p>
+              <p className="font-body text-[10px] tracking-[0.2em] text-muted-foreground uppercase">{t.dashboard.todayBookings}</p>
               <p className="font-heading text-3xl sm:text-5xl text-foreground mt-0.5">{todayBookingsCount}</p>
             </div>
             <div className="w-px self-stretch bg-border/60" />
             <div>
-              <p className="font-body text-[10px] tracking-[0.2em] text-muted-foreground uppercase">Today's Revenue</p>
+              <p className="font-body text-[10px] tracking-[0.2em] text-muted-foreground uppercase">{t.dashboard.todayRevenue}</p>
               <p className="font-heading text-3xl sm:text-5xl text-foreground mt-0.5">${todayRevenue}</p>
             </div>
             <div className="w-px self-stretch bg-border/60" />
             <div>
-              <p className="font-body text-[10px] tracking-[0.2em] text-muted-foreground uppercase">Week's Bookings</p>
+              <p className="font-body text-[10px] tracking-[0.2em] text-muted-foreground uppercase">{t.dashboard.weekBookings}</p>
               <p className="font-heading text-3xl sm:text-5xl text-foreground mt-0.5">{weekUpcoming}</p>
             </div>
           </div>
@@ -539,11 +546,11 @@ const Dashboard = () => {
             <div className="flex flex-wrap items-center justify-between mb-4 sm:mb-6 gap-3">
               <div className="shrink-0">
                 <h2 className="font-heading text-2xl sm:text-3xl text-foreground">
-                  {format(weekStart, "MMMM yyyy")}
+                  {format(weekStart, "MMMM yyyy", { locale: dateLocale })}
                   <span className="text-primary">.</span>
                 </h2>
                 <p className="font-body text-xs sm:text-sm text-muted-foreground">
-                  {format(weekStart, "MMM d")} – {format(addDays(weekStart, 6), "MMM d, yyyy")}
+                  {format(weekStart, "MMM d", { locale: dateLocale })} – {format(addDays(weekStart, 6), "MMM d, yyyy", { locale: dateLocale })}
                 </p>
               </div>
 
@@ -555,7 +562,7 @@ const Dashboard = () => {
                   onClick={() => openManualBookingDialog()}
                 >
                   <UserPlus className="h-3.5 w-3.5 mr-2" />
-                  Add Booking
+                  {t.dashboard.addBooking}
                 </Button>
                 <Button
                   variant="outline"
@@ -569,7 +576,7 @@ const Dashboard = () => {
                   }}
                 >
                   <Lock className="h-3.5 w-3.5 mr-2" />
-                  Block Time Slot
+                  {t.dashboard.blockTimeSlot}
                 </Button>
                 <Button
                   variant="outline"
@@ -578,7 +585,7 @@ const Dashboard = () => {
                   onClick={openSettingsDialog}
                 >
                   <Settings className="h-3.5 w-3.5 mr-2" />
-                  Shop Settings
+                  {t.dashboard.shopSettings}
                 </Button>
               </div>
 
@@ -592,7 +599,7 @@ const Dashboard = () => {
                   onClick={() => setSelectedDate(new Date())}
                   className="text-xs font-body px-3 h-8"
                 >
-                  Today
+                  {t.dashboard.today}
                 </Button>
                 <Button variant="ghost" size="sm" onClick={nextWeek} className="h-8 w-8 p-0">
                   <ChevronRight className="h-4 w-4" />
@@ -626,7 +633,7 @@ const Dashboard = () => {
                         )}
                       >
                         <p className="font-body text-[9px] tracking-widest uppercase text-muted-foreground">
-                          {format(day, "EEE")}
+                          {format(day, "EEE", { locale: dateLocale })}
                         </p>
                         <p
                           className={cn(
@@ -638,7 +645,7 @@ const Dashboard = () => {
                         </p>
                         {closed && (
                           <p className="font-body text-[7px] text-destructive/60 uppercase tracking-wider">
-                            Closed
+                            {t.dashboard.closed}
                           </p>
                         )}
                       </div>
@@ -703,7 +710,7 @@ const Dashboard = () => {
                                 <div className="absolute inset-[1px] flex items-center gap-1 px-1 bg-muted/40 border border-border/60 group/block overflow-hidden">
                                   <Lock className="h-2 w-2 text-muted-foreground/60 shrink-0" />
                                   <span className="font-body text-[8px] text-muted-foreground/70 truncate flex-1">
-                                    {blocked.reason || "Blocked"}
+                                    {blocked.reason || t.dashboard.blocked}
                                   </span>
                                   <AlertDialog>
                                     <AlertDialogTrigger asChild>
@@ -714,25 +721,21 @@ const Dashboard = () => {
                                     <AlertDialogContent className="border-border bg-card rounded-none">
                                       <AlertDialogHeader>
                                         <AlertDialogTitle className="font-heading text-2xl">
-                                          Unblock Slot?
+                                          {t.dashboard.unblockSlotTitle}
                                         </AlertDialogTitle>
                                         <AlertDialogDescription className="font-body text-sm text-muted-foreground">
-                                          Make{" "}
-                                          <span className="text-foreground font-medium">
-                                            {format(parseISO(dateStr), "MMM d")} at {blocked.time}
-                                          </span>{" "}
-                                          available again?
+                                          {t.dashboard.unblockSlotDesc(format(parseISO(dateStr), "MMM d", { locale: dateLocale }), blocked.time)}
                                         </AlertDialogDescription>
                                       </AlertDialogHeader>
                                       <AlertDialogFooter>
                                         <AlertDialogCancel className="rounded-none font-body">
-                                          Keep Blocked
+                                          {t.dashboard.keepBlocked}
                                         </AlertDialogCancel>
                                         <AlertDialogAction
                                           onClick={() => deleteBlock.mutate(blocked.id)}
                                           className="rounded-none font-body"
                                         >
-                                          Unblock
+                                          {t.dashboard.unblock}
                                         </AlertDialogAction>
                                       </AlertDialogFooter>
                                     </AlertDialogContent>
@@ -742,7 +745,7 @@ const Dashboard = () => {
                                 <button
                                   onClick={() => openManualBookingDialog(day, time)}
                                   className="absolute inset-0 w-full h-full flex items-center justify-center opacity-0 group-hover:opacity-100 hover:bg-primary/5 transition-all"
-                                  title={`Add booking — ${format(day, "EEE MMM d")} at ${time}`}
+                                  title={`Add booking — ${format(day, "EEE MMM d", { locale: dateLocale })} at ${time}`}
                                 >
                                   <Plus className="h-3.5 w-3.5 text-primary/50" />
                                 </button>
@@ -763,7 +766,7 @@ const Dashboard = () => {
               <div className="mt-10 sm:mt-16">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 sm:mb-6">
                   <h2 className="font-heading text-2xl sm:text-3xl text-foreground">
-                    All Upcoming<span className="text-primary">.</span>
+                    {t.dashboard.allUpcoming}<span className="text-primary">.</span>
                   </h2>
                 </div>
                 <div className="space-y-2">
@@ -784,7 +787,7 @@ const Dashboard = () => {
                               {format(parseISO(booking.date), "dd")}
                             </p>
                             <p className="font-body text-[10px] text-muted-foreground uppercase">
-                              {format(parseISO(booking.date), "MMM")}
+                              {format(parseISO(booking.date), "MMM", { locale: dateLocale })}
                             </p>
                           </div>
                           <div className="min-w-0">
@@ -844,7 +847,7 @@ const Dashboard = () => {
                               disabled={updateStatus.isPending}
                             >
                               <CheckCircle2 className="h-3.5 w-3.5 sm:mr-1.5" />
-                              <span className="hidden sm:inline">Complete</span>
+                              <span className="hidden sm:inline">{t.dashboard.complete}</span>
                             </Button>
                             <AlertDialog>
                               <AlertDialogTrigger asChild>
@@ -854,32 +857,32 @@ const Dashboard = () => {
                                   className="rounded-none text-xs h-8 text-destructive hover:text-destructive hover:bg-destructive/10"
                                 >
                                   <XCircle className="h-3.5 w-3.5 sm:mr-1.5" />
-                                  <span className="hidden sm:inline">Cancel</span>
+                                  <span className="hidden sm:inline">{t.dashboard.cancel}</span>
                                 </Button>
                               </AlertDialogTrigger>
                               <AlertDialogContent className="border-border bg-card rounded-none">
                                 <AlertDialogHeader>
                                   <AlertDialogTitle className="font-heading text-2xl">
-                                    Cancel Booking?
+                                    {t.dashboard.cancelBookingTitle}
                                   </AlertDialogTitle>
                                   <AlertDialogDescription className="font-body text-sm text-muted-foreground">
-                                    Cancel{" "}
-                                    <span className="text-foreground font-medium">
-                                      {getDisplayName(booking)}
-                                    </span>
-                                    's {booking.service_name} on{" "}
-                                    {format(parseISO(booking.date), "MMM d")} at {booking.time}?
+                                    {t.dashboard.cancelBookingDesc(
+                                      getDisplayName(booking),
+                                      booking.service_name,
+                                      format(parseISO(booking.date), "MMM d", { locale: dateLocale }),
+                                      booking.time
+                                    )}
                                   </AlertDialogDescription>
                                 </AlertDialogHeader>
                                 <AlertDialogFooter>
-                                  <AlertDialogCancel className="rounded-none font-body">Keep It</AlertDialogCancel>
+                                  <AlertDialogCancel className="rounded-none font-body">{t.common.keepIt}</AlertDialogCancel>
                                   <AlertDialogAction
                                     onClick={() =>
                                       updateStatus.mutate({ bookingId: booking.id, status: "cancelled" })
                                     }
                                     className="rounded-none bg-destructive text-destructive-foreground hover:bg-destructive/90 font-body"
                                   >
-                                    Yes, Cancel
+                                    {t.common.yesCancel}
                                   </AlertDialogAction>
                                 </AlertDialogFooter>
                               </AlertDialogContent>
@@ -906,10 +909,10 @@ const Dashboard = () => {
               <>
                 <DialogHeader className="p-6 pb-0">
                   <DialogTitle className="font-heading text-3xl text-foreground">
-                    Booking<span className="text-primary">.</span>
+                    {t.dashboard.bookingLabel}<span className="text-primary">.</span>
                   </DialogTitle>
                   <p className="font-body text-sm text-muted-foreground mt-1">
-                    {format(parseISO(detailBooking.date), "EEEE, MMMM d, yyyy")} at {detailBooking.time}
+                    {format(parseISO(detailBooking.date), "EEEE, MMMM d, yyyy", { locale: dateLocale })} at {detailBooking.time}
                   </p>
                 </DialogHeader>
                 <div className="p-6 space-y-4">
@@ -925,7 +928,7 @@ const Dashboard = () => {
                         </p>
                         {isWalkIn(detailBooking) && (
                           <span className="inline-flex items-center px-2 py-0.5 text-[10px] font-body uppercase tracking-wider border text-amber-400 bg-amber-400/10 border-amber-400/30">
-                            Walk-in
+                            {t.dashboard.walkIn}
                           </span>
                         )}
                         <span className={cn("inline-flex items-center px-2 py-0.5 text-[10px] font-body uppercase tracking-wider border", config.color)}>
@@ -944,15 +947,15 @@ const Dashboard = () => {
                   {/* Service details */}
                   <div className="grid grid-cols-3 gap-3">
                     <div className="border border-border p-3">
-                      <p className="font-body text-[10px] uppercase tracking-widest text-muted-foreground">Service</p>
+                      <p className="font-body text-[10px] uppercase tracking-widest text-muted-foreground">{t.dashboard.serviceLabel}</p>
                       <p className="font-body text-sm font-medium text-foreground mt-0.5 leading-tight">{detailBooking.service_name}</p>
                     </div>
                     <div className="border border-border p-3">
-                      <p className="font-body text-[10px] uppercase tracking-widest text-muted-foreground">Duration</p>
+                      <p className="font-body text-[10px] uppercase tracking-widest text-muted-foreground">{t.dashboard.durationLabel}</p>
                       <p className="font-body text-sm font-medium text-foreground mt-0.5">{service?.duration ?? "—"}</p>
                     </div>
                     <div className="border border-border p-3">
-                      <p className="font-body text-[10px] uppercase tracking-widest text-muted-foreground">Price</p>
+                      <p className="font-body text-[10px] uppercase tracking-widest text-muted-foreground">{t.dashboard.priceLabel}</p>
                       <p className="font-body text-sm font-medium text-foreground mt-0.5">${detailBooking.service_price}</p>
                     </div>
                   </div>
@@ -975,7 +978,7 @@ const Dashboard = () => {
                         disabled={updateStatus.isPending}
                       >
                         <CheckCircle2 className="h-3.5 w-3.5 mr-1.5" />
-                        Mark Complete
+                        {t.dashboard.markComplete}
                       </Button>
                       <AlertDialog>
                         <AlertDialogTrigger asChild>
@@ -984,21 +987,23 @@ const Dashboard = () => {
                             className="flex-1 rounded-none text-xs text-destructive hover:text-destructive hover:bg-destructive/10"
                           >
                             <XCircle className="h-3.5 w-3.5 mr-1.5" />
-                            Cancel Booking
+                            {t.dashboard.cancelBooking}
                           </Button>
                         </AlertDialogTrigger>
                         <AlertDialogContent className="border-border bg-card rounded-none">
                           <AlertDialogHeader>
-                            <AlertDialogTitle className="font-heading text-2xl">Cancel Booking?</AlertDialogTitle>
+                            <AlertDialogTitle className="font-heading text-2xl">{t.dashboard.cancelBookingTitle}</AlertDialogTitle>
                             <AlertDialogDescription className="font-body text-sm text-muted-foreground">
-                              Cancel{" "}
-                              <span className="text-foreground font-medium">{getDisplayName(detailBooking)}</span>
-                              's {detailBooking.service_name} on{" "}
-                              {format(parseISO(detailBooking.date), "MMM d")} at {detailBooking.time}?
+                              {t.dashboard.cancelBookingDesc(
+                                getDisplayName(detailBooking),
+                                detailBooking.service_name,
+                                format(parseISO(detailBooking.date), "MMM d", { locale: dateLocale }),
+                                detailBooking.time
+                              )}
                             </AlertDialogDescription>
                           </AlertDialogHeader>
                           <AlertDialogFooter>
-                            <AlertDialogCancel className="rounded-none font-body">Keep It</AlertDialogCancel>
+                            <AlertDialogCancel className="rounded-none font-body">{t.common.keepIt}</AlertDialogCancel>
                             <AlertDialogAction
                               onClick={() => {
                                 updateStatus.mutate({ bookingId: detailBooking.id, status: "cancelled" });
@@ -1006,7 +1011,7 @@ const Dashboard = () => {
                               }}
                               className="rounded-none bg-destructive text-destructive-foreground hover:bg-destructive/90 font-body"
                             >
-                              Yes, Cancel
+                              {t.common.yesCancel}
                             </AlertDialogAction>
                           </AlertDialogFooter>
                         </AlertDialogContent>
@@ -1025,10 +1030,10 @@ const Dashboard = () => {
         <DialogContent className="border-border bg-card p-0 overflow-hidden sm:max-w-md rounded-none">
           <DialogHeader className="p-6 pb-0">
             <DialogTitle className="font-heading text-3xl text-foreground">
-              Block Slot<span className="text-primary">.</span>
+              {t.dashboard.blockSlotTitle}<span className="text-primary">.</span>
             </DialogTitle>
             <p className="font-body text-sm text-muted-foreground mt-1">
-              Prevent bookings on a specific time slot.
+              {t.dashboard.blockSlotDesc}
             </p>
           </DialogHeader>
 
@@ -1036,7 +1041,7 @@ const Dashboard = () => {
             {/* Date selector */}
             <div>
               <Label className="font-body text-xs tracking-widest uppercase text-muted-foreground">
-                Date
+                {t.dashboard.date}
               </Label>
               <div className="flex items-center justify-between mt-2 border border-border p-2">
                 <Button
@@ -1055,7 +1060,7 @@ const Dashboard = () => {
                   <ChevronLeft className="h-4 w-4" />
                 </Button>
                 <span className="font-body text-sm font-medium text-foreground">
-                  {format(blockDate, "EEE, MMM d yyyy")}
+                  {format(blockDate, "EEE, MMM d yyyy", { locale: dateLocale })}
                 </span>
                 <Button
                   variant="ghost"
@@ -1075,17 +1080,17 @@ const Dashboard = () => {
 
             {isClosedDay(blockDate) ? (
               <p className="font-body text-sm text-muted-foreground text-center py-4">
-                Shop is closed on {format(blockDate, "EEEE")}s.
+                {t.dashboard.shopClosedOn(format(blockDate, "EEEE", { locale: dateLocale }))}
               </p>
             ) : availableSlotsForBlock.length === 0 ? (
               <p className="font-body text-sm text-muted-foreground text-center py-4">
-                No available slots to block on this date.
+                {t.dashboard.noSlotsToBlock}
               </p>
             ) : (
               <>
                 <div>
                   <Label className="font-body text-xs tracking-widest uppercase text-muted-foreground">
-                    Select Time
+                    {t.dashboard.selectTime}
                   </Label>
                   <div className="grid grid-cols-3 gap-2 mt-2 max-h-[200px] overflow-y-auto">
                     {availableSlotsForBlock.map((time) => (
@@ -1107,10 +1112,10 @@ const Dashboard = () => {
 
                 <div className="space-y-1.5">
                   <Label className="font-body text-xs tracking-widest uppercase text-muted-foreground">
-                    Reason (optional)
+                    {t.dashboard.reasonOptional}
                   </Label>
                   <Input
-                    placeholder="e.g. Lunch break, Personal errand..."
+                    placeholder={t.dashboard.reasonPlaceholder}
                     value={blockReason}
                     onChange={(e) => setBlockReason(e.target.value)}
                     className="bg-muted border-border rounded-none h-10 font-body"
@@ -1131,7 +1136,7 @@ const Dashboard = () => {
                     ) : (
                       <>
                         <Lock className="h-4 w-4 mr-2" />
-                        Block {blockTime}
+                        {t.dashboard.blockBtn(blockTime)}
                       </>
                     )}
                   </Button>
@@ -1147,10 +1152,10 @@ const Dashboard = () => {
         <DialogContent className="border-border bg-card p-0 overflow-hidden sm:max-w-lg rounded-none max-h-[90dvh]">
           <DialogHeader className="p-6 pb-0">
             <DialogTitle className="font-heading text-3xl text-foreground">
-              Shop Settings<span className="text-primary">.</span>
+              {t.dashboard.shopSettingsTitle}<span className="text-primary">.</span>
             </DialogTitle>
             <p className="font-body text-sm text-muted-foreground mt-1">
-              Configure your shop hours, closing days, and breaks.
+              {t.dashboard.shopSettingsDesc}
             </p>
           </DialogHeader>
 
@@ -1159,10 +1164,10 @@ const Dashboard = () => {
               {/* Closed Days */}
               <div>
                 <Label className="font-body text-xs tracking-widest uppercase text-muted-foreground">
-                  Closed Days
+                  {t.dashboard.closedDays}
                 </Label>
                 <div className="grid grid-cols-4 sm:grid-cols-7 gap-2 mt-2">
-                  {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day, i) => (
+                  {t.dashboard.days.map((day, i) => (
                     <button
                       key={day}
                       onClick={() => toggleClosedDay(i)}
@@ -1182,11 +1187,11 @@ const Dashboard = () => {
               {/* Opening Hours */}
               <div>
                 <Label className="font-body text-xs tracking-widest uppercase text-muted-foreground">
-                  Opening Hours
+                  {t.dashboard.openingHours}
                 </Label>
                 <div className="grid grid-cols-2 gap-3 mt-2">
                   <div className="space-y-1">
-                    <span className="font-body text-xs text-muted-foreground">Open</span>
+                    <span className="font-body text-xs text-muted-foreground">{t.dashboard.open}</span>
                     <Input
                       type="time"
                       value={settingsForm.open_time}
@@ -1195,7 +1200,7 @@ const Dashboard = () => {
                     />
                   </div>
                   <div className="space-y-1">
-                    <span className="font-body text-xs text-muted-foreground">Close (weekdays)</span>
+                    <span className="font-body text-xs text-muted-foreground">{t.dashboard.closeWeekdays}</span>
                     <Input
                       type="time"
                       value={settingsForm.close_time}
@@ -1205,7 +1210,7 @@ const Dashboard = () => {
                   </div>
                 </div>
                 <div className="mt-3 space-y-1">
-                  <span className="font-body text-xs text-muted-foreground">Close (Saturday)</span>
+                  <span className="font-body text-xs text-muted-foreground">{t.dashboard.closeSaturday}</span>
                   <Input
                     type="time"
                     value={settingsForm.sat_close_time}
@@ -1219,14 +1224,14 @@ const Dashboard = () => {
               <div>
                 <Label className="font-body text-xs tracking-widest uppercase text-muted-foreground flex items-center gap-2">
                   <Coffee className="h-3.5 w-3.5" />
-                  Daily Break (optional)
+                  {t.dashboard.dailyBreak}
                 </Label>
                 <p className="font-body text-xs text-muted-foreground mt-1 mb-2">
-                  Automatically blocks these time slots every day (e.g. lunch).
+                  {t.dashboard.breakDesc}
                 </p>
                 <div className="grid grid-cols-2 gap-3">
                   <div className="space-y-1">
-                    <span className="font-body text-xs text-muted-foreground">Break start</span>
+                    <span className="font-body text-xs text-muted-foreground">{t.dashboard.breakStart}</span>
                     <Input
                       type="time"
                       value={settingsForm.break_start}
@@ -1236,7 +1241,7 @@ const Dashboard = () => {
                     />
                   </div>
                   <div className="space-y-1">
-                    <span className="font-body text-xs text-muted-foreground">Break end</span>
+                    <span className="font-body text-xs text-muted-foreground">{t.dashboard.breakEnd}</span>
                     <Input
                       type="time"
                       value={settingsForm.break_end}
@@ -1251,7 +1256,7 @@ const Dashboard = () => {
                     onClick={() => setSettingsForm({ ...settingsForm, break_start: "", break_end: "" })}
                     className="font-body text-xs text-destructive hover:text-destructive/80 mt-2 transition-colors"
                   >
-                    Remove break
+                    {t.dashboard.removeBreak}
                   </button>
                 )}
               </div>
@@ -1266,7 +1271,7 @@ const Dashboard = () => {
                 {updateSettings.isPending ? (
                   <Loader2 className="h-5 w-5 animate-spin" />
                 ) : (
-                  <>Save Settings</>
+                  <>{ t.dashboard.saveSettings}</>
                 )}
               </Button>
             </div>
@@ -1295,7 +1300,7 @@ const Dashboard = () => {
             {/* Sidebar */}
             <div className="bg-muted/50 border-b lg:border-b-0 lg:border-r border-border p-6 lg:w-56 shrink-0">
               <h3 className="font-heading text-3xl text-foreground leading-none">
-                Add a<br />Client<span className="text-primary">.</span>
+                {t.dashboard.addClientTitle.split('\n')[0]}<br />{t.dashboard.addClientTitle.split('\n')[1]}<span className="text-primary">.</span>
               </h3>
 
               {/* Live summary */}
@@ -1304,7 +1309,7 @@ const Dashboard = () => {
                   <div className="flex items-start gap-2">
                     <User className="h-3.5 w-3.5 text-primary mt-0.5 shrink-0" />
                     <div>
-                      <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">Client</p>
+                      <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">{t.dashboard.clientLabel}</p>
                       <p className="font-body text-sm text-foreground">{manualGuestName}</p>
                       {manualPhone && (
                         <p className="font-body text-xs text-muted-foreground">{manualPhone}</p>
@@ -1316,7 +1321,7 @@ const Dashboard = () => {
                   <div className="flex items-start gap-2">
                     <Scissors className="h-3.5 w-3.5 text-primary mt-0.5 shrink-0" />
                     <div>
-                      <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">Service</p>
+                      <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">{t.dashboard.serviceStepLabel}</p>
                       <p className="font-body text-sm text-foreground">{getServiceById(manualService)?.name}</p>
                       <p className="font-body text-xs text-muted-foreground">
                         {getServiceById(manualService)?.duration} · ${getServiceById(manualService)?.price}
@@ -1328,8 +1333,8 @@ const Dashboard = () => {
                   <div className="flex items-start gap-2">
                     <Clock className="h-3.5 w-3.5 text-primary mt-0.5 shrink-0" />
                     <div>
-                      <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">Date & Time</p>
-                      <p className="font-body text-sm text-foreground">{format(manualDate, "EEE, MMM d")}</p>
+                      <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">{t.dashboard.dateTimeLabel}</p>
+                      <p className="font-body text-sm text-foreground">{format(manualDate, "EEE, MMM d", { locale: dateLocale })}</p>
                       <p className="font-body text-xs text-muted-foreground">{manualTime}</p>
                     </div>
                   </div>
@@ -1343,12 +1348,6 @@ const Dashboard = () => {
                   const currentIdx = allSteps.indexOf(
                     manualStep === "success" ? "confirm" : manualStep
                   );
-                  const manualStepLabels: Record<string, string> = {
-                    client: "Client",
-                    service: "Service",
-                    datetime: "Date & Time",
-                    confirm: "Confirm",
-                  };
                   return (
                     <div key={s} className="flex items-center gap-2">
                       <div
@@ -1364,7 +1363,7 @@ const Dashboard = () => {
                         {i + 1}
                       </div>
                       <span className="hidden lg:inline font-body text-xs text-muted-foreground">
-                        {manualStepLabels[s]}
+                        {t.dashboard.stepLabels[s]}
                       </span>
                     </div>
                   );
@@ -1379,13 +1378,13 @@ const Dashboard = () => {
                 {/* Step 1: Client Details */}
                 {manualStep === "client" && (
                   <motion.div key="client" {...stepVariants} transition={{ duration: 0.2 }} className="space-y-4">
-                    <p className="font-body text-xs tracking-[0.3em] text-primary uppercase mb-4">Client Details</p>
+                    <p className="font-body text-xs tracking-[0.3em] text-primary uppercase mb-4">{t.dashboard.clientDetails}</p>
                     <div className="space-y-1.5">
                       <Label className="font-body text-xs tracking-widest uppercase text-muted-foreground">
-                        Customer Name
+                        {t.dashboard.customerName}
                       </Label>
                       <Input
-                        placeholder="Full name"
+                        placeholder={t.dashboard.namePlaceholder}
                         value={manualGuestName}
                         onChange={(e) => setManualGuestName(e.target.value)}
                         className="bg-muted border-border rounded-none h-12 font-body"
@@ -1394,10 +1393,10 @@ const Dashboard = () => {
                     </div>
                     <div className="space-y-1.5">
                       <Label className="font-body text-xs tracking-widest uppercase text-muted-foreground">
-                        Phone Number
+                        {t.dashboard.phoneNumber}
                       </Label>
                       <Input
-                        placeholder="+1 234 567 8900"
+                        placeholder={t.dashboard.phonePlaceholder}
                         value={manualPhone}
                         onChange={(e) => setManualPhone(e.target.value)}
                         className="bg-muted border-border rounded-none h-12 font-body"
@@ -1412,7 +1411,7 @@ const Dashboard = () => {
                       disabled={!manualGuestName.trim() || !manualPhone.trim()}
                       onClick={() => setManualStep("service")}
                     >
-                      Continue <ChevronRight className="ml-2 h-4 w-4" />
+                      {t.dashboard.continue} <ChevronRight className="ml-2 h-4 w-4" />
                     </Button>
                   </motion.div>
                 )}
@@ -1427,7 +1426,7 @@ const Dashboard = () => {
                       >
                         <ArrowLeft className="h-4 w-4" />
                       </button>
-                      <p className="font-body text-xs tracking-[0.3em] text-primary uppercase">Select Service</p>
+                      <p className="font-body text-xs tracking-[0.3em] text-primary uppercase">{t.dashboard.selectService}</p>
                     </div>
                     <div className="space-y-2">
                       {services.map((s) => (
@@ -1468,7 +1467,7 @@ const Dashboard = () => {
                       >
                         <ArrowLeft className="h-4 w-4" />
                       </button>
-                      <p className="font-body text-xs tracking-[0.3em] text-primary uppercase">Pick Date & Time</p>
+                      <p className="font-body text-xs tracking-[0.3em] text-primary uppercase">{t.dashboard.pickDateTime}</p>
                     </div>
 
                     <div className="flex flex-col md:flex-row gap-6 flex-1 min-h-0 overflow-y-auto">
@@ -1486,25 +1485,26 @@ const Dashboard = () => {
                             closedDays.includes(date.getDay()) ||
                             isBefore(startOfDay(date), startOfDay(new Date()))
                           }
+                          locale={dateLocale}
                           className="p-3 pointer-events-auto border border-border"
                         />
                       </div>
 
                       <div className="flex-1 min-w-0">
                         <p className="font-body text-sm text-foreground mb-3 font-medium">
-                          {format(manualDate, "EEEE, MMMM d")}
+                          {format(manualDate, "EEEE, MMMM d", { locale: dateLocale })}
                         </p>
                         {isClosedDay(manualDate) ? (
                           <p className="font-body text-sm text-muted-foreground">
-                            Shop is closed on {format(manualDate, "EEEE")}s.
+                            {t.dashboard.shopClosedOn(format(manualDate, "EEEE", { locale: dateLocale }))}
                           </p>
                         ) : manualVisibleSlots.length === 0 ? (
                           <p className="font-body text-sm text-muted-foreground">
-                            No slots on this date. Try another day.
+                            {t.dashboard.noSlotsDate}
                           </p>
                         ) : manualAvailableSlots.length === 0 ? (
                           <p className="font-body text-sm text-muted-foreground">
-                            All slots are taken on this date. Try another day.
+                            {t.dashboard.allSlotsTaken}
                           </p>
                         ) : (
                           <div className="grid grid-cols-3 md:grid-cols-2 gap-2 max-h-[160px] md:max-h-[280px] overflow-y-auto pr-1">
@@ -1547,7 +1547,7 @@ const Dashboard = () => {
                           className="w-full rounded-none"
                           onClick={() => setManualStep("confirm")}
                         >
-                          Continue <ChevronRight className="ml-2 h-4 w-4" />
+                          {t.dashboard.continue} <ChevronRight className="ml-2 h-4 w-4" />
                         </Button>
                       </motion.div>
                     )}
@@ -1564,7 +1564,7 @@ const Dashboard = () => {
                       >
                         <ArrowLeft className="h-4 w-4" />
                       </button>
-                      <p className="font-body text-xs tracking-[0.3em] text-primary uppercase">Review & Confirm</p>
+                      <p className="font-body text-xs tracking-[0.3em] text-primary uppercase">{t.dashboard.reviewConfirm}</p>
                     </div>
 
                     <div className="space-y-4 mb-6">
@@ -1617,10 +1617,10 @@ const Dashboard = () => {
 
                     <div className="space-y-2 mb-6">
                       <Label className="font-body text-xs tracking-widest uppercase text-muted-foreground">
-                        Notes (optional)
+                        {t.dashboard.notesOptional}
                       </Label>
                       <Textarea
-                        placeholder="Any special requests or notes..."
+                        placeholder={t.dashboard.notesPlaceholder}
                         value={manualNotes}
                         onChange={(e) => setManualNotes(e.target.value)}
                         className="bg-muted border-border rounded-none font-body resize-none min-h-[80px]"
@@ -1639,7 +1639,7 @@ const Dashboard = () => {
                         <Loader2 className="h-5 w-5 animate-spin" />
                       ) : (
                         <>
-                          Confirm Booking <ArrowUpRight className="ml-2 h-5 w-5" />
+                          {t.dashboard.confirmBooking} <ArrowUpRight className="ml-2 h-5 w-5" />
                         </>
                       )}
                     </Button>
@@ -1657,18 +1657,22 @@ const Dashboard = () => {
                   >
                     <CheckCircle2 className="h-16 w-16 text-primary mb-6" />
                     <h3 className="font-heading text-4xl text-foreground">
-                      Booked<span className="text-primary">.</span>
+                      {t.dashboard.bookedTitle}<span className="text-primary">.</span>
                     </h3>
                     <p className="font-body text-sm text-muted-foreground mt-3 max-w-sm">
-                      {manualGuestName}'s {getServiceById(manualService ?? "")?.name} is confirmed for{" "}
-                      {format(manualDate, "EEEE, MMMM d")} at {manualTime}.
+                      {t.dashboard.bookedDesc(
+                        manualGuestName,
+                        getServiceById(manualService ?? "")?.name ?? "",
+                        format(manualDate, "EEEE, MMMM d"),
+                        manualTime ?? ""
+                      )}
                     </p>
                     <Button
                       variant="outline"
                       className="rounded-none mt-6"
                       onClick={() => setManualBookingOpen(false)}
                     >
-                      Done
+                      {t.dashboard.done}
                     </Button>
                   </motion.div>
                 )}

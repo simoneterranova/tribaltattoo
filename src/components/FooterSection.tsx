@@ -1,5 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import ScrollReveal from "./ScrollReveal";
+import shopConfig from "@/config/shopConfig";
 
 const FooterSection = () => {
   return (
@@ -31,8 +33,9 @@ const FooterSection = () => {
                   Location
                 </h3>
                 <p className="font-body text-sm text-muted-foreground leading-relaxed">
-                  742 Barber Lane, Suite 3<br />
-                  Brooklyn, NY 11201
+                  {shopConfig.contact.addressLines.map((line, i) => (
+                    <span key={i}>{line}{i < shopConfig.contact.addressLines.length - 1 && <br />}</span>
+                  ))}
                 </p>
               </div>
 
@@ -42,9 +45,9 @@ const FooterSection = () => {
                   Hours
                 </h3>
                 <div className="space-y-1 font-body text-sm text-muted-foreground">
-                  <p>Mon – Fri: 9AM – 8PM</p>
-                  <p>Saturday: 9AM – 6PM</p>
-                  <p>Sunday: Closed</p>
+                  {shopConfig.hours.map((h) => (
+                    <p key={h.days}>{h.days}: {h.time}</p>
+                  ))}
                 </div>
               </div>
 
@@ -54,11 +57,11 @@ const FooterSection = () => {
                   Contact
                 </h3>
                 <div className="space-y-2 font-body text-sm text-muted-foreground">
-                  <a href="tel:+15551234567" className="block hover:text-foreground transition-colors">
-                    +1 (555) 123-4567
+                  <a href={shopConfig.contact.phoneHref} className="block hover:text-foreground transition-colors">
+                    {shopConfig.contact.phone}
                   </a>
-                  <a href="mailto:hello@thegentry.com" className="block hover:text-foreground transition-colors">
-                    hello@thegentry.com
+                  <a href={`mailto:${shopConfig.contact.email}`} className="block hover:text-foreground transition-colors">
+                    {shopConfig.contact.email}
                   </a>
                 </div>
               </div>
@@ -69,12 +72,16 @@ const FooterSection = () => {
                   Social
                 </h3>
                 <div className="space-y-2">
-                  <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-foreground transition-colors group">
-                    Instagram <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </a>
-                  <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-foreground transition-colors group">
-                    Facebook <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </a>
+                  {shopConfig.social.instagram && (
+                    <a href={shopConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-foreground transition-colors group">
+                      Instagram <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </a>
+                  )}
+                  {shopConfig.social.facebook && (
+                    <a href={shopConfig.social.facebook} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-foreground transition-colors group">
+                      Facebook <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
@@ -83,33 +90,39 @@ const FooterSection = () => {
           {/* Right: Google Maps */}
           <ScrollReveal direction="right" delay={0.3} duration={0.7}>
             <div className="relative w-full aspect-[4/3] lg:aspect-auto lg:min-h-[360px] rounded-lg overflow-hidden border border-border">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3025.274280690498!2d-73.99!3d40.69!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQxJzI0LjAiTiA3M8KwNTknMjQuMCJX!5e0!3m2!1sen!2sus!4v1700000000000"
-              width="100%"
-              height="100%"
-              style={{ border: 0, filter: "grayscale(1) contrast(1.1) brightness(0.9)" }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="The Gentry Barbershop Location"
-              className="absolute inset-0 w-full h-full"
-            />
-            {/* Gold overlay tint */}
-            <div className="absolute inset-0 bg-primary/10 pointer-events-none" />
-          </div>
+              <iframe
+                src={shopConfig.contact.googleMapsEmbedUrl}
+                width="100%"
+                height="100%"
+                style={{ border: 0, filter: "grayscale(1) contrast(1.1) brightness(0.9)" }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title={`${shopConfig.fullName} Location`}
+                className="absolute inset-0 w-full h-full"
+              />
+              {/* Gold overlay tint */}
+              <div className="absolute inset-0 bg-primary/10 pointer-events-none" />
+            </div>
           </ScrollReveal>
         </div>
       </div>
 
       {/* Bottom bar */}
       <div className="border-t border-border">
-        <div className="container mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="container mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <span className="font-heading text-2xl tracking-[0.15em] text-foreground">
-            THE GENTRY
+            {shopConfig.fullName}
           </span>
-          <p className="font-body text-xs text-muted-foreground tracking-widest uppercase">
-            © 2025 All rights reserved
-          </p>
+          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+            <div className="flex gap-4 font-body text-xs text-muted-foreground uppercase tracking-widest">
+              <Link to="/privacy-policy" className="hover:text-foreground transition-colors">Privacy Policy</Link>
+              <Link to="/cookie-policy" className="hover:text-foreground transition-colors">Cookie Policy</Link>
+            </div>
+            <p className="font-body text-xs text-muted-foreground tracking-widest uppercase">
+              © {shopConfig.footer.copyrightYear} All rights reserved
+            </p>
+          </div>
         </div>
       </div>
     </footer>

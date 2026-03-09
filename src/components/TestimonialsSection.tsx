@@ -1,32 +1,8 @@
 import { Star, Quote } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
+import shopConfig from "@/config/shopConfig";
 
-const testimonials = [
-  {
-    name: "Michael T.",
-    text: "Best barbershop in the city, hands down. Marcus always nails my fade and the atmosphere is unmatched.",
-  },
-  {
-    name: "David L.",
-    text: "The Deluxe Experience is worth every penny. I walked out feeling like a new man. Already booked my next visit.",
-  },
-  {
-    name: "Chris P.",
-    text: "Clean shop, skilled barbers, and they actually listen to what you want. Two years and counting.",
-  },
-  {
-    name: "James R.",
-    text: "Walked in on a whim and left with the best haircut of my life. The attention to detail is second to none.",
-  },
-  {
-    name: "Anthony W.",
-    text: "The hot towel shave experience alone is worth the trip. It's a ritual, not just a haircut.",
-  },
-  {
-    name: "Tyler S.",
-    text: "Booked online in under a minute, Marcus was ready on time, and the result was perfect. Five stars every time.",
-  },
-];
+const testimonials = shopConfig.testimonials;
 
 // Duplicate for seamless infinite loop
 const doubled = [...testimonials, ...testimonials];

@@ -1,39 +1,9 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import ScrollReveal from "./ScrollReveal";
-import barber1 from "@/assets/barber-1.jpg";
-import barber2 from "@/assets/barber-2.jpg";
-import barber3 from "@/assets/barber-3.jpg";
+import shopConfig from "@/config/shopConfig";
 
-const team = [
-  {
-    index: "01",
-    name: "Marcus Cole",
-    role: "Fade Specialist",
-    image: barber1,
-    bio: "Precision is everything. Marcus turns a haircut into a statement that lasts all week.",
-    tags: ["Skin Fades", "Lineups", "Tapers", "Faux Hawks"],
-    years: "8",
-  },
-  {
-    index: "02",
-    name: "Jake Rivera",
-    role: "Beard & Shave Expert",
-    image: barber2,
-    bio: "Old-world craft, modern edge. Jake's straight-razor work is simply unmatched.",
-    tags: ["Hot Towel", "Beard Sculpt", "Straight Razor", "Grooming"],
-    years: "6",
-  },
-  {
-    index: "03",
-    name: "Dmitri Volkov",
-    role: "Creative Stylist",
-    image: barber3,
-    bio: "Where barbering meets art. Dmitri pushes every cut to its creative limit.",
-    tags: ["Textured Cuts", "Designs", "Color Work", "Perms"],
-    years: "10",
-  },
-];
+const team = shopConfig.team;
 
 type TeamMember = (typeof team)[number];
 
@@ -55,11 +25,11 @@ const TeamSection = () => {
             </div>
             <div className="pb-1">
               <p className="font-body text-[10px] tracking-[0.3em] text-muted-foreground uppercase mb-2">
-                Brooklyn, NY
+                {shopConfig.city}
               </p>
               <div className="flex items-center gap-3">
                 <div className="h-px w-8 bg-primary/60" />
-                <span className="font-heading text-5xl text-foreground leading-none">3</span>
+                <span className="font-heading text-5xl text-foreground leading-none">{team.length}</span>
                 <div className="font-body text-xs text-muted-foreground leading-tight">
                   <p>Master</p>
                   <p>Barbers</p>

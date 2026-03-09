@@ -2,58 +2,10 @@ import { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import { Clock } from "lucide-react";
+import shopConfig from "@/config/shopConfig";
 // ArrowUpRight used in header CTA only
 
-const services = [
-  {
-    index: "01",
-    name: "Signature Haircut",
-    price: "45",
-    duration: "30 min",
-    description: "Starts with a consultation. Wash, precision cut, and a styled finish built to last all week.",
-    badge: "Most Popular",
-  },
-  {
-    index: "02",
-    name: "Beard Trim & Shape",
-    price: "30",
-    duration: "30 min",
-    description: "Expert sculpting to define your jawline. Clean edges, tidy neckline, shaped entirely to you.",
-    badge: null,
-  },
-  {
-    index: "03",
-    name: "Hot Towel Shave",
-    price: "40",
-    duration: "30 min",
-    description: "Old-world craft. A straight-razor shave with warm lather, a cooling rinse, and a balm finish.",
-    badge: "Classic",
-  },
-  {
-    index: "04",
-    name: "Cut + Beard Combo",
-    price: "65",
-    duration: "60 min",
-    description: "Our signature cut paired with a full beard groom. The complete, unbeatable package.",
-    badge: "Best Value",
-  },
-  {
-    index: "05",
-    name: "The Deluxe",
-    price: "95",
-    duration: "90 min",
-    description: "Cut, straight-razor shave, facial treatment, and scalp massage. Leave transformed.",
-    badge: "Premium",
-  },
-  {
-    index: "06",
-    name: "Kids Cut",
-    price: "25",
-    duration: "30 min",
-    description: "Patient, precise cuts for the next generation of gentlemen. Under 12 only.",
-    badge: null,
-  },
-];
+const services = shopConfig.services;
 
 const ServicesSection = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -79,11 +31,11 @@ const ServicesSection = () => {
           <ScrollReveal direction="up" delay={0.2} duration={0.7}>
             <div className="pb-1">
               <p className="font-body text-[10px] tracking-[0.3em] text-muted-foreground uppercase mb-2">
-                Brooklyn, NY
+                {shopConfig.city}
               </p>
               <div className="flex items-center gap-3">
                 <div className="h-px w-8 bg-primary/60" />
-                <span className="font-heading text-5xl text-foreground leading-none">6</span>
+                <span className="font-heading text-5xl text-foreground leading-none">{services.length}</span>
                 <div className="font-body text-xs text-muted-foreground leading-tight">
                   <p>Signature</p>
                   <p>Services</p>
@@ -188,7 +140,7 @@ const ServicesSection = () => {
                         }}
                         transition={{ duration: 0.25 }}
                       >
-                        ${service.price}
+                        {service.price}
                       </motion.span>
                     </div>
                   </div>

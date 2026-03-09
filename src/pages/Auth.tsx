@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ArrowLeft, ArrowUpRight, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import shopConfig from "@/config/shopConfig";
 
 const loginSchema = z.object({
   email: z.string().email("Enter a valid email"),
@@ -131,7 +132,7 @@ const Auth = () => {
           <div className="mb-10">
             <Link to="/">
               <span className="font-heading text-3xl tracking-[0.2em] text-foreground">
-                GENTRY
+                {shopConfig.name}
               </span>
             </Link>
             <h2 className="font-heading text-5xl md:text-6xl text-foreground mt-6 leading-none">

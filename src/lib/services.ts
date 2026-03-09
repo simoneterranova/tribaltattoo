@@ -1,12 +1,15 @@
+import shopConfig from "@/config/shopConfig";
+
 export const SLOT_DURATION = 30; // minutes
 
-export const services = [
-  { id: "haircut", name: "Signature Haircut", price: 45, duration: `${SLOT_DURATION} min`, durationMinutes: SLOT_DURATION },
-  { id: "beard", name: "Beard Trim & Shape", price: 30, duration: `${SLOT_DURATION} min`, durationMinutes: SLOT_DURATION },
-  { id: "shave", name: "Hot Towel Shave", price: 40, duration: `${SLOT_DURATION} min`, durationMinutes: SLOT_DURATION },
-  { id: "combo", name: "Cut + Beard Combo", price: 65, duration: `${SLOT_DURATION} min`, durationMinutes: SLOT_DURATION },
-  { id: "deluxe", name: "The Deluxe", price: 95, duration: `${SLOT_DURATION} min`, durationMinutes: SLOT_DURATION },
-];
+// Derived from shopConfig — do not edit here, edit shopConfig.ts instead.
+export const services = shopConfig.services.map((s) => ({
+  id: s.id,
+  name: s.name,
+  price: s.price,
+  duration: s.duration,
+  durationMinutes: s.durationMinutes,
+}));
 
 export type ServiceId = (typeof services)[number]["id"];
 

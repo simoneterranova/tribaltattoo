@@ -5,18 +5,27 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 import { BarberNotificationsProvider } from "@/hooks/useBarberNotifications";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import MyBookings from "./pages/MyBookings";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import CookiePolicy from "./pages/CookiePolicy";
 import LoadingScreen from "@/components/LoadingScreen";
+import { CookieBanner } from "@/components/CookieBanner";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
 const App = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  // Skip loading animation if landing directly on legal pages
+  const isLegalPage = window.location.pathname.includes('privacy-policy') ||
+    window.location.pathname.includes('cookie-policy');
+
+  const [isLoading, setIsLoading] = useState(!isLegalPage);
 
   // Prevent scrolling during loading and reset scroll position
   useEffect(() => {
@@ -36,27 +45,32 @@ const App = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <BarberNotificationsProvider>
-          <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          {isLoading && (
-            <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />
-          )}
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/auth" element={<Auth />} />
-              <Route path="/my-bookings" element={<MyBookings />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
-        </TooltipProvider>
-        </BarberNotificationsProvider>
-      </AuthProvider>
+      <LanguageProvider>
+        <AuthProvider>
+          <BarberNotificationsProvider>
+            <TooltipProvider>
+              <Toaster />
+              <Sonner />
+              {isLoading && (
+                <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />
+              )}
+              <BrowserRouter>
+                <ScrollToTop />
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/auth" element={<Auth />} />
+                  <Route path="/my-bookings" element={<MyBookings />} />
+                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                  <Route path="/cookie-policy" element={<CookiePolicy />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+                <CookieBanner />
+              </BrowserRouter>
+            </TooltipProvider>
+          </BarberNotificationsProvider>
+        </AuthProvider>
+      </LanguageProvider>
     </QueryClientProvider>
   );
 };
