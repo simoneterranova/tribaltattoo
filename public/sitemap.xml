@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  ╔════════════════════════════════════════════════════════════════╗
+  ║  STATIC SITEMAP FALLBACK — UPDATE DOMAIN IN shopConfig.ts     ║
+  ║                                                                ║
+  ║  This file serves as a fallback. For production deployments,  ║
+  ║  generate sitemap dynamically using config.meta.siteUrl.       ║
+  ║  See src/lib/generateSitemap.ts for dynamic implementation.    ║
+  ║                                                                ║
+  ║  MANUAL DEPLOYMENT: Replace "https://thegentry.com/" with      ║
+  ║  the value from shopConfig.meta.siteUrl before deploying.      ║
+  ╚════════════════════════════════════════════════════════════════╝
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <!-- Main landing page -->
+  <url>
+    <loc>https://thegentry.com/</loc>
+    <lastmod>2026-03-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Services section -->
+  <url>
+    <loc>https://thegentry.com/#services</loc>
+    <lastmod>2026-03-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Team section -->
+  <url>
+    <loc>https://thegentry.com/#team</loc>
+    <lastmod>2026-03-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Testimonials section -->
+  <url>
+    <loc>https://thegentry.com/#testimonials</loc>
+    <lastmod>2026-03-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Gallery section -->
+  <url>
+    <loc>https://thegentry.com/#gallery</loc>
+    <lastmod>2026-03-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Contact section -->
+  <url>
+    <loc>https://thegentry.com/#contact</loc>
+    <lastmod>2026-03-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://thegentry.com/privacy-policy</loc>
+    <lastmod>2026-03-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Cookie Policy -->
+  <url>
+    <loc>https://thegentry.com/cookie-policy</loc>
+    <lastmod>2026-03-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- 
+    NOTE: When deploying this template for a client:
+    1. Replace all instances of "https://thegentry.com/" with the actual domain
+    2. Update lastmod dates to current deployment date
+    3. Consider adding this domain to shopConfig for dynamic generation
+  -->
+
+</urlset>

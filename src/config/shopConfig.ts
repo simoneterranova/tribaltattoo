@@ -6,8 +6,34 @@
 // ║  2. Replace images in src/assets/ and update the imports     ║
 // ║  3. Update colors & fonts in src/index.css                   ║
 // ║  4. Update font names in tailwind.config.ts                  ║
-// ║  5. Update the <title> and OG meta in index.html             ║
+// ║  5. Update domain in public/sitemap.xml and robots.txt       ║
 // ║  That's it — nothing else should need touching.              ║
+// ║                                                              ║
+// ║  SEO IMPLEMENTATION:                                         ║
+// ║  All SEO metadata is generated dynamically from this config: ║
+// ║  • Dynamic <head> meta tags (title, description, OG, etc.)   ║
+// ║  • JSON-LD schemas (LocalBusiness, Services, Team, etc.)     ║
+// ║  • Semantic HTML with location keywords in headings          ║
+// ║  • Performance hints (preload, preconnect)                   ║
+// ║  • Sitemap and robots.txt (update domains manually)          ║
+// ║                                                              ║
+// ║  SEO-Critical Fields (used by src/lib/seo.ts):               ║
+// ║  • name, fullName, city, established                         ║
+// ║  • meta.siteUrl (canonical URLs, sitemap, OG tags)           ║
+// ║  • meta.locale (og:locale)                                   ║
+// ║  • meta.* (all other meta fields for OG/Twitter cards)       ║
+// ║  • contact.countryCode (schema.org addressCountry)           ║
+// ║  • contact.priceRange (schema.org priceRange)                ║
+// ║  • contact.geo (optional lat/lng for local ranking)          ║
+// ║  • contact.* (address, phone, email, quarter)                ║
+// ║  • services[] (service schemas and descriptions)             ║
+// ║  • team[] (person schemas)                                   ║
+// ║  • hours[] (opening hours specification)                     ║
+// ║  • social.* (sameAs links)                                   ║
+// ║  • hero.backgroundImage (preload hint)                       ║
+// ║  • theme.googleFontsUrl, theme.colors.primary                ║
+// ║  • nav.links (breadcrumb schema)                             ║
+// ║  • gallery[] (structured image alt text)                     ║
 // ╚══════════════════════════════════════════════════════════════╝
 
 // ── IMAGE ASSETS ──────────────────────────────────────────────────────────────
@@ -39,8 +65,15 @@ const shopConfig = {
   established: "2018",
 
   // ── SEO / HTML <head> ───────────────────────────────────────────────────────
-  // Also update the <title> and <meta> tags directly in index.html.
+  // These values are used by SeoHead component to generate all meta tags dynamically.
+  // No need to edit index.html — everything is generated from this config.
   meta: {
+    /** Full domain without trailing slash. Used for canonical URLs, sitemap, and OG tags. */
+    siteUrl: "https://thegentry.com",
+    
+    /** Two-letter language code + country for og:locale (e.g. "en_US", "it_IT"). */
+    locale: "en_US",
+    
     title: "GENTRY — Premium Barbershop",
     description:
       "Premium grooming in Brooklyn, NY. Book your appointment online.",
@@ -234,6 +267,21 @@ const shopConfig = {
   contact: {
     /** Each string becomes a line in the address block. */
     addressLines: ["742 Barber Lane, Suite 3", "Brooklyn, NY 11201"],
+
+    /** Neighborhood/district name for schema.org addressLocality — important for local SEO. */
+    quarter:["Brooklyn Heights"],
+
+    /** ISO 3166-1 alpha-2 country code for schema.org (e.g. "US", "IT", "GB", "CA"). */
+    countryCode: "US",
+
+    /** Schema.org priceRange indicator. Use "$" (budget), "$$" (moderate), "$$$" (expensive), or "$$$$" (luxury). */
+    priceRange: "$$",
+
+    /** Optional: Lat/lng coordinates for schema.org geo property — improves local pack ranking. */
+    geo: {
+      latitude: "",
+      longitude: "",
+    },
 
     /** Displayed phone number string. */
     phone: "+1 (555) 123-4567",

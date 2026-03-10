@@ -47,6 +47,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           className="font-heading text-[clamp(3.5rem,12vw,11rem)] leading-[0.85] tracking-tight text-foreground"
+          aria-label={`${shopConfig.hero.headline.join(" ")} at ${shopConfig.name} Barbershop in ${shopConfig.city}`}
         >
           {shopConfig.hero.headline[0]}
           <br />

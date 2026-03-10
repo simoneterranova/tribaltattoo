@@ -25,6 +25,8 @@ const ServicesSection = () => {
               What We
               <br />
               Offer<span className="text-primary">.</span>
+              {/* Hidden SEO text with location keywords */}
+              <span className="sr-only"> — Barbershop Services in {shopConfig.city}</span>
             </h2>
           </ScrollReveal>
 

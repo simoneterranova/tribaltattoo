@@ -17,7 +17,7 @@ const GalleryImage = ({
     initial: {},
     hover: {
       y: -12,
-      transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] }
+      transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] as const}
     }
   };
 
@@ -56,7 +56,7 @@ const GalleryImage = ({
         src={img.src}
         alt={img.alt}
         className="h-full w-full object-cover grayscale"
-        loading="lazy"
+        loading={index === 0 ? "eager" : "lazy"}
         variants={imageVariants}
         style={{ 
           filter: "grayscale(100%)",
@@ -122,7 +122,7 @@ const MobileGalleryCard = ({
       ref={ref}
       className="flex-shrink-0 w-[80vw] aspect-[3/4] snap-center overflow-hidden relative rounded-sm"
       animate={visible ? { opacity: 1, scale: 1 } : { opacity: 0.3, scale: 0.93 }}
-      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] as const }}
     >
       <img
         src={img.src}

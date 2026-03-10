@@ -38,11 +38,11 @@ const FooterSection = () => {
                 <h3 className="font-body text-xs tracking-[0.3em] text-primary uppercase mb-4">
                   Location
                 </h3>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">
+                <address className="font-body text-sm text-muted-foreground leading-relaxed not-italic">
                   {shopConfig.contact.addressLines.map((line, i) => (
                     <span key={i}>{line}{i < shopConfig.contact.addressLines.length - 1 && <br />}</span>
                   ))}
-                </p>
+                </address>
               </div>
 
               {/* Hours */}

@@ -21,6 +21,8 @@ const TeamSection = () => {
                 Meet The
                 <br />
                 Team<span className="text-primary">.</span>
+                {/* Hidden SEO text with location keywords */}
+                <span className="sr-only"> — Our Expert Barbers in {shopConfig.city}</span>
               </h2>
             </div>
             <div className="pb-1">
