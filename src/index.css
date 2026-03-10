@@ -1,64 +1,14 @@
 /* ═══════════════════════════════════════════════════════════════
-   THEME — to deploy for a new barbershop, update the values below.
-   Colors use HSL format: hue saturation% lightness%
-   Also update font names in tailwind.config.ts → theme.extend.fontFamily
+   THEME — all colors, fonts, and radius are set at runtime from
+   shopConfig.ts (via main.tsx → applyShopTheme).
+   To deploy for a new barbershop, edit ONLY shopConfig.ts.
    ═══════════════════════════════════════════════════════════════ */
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-/* ↑ Replace this URL if swapping fonts. Update --font-heading / --font-body below to match. */
+
+/* Google Fonts are injected dynamically from shopConfig.theme.googleFontsUrl */
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer base {
-  :root {
-    /* ── BACKGROUND & TEXT ─────────────────────────── */
-    --background: 0 0% 4%;        /* near-black */
-    --foreground: 40 10% 92%;     /* warm off-white */
-
-    --card: 0 0% 7%;
-    --card-foreground: 40 10% 92%;
-
-    --popover: 0 0% 7%;
-    --popover-foreground: 40 10% 92%;
-
-    /* ── BRAND ACCENT (primary color — gold by default) ── */
-    --primary: 36 55% 52%;        /* ← CHANGE THIS for a different accent color */
-    --primary-foreground: 0 0% 4%;
-
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 40 10% 75%;
-
-    --muted: 0 0% 12%;
-    --muted-foreground: 0 0% 45%;
-
-    --accent: 36 55% 52%;         /* keep in sync with --primary */
-    --accent-foreground: 0 0% 4%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 0 0% 14%;
-    --input: 0 0% 14%;
-    --ring: 36 55% 52%;           /* keep in sync with --primary */
-
-    /* ── SHAPE ─────────────────────────────────────── */
-    --radius: 0px;                /* 0px = sharp corners; try 4px or 8px for rounded */
-
-    --sidebar-background: 0 0% 4%;
-    --sidebar-foreground: 40 10% 92%;
-    --sidebar-primary: 36 55% 52%;
-    --sidebar-primary-foreground: 0 0% 4%;
-    --sidebar-accent: 0 0% 10%;
-    --sidebar-accent-foreground: 40 10% 92%;
-    --sidebar-border: 0 0% 14%;
-    --sidebar-ring: 36 55% 52%;
-
-    /* ── FONTS ─────────────────────────────────────── */
-    --font-heading: 'Bebas Neue', sans-serif;   /* ← editorial display font */
-    --font-body: 'Space Grotesk', sans-serif;   /* ← body / UI font */
-  }
-}
 
 @layer base {
   * {
@@ -80,8 +30,8 @@
   }
 
   ::selection {
-    background: hsl(36 55% 52% / 0.3);
-    color: hsl(40 10% 92%);
+    background: hsl(var(--primary) / 0.3);
+    color: hsl(var(--foreground));
   }
 }
 

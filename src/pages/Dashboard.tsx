@@ -271,7 +271,7 @@ const Dashboard = () => {
   // Mobile stat carousel: auto-cycle every 2.5s
   const statCards = useMemo(() => [
     { label: t.dashboard.todayBookings, value: String(todayBookingsCount) },
-    { label: t.dashboard.todayRevenue, value: `$${todayRevenue}` },
+    { label: t.dashboard.todayRevenue, value: `€${todayRevenue}` },
     { label: t.dashboard.weekBookings, value: String(weekUpcoming) },
   // eslint-disable-next-line react-hooks/exhaustive-deps
   ], [todayBookingsCount, todayRevenue, weekUpcoming, lang]);
@@ -489,7 +489,7 @@ const Dashboard = () => {
             <div className="w-px self-stretch bg-border/60" />
             <div>
               <p className="font-body text-[10px] tracking-[0.2em] text-muted-foreground uppercase">{t.dashboard.todayRevenue}</p>
-              <p className="font-heading text-3xl sm:text-5xl text-foreground mt-0.5">${todayRevenue}</p>
+              <p className="font-heading text-3xl sm:text-5xl text-foreground mt-0.5">€{todayRevenue}</p>
             </div>
             <div className="w-px self-stretch bg-border/60" />
             <div>
@@ -956,7 +956,7 @@ const Dashboard = () => {
                     </div>
                     <div className="border border-border p-3">
                       <p className="font-body text-[10px] uppercase tracking-widest text-muted-foreground">{t.dashboard.priceLabel}</p>
-                      <p className="font-body text-sm font-medium text-foreground mt-0.5">${detailBooking.service_price}</p>
+                      <p className="font-body text-sm font-medium text-foreground mt-0.5">€{detailBooking.service_price}</p>
                     </div>
                   </div>
 
@@ -1324,7 +1324,7 @@ const Dashboard = () => {
                       <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">{t.dashboard.serviceStepLabel}</p>
                       <p className="font-body text-sm text-foreground">{getServiceById(manualService)?.name}</p>
                       <p className="font-body text-xs text-muted-foreground">
-                        {getServiceById(manualService)?.duration} · ${getServiceById(manualService)?.price}
+                        {getServiceById(manualService)?.duration} · €{getServiceById(manualService)?.price}
                       </p>
                     </div>
                   </div>
@@ -1448,7 +1448,7 @@ const Dashboard = () => {
                             <p className="font-body text-xs text-muted-foreground mt-0.5">{s.duration}</p>
                           </div>
                           <div className="flex items-center gap-3">
-                            <span className="font-heading text-2xl text-foreground">${s.price}</span>
+                            <span className="font-heading text-2xl text-foreground">€{s.price}</span>
                             <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
                           </div>
                         </button>
@@ -1595,7 +1595,7 @@ const Dashboard = () => {
                             </p>
                           </div>
                           <span className="font-heading text-3xl text-foreground">
-                            ${getServiceById(manualService ?? "")?.price}
+                            €{getServiceById(manualService ?? "")?.price}
                           </span>
                         </div>
                       </div>

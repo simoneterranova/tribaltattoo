@@ -94,7 +94,7 @@ const shopConfig = {
       id: "haircut",
       index: "01",
       name: "Signature Haircut",
-      price: "€45",
+      price: 45,
       duration: "30 min",
       durationMinutes: 30,
       description:
@@ -105,7 +105,7 @@ const shopConfig = {
       id: "beard",
       index: "02",
       name: "Beard Trim & Shape",
-      price: "€30",
+      price: 30,
       duration: "30 min",
       durationMinutes: 30,
       description:
@@ -116,7 +116,7 @@ const shopConfig = {
       id: "shave",
       index: "03",
       name: "Hot Towel Shave",
-      price: "€40",
+      price: 40,
       duration: "30 min",
       durationMinutes: 30,
       description:
@@ -127,7 +127,7 @@ const shopConfig = {
       id: "combo",
       index: "04",
       name: "Cut + Beard Combo",
-      price: "€65",
+      price: 65,
       duration: "30 min",
       durationMinutes: 30,
       description:
@@ -138,7 +138,7 @@ const shopConfig = {
       id: "deluxe",
       index: "05",
       name: "The Deluxe",
-      price: "€95",
+      price: 95,
       duration: "30 min",
       durationMinutes: 30,
       description:
@@ -149,7 +149,7 @@ const shopConfig = {
       id: "kids",
       index: "06",
       name: "Kids Cut",
-      price: "€25",
+      price: 25,
       duration: "30 min",
       durationMinutes: 30,
       description:
@@ -281,13 +281,65 @@ const shopConfig = {
     /** Registered postal address. */
     postalAddress: "[Insert Address]",
     /** VAT / tax identification number. */
-    vatNumber: "[Insert VAT Number]",
+    vatNumber: "[Insert P.IVA Number]",
     /** REA Number (Numero REA) - Mandatory if registered with Chamber of Commerce. */
     reaNumber: "RM-123456",
     /** Share Capital (Capitale Sociale) - Mandatory for Corporations (S.r.l., S.p.A.). */
     shareCapital: "€ 10.000,00",
     /** Certified email (PEC) - Strongly recommended/mandatory to display for Italian Companies. */
     pecEmail: "thegentry@pec.it",
+  },
+
+  // ── THEME ────────────────────────────────────────────────────────────────────
+  // All colors are HSL without the hsl() wrapper: "hue saturation% lightness%"
+  // Change any value here — index.css and tailwind.config.ts never need touching.
+  theme: {
+    /**
+     * Google Fonts stylesheet URL.
+     * Build it at: fonts.google.com → select families → copy the @import URL.
+     * Replace both font families here when switching typefaces.
+     */
+    googleFontsUrl:
+      "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&display=swap",
+
+    fonts: {
+      /** Must match the family name in googleFontsUrl */
+      heading: "Bebas Neue",
+      /** Must match the family name in googleFontsUrl */
+      body: "Space Grotesk",
+    },
+
+    /** 0px = sharp corners. Try "4px" or "8px" for a rounder look. */
+    radius: "0px",
+
+    colors: {
+      background:             "0 0% 4%",
+      foreground:             "40 10% 92%",
+      card:                   "0 0% 7%",
+      cardForeground:         "40 10% 92%",
+      popover:                "0 0% 7%",
+      popoverForeground:      "40 10% 92%",
+      /** ← Primary brand accent (gold by default). Change for a different accent. */
+      primary:                "36 55% 52%",
+      primaryForeground:      "0 0% 4%",
+      secondary:              "0 0% 10%",
+      secondaryForeground:    "40 10% 75%",
+      muted:                  "0 0% 12%",
+      mutedForeground:        "0 0% 45%",
+      accent:                 "36 55% 52%",   // keep in sync with primary
+      accentForeground:       "0 0% 4%",
+      border:                 "0 0% 14%",
+      input:                  "0 0% 14%",
+      ring:                   "36 55% 52%",   // keep in sync with primary
+      sidebarBackground:      "0 0% 4%",
+      sidebarForeground:      "40 10% 92%",
+      sidebarPrimary:         "36 55% 52%",
+      sidebarPrimaryForeground: "0 0% 4%",
+      sidebarAccent:          "0 0% 10%",
+      sidebarAccentForeground:"40 10% 92%",
+      sidebarBorder:          "0 0% 14%",
+      sidebarRing:            "36 55% 52%",
+    },
   },
 
   // ── INTERNAL / STORAGE ──────────────────────────────────────────────────────

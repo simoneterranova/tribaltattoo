@@ -462,7 +462,7 @@ function BookingCard({
               {service?.duration ?? "—"}
             </span>
             <span className="font-body text-xs text-muted-foreground">
-              ${booking.service_price}
+              €{booking.service_price}
             </span>
           </div>
         </div>

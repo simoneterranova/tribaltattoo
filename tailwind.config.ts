@@ -19,8 +19,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ["Bebas Neue", "sans-serif"],
-        body: ["Space Grotesk", "sans-serif"],
+        // CSS variables are set at runtime from shopConfig.theme.fonts — never edit these.
+        heading: ["var(--font-heading)"],
+        body: ["var(--font-body)"],
       },
       colors: {
         border: "hsl(var(--border))",

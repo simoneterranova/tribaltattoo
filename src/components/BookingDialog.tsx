@@ -231,7 +231,7 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
                   <div>
                     <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">{t.bookingDialog.sidebarService}</p>
                     <p className="font-body text-sm text-foreground">{service.name}</p>
-                    <p className="font-body text-xs text-muted-foreground">{service.duration} · ${service.price}</p>
+                    <p className="font-body text-xs text-muted-foreground">{service.duration} · €{service.price}</p>
                   </div>
                 </div>
               )}
@@ -500,7 +500,7 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
                           <p className="font-body text-xs text-muted-foreground mt-0.5">{s.duration}</p>
                         </div>
                         <div className="flex items-center gap-3">
-                          <span className="font-heading text-2xl text-foreground">${s.price}</span>
+                          <span className="font-heading text-2xl text-foreground">€{s.price}</span>
                           <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
                         </div>
                       </button>
@@ -615,7 +615,7 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
                           <p className="font-body text-sm font-medium text-foreground">{service?.name}</p>
                           <p className="font-body text-xs text-muted-foreground mt-0.5">{service?.duration}</p>
                         </div>
-                        <span className="font-heading text-3xl text-foreground">${service?.price}</span>
+                        <span className="font-heading text-3xl text-foreground">€{service?.price}</span>
                       </div>
                     </div>
                     <div className="border border-border p-4">
