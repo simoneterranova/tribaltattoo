@@ -72,7 +72,7 @@ const HeroSection = () => {
           ) : (
             <BookingDialog>
               <Button variant="hero" size="lg">
-                Book Your Seat <ArrowUpRight className="ml-2 h-5 w-5" />
+                {shopConfig.hero.bookingCta} <ArrowUpRight className="ml-2 h-5 w-5" />
               </Button>
             </BookingDialog>
           )}

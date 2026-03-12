@@ -13,6 +13,7 @@ const navLinks = shopConfig.nav.links;
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [bookingOpen, setBookingOpen] = useState(false);
   const { user, profile, isBarber, signOut } = useAuth();
 
   // Extract section IDs from nav links
@@ -33,6 +34,8 @@ const Navbar = () => {
 
   return (
     <>
+    {/* Controlled booking dialog — lives outside AnimatePresence so it is never unmounted by the mobile overlay */}
+    {!isBarber && <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />}
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -127,8 +130,8 @@ const Navbar = () => {
             )}
             {!isBarber && (
               <BookingDialog>
-                <Button variant="hero" size="default" className="text-xs tracking-[0.15em]">
-                  Book Now <ArrowUpRight className="ml-1.5 h-3.5 w-3.5" />
+                <Button variant="hero" size="default" className="text-xs tracking-[0.15em] uppercase">
+                  {shopConfig.nav.bookingCta} <ArrowUpRight className="ml-1.5 h-3.5 w-3.5" />
                 </Button>
               </BookingDialog>
             )}
@@ -239,11 +242,14 @@ const Navbar = () => {
                 </Link>
               )}
               {!isBarber && (
-                <BookingDialog>
-                  <Button variant="hero" size="lg" className="w-full rounded-none text-xs tracking-[0.15em]">
-                    Book Now <ArrowUpRight className="ml-1.5 h-4 w-4" />
-                  </Button>
-                </BookingDialog>
+                <Button
+                  variant="hero"
+                  size="lg"
+                  className="w-full rounded-none text-xs tracking-[0.15em]"
+                  onClick={() => { setMobileOpen(false); setBookingOpen(true); }}
+                >
+                  {shopConfig.nav.bookingCta} <ArrowUpRight className="ml-1.5 h-4 w-4" />
+                </Button>
               )}
             </motion.div>
           </motion.div>

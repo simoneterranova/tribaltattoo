@@ -17,13 +17,13 @@ const FooterSection = () => {
         {/* Section label */}
         <ScrollReveal direction="up" duration={0.7}>
           <span className="font-body text-xs tracking-[0.4em] text-primary uppercase">
-            Contact
+            {shopConfig.sections.contact.label}
           </span>
 
           {/* Big CTA text */}
           <div className="mt-6 mb-16 md:mb-24">
             <h2 className="font-heading text-5xl md:text-[8rem] leading-none text-foreground">
-              Let's<br />Work<span className="text-primary">.</span>
+              {shopConfig.sections.contact.heading[0]}<br />{shopConfig.sections.contact.heading[1]}<span className="text-primary">.</span>
             </h2>
           </div>
         </ScrollReveal>
@@ -36,7 +36,7 @@ const FooterSection = () => {
               {/* Location */}
               <div>
                 <h3 className="font-body text-xs tracking-[0.3em] text-primary uppercase mb-4">
-                  Location
+                  {shopConfig.sections.contact.locationLabel}
                 </h3>
                 <address className="font-body text-sm text-muted-foreground leading-relaxed not-italic">
                   {shopConfig.contact.addressLines.map((line, i) => (
@@ -48,7 +48,7 @@ const FooterSection = () => {
               {/* Hours */}
               <div>
                 <h3 className="font-body text-xs tracking-[0.3em] text-primary uppercase mb-4">
-                  Hours
+                  {shopConfig.sections.contact.hoursLabel}
                 </h3>
                 <div className="space-y-1 font-body text-sm text-muted-foreground">
                   {shopConfig.hours.map((h) => (
@@ -60,7 +60,7 @@ const FooterSection = () => {
               {/* Contact */}
               <div>
                 <h3 className="font-body text-xs tracking-[0.3em] text-primary uppercase mb-4">
-                  Contact
+                  {shopConfig.sections.contact.contactLabel}
                 </h3>
                 <div className="space-y-2 font-body text-sm text-muted-foreground">
                   <a href={shopConfig.contact.phoneHref} className="block hover:text-foreground transition-colors">
@@ -75,7 +75,7 @@ const FooterSection = () => {
               {/* Social */}
               <div>
                 <h3 className="font-body text-xs tracking-[0.3em] text-primary uppercase mb-4">
-                  Social
+                  {shopConfig.sections.contact.socialLabel}
                 </h3>
                 <div className="space-y-2">
                   {shopConfig.social.instagram && (
@@ -124,14 +124,14 @@ const FooterSection = () => {
               {shopConfig.fullName}
             </span>
             <div className="flex flex-wrap justify-center gap-4 md:gap-6 font-body text-xs text-muted-foreground uppercase tracking-widest">
-              <Link to="/privacy-policy" className="hover:text-foreground transition-colors">Privacy Policy</Link>
-              <Link to="/cookie-policy" className="hover:text-foreground transition-colors">Cookie Policy</Link>
+              <Link to="/privacy-policy" className="hover:text-foreground transition-colors">{shopConfig.footer.privacyPolicyLabel}</Link>
+              <Link to="/cookie-policy" className="hover:text-foreground transition-colors">{shopConfig.footer.cookiePolicyLabel}</Link>
               {/* Mandatory Garante requirement: User must be able to reopen banner */}
               <button
                 onClick={openCookiePreferences}
                 className="hover:text-foreground transition-colors uppercase cursor-pointer"
               >
-                Cookie Settings
+                {shopConfig.footer.cookieSettingsLabel}
               </button>
             </div>
           </div>
@@ -151,7 +151,7 @@ const FooterSection = () => {
                 {shopConfig.legal.pecEmail && <p>PEC: {shopConfig.legal.pecEmail}</p>}
               </div>
               <p className="mt-4 lg:mt-0 text-center lg:text-right">
-                © {shopConfig.footer?.copyrightYear || new Date().getFullYear()} All rights reserved
+                © {shopConfig.footer?.copyrightYear || new Date().getFullYear()} {shopConfig.footer.allRightsReserved}
               </p>
             </div>
           )}

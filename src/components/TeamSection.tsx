@@ -15,12 +15,12 @@ const TeamSection = () => {
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
             <div>
               <span className="font-body text-xs tracking-[0.4em] text-primary uppercase">
-                The Crew
+                {shopConfig.sections.team.label}
               </span>
               <h2 className="font-heading text-6xl md:text-8xl text-foreground mt-2 leading-none">
-                Meet The
+                {shopConfig.sections.team.heading[0]}
                 <br />
-                Team<span className="text-primary">.</span>
+                {shopConfig.sections.team.heading[1]}<span className="text-primary">.</span>
                 {/* Hidden SEO text with location keywords */}
                 <span className="sr-only"> — Our Expert Barbers in {shopConfig.city}</span>
               </h2>
@@ -33,8 +33,8 @@ const TeamSection = () => {
                 <div className="h-px w-8 bg-primary/60" />
                 <span className="font-heading text-5xl text-foreground leading-none">{team.length}</span>
                 <div className="font-body text-xs text-muted-foreground leading-tight">
-                  <p>Master</p>
-                  <p>Barbers</p>
+                  <p>{shopConfig.sections.team.counterLabel[0]}</p>
+                  <p>{shopConfig.sections.team.counterLabel[1]}</p>
                 </div>
               </div>
             </div>

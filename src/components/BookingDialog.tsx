@@ -38,7 +38,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
 interface BookingDialogProps {
-  children: ReactNode;
+  /** Trigger element. Omit when using controlled mode (open/onOpenChange). */
+  children?: ReactNode;
+  /** Controlled open state. When provided, the dialog becomes fully controlled. */
+  open?: boolean;
+  /** Controlled onOpenChange. Required when `open` is provided. */
+  onOpenChange?: (open: boolean) => void;
 }
 
 type Step = "auth" | "service" | "datetime" | "confirm" | "success";
@@ -61,7 +66,7 @@ const registerSchema = z.object({
 type LoginValues = z.infer<typeof loginSchema>;
 type RegisterValues = z.infer<typeof registerSchema>;
 
-const BookingDialog = ({ children }: BookingDialogProps) => {
+const BookingDialog = ({ children, open: controlledOpen, onOpenChange: controlledOnOpenChange }: BookingDialogProps) => {
   const { user, signIn, signUp } = useAuth();
   const { t, dateLocale } = useLanguage();
   const navigate = useNavigate();
@@ -72,7 +77,16 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [notes, setNotes] = useState("");
-  const [open, setOpen] = useState(false);
+  const [internalOpen, setInternalOpen] = useState(false);
+  const isControlled = controlledOpen !== undefined;
+  const open = isControlled ? controlledOpen! : internalOpen;
+  const setOpen = (val: boolean) => {
+    if (isControlled) {
+      controlledOnOpenChange?.(val);
+    } else {
+      setInternalOpen(val);
+    }
+  };
 
   // Auth state inside dialog
   const [authMode, setAuthMode] = useState<"login" | "register">("login");
@@ -216,7 +230,7 @@ const BookingDialog = ({ children }: BookingDialogProps) => {
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogTrigger asChild>{children}</DialogTrigger>
+      {children && <DialogTrigger asChild>{children}</DialogTrigger>}
       <DialogContent className="border-border bg-card p-0 overflow-hidden sm:max-w-2xl lg:max-w-3xl rounded-none max-h-[90dvh]">
         <div className="flex flex-col lg:flex-row min-h-[520px] max-h-[90dvh]">
           {/* Sidebar summary */}

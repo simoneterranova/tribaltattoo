@@ -74,7 +74,12 @@ export function SeoHead() {
       <meta name="description" content={description} />
       <meta name="robots" content="index, follow" />
       <link rel="canonical" href={canonicalUrl} />
-
+      
+      {/* ── LANGUAGE & HREFLANG ────────────────────────────────────────────── */}
+      <html lang="it" />
+      <link rel="alternate" hrefLang="it" href={canonicalUrl} />
+      <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />
+      
       {/* ── OPEN GRAPH / FACEBOOK ──────────────────────────────────────────── */}
       <meta property="og:type" content="business.business" />
       <meta property="og:title" content={shopConfig.meta.ogTitle || title} />

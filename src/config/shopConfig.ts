@@ -59,7 +59,7 @@ const shopConfig = {
   fullName: "THE GENTRY",
 
   /** City / location shown in hero tagline and section subtitles. */
-  city: "Brooklyn, NY",
+  city: "Torino, TO",
 
   /** Year the shop was founded — shown in the hero tagline. */
   established: "2018",
@@ -69,16 +69,16 @@ const shopConfig = {
   // No need to edit index.html — everything is generated from this config.
   meta: {
     /** Full domain without trailing slash. Used for canonical URLs, sitemap, and OG tags. */
-    siteUrl: "https://thegentry.com",
+    siteUrl: "https://www.iltuodominio.it",
     
     /** Two-letter language code + country for og:locale (e.g. "en_US", "it_IT"). */
-    locale: "en_US",
+    locale: "it_IT",
     
-    title: "GENTRY — Premium Barbershop",
+    title: "Barbiere Torino | Il Tuo Nome | Taglio Capelli Uomo e Barba",
     description:
-      "Premium grooming in Brooklyn, NY. Book your appointment online.",
-    ogTitle: "GENTRY Barbershop",
-    ogDescription: "Premium grooming for the modern man.",
+      "Barbiere a Torino dal 2018. Taglio capelli uomo, rifinitura barba, rasatura classica con rasoio. Prenota online il tuo appuntamento.",
+    ogTitle: "The Gentry – Barbiere a Torino",
+    ogDescription: "Il tuo barbiere di fiducia a Torino. Taglio, barba e rasatura per l'uomo moderno. Prenota ora.",
     /** Absolute path from the public/ folder or a full URL. */
     ogImage: "/og-image.jpg",
   },
@@ -86,12 +86,14 @@ const shopConfig = {
   // ── NAVIGATION LABELS ───────────────────────────────────────────────────────
   // Change label text here; section IDs (href) must match the id="" in each section.
   nav: {
+    /** Text on the booking CTA button in the navbar (desktop & mobile). */
+    bookingCta: "Prenota Ora",
     links: [
-      { label: "Services", href: "#services" },
-      { label: "The Crew", href: "#team" },
-      { label: "Reviews", href: "#testimonials" },
-      { label: "Our Work", href: "#gallery" },
-      { label: "Contact", href: "#contact" },
+      { label: "Servizi", href: "#services" },
+      { label: "Il Team", href: "#team" },
+      { label: "Recensioni", href: "#testimonials" },
+      { label: "Lavori", href: "#gallery" },
+      { label: "Contatti", href: "#contact" },
     ],
   },
 
@@ -101,20 +103,62 @@ const shopConfig = {
     backgroundImage: heroBg,
 
     /** Two-line editorial headline rendered in giant type. */
-    headline: ["Precision", "Cuts"],
+    headline: ["Barbiere", "Torino"],
 
     /** Short descriptor line under the headline. */
     subheadline:
-      "Where craftsmanship meets confidence. Premium grooming for the modern man who demands nothing less.",
+      "Dove la cura artigianale incontra lo stile moderno. Il barbiere di Torino per l'uomo che non scende a compromessi.",
+
+    /** Text on the booking CTA button inside the hero section. */
+    bookingCta: "Prenota il tuo posto",
 
     /** Items that scroll in the marquee strip at the bottom of the hero. */
     marqueeItems: [
-      "Haircuts",
-      "Fades",
-      "Beard Grooming",
-      "Hot Towel Shave",
+      "Taglio Capelli",
+      "Sfumatura",
+      "Rifinitura Barba",
+      "Rasatura Classica",
       "Styling",
     ],
+  },
+
+  // ── SECTION HEADINGS ────────────────────────────────────────────────────────
+  // Labels (small uppercase eyebrow text) and headings for each page section.
+  // heading arrays: first string is line 1, second is line 2.
+  sections: {
+    services: {
+      /** Eyebrow label above the heading. */
+      label: "Servizi",
+      /** [ line 1, line 2 ] of the giant heading. */
+      heading: ["What We", "Offer"],
+      /** Two-line counter annotation shown to the right of the heading. */
+      counterLabel: ["Signature", "Services"],
+      /** Small disclaimer line shown below the services list. */
+      footnote: "All services include consultation · Prices may vary based on length & complexity",
+    },
+    team: {
+      label: "Il Team",
+      heading: ["Meet The", "Team"],
+      counterLabel: ["Master", "Barbers"],
+    },
+    testimonials: {
+      label: "Recensioni",
+      heading: "Words",
+    },
+    gallery: {
+      label: "Lavori",
+      heading: "Gallery",
+    },
+    contact: {
+      label: "Contatti",
+      /** [ line 1, line 2 ] of the giant CTA heading in the footer. */
+      heading: ["Let's", "Work"],
+      /** Sub-column headers inside the contact info grid. */
+      locationLabel: "Location",
+      hoursLabel: "Orari di apertura",
+      contactLabel: "Contatti",
+      socialLabel: "Social Networks",
+    },
   },
 
   // ── SERVICES ────────────────────────────────────────────────────────────────
@@ -122,172 +166,172 @@ const shopConfig = {
   // section UI AND in the booking dialog / dashboard.
   // `id` values must be unique slugs; they are stored in the database.
   // `durationMinutes` must be a multiple of SLOT_DURATION (30 min default).
-  services: [
-    {
-      id: "haircut",
-      index: "01",
-      name: "Signature Haircut",
-      price: 45,
-      duration: "30 min",
-      durationMinutes: 30,
-      description:
-        "Starts with a consultation. Wash, precision cut, and a styled finish built to last all week.",
-      badge: "Most Popular" as string | null,
-    },
-    {
-      id: "beard",
-      index: "02",
-      name: "Beard Trim & Shape",
-      price: 30,
-      duration: "30 min",
-      durationMinutes: 30,
-      description:
-        "Expert sculpting to define your jawline. Clean edges, tidy neckline, shaped entirely to you.",
-      badge: null as string | null,
-    },
-    {
-      id: "shave",
-      index: "03",
-      name: "Hot Towel Shave",
-      price: 40,
-      duration: "30 min",
-      durationMinutes: 30,
-      description:
-        "Old-world craft. A straight-razor shave with warm lather, a cooling rinse, and a balm finish.",
-      badge: "Classic" as string | null,
-    },
-    {
-      id: "combo",
-      index: "04",
-      name: "Cut + Beard Combo",
-      price: 65,
-      duration: "30 min",
-      durationMinutes: 30,
-      description:
-        "Our signature cut paired with a full beard groom. The complete, unbeatable package.",
-      badge: "Best Value" as string | null,
-    },
-    {
-      id: "deluxe",
-      index: "05",
-      name: "The Deluxe",
-      price: 95,
-      duration: "30 min",
-      durationMinutes: 30,
-      description:
-        "Cut, straight-razor shave, facial treatment, and scalp massage. Leave transformed.",
-      badge: "Premium" as string | null,
-    },
-    {
-      id: "kids",
-      index: "06",
-      name: "Kids Cut",
-      price: 25,
-      duration: "30 min",
-      durationMinutes: 30,
-      description:
-        "Patient, precise cuts for the next generation of gentlemen. Under 12 only.",
-      badge: null as string | null,
-    },
-  ],
+  services:[
+      {
+        id: "haircut",
+        index: "01",
+        name: "Taglio Sartoriale",
+        price: 45,
+        duration: "30 min",
+        durationMinutes: 30,
+        description:
+          "Inizia con una consulenza. Lavaggio, taglio di precisione e styling studiato per durare tutta la settimana.",
+        badge: "Più richiesto" as string | null,
+      },
+      {
+        id: "beard",
+        index: "02",
+        name: "Regolazione & Sagomatura Barba",
+        price: 30,
+        duration: "30 min",
+        durationMinutes: 30,
+        description:
+          "Scolpiamo la tua barba per definire la mascella. Linee pulite, sfumature perfette, modellate su di te.",
+        badge: null as string | null,
+      },
+      {
+        id: "shave",
+        index: "03",
+        name: "Rasatura Panno Caldo",
+        price: 40,
+        duration: "30 min",
+        durationMinutes: 30,
+        description:
+          "La vera arte della rasatura. Rasoio a mano libera, panno caldo, schiuma montata a pennello e balsamo finale.",
+        badge: "Classico" as string | null,
+      },
+      {
+        id: "combo",
+        index: "04",
+        name: "Combo Taglio + Barba",
+        price: 65,
+        duration: "30 min",
+        durationMinutes: 30,
+        description:
+          "Il nostro taglio sartoriale abbinato alla cura completa della barba. Il pacchetto imbattibile.",
+        badge: "Miglior Valore" as string | null,
+      },
+      {
+        id: "deluxe",
+        index: "05",
+        name: "Il Deluxe",
+        price: 95,
+        duration: "30 min",
+        durationMinutes: 30,
+        description:
+          "Taglio, rasatura tradizionale, trattamento viso e massaggio alla cute. Ne uscirai trasformato.",
+        badge: "Premium" as string | null,
+      },
+      {
+        id: "kids",
+        index: "06",
+        name: "Taglio Bambino",
+        price: 25,
+        duration: "30 min",
+        durationMinutes: 30,
+        description:
+          "Pazienza e precisione per la prossima generazione di gentiluomini. Solo under 12.",
+        badge: null as string | null,
+      },
+    ],
 
   // ── TEAM ────────────────────────────────────────────────────────────────────
   // Add or remove team members freely — the TeamSection renders any length array.
-  team: [
-    {
-      index: "01",
-      name: "Marcus Cole",
-      role: "Fade Specialist",
-      image: barber1,
-      bio: "Precision is everything. Marcus turns a haircut into a statement that lasts all week.",
-      tags: ["Skin Fades", "Lineups", "Tapers", "Faux Hawks"],
-      years: "8",
-    },
-    {
-      index: "02",
-      name: "Jake Rivera",
-      role: "Beard & Shave Expert",
-      image: barber2,
-      bio: "Old-world craft, modern edge. Jake's straight-razor work is simply unmatched.",
-      tags: ["Hot Towel", "Beard Sculpt", "Straight Razor", "Grooming"],
-      years: "6",
-    },
-    {
-      index: "03",
-      name: "Dmitri Volkov",
-      role: "Creative Stylist",
-      image: barber3,
-      bio: "Where barbering meets art. Dmitri pushes every cut to its creative limit.",
-      tags: ["Textured Cuts", "Designs", "Color Work", "Perms"],
-      years: "10",
-    },
-  ],
+  team:[
+      {
+        index: "01",
+        name: "Marco Cole",
+        role: "Specialista Sfumature",
+        image: barber1,
+        bio: "La precisione è tutto. Marco trasforma un semplice taglio in uno stile inconfondibile.",
+        tags: ["Skin Fades", "Lineamenti", "Tapers", "Forbici"],
+        years: "8",
+      },
+      {
+        index: "02",
+        name: "Giacomo Rivera",
+        role: "Esperto Barba & Rasatura",
+        image: barber2,
+        bio: "Maestria artigianale e tocco moderno. Il suo lavoro con il rasoio a mano libera non ha eguali.",
+        tags:["Panno Caldo", "Sagomatura Barba", "Mano Libera", "Grooming"],
+        years: "6",
+      },
+      {
+        index: "03",
+        name: "Dmitri Volkov",
+        role: "Creative Stylist",
+        image: barber3,
+        bio: "Dove la barberia incontra l'arte. Dmitri spinge ogni taglio al suo limite creativo.",
+        tags:["Tagli Testurizzati", "Design", "Colore", "Styling Moderno"],
+        years: "10",
+      },
+    ],
 
   // ── TESTIMONIALS ────────────────────────────────────────────────────────────
-  testimonials: [
-    {
-      name: "Michael T.",
-      text: "Best barbershop in the city, hands down. Marcus always nails my fade and the atmosphere is unmatched.",
-    },
-    {
-      name: "David L.",
-      text: "The Deluxe Experience is worth every penny. I walked out feeling like a new man. Already booked my next visit.",
-    },
-    {
-      name: "Chris P.",
-      text: "Clean shop, skilled barbers, and they actually listen to what you want. Two years and counting.",
-    },
-    {
-      name: "James R.",
-      text: "Walked in on a whim and left with the best haircut of my life. The attention to detail is second to none.",
-    },
-    {
-      name: "Anthony W.",
-      text: "The hot towel shave experience alone is worth the trip. It's a ritual, not just a haircut.",
-    },
-    {
-      name: "Tyler S.",
-      text: "Booked online in under a minute, Marcus was ready on time, and the result was perfect. Five stars every time.",
-    },
-  ],
+  testimonials:[
+      {
+        name: "Michele T.",
+        text: "Il miglior barbiere a Torino, senza dubbio. Marco azzecca sempre la sfumatura e l'atmosfera è fantastica.",
+      },
+      {
+        name: "Davide L.",
+        text: "L'esperienza Deluxe vale ogni centesimo. Sono uscito sentendomi un uomo nuovo. Ho già prenotato la prossima visita.",
+      },
+      {
+        name: "Cristian P.",
+        text: "Salone pulitissimo, barbieri esperti che ascoltano davvero quello che vuoi. Vengo qui da due anni.",
+      },
+      {
+        name: "Lorenzo R.",
+        text: "Sono entrato per caso e sono uscito con il miglior taglio della mia vita. L'attenzione ai dettagli è maniacale.",
+      },
+      {
+        name: "Antonio W.",
+        text: "Solo l'esperienza della rasatura con panno caldo vale il viaggio. È un rito, non solo un taglio.",
+      },
+      {
+        name: "Matteo S.",
+        text: "Ho prenotato online in meno di un minuto, zero attesa, e il risultato è stato perfetto. 5 stelle.",
+      },
+    ],
 
   // ── GALLERY ─────────────────────────────────────────────────────────────────
   // Replace gallery-N.jpg files in src/assets/ — or add more imports above
   // and extend this array. Labels appear as captions on hover.
-  gallery: [
-    { src: gallery1, alt: "Barbershop interior", label: "Interior" },
-    { src: gallery2, alt: "Fresh fade haircut", label: "Fades" },
-    { src: gallery3, alt: "Barber tools", label: "Tools" },
-    { src: gallery4, alt: "Hot towel shave", label: "Shaves" },
-    { src: gallery5, alt: "Beard grooming", label: "Grooming" },
-    { src: gallery6, alt: "Shop exterior", label: "Exterior" },
-  ],
+  gallery:[
+      { src: gallery1, alt: "Interno del salone da barbiere", label: "Salone" },
+      { src: gallery2, alt: "Taglio di capelli sfumato", label: "Sfumature" },
+      { src: gallery3, alt: "Attrezzi da barbiere", label: "Strumenti" },
+      { src: gallery4, alt: "Rasatura con panno caldo", label: "Rasatura" },
+      { src: gallery5, alt: "Cura e regolazione barba", label: "Barba" },
+      { src: gallery6, alt: "Esterno del salone a Torino", label: "Esterno" },
+    ],
 
   // ── CONTACT & LOCATION ──────────────────────────────────────────────────────
   contact: {
     /** Each string becomes a line in the address block. */
-    addressLines: ["742 Barber Lane, Suite 3", "Brooklyn, NY 11201"],
+    addressLines: ["Via Roma 10", "10121 Torino TO"],
 
     /** Neighborhood/district name for schema.org addressLocality — important for local SEO. */
-    quarter:["Brooklyn Heights"],
+    quarter:["Centro"],
 
     /** ISO 3166-1 alpha-2 country code for schema.org (e.g. "US", "IT", "GB", "CA"). */
-    countryCode: "US",
+    countryCode: "IT",
 
     /** Schema.org priceRange indicator. Use "$" (budget), "$$" (moderate), "$$$" (expensive), or "$$$$" (luxury). */
     priceRange: "$$",
 
     /** Optional: Lat/lng coordinates for schema.org geo property — improves local pack ranking. */
     geo: {
-      latitude: "",
-      longitude: "",
+      latitude: "45.0703",
+      longitude: "7.6869",
     },
 
     /** Displayed phone number string. */
-    phone: "+1 (555) 123-4567",
+    phone: "+39 011 123 4567",
 
     /** href value for the phone anchor (e.g. "tel:+15551234567"). */
-    phoneHref: "tel:+15551234567",
+    phoneHref: "tel:+390111234567",
 
     email: "hello@thegentry.com",
 
@@ -301,9 +345,9 @@ const shopConfig = {
 
   // ── OPENING HOURS ───────────────────────────────────────────────────────────
   hours: [
-    { days: "Mon – Fri", time: "9AM – 8PM" },
-    { days: "Saturday", time: "9AM – 6PM" },
-    { days: "Sunday", time: "Closed" },
+    { days: "Lun – Ven", time: "9:00 – 20:00" },
+    { days: "Sabato", time: "9:00 – 18:00" },
+    { days: "Domenica", time: "Chiuso" },
   ],
 
   // ── SOCIAL LINKS ────────────────────────────────────────────────────────────
@@ -318,6 +362,12 @@ const shopConfig = {
   // ── FOOTER ──────────────────────────────────────────────────────────────────
   footer: {
     copyrightYear: "2025",
+    /** Suffix shown after © year in the bottom bar. */
+    allRightsReserved: "All rights reserved",
+    /** Labels for the policy links in the bottom bar. */
+    privacyPolicyLabel: "Privacy Policy",
+    cookiePolicyLabel: "Cookie Policy",
+    cookieSettingsLabel: "Cookie Settings",
   },
 
   // ── LEGAL (Privacy Policy & Cookie Policy) ──────────────────────────────────

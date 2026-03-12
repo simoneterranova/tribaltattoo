@@ -28,10 +28,10 @@ const TestimonialsSection = () => {
         <ScrollReveal direction="up" duration={0.7}>
           <div className="mb-16">
             <span className="font-body text-xs tracking-[0.4em] text-primary uppercase">
-              Reviews
+              {shopConfig.sections.testimonials.label}
             </span>
             <h2 className="font-heading text-6xl md:text-8xl text-foreground mt-2 leading-none">
-              Words<span className="text-primary">.</span>
+              {shopConfig.sections.testimonials.heading}<span className="text-primary">.</span>
             </h2>
           </div>
         </ScrollReveal>

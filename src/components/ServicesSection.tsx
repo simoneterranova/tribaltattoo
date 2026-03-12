@@ -19,12 +19,12 @@ const ServicesSection = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 md:mb-20">
           <ScrollReveal direction="up" duration={0.7}>
             <span className="font-body text-xs tracking-[0.4em] text-primary uppercase">
-              Services
+              {shopConfig.sections.services.label}
             </span>
             <h2 className="font-heading text-6xl md:text-8xl text-foreground mt-2 leading-none">
-              What We
+              {shopConfig.sections.services.heading[0]}
               <br />
-              Offer<span className="text-primary">.</span>
+              {shopConfig.sections.services.heading[1]}<span className="text-primary">.</span>
               {/* Hidden SEO text with location keywords */}
               <span className="sr-only"> — Barbershop Services in {shopConfig.city}</span>
             </h2>
@@ -39,8 +39,8 @@ const ServicesSection = () => {
                 <div className="h-px w-8 bg-primary/60" />
                 <span className="font-heading text-5xl text-foreground leading-none">{services.length}</span>
                 <div className="font-body text-xs text-muted-foreground leading-tight">
-                  <p>Signature</p>
-                  <p>Services</p>
+                  <p>{shopConfig.sections.services.counterLabel[0]}</p>
+                  <p>{shopConfig.sections.services.counterLabel[1]}</p>
                 </div>
               </div>
             </div>
@@ -177,7 +177,7 @@ const ServicesSection = () => {
           transition={{ duration: 0.6, delay: 0.7 }}
           className="font-body text-[11px] tracking-[0.15em] text-muted-foreground/60 uppercase mt-6 text-right"
         >
-          All services include consultation · Prices may vary based on length &amp; complexity
+          {shopConfig.sections.services.footnote}
         </motion.p>
       </div>
     </section>
