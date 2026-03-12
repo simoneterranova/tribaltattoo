@@ -236,7 +236,7 @@ const BookingDialog = ({ children, open: controlledOpen, onOpenChange: controlle
           {/* Sidebar summary */}
           <div className="bg-muted/50 border-b lg:border-b-0 lg:border-r border-border p-6 lg:w-56 shrink-0">
             <h3 className="font-heading text-3xl text-foreground leading-none">
-              {t.bookingDialog.sidebarTitle.split('\n')[0]}<br />{t.bookingDialog.sidebarTitle.split('\n')[1]}<span className="text-primary">.</span>
+              {t.bookingDialog.sidebarTitle.split(' ')}<span className="text-primary">.</span>
             </h3>
             <div className="mt-6 space-y-3">
               {service && (
