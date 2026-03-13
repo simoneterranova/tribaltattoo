@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -68,7 +68,6 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-
 // ---- Helper: time string to minutes for sorting ----
 function timeToMinutes(t: string): number {
   const [h, m] = t.split(":").map(Number);
@@ -103,7 +102,7 @@ const Dashboard = () => {
 
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [blockDialogOpen, setBlockDialogOpen] = useState(false);
-  const [settingsDialogOpen, setSettingsDialogOpen] = useState(false);
+  const[settingsDialogOpen, setSettingsDialogOpen] = useState(false);
   const [activeStatIdx, setActiveStatIdx] = useState(0);
 
   // Shop settings
@@ -151,17 +150,17 @@ const Dashboard = () => {
     if (!settingsForm) return;
     const days = settingsForm.closed_days.includes(day)
       ? settingsForm.closed_days.filter((d) => d !== day)
-      : [...settingsForm.closed_days, day];
+      :[...settingsForm.closed_days, day];
     setSettingsForm({ ...settingsForm, closed_days: days });
   };
 
   // All blocked slots — fetched once, filtered in-memory per date
-  const { data: allBlockedSlots = [] } = useBlockedSlots();
+  const { data: allBlockedSlots =[] } = useBlockedSlots();
   const createBlock = useCreateBlockedSlot();
   const deleteBlock = useDeleteBlockedSlot();
 
   // Block slot form state
-  const [blockDate, setBlockDate] = useState<Date>(new Date());
+  const[blockDate, setBlockDate] = useState<Date>(new Date());
   const [blockTime, setBlockTime] = useState<string | null>(null);
   const [blockReason, setBlockReason] = useState("");
 
@@ -172,13 +171,21 @@ const Dashboard = () => {
   // Manual booking dialog state
   const [manualBookingOpen, setManualBookingOpen] = useState(false);
   const [manualDate, setManualDate] = useState<Date>(new Date());
-  const [manualService, setManualService] = useState<string | null>(null);
+  const[manualService, setManualService] = useState<string | null>(null);
   const [manualTime, setManualTime] = useState<string | null>(null);
   const [manualGuestName, setManualGuestName] = useState("");
   const [manualPhone, setManualPhone] = useState("");
-  const [manualNotes, setManualNotes] = useState("");
+  const[manualNotes, setManualNotes] = useState("");
   const [manualStep, setManualStep] = useState<"client" | "service" | "datetime" | "confirm" | "success">("client");
   const barberCreateBooking = useBarberCreateBooking();
+
+  // Reference for scrolling to top when step changes
+  const manualScrollRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (manualScrollRef.current) {
+      manualScrollRef.current.scrollTop = 0;
+    }
+  }, [manualStep]);
 
   const manualFormattedDate = format(manualDate, "yyyy-MM-dd");
 
@@ -203,11 +210,9 @@ const Dashboard = () => {
 
   // ---- Derived data ----
 
-  // Week grid: start of week (Monday-based) and all 7 days
   const weekStart = startOfWeek(selectedDate, { weekStartsOn: 1 });
   const weekDays = Array.from({ length: 7 }, (_, i) => addDays(weekStart, i));
 
-  // Booking lookup map keyed by "date|time" for O(1) cell rendering
   const bookingMap = useMemo(() => {
     const map = new Map<string, BookingWithCustomer>();
     if (!allBookings) return map;
@@ -217,14 +222,12 @@ const Dashboard = () => {
     return map;
   }, [allBookings]);
 
-  // Blocked slots lookup map keyed by "date|time"
   const blockedMap = useMemo(() => {
     const map = new Map<string, (typeof allBlockedSlots)[0]>();
     allBlockedSlots.forEach((s) => map.set(`${s.date}|${s.time}`, s));
     return map;
   }, [allBlockedSlots]);
 
-  // All unique time slots shown in the week grid (union of weekday + saturday ranges)
   const gridSlots = useMemo(() => {
     const refWeekday = weekDays.find((d) => !closedDays.includes(d.getDay())) ?? weekDays[0];
     const refSat = weekDays.find((d) => d.getDay() === 6 && !closedDays.includes(6));
@@ -244,9 +247,8 @@ const Dashboard = () => {
     );
   }, [weekDays, closedDays, shopSettings]);
 
-  // Upcoming bookings (all dates, confirmed, not past)
   const upcomingAll = useMemo(() => {
-    if (!allBookings) return [];
+    if (!allBookings) return[];
     return allBookings
       .filter((b) => b.status === "confirmed" && !isPastBooking(b))
       .sort(
@@ -255,7 +257,6 @@ const Dashboard = () => {
       );
   }, [allBookings]);
 
-  // Stats
   const todayStr = format(new Date(), "yyyy-MM-dd");
   const todayBookingsCount =
     allBookings?.filter((b) => b.date === todayStr && b.status === "confirmed").length ?? 0;
@@ -268,8 +269,7 @@ const Dashboard = () => {
     return isBefore(d, addDays(new Date(), 7));
   }).length;
 
-  // Mobile stat carousel: auto-cycle every 2.5s
-  const statCards = useMemo(() => [
+  const statCards = useMemo(() =>[
     { label: t.dashboard.todayBookings, value: String(todayBookingsCount) },
     { label: t.dashboard.todayRevenue, value: `€${todayRevenue}` },
     { label: t.dashboard.weekBookings, value: String(weekUpcoming) },
@@ -279,9 +279,8 @@ const Dashboard = () => {
   useEffect(() => {
     const timer = setInterval(() => setActiveStatIdx((i) => (i + 1) % 3), 2500);
     return () => clearInterval(timer);
-  }, []);
+  },[]);
 
-  // Block dialog: available slots for blockDate
   const blockFormattedDate = format(blockDate, "yyyy-MM-dd");
   const slotsForBlockDate = generateTimeSlots(
     blockDate,
@@ -356,7 +355,6 @@ const Dashboard = () => {
     setManualBookingOpen(true);
   };
 
-  // Manual booking: available slots
   const manualDateSlots = generateTimeSlots(
     manualDate,
     shopSettings
@@ -395,21 +393,22 @@ const Dashboard = () => {
   const manualVisibleSlots = manualDateSlots.filter((t) => {
     if (manualIsToday) {
       const now = new Date();
-      const [h, m] = t.split(":").map(Number);
+      const[h, m] = t.split(":").map(Number);
       if (h < now.getHours() || (h === now.getHours() && m <= now.getMinutes())) return false;
     }
     return true;
   });
 
-  // Week navigation
   const prevWeek = () => setSelectedDate((d) => addDays(d, -7));
   const nextWeek = () => setSelectedDate((d) => addDays(d, 7));
 
   const stepVariants = {
-    initial: { opacity: 0, x: 30 },
+    initial: { opacity: 0, x: 20 },
     animate: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: -30 },
+    exit: { opacity: 0, x: -20 },
   };
+
+  const inputClass = "bg-muted border-border rounded-none h-12 font-body text-base sm:text-sm";
 
   return (
     <div className="min-h-screen bg-background">
@@ -480,7 +479,6 @@ const Dashboard = () => {
             </h1>
           </div>
 
-          {/* Desktop: all 3 stats side by side */}
           <div className="hidden sm:flex items-end gap-6 sm:gap-8 pb-1 sm:pb-2">
             <div>
               <p className="font-body text-[10px] tracking-[0.2em] text-muted-foreground uppercase">{t.dashboard.todayBookings}</p>
@@ -498,7 +496,6 @@ const Dashboard = () => {
             </div>
           </div>
 
-          {/* Mobile: single animated stat card cycling through all 3 */}
           <div className="flex sm:hidden items-end pb-1">
             <div className="relative" style={{ minWidth: 130 }}>
               <AnimatePresence mode="wait">
@@ -517,7 +514,6 @@ const Dashboard = () => {
                   </p>
                 </motion.div>
               </AnimatePresence>
-              {/* Dot indicators */}
               <div className="flex gap-1.5 mt-2">
                 {statCards.map((_, i) => (
                   <button
@@ -534,15 +530,13 @@ const Dashboard = () => {
           </div>
         </motion.div>
 
-        {/* Main layout: week grid full width */}
+        {/* Main layout: week grid */}
         <div className="mt-8 sm:mt-12">
-          {/* Week grid */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            {/* Week navigation header */}
             <div className="flex flex-wrap items-center justify-between mb-4 sm:mb-6 gap-3">
               <div className="shrink-0">
                 <h2 className="font-heading text-2xl sm:text-3xl text-foreground">
@@ -613,7 +607,6 @@ const Dashboard = () => {
               </div>
             ) : (
               <div className="border border-border overflow-hidden">
-                {/* Day header row */}
                 <div
                   className="grid border-b border-border bg-muted/20"
                   style={{ gridTemplateColumns: "44px repeat(7, 1fr)" }}
@@ -653,7 +646,6 @@ const Dashboard = () => {
                   })}
                 </div>
 
-                {/* Time rows */}
                 <div>
                   {gridSlots.map((time) => {
                     return (
@@ -662,12 +654,10 @@ const Dashboard = () => {
                         className="grid border-b border-border/40 last:border-b-0"
                         style={{ gridTemplateColumns: "44px repeat(7, 1fr)" }}
                       >
-                        {/* Time label */}
                         <div className="flex items-center justify-end pr-1.5 border-r border-border/50 shrink-0 select-none font-body text-[9px] text-muted-foreground">
                           {time}
                         </div>
 
-                        {/* Day cells */}
                         {weekDays.map((day) => {
                           const dateStr = format(day, "yyyy-MM-dd");
                           const cellKey = `${dateStr}|${time}`;
@@ -759,8 +749,6 @@ const Dashboard = () => {
                 </div>
               </div>
             )}
-
-            {/* Upcoming across all dates */}
 
             {upcomingAll.length > 0 && (
               <div className="mt-10 sm:mt-16">
@@ -916,7 +904,6 @@ const Dashboard = () => {
                   </p>
                 </DialogHeader>
                 <div className="p-6 space-y-4">
-                  {/* Customer */}
                   <div className="flex items-center gap-3">
                     <div className="h-10 w-10 bg-muted flex items-center justify-center shrink-0">
                       <User className="h-5 w-5 text-muted-foreground" />
@@ -944,7 +931,6 @@ const Dashboard = () => {
                     </div>
                   </div>
 
-                  {/* Service details */}
                   <div className="grid grid-cols-3 gap-3">
                     <div className="border border-border p-3">
                       <p className="font-body text-[10px] uppercase tracking-widest text-muted-foreground">{t.dashboard.serviceLabel}</p>
@@ -1038,7 +1024,6 @@ const Dashboard = () => {
           </DialogHeader>
 
           <div className="p-6 space-y-4">
-            {/* Date selector */}
             <div>
               <Label className="font-body text-xs tracking-widest uppercase text-muted-foreground">
                 {t.dashboard.date}
@@ -1161,7 +1146,6 @@ const Dashboard = () => {
 
           {settingsForm && (
             <div className="p-6 space-y-6 overflow-y-auto">
-              {/* Closed Days */}
               <div>
                 <Label className="font-body text-xs tracking-widest uppercase text-muted-foreground">
                   {t.dashboard.closedDays}
@@ -1184,7 +1168,6 @@ const Dashboard = () => {
                 </div>
               </div>
 
-              {/* Opening Hours */}
               <div>
                 <Label className="font-body text-xs tracking-widest uppercase text-muted-foreground">
                   {t.dashboard.openingHours}
@@ -1220,7 +1203,6 @@ const Dashboard = () => {
                 </div>
               </div>
 
-              {/* Break Time */}
               <div>
                 <Label className="font-body text-xs tracking-widest uppercase text-muted-foreground flex items-center gap-2">
                   <Coffee className="h-3.5 w-3.5" />
@@ -1279,7 +1261,7 @@ const Dashboard = () => {
         </DialogContent>
       </Dialog>
 
-      {/* Manual Booking Dialog */}
+      {/* MOBILE-OPTIMIZED Manual Booking Dialog */}
       <Dialog
         open={manualBookingOpen}
         onOpenChange={(val) => {
@@ -1294,22 +1276,34 @@ const Dashboard = () => {
           setManualBookingOpen(val);
         }}
       >
-        <DialogContent className="border-border bg-card p-0 overflow-hidden sm:max-w-2xl lg:max-w-3xl rounded-none max-h-[90dvh]">
-          <div className="flex flex-col lg:flex-row min-h-[520px] max-h-[90dvh]">
+        <DialogContent className="border-border bg-card p-0 overflow-hidden w-[95vw] max-w-md md:max-w-3xl lg:max-w-4xl rounded-none max-h-[90dvh] flex flex-col">
+          <div className="flex flex-col lg:flex-row flex-1 overflow-hidden min-h-[75vh] sm:min-h-[520px]">
 
-            {/* Sidebar */}
-            <div className="bg-muted/50 border-b lg:border-b-0 lg:border-r border-border p-6 lg:w-56 shrink-0">
-              <h3 className="font-heading text-3xl text-foreground leading-none">
-                {t.dashboard.addClientTitle.split('\n')[0]}<br />{t.dashboard.addClientTitle.split('\n')[1]}<span className="text-primary">.</span>
-              </h3>
+            {/* Responsive Sidebar / Header */}
+            <div className="bg-muted/50 border-b lg:border-b-0 lg:border-r border-border p-4 sm:p-6 lg:w-64 shrink-0 overflow-y-auto">
+              <div className="flex items-center justify-between lg:block pr-10 lg:pr-0">
+                <h3 className="font-heading text-2xl sm:text-3xl text-foreground leading-none">
+                  {t.dashboard.addClientTitle.split(' ')}<span className="text-primary">.</span>
+                </h3>
+                {/* Mobile Steps Counter */}
+                {manualStep !== "success" && (() => {
+                  const allSteps =["client", "service", "datetime", "confirm"] as const;
+                  const currentIdx = (allSteps as readonly string[]).indexOf(manualStep);
+                  return (
+                    <span className="lg:hidden font-body text-xs text-muted-foreground bg-background px-2 py-1 border border-border">
+                      {currentIdx + 1} / 4
+                    </span>
+                  );
+                })()}
+              </div>
 
               {/* Live summary */}
-              <div className="mt-6 space-y-3">
+              <div className="mt-4 sm:mt-6 flex flex-row flex-wrap lg:flex-col gap-x-6 gap-y-3">
                 {manualGuestName.trim() && (
                   <div className="flex items-start gap-2">
                     <User className="h-3.5 w-3.5 text-primary mt-0.5 shrink-0" />
                     <div>
-                      <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">{t.dashboard.clientLabel}</p>
+                      <p className="hidden lg:block font-body text-xs text-muted-foreground uppercase tracking-wider">{t.dashboard.clientLabel}</p>
                       <p className="font-body text-sm text-foreground">{manualGuestName}</p>
                       {manualPhone && (
                         <p className="font-body text-xs text-muted-foreground">{manualPhone}</p>
@@ -1321,7 +1315,7 @@ const Dashboard = () => {
                   <div className="flex items-start gap-2">
                     <Scissors className="h-3.5 w-3.5 text-primary mt-0.5 shrink-0" />
                     <div>
-                      <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">{t.dashboard.serviceStepLabel}</p>
+                      <p className="hidden lg:block font-body text-xs text-muted-foreground uppercase tracking-wider">{t.dashboard.serviceStepLabel}</p>
                       <p className="font-body text-sm text-foreground">{getServiceById(manualService)?.name}</p>
                       <p className="font-body text-xs text-muted-foreground">
                         {getServiceById(manualService)?.duration} · €{getServiceById(manualService)?.price}
@@ -1333,7 +1327,7 @@ const Dashboard = () => {
                   <div className="flex items-start gap-2">
                     <Clock className="h-3.5 w-3.5 text-primary mt-0.5 shrink-0" />
                     <div>
-                      <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">{t.dashboard.dateTimeLabel}</p>
+                      <p className="hidden lg:block font-body text-xs text-muted-foreground uppercase tracking-wider">{t.dashboard.dateTimeLabel}</p>
                       <p className="font-body text-sm text-foreground">{format(manualDate, "EEE, MMM d", { locale: dateLocale })}</p>
                       <p className="font-body text-xs text-muted-foreground">{manualTime}</p>
                     </div>
@@ -1341,11 +1335,11 @@ const Dashboard = () => {
                 )}
               </div>
 
-              {/* Step indicators */}
-              <div className="mt-8 flex lg:flex-col gap-2">
+              {/* Desktop Step indicators */}
+              <div className="hidden lg:flex flex-col gap-2 mt-8">
                 {(["client", "service", "datetime", "confirm"] as const).map((s, i) => {
-                  const allSteps = ["client", "service", "datetime", "confirm"];
-                  const currentIdx = allSteps.indexOf(
+                  const allSteps = ["client", "service", "datetime", "confirm"] as const;
+                  const currentIdx = (allSteps as readonly string[]).indexOf(
                     manualStep === "success" ? "confirm" : manualStep
                   );
                   return (
@@ -1362,7 +1356,7 @@ const Dashboard = () => {
                       >
                         {i + 1}
                       </div>
-                      <span className="hidden lg:inline font-body text-xs text-muted-foreground">
+                      <span className="font-body text-xs text-muted-foreground">
                         {t.dashboard.stepLabels[s]}
                       </span>
                     </div>
@@ -1372,63 +1366,67 @@ const Dashboard = () => {
             </div>
 
             {/* Main content area */}
-            <div className="flex-1 p-6 overflow-y-auto min-h-0">
+            <div ref={manualScrollRef} className="flex-1 p-4 sm:p-6 overflow-y-auto min-h-0 flex flex-col">
               <AnimatePresence mode="wait">
 
                 {/* Step 1: Client Details */}
                 {manualStep === "client" && (
-                  <motion.div key="client" {...stepVariants} transition={{ duration: 0.2 }} className="space-y-4">
+                  <motion.div key="client" {...stepVariants} transition={{ duration: 0.15 }} className="flex flex-col h-full">
                     <p className="font-body text-xs tracking-[0.3em] text-primary uppercase mb-4">{t.dashboard.clientDetails}</p>
-                    <div className="space-y-1.5">
-                      <Label className="font-body text-xs tracking-widest uppercase text-muted-foreground">
-                        {t.dashboard.customerName}
-                      </Label>
-                      <Input
-                        placeholder={t.dashboard.namePlaceholder}
-                        value={manualGuestName}
-                        onChange={(e) => setManualGuestName(e.target.value)}
-                        className="bg-muted border-border rounded-none h-12 font-body"
-                        maxLength={100}
-                      />
+                    <div className="space-y-4 flex-1">
+                      <div className="space-y-1.5">
+                        <Label className="font-body text-xs tracking-widest uppercase text-muted-foreground">
+                          {t.dashboard.customerName}
+                        </Label>
+                        <Input
+                          placeholder={t.dashboard.namePlaceholder}
+                          value={manualGuestName}
+                          onChange={(e) => setManualGuestName(e.target.value)}
+                          className={inputClass}
+                          maxLength={100}
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <Label className="font-body text-xs tracking-widest uppercase text-muted-foreground">
+                          {t.dashboard.phoneNumber}
+                        </Label>
+                        <Input
+                          placeholder={t.dashboard.phonePlaceholder}
+                          value={manualPhone}
+                          onChange={(e) => setManualPhone(e.target.value)}
+                          className={inputClass}
+                          maxLength={20}
+                          type="tel"
+                        />
+                      </div>
                     </div>
-                    <div className="space-y-1.5">
-                      <Label className="font-body text-xs tracking-widest uppercase text-muted-foreground">
-                        {t.dashboard.phoneNumber}
-                      </Label>
-                      <Input
-                        placeholder={t.dashboard.phonePlaceholder}
-                        value={manualPhone}
-                        onChange={(e) => setManualPhone(e.target.value)}
-                        className="bg-muted border-border rounded-none h-12 font-body"
-                        maxLength={20}
-                        type="tel"
-                      />
+                    <div className="pt-4 shrink-0 mt-auto">
+                      <Button
+                        variant="hero"
+                        size="lg"
+                        className="w-full rounded-none"
+                        disabled={!manualGuestName.trim() || !manualPhone.trim()}
+                        onClick={() => setManualStep("service")}
+                      >
+                        {t.dashboard.continue} <ChevronRight className="ml-2 h-4 w-4" />
+                      </Button>
                     </div>
-                    <Button
-                      variant="hero"
-                      size="lg"
-                      className="w-full rounded-none"
-                      disabled={!manualGuestName.trim() || !manualPhone.trim()}
-                      onClick={() => setManualStep("service")}
-                    >
-                      {t.dashboard.continue} <ChevronRight className="ml-2 h-4 w-4" />
-                    </Button>
                   </motion.div>
                 )}
 
                 {/* Step 2: Service Selection */}
                 {manualStep === "service" && (
-                  <motion.div key="service" {...stepVariants} transition={{ duration: 0.2 }}>
-                    <div className="flex items-center gap-3 mb-4">
+                  <motion.div key="service" {...stepVariants} transition={{ duration: 0.15 }} className="flex flex-col h-full">
+                    <div className="flex items-center gap-3 mb-4 shrink-0">
                       <button
                         onClick={() => setManualStep("client")}
-                        className="text-muted-foreground hover:text-foreground transition-colors"
+                        className="text-muted-foreground hover:text-foreground transition-colors p-1 -ml-1"
                       >
                         <ArrowLeft className="h-4 w-4" />
                       </button>
                       <p className="font-body text-xs tracking-[0.3em] text-primary uppercase">{t.dashboard.selectService}</p>
                     </div>
-                    <div className="space-y-2">
+                    <div className="space-y-2 flex-1 overflow-y-auto">
                       {services.map((s) => (
                         <button
                           key={s.id}
@@ -1448,7 +1446,7 @@ const Dashboard = () => {
                             <p className="font-body text-xs text-muted-foreground mt-0.5">{s.duration}</p>
                           </div>
                           <div className="flex items-center gap-3">
-                            <span className="font-heading text-2xl text-foreground">€{s.price}</span>
+                            <span className="font-heading text-xl sm:text-2xl text-foreground">€{s.price}</span>
                             <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
                           </div>
                         </button>
@@ -1459,19 +1457,19 @@ const Dashboard = () => {
 
                 {/* Step 3: Date & Time */}
                 {manualStep === "datetime" && (
-                  <motion.div key="datetime" {...stepVariants} transition={{ duration: 0.2 }} className="flex flex-col h-full">
-                    <div className="flex items-center gap-3 mb-4">
+                  <motion.div key="datetime" {...stepVariants} transition={{ duration: 0.15 }} className="flex flex-col h-full">
+                    <div className="flex items-center gap-3 mb-4 shrink-0">
                       <button
                         onClick={() => setManualStep("service")}
-                        className="text-muted-foreground hover:text-foreground transition-colors"
+                        className="text-muted-foreground hover:text-foreground transition-colors p-1 -ml-1"
                       >
                         <ArrowLeft className="h-4 w-4" />
                       </button>
                       <p className="font-body text-xs tracking-[0.3em] text-primary uppercase">{t.dashboard.pickDateTime}</p>
                     </div>
 
-                    <div className="flex flex-col md:flex-row gap-6 flex-1 min-h-0 overflow-y-auto">
-                      <div className="shrink-0">
+                    <div className="flex flex-col md:flex-row gap-4 sm:gap-6 flex-1 min-h-0">
+                      <div className="shrink-0 flex justify-center md:block">
                         <Calendar
                           mode="single"
                           selected={manualDate}
@@ -1486,52 +1484,54 @@ const Dashboard = () => {
                             isBefore(startOfDay(date), startOfDay(new Date()))
                           }
                           locale={dateLocale}
-                          className="p-3 pointer-events-auto border border-border"
+                          className="p-3 pointer-events-auto border border-border bg-card"
                         />
                       </div>
 
-                      <div className="flex-1 min-w-0">
-                        <p className="font-body text-sm text-foreground mb-3 font-medium">
+                      <div className="flex-1 min-w-0 flex flex-col">
+                        <p className="font-body text-sm text-foreground mb-3 font-medium text-center md:text-left shrink-0">
                           {format(manualDate, "EEEE, MMMM d", { locale: dateLocale })}
                         </p>
-                        {isClosedDay(manualDate) ? (
-                          <p className="font-body text-sm text-muted-foreground">
-                            {t.dashboard.shopClosedOn(format(manualDate, "EEEE", { locale: dateLocale }))}
-                          </p>
-                        ) : manualVisibleSlots.length === 0 ? (
-                          <p className="font-body text-sm text-muted-foreground">
-                            {t.dashboard.noSlotsDate}
-                          </p>
-                        ) : manualAvailableSlots.length === 0 ? (
-                          <p className="font-body text-sm text-muted-foreground">
-                            {t.dashboard.allSlotsTaken}
-                          </p>
-                        ) : (
-                          <div className="grid grid-cols-3 md:grid-cols-2 gap-2 max-h-[160px] md:max-h-[280px] overflow-y-auto pr-1">
-                            {manualVisibleSlots.map((time) => {
-                              const isTaken =
-                                manualDateBookedTimes.has(time) ||
-                                manualDateBlockedTimes.has(time);
-                              return (
-                                <button
-                                  key={time}
-                                  onClick={() => !isTaken && setManualTime(time)}
-                                  disabled={isTaken}
-                                  className={cn(
-                                    "py-2.5 px-3 border font-body text-sm transition-all text-center",
-                                    isTaken
-                                      ? "border-destructive/30 bg-destructive/5 text-destructive/60 cursor-not-allowed line-through"
-                                      : manualTime === time
-                                      ? "border-primary bg-primary text-primary-foreground"
-                                      : "border-border text-foreground hover:border-primary/50"
-                                  )}
-                                >
-                                  {time}
-                                </button>
-                              );
-                            })}
-                          </div>
-                        )}
+                        <div className="flex-1 min-h-[150px] overflow-y-auto pr-1">
+                          {isClosedDay(manualDate) ? (
+                            <p className="font-body text-sm text-muted-foreground text-center md:text-left py-4">
+                              {t.dashboard.shopClosedOn(format(manualDate, "EEEE", { locale: dateLocale }))}
+                            </p>
+                          ) : manualVisibleSlots.length === 0 ? (
+                            <p className="font-body text-sm text-muted-foreground text-center md:text-left py-4">
+                              {t.dashboard.noSlotsDate}
+                            </p>
+                          ) : manualAvailableSlots.length === 0 ? (
+                            <p className="font-body text-sm text-muted-foreground text-center md:text-left py-4">
+                              {t.dashboard.allSlotsTaken}
+                            </p>
+                          ) : (
+                            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-2 gap-2">
+                              {manualVisibleSlots.map((time) => {
+                                const isTaken =
+                                  manualDateBookedTimes.has(time) ||
+                                  manualDateBlockedTimes.has(time);
+                                return (
+                                  <button
+                                    key={time}
+                                    onClick={() => !isTaken && setManualTime(time)}
+                                    disabled={isTaken}
+                                    className={cn(
+                                      "py-2.5 px-3 border font-body text-sm transition-all text-center",
+                                      isTaken
+                                        ? "border-destructive/30 bg-destructive/5 text-destructive/60 cursor-not-allowed line-through"
+                                        : manualTime === time
+                                        ? "border-primary bg-primary text-primary-foreground"
+                                        : "border-border text-foreground hover:border-primary/50"
+                                    )}
+                                  >
+                                    {time}
+                                  </button>
+                                );
+                              })}
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
 
@@ -1539,7 +1539,7 @@ const Dashboard = () => {
                       <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="pt-4 shrink-0"
+                        className="pt-4 shrink-0 mt-auto"
                       >
                         <Button
                           variant="hero"
@@ -1556,93 +1556,97 @@ const Dashboard = () => {
 
                 {/* Step 4: Review & Confirm */}
                 {manualStep === "confirm" && (
-                  <motion.div key="confirm" {...stepVariants} transition={{ duration: 0.2 }}>
-                    <div className="flex items-center gap-3 mb-6">
+                  <motion.div key="confirm" {...stepVariants} transition={{ duration: 0.15 }} className="flex flex-col h-full">
+                    <div className="flex items-center gap-3 mb-6 shrink-0">
                       <button
                         onClick={() => setManualStep("datetime")}
-                        className="text-muted-foreground hover:text-foreground transition-colors"
+                        className="text-muted-foreground hover:text-foreground transition-colors p-1 -ml-1"
                       >
                         <ArrowLeft className="h-4 w-4" />
                       </button>
                       <p className="font-body text-xs tracking-[0.3em] text-primary uppercase">{t.dashboard.reviewConfirm}</p>
                     </div>
 
-                    <div className="space-y-4 mb-6">
-                      <div className="border border-border p-4">
-                        <div className="flex items-center gap-3">
-                          <div className="h-9 w-9 bg-muted flex items-center justify-center shrink-0">
-                            <User className="h-4 w-4 text-muted-foreground" />
+                    <div className="flex-1 overflow-y-auto pr-1">
+                      <div className="space-y-4 mb-6">
+                        <div className="border border-border p-4">
+                          <div className="flex items-center gap-3">
+                            <div className="h-9 w-9 bg-muted flex items-center justify-center shrink-0">
+                              <User className="h-4 w-4 text-muted-foreground" />
+                            </div>
+                            <div>
+                              <p className="font-body text-sm font-medium text-foreground">{manualGuestName}</p>
+                              {manualPhone && (
+                                <p className="font-body text-xs text-muted-foreground flex items-center gap-1 mt-0.5">
+                                  <Phone className="h-3 w-3" />
+                                  {manualPhone}
+                                </p>
+                              )}
+                            </div>
                           </div>
-                          <div>
-                            <p className="font-body text-sm font-medium text-foreground">{manualGuestName}</p>
-                            {manualPhone && (
-                              <p className="font-body text-xs text-muted-foreground flex items-center gap-1 mt-0.5">
-                                <Phone className="h-3 w-3" />
-                                {manualPhone}
+                        </div>
+                        <div className="border border-border p-4">
+                          <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-2">
+                            <div>
+                              <p className="font-body text-sm font-medium text-foreground">
+                                {getServiceById(manualService ?? "")?.name}
                               </p>
-                            )}
+                              <p className="font-body text-xs text-muted-foreground mt-0.5">
+                                {getServiceById(manualService ?? "")?.duration}
+                              </p>
+                            </div>
+                            <span className="font-heading text-2xl sm:text-3xl text-foreground">
+                              €{getServiceById(manualService ?? "")?.price}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="border border-border p-4">
+                          <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                            <div>
+                              <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">Date</p>
+                              <p className="font-body text-sm text-foreground">
+                                {format(manualDate, "EEEE, MMMM d, yyyy", { locale: dateLocale })}
+                              </p>
+                            </div>
+                            <div className="sm:ml-auto">
+                              <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">Time</p>
+                              <p className="font-body text-sm text-foreground">{manualTime}</p>
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div className="border border-border p-4">
-                        <div className="flex items-center justify-between">
-                          <div>
-                            <p className="font-body text-sm font-medium text-foreground">
-                              {getServiceById(manualService ?? "")?.name}
-                            </p>
-                            <p className="font-body text-xs text-muted-foreground mt-0.5">
-                              {getServiceById(manualService ?? "")?.duration}
-                            </p>
-                          </div>
-                          <span className="font-heading text-3xl text-foreground">
-                            €{getServiceById(manualService ?? "")?.price}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="border border-border p-4">
-                        <div className="flex items-center gap-4">
-                          <div>
-                            <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">Date</p>
-                            <p className="font-body text-sm text-foreground">
-                              {format(manualDate, "EEEE, MMMM d, yyyy")}
-                            </p>
-                          </div>
-                          <div className="ml-auto">
-                            <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">Time</p>
-                            <p className="font-body text-sm text-foreground">{manualTime}</p>
-                          </div>
-                        </div>
+
+                      <div className="space-y-2 mb-6">
+                        <Label className="font-body text-xs tracking-widest uppercase text-muted-foreground">
+                          {t.dashboard.notesOptional}
+                        </Label>
+                        <Textarea
+                          placeholder={t.dashboard.notesPlaceholder}
+                          value={manualNotes}
+                          onChange={(e) => setManualNotes(e.target.value)}
+                          className="bg-muted border-border rounded-none font-body resize-none min-h-[80px]"
+                          maxLength={500}
+                        />
                       </div>
                     </div>
 
-                    <div className="space-y-2 mb-6">
-                      <Label className="font-body text-xs tracking-widest uppercase text-muted-foreground">
-                        {t.dashboard.notesOptional}
-                      </Label>
-                      <Textarea
-                        placeholder={t.dashboard.notesPlaceholder}
-                        value={manualNotes}
-                        onChange={(e) => setManualNotes(e.target.value)}
-                        className="bg-muted border-border rounded-none font-body resize-none min-h-[80px]"
-                        maxLength={500}
-                      />
+                    <div className="pt-2 shrink-0 mt-auto">
+                      <Button
+                        variant="hero"
+                        size="lg"
+                        className="w-full rounded-none"
+                        onClick={handleManualBooking}
+                        disabled={barberCreateBooking.isPending}
+                      >
+                        {barberCreateBooking.isPending ? (
+                          <Loader2 className="h-5 w-5 animate-spin" />
+                        ) : (
+                          <>
+                            {t.dashboard.confirmBooking} <ArrowUpRight className="ml-2 h-5 w-5" />
+                          </>
+                        )}
+                      </Button>
                     </div>
-
-                    <Button
-                      variant="hero"
-                      size="lg"
-                      className="w-full rounded-none"
-                      onClick={handleManualBooking}
-                      disabled={barberCreateBooking.isPending}
-                    >
-                      {barberCreateBooking.isPending ? (
-                        <Loader2 className="h-5 w-5 animate-spin" />
-                      ) : (
-                        <>
-                          {t.dashboard.confirmBooking} <ArrowUpRight className="ml-2 h-5 w-5" />
-                        </>
-                      )}
-                    </Button>
                   </motion.div>
                 )}
 
@@ -1653,27 +1657,29 @@ const Dashboard = () => {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3 }}
-                    className="flex flex-col items-center justify-center text-center h-full min-h-[400px]"
+                    className="flex flex-col items-center justify-start text-center h-full min-h-[350px] py-8 sm:pt-12"
                   >
-                    <CheckCircle2 className="h-16 w-16 text-primary mb-6" />
-                    <h3 className="font-heading text-4xl text-foreground">
+                    <CheckCircle2 className="h-14 w-14 sm:h-16 sm:w-16 text-primary mb-4 sm:mb-6" />
+                    <h3 className="font-heading text-3xl sm:text-4xl text-foreground">
                       {t.dashboard.bookedTitle}<span className="text-primary">.</span>
                     </h3>
                     <p className="font-body text-sm text-muted-foreground mt-3 max-w-sm">
                       {t.dashboard.bookedDesc(
                         manualGuestName,
                         getServiceById(manualService ?? "")?.name ?? "",
-                        format(manualDate, "EEEE, MMMM d"),
+                        format(manualDate, "EEEE, MMMM d", { locale: dateLocale }),
                         manualTime ?? ""
                       )}
                     </p>
-                    <Button
-                      variant="outline"
-                      className="rounded-none mt-6"
-                      onClick={() => setManualBookingOpen(false)}
-                    >
-                      {t.dashboard.done}
-                    </Button>
+                    <div className="mt-6 w-full sm:w-auto">
+                      <Button
+                        variant="outline"
+                        className="rounded-none w-full sm:w-auto"
+                        onClick={() => setManualBookingOpen(false)}
+                      >
+                        {t.dashboard.done}
+                      </Button>
+                    </div>
                   </motion.div>
                 )}
 
@@ -1709,7 +1715,7 @@ function isSlotWithinHours(
 
   const [th, tm] = time.split(":").map(Number);
   const slotMin = th * 60 + tm;
-  const [oh, om] = openTime.split(":").map(Number);
+  const[oh, om] = openTime.split(":").map(Number);
   const openMin = oh * 60 + om;
   const [ch, cm] = closeTime.split(":").map(Number);
   const lastSlotMin = ch * 60 + cm - SLOT_DURATION;
@@ -1733,3 +1739,4 @@ function isSlotPast(date: Date, time: string): boolean {
 }
 
 export default Dashboard;
+
