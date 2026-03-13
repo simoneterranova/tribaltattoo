@@ -20,7 +20,9 @@ export function getCanonicalUrl(config: ShopConfig): string {
  * ShopConfig fields used: name, city, meta.title
  */
 export function getPageTitle(config: ShopConfig): string {
-  return `${config.name} — Premium Barbershop in ${config.city}`;
+  if (config.meta.title) return config.meta.title;
+  const city = config.city.split(",")[0].trim(); // "Torino" not "Torino, TO"
+  return `${config.name} — ${config.activity} a ${city}`;
 }
 
 /**
@@ -29,23 +31,27 @@ export function getPageTitle(config: ShopConfig): string {
  */
 export function getMetaDescription(config: ShopConfig): string {
   const topServices = config.services.slice(0, 3).map(s => s.name).join(", ");
-  return `${config.meta.description} Services: ${topServices}. Located in ${config.city}.`;
+  const city = config.city.split(",")[0].trim();
+  const base = config.meta.description;
+  const citySuffix = base.toLowerCase().includes(city.toLowerCase())
+    ? ""
+    : ` Situato a ${city}.`;
+  return `${base} Servizi: ${topServices}.${citySuffix}`;
 }
 
 /**
- * Extracts theme color for manifest and meta tags.
- * ShopConfig fields used: theme.colors.primary
+ * Estrae il colore primario dal config.
+ * Nota: Restituisce il valore HSL definito nel config.
  */
 export function getThemeColor(config: ShopConfig): string {
-  // Convert HSL string to hex approximation (or return as-is for CSS variable)
-  // For meta tag, we'll use a fixed hex derived from the primary gold color
-  // In a real scenario, you'd parse the HSL and convert to hex
-  return "#B8954F"; // Approximation of the default primary gold
+  // Rimuoviamo l'hardcoding. Usiamo il valore definito in theme.colors.primary.
+  // I browser moderni accettano il formato HSL nei meta tag theme-color.
+  return `hsl(${config.theme.colors.primary})`;
 }
 
 /**
  * Converts opening hours to schema.org OpeningHoursSpecification format.
- * ShopConfig fields used: hours[]
+ * Adattato per gli orari e i giorni in italiano.
  */
 export function getOpeningHoursSpecification(config: ShopConfig): Array<{
   "@type": "OpeningHoursSpecification";
@@ -58,28 +64,24 @@ export function getOpeningHoursSpecification(config: ShopConfig): Array<{
     dayOfWeek: string | string[];
     opens?: string;
     closes?: string;
-  }> = [];
+  }> =[];
 
   config.hours.forEach((hour) => {
     const { days, time } = hour;
 
-    // Skip "Closed" days entirely - per schema.org spec, omit closed days rather than including them
-    if (time.toLowerCase() === "closed") {
+    if (time.toLowerCase() === "chiuso" || time.toLowerCase() === "closed") {
       return;
     }
 
-    // Parse time range (e.g., "9AM – 8PM" to "09:00" and "20:00")
-    const timeMatch = time.match(/(\d{1,2})\s*([AP]M)\s*[–-]\s*(\d{1,2})\s*([AP]M)/i);
+    // Supporta il formato 24h europeo/italiano (es. "9:00 - 20:00" o "09:00 – 20:00")
+    const timeMatch = time.match(/(\d{1,2}:\d{2})\s*[–-]\s*(\d{1,2}:\d{2})/);
     if (timeMatch) {
-      const [, openHour, openPeriod, closeHour, closePeriod] = timeMatch;
-      const opens = convertTo24Hour(parseInt(openHour), openPeriod);
-      const closes = convertTo24Hour(parseInt(closeHour), closePeriod);
-
       specs.push({
         "@type": "OpeningHoursSpecification",
         dayOfWeek: parseDayOfWeek(days),
-        opens,
-        closes,
+        // Aggiunge lo 0 iniziale se manca (es. da "9:00" a "09:00")
+        opens: timeMatch[1].padStart(5, '0'),
+        closes: timeMatch[2].padStart(5, '0'),
       });
     }
   });
@@ -88,58 +90,32 @@ export function getOpeningHoursSpecification(config: ShopConfig): Array<{
 }
 
 /**
- * Parses day string to schema.org day format.
- * Examples: "Monday", "Mon – Fri" → ["Monday", "Tuesday", ...]
+ * Mappa i giorni italiani nei formati schema.org inglesi obbligatori.
  */
 function parseDayOfWeek(days: string): string | string[] {
-  const dayMap: Record<string, string> = {
-    mon: "Monday",
-    tue: "Tuesday",
-    wed: "Wednesday",
-    thu: "Thursday",
-    fri: "Friday",
-    sat: "Saturday",
-    sun: "Sunday",
-    monday: "Monday",
-    tuesday: "Tuesday",
-    wednesday: "Wednesday",
-    thursday: "Thursday",
-    friday: "Friday",
-    saturday: "Saturday",
-    sunday: "Sunday",
-  };
-
   const lowerDays = days.toLowerCase();
-
-  // Handle ranges like "Mon – Fri"
-  if (lowerDays.includes("–") || lowerDays.includes("-")) {
-    if (lowerDays.includes("mon") && lowerDays.includes("fri")) {
-      return ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
-    }
-    if (lowerDays.includes("mon") && lowerDays.includes("sat")) {
-      return ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    }
+  
+  // Gestisce i range italiani (Lun - Ven)
+  if (lowerDays.includes("lun") && lowerDays.includes("ven")) {
+    return ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+  }
+  if (lowerDays.includes("lun") && lowerDays.includes("sab")) {
+    return["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   }
 
-  // Single day
-  for (const [key, value] of Object.entries(dayMap)) {
-    if (lowerDays.includes(key)) {
-      return value;
-    }
-  }
+  // Mappatura giorni singoli italiani -> inglesi
+  if (lowerDays.includes("lun")) return "Monday";
+  if (lowerDays.includes("mar")) return "Tuesday";
+  if (lowerDays.includes("mer")) return "Wednesday";
+  if (lowerDays.includes("gio")) return "Thursday";
+  if (lowerDays.includes("ven")) return "Friday";
+  if (lowerDays.includes("sab")) return "Saturday";
+  if (lowerDays.includes("dom")) return "Sunday";
 
   return "Monday"; // fallback
 }
 
-/**
- * Converts 12-hour time to 24-hour format for schema.org.
- */
-function convertTo24Hour(hour: number, period: string): string {
-  let h = hour;
-  if (period.toUpperCase() === "PM" && h !== 12) h += 12;
-  if (period.toUpperCase() === "AM" && h === 12) h = 0;
-  return h.toString().padStart(2, "0") + ":00";
-}
+// (La vecchia funzione convertTo24Hour PUOI CANCELLARLA DEL TUTTO)
 
 /**
  * Generates schema.org LocalBusiness / HairSalon structured data.
@@ -157,11 +133,12 @@ export function getLocalBusinessSchema(config: ShopConfig): Record<string, unkno
     telephone: config.contact.phone,
     email: config.contact.email,
     foundingDate: config.established,
+    image: getOgImageUrl(config),
     address: {
       "@type": "PostalAddress",
       streetAddress: config.contact.addressLines[0],
       addressLocality: config.contact.quarter?.[0] || config.city.split(",")[0],
-      addressRegion: config.city.split(",")[1]?.trim() || "NY",
+      addressRegion: config.city.split(",")[1]?.trim() || "TO",
       addressCountry: config.contact.countryCode,
     },
     openingHoursSpecification: getOpeningHoursSpecification(config),
@@ -199,7 +176,7 @@ export function getServiceSchemas(config: ShopConfig): Array<Record<string, unkn
     offers: {
       "@type": "Offer",
       price: service.price.toString(),
-      priceCurrency: "USD",
+      priceCurrency: "EUR",
     },
   }));
 }
@@ -268,13 +245,13 @@ export function getFaqSchema(config: ShopConfig): Record<string, unknown> {
   }
 
   const openHours = config.hours
-    ?.filter((h) => h.time.toLowerCase() !== "closed")
+    ?.filter((h) => !["closed", "chiuso"].includes(h.time.toLowerCase()))
     .map((h) => `${h.days}: ${h.time}`)
     .join(". ");
 
   const minPrice = Math.min(...config.services.map((s) => s.price));
   const servicesList = config.services
-    .map((s) => `${s.name} ($${s.price})`)
+    .map((s) => `${s.name} (€${s.price})`)
     .join(", ");
 
   return {
@@ -283,17 +260,17 @@ export function getFaqSchema(config: ShopConfig): Record<string, unknown> {
     mainEntity: [
       {
         "@type": "Question",
-        name: `Where is ${config.fullName} located?`,
+        name: `Dove si trova ${config.fullName}?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `${config.fullName} is located at ${config.contact.addressLines.join(", ")}, ${config.city}.`,
+          text: `${config.fullName} si trova in ${config.contact.addressLines.join(", ")}, ${config.city}.`,
         },
       },
       ...(openHours
         ? [
             {
               "@type": "Question",
-              name: `What are the opening hours of ${config.fullName}?`,
+              name: `Quali sono le ore di apertura di ${config.fullName}?`,
               acceptedAnswer: {
                 "@type": "Answer",
                 text: openHours,
@@ -303,18 +280,18 @@ export function getFaqSchema(config: ShopConfig): Record<string, unknown> {
         : []),
       {
         "@type": "Question",
-        name: `How much does a haircut cost at ${config.fullName}?`,
+        name: `Quanto costa un taglio di capelli a ${config.fullName}?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Prices at ${config.fullName} start from $${minPrice}. Services include: ${servicesList}.`,
+          text: `I prezzi da ${config.fullName} partono da €${minPrice}. Servizi disponibili: ${servicesList}.`,
         },
       },
       {
         "@type": "Question",
-        name: `Can I book an appointment online at ${config.fullName}?`,
+        name: `Posso prenotare un appuntamento online a ${config.fullName}?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Yes, you can book your appointment online directly at ${config.meta.siteUrl}.`,
+          text: `Sì, puoi prenotare il tuo appuntamento online direttamente su ${config.meta.bookingSiteUrl}.`,
         },
       },
     ],

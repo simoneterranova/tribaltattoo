@@ -76,7 +76,7 @@ export function SeoHead() {
       <link rel="canonical" href={canonicalUrl} />
       
       {/* ── LANGUAGE & HREFLANG ────────────────────────────────────────────── */}
-      <html lang="it" />
+      <html lang={shopConfig.meta.locale.split("_")[0]} />
       <link rel="alternate" hrefLang="it" href={canonicalUrl} />
       <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />
       

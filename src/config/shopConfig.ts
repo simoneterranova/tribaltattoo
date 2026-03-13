@@ -58,11 +58,14 @@ const shopConfig = {
   /** Full brand name used in the footer bottom bar. */
   fullName: "THE GENTRY",
 
-  /** City / location shown in hero tagline and section subtitles. */
+  /** City / location shown in hero tagline and section subtitles. RESPECT THE FORMATTING */
   city: "Torino, TO",
 
   /** Year the shop was founded — shown in the hero tagline. */
   established: "2018",
+
+  /** The type of business activity (e.g., "Barbiere", "Salon di Bellezza"). */
+  activity: "Barbiere",
 
   // ── SEO / HTML <head> ───────────────────────────────────────────────────────
   // These values are used by SeoHead component to generate all meta tags dynamically.
@@ -70,6 +73,9 @@ const shopConfig = {
   meta: {
     /** Full domain without trailing slash. Used for canonical URLs, sitemap, and OG tags. */
     siteUrl: "https://www.iltuodominio.it",
+
+    /** Inserisci il dominio o il link di Treatwell/Fresha */
+    bookingSiteUrl: "https://www.iltuodominio.it", 
     
     /** Two-letter language code + country for og:locale (e.g. "en_US", "it_IT"). */
     locale: "it_IT",
@@ -130,31 +136,31 @@ const shopConfig = {
       /** Eyebrow label above the heading. */
       label: "Servizi",
       /** [ line 1, line 2 ] of the giant heading. */
-      heading: ["What We", "Offer"],
+      heading: ["I Nostri", "Servizi"],
       /** Two-line counter annotation shown to the right of the heading. */
-      counterLabel: ["Signature", "Services"],
+      counterLabel: ["Trattamenti", "Esclusivi"],
       /** Small disclaimer line shown below the services list. */
-      footnote: "All services include consultation · Prices may vary based on length & complexity",
+      footnote: "Tutti i servizi includono consulenza · I prezzi possono variare in base a lunghezza e complessità",
     },
     team: {
       label: "Il Team",
-      heading: ["Meet The", "Team"],
+      heading: ["I Nostri", "Barbieri"],
       counterLabel: ["Master", "Barbers"],
     },
     testimonials: {
       label: "Recensioni",
-      heading: "Words",
+      heading: "Dicono di noi",
     },
     gallery: {
       label: "Lavori",
-      heading: "Gallery",
+      heading: "I nostri Lavori",
     },
     contact: {
       label: "Contatti",
       /** [ line 1, line 2 ] of the giant CTA heading in the footer. */
-      heading: ["Let's", "Work"],
+      heading: ["Vieni a", "Trovarci"],
       /** Sub-column headers inside the contact info grid. */
-      locationLabel: "Location",
+      locationLabel: "Dove Siamo",
       hoursLabel: "Orari di apertura",
       contactLabel: "Contatti",
       socialLabel: "Social Networks",
