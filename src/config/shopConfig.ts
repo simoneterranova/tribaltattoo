@@ -49,6 +49,7 @@ import gallery3 from "@/assets/gallery-3.jpg";
 import gallery4 from "@/assets/gallery-4.jpg";
 import gallery5 from "@/assets/gallery-5.jpg";
 import gallery6 from "@/assets/gallery-6.jpg";
+import logo from "@/assets/logo.jpeg"; // or .png / .webp
 
 // ── IDENTITY ──────────────────────────────────────────────────────────────────
 const shopConfig = {
@@ -57,6 +58,9 @@ const shopConfig = {
 
   /** Full brand name used in the footer bottom bar. */
   fullName: "THE GENTRY",
+
+  /** Logo image. */
+  logo: logo,
 
   /** City / location shown in hero tagline and section subtitles. RESPECT THE FORMATTING */
   city: "Torino, TO",
