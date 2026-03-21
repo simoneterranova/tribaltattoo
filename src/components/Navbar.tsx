@@ -49,10 +49,12 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between px-6 py-4 relative">
         {/* Logo */}
         <a href="#hero" className="relative group shrink-0">
-          <span className="font-heading text-2xl md:text-3xl tracking-[0.2em] text-foreground">
-            {shopConfig.name}
-          </span>
-          <span className="absolute -bottom-1 left-0 w-full h-px bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+          <img
+            src={shopConfig.logo}
+            alt={shopConfig.name}
+            className="h-14 md:h-16 w-auto object-contain transition-opacity duration-300 group-hover:opacity-80"
+            draggable={false}
+          />
         </a>
 
         {/* Desktop nav — absolutely centred */}

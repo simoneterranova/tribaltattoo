@@ -1,22 +1,17 @@
 /**
- * LoadingScreen — GENTRY Barbershop
+ * LoadingScreen — BRUNO VINI
  * ═══════════════════════════════════════════════════════════════════════════
  *
  * THE EXPERIENCE
  * ──────────────
- * Pure darkness. An invisible sweep cuts across the screen,
- * burning the brand name in — the cut line flares white-hot,
+ * Pure background. An invisible sweep cuts across the screen,
+ * burning the logo in — the cut line flares white-hot,
  * cooling backward through ivory → gold → amber like heated steel.
  *
- * After the sweep: the name settles. Two hairline rules extend
+ * After the sweep: the logo settles. Two hairline rules extend
  * outward flanking the tagline. Then a cinematic dissolve out.
  *
- * CENTERING FIX
- * ─────────────
- * CSS letter-spacing adds trailing space after the LAST character.
- * Fix: text wrapper uses display:flex + justifyContent:center, and
- * the text node carries a negative marginRight equal to letterSpacing,
- * cancelling the phantom trailing gap.
+ * Uses shopConfig.logo (image) instead of text for a premium, brand-first UX.
  * ═══════════════════════════════════════════════════════════════════════════
  */
 
@@ -25,31 +20,24 @@ import { motion, AnimatePresence } from "framer-motion";
 import shopConfig from "@/config/shopConfig";
 
 // ─── shopConfig bindings ──────────────────────────────────────────────────────
-const NAME      = shopConfig.name;
+const LOGO      = shopConfig.logo;
 const CITY      = shopConfig.city;
 const EST       = shopConfig.established;
-const FONT_HEAD = shopConfig.theme.fonts.heading;
 const FONT_BODY = shopConfig.theme.fonts.body;
 
 const hsl        = (t: string)            => `hsl(${t})`;
 const hslA       = (t: string, a: number) => `hsl(${t} / ${a})`;
 const C_BG       = hsl(shopConfig.theme.colors.background);
-const C_FG       = hsl(shopConfig.theme.colors.foreground);
 const C_PRIMARY  = hsl(shopConfig.theme.colors.primary);
 const pA         = (a: number) => hslA(shopConfig.theme.colors.primary, a);
 
-const C_FG_DEAD  = "hsl(0,0%,6%)";
-
-// ─── Typography ───────────────────────────────────────────────────────────────
-const LS = "0.28em";
-
 // ─── Timing (ms) ──────────────────────────────────────────────────────────────
-const MS_PREDELAY  = 160;
-const MS_SLICE     = 1780;
-const MS_SETTLE    = 700;   // time after sweep ends before "revealing" phase
-const MS_DETAILS   = 380;
-const MS_HOLD      = 1150;
-const MS_EXIT      = 920;
+const MS_PREDELAY = 160;
+const MS_SLICE    = 1780;
+const MS_SETTLE   = 700;
+const MS_DETAILS  = 380;
+const MS_HOLD     = 1150;
+const MS_EXIT     = 920;
 
 // ─── Easing ──────────────────────────────────────────────────────────────────
 function easeRazorPull(t: number): number {
@@ -71,7 +59,7 @@ function drawHeatGlow(
   ctx.clearRect(0, 0, W, H);
   if (bladeXPx <= 2) return;
   const start = Math.max(0, bladeXPx - 300);
-  const hotG = ctx.createLinearGradient(start, 0, bladeXPx + 6, 0);
+  const hotG  = ctx.createLinearGradient(start, 0, bladeXPx + 6, 0);
   hotG.addColorStop(0,    "rgba(0,0,0,0)");
   hotG.addColorStop(0.42, "rgba(195,148,38,0.050)");
   hotG.addColorStop(0.68, "rgba(235,195,90,0.165)");
@@ -138,15 +126,15 @@ export default function LoadingScreen({ onLoadingComplete }: LoadingScreenProps)
   const [showDetails, setShowDetails] = useState(false);
   const [isExiting,   setIsExiting]   = useState(false);
 
-  const textWrapRef = useRef<HTMLDivElement>(null);
+  const logoWrapRef = useRef<HTMLDivElement>(null);
   const [wrapSz, setWrapSz] = useState({ w: 0, h: 0 });
 
   const rafRef = useRef<number>();
   const t0Ref  = useRef<number | null>(null);
 
-  // Measure text wrapper for heat canvas sizing
+  // Measure logo wrapper for heat canvas sizing
   useEffect(() => {
-    const el = textWrapRef.current;
+    const el = logoWrapRef.current;
     if (!el) return;
     const ro = new ResizeObserver(([e]) => {
       setWrapSz({ w: e.contentRect.width, h: e.contentRect.height });
@@ -201,17 +189,14 @@ export default function LoadingScreen({ onLoadingComplete }: LoadingScreenProps)
   // ── Derived ───────────────────────────────────────────────────────────────
   const isSlicing   = phase === "slicing";
   const heatOpacity = isSlicing ? 1 : 0;
-
-  // clip-path: right side collapses as sweep advances (left→right reveal)
-  const clipRight = `${(1 - sliceP) * 100}%`;
-
-  const heatFrac = Math.max(0, Math.min(1, sliceP));
+  const clipRight   = `${(1 - sliceP) * 100}%`;
+  const heatFrac    = Math.max(0, Math.min(1, sliceP));
 
   return (
     <AnimatePresence>
       {!isExiting && (
         <motion.div
-          key="gentry-loader"
+          key="brunovini-loader"
           initial={{ opacity: 1 }}
           exit={{
             opacity: 0,
@@ -255,7 +240,7 @@ export default function LoadingScreen({ onLoadingComplete }: LoadingScreenProps)
               pointerEvents: "none",
               background:
                 "radial-gradient(ellipse 90% 85% at 50% 50%," +
-                " transparent 14%, rgba(0,0,0,0.80) 100%)",
+                " transparent 14%, rgba(0,0,0,0.12) 100%)",
             }}
           />
 
@@ -272,7 +257,7 @@ export default function LoadingScreen({ onLoadingComplete }: LoadingScreenProps)
               pointerEvents: "none",
               background:
                 `radial-gradient(ellipse 50% 35% at 50% 53%,` +
-                ` ${pA(0.062)}, transparent 76%)`,
+                ` ${pA(0.055)}, transparent 76%)`,
             }}
           />
 
@@ -307,7 +292,7 @@ export default function LoadingScreen({ onLoadingComplete }: LoadingScreenProps)
             style={{
               position:      "relative",
               zIndex:        2,
-              width:         "min(760px, 86vw)",
+              width:         "min(480px, 72vw)",
               display:       "flex",
               flexDirection: "column",
               alignItems:    "center",
@@ -316,7 +301,7 @@ export default function LoadingScreen({ onLoadingComplete }: LoadingScreenProps)
 
             {/* ══ LOGO STAGE ══════════════════════════════════════════════ */}
             <div
-              ref={textWrapRef}
+              ref={logoWrapRef}
               style={{
                 position:     "relative",
                 width:        "100%",
@@ -327,33 +312,24 @@ export default function LoadingScreen({ onLoadingComplete }: LoadingScreenProps)
               }}
             >
 
-              {/* ── Layer A: dim/pre-cut text (establishes block height) ── */}
-              <div
+              {/* ── Layer A: dim logo (establishes block dimensions) ─────── */}
+              <img
                 aria-hidden
+                src={LOGO}
+                alt=""
+                draggable={false}
                 style={{
-                  display:        "flex",
-                  justifyContent: "center",
+                  display:       "block",
+                  width:         "100%",
+                  height:        "auto",
+                  userSelect:    "none",
+                  pointerEvents: "none",
+                  opacity:       0.08,
+                  filter:        "grayscale(1)",
                 }}
-              >
-                <span
-                  style={{
-                    fontSize:      "clamp(5.5rem, 15.5vw, 10rem)",
-                    lineHeight:    1,
-                    letterSpacing: LS,
-                    marginRight:   `-${LS}`,
-                    fontFamily:    `'${FONT_HEAD}', 'Arial Narrow', sans-serif`,
-                    fontWeight:    400,
-                    color:         C_FG_DEAD,
-                    userSelect:    "none",
-                    textShadow:    `0 0 55px ${pA(0.12)}`,
-                    display:       "block",
-                  }}
-                >
-                  {NAME}
-                </span>
-              </div>
+              />
 
-              {/* ── Layer B: revealed text + heat glow (absolute overlay) ── */}
+              {/* ── Layer B: revealed logo + heat glow (absolute overlay) ── */}
               <div
                 style={{
                   position:   "absolute",
@@ -362,35 +338,25 @@ export default function LoadingScreen({ onLoadingComplete }: LoadingScreenProps)
                   willChange: "clip-path",
                 }}
               >
-                <div
-                  style={{
-                    display:        "flex",
-                    justifyContent: "center",
-                    position:       "relative",
-                    width:          "100%",
-                    height:         "100%",
-                  }}
-                >
-                  <span
+                <div style={{ position: "relative", width: "100%", height: "100%" }}>
+                  <img
+                    src={LOGO}
+                    alt={shopConfig.name}
+                    draggable={false}
                     style={{
-                      fontSize:      "clamp(5.5rem, 15.5vw, 10rem)",
-                      lineHeight:    1,
-                      letterSpacing: LS,
-                      marginRight:   `-${LS}`,
-                      fontFamily:    `'${FONT_HEAD}', 'Arial Narrow', sans-serif`,
-                      fontWeight:    400,
-                      color:         C_FG,
-                      userSelect:    "none",
-                      textShadow:
-                        `0 0 120px ${pA(0.13)},` +
-                        ` 0 2px 24px rgba(0,0,0,0.99)`,
                       display:       "block",
+                      width:         "100%",
+                      height:        "auto",
+                      userSelect:    "none",
+                      pointerEvents: "none",
+                      // Subtle drop-shadow for depth on light bg
+                      filter:
+                        `drop-shadow(0 2px 18px ${pA(0.18)})` +
+                        ` drop-shadow(0 1px 4px rgba(0,0,0,0.10))`,
                     }}
-                  >
-                    {NAME}
-                  </span>
+                  />
 
-                  {/* Heat-glow canvas: screen-blended over the revealed text */}
+                  {/* Heat-glow canvas: screen-blended over the revealed logo */}
                   {wrapSz.w > 0 && (
                     <HeatCanvas
                       bladeXFraction={heatFrac}
