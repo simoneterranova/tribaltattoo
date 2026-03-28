@@ -1,7 +1,41 @@
+// TypeScript: Declare window.gtag for GA4
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import shopConfig from "@/config/shopConfig";
+
+// ─────────────────────────────────────────────────────────────
+// Google Analytics 4 (GA4) Loader — Placeholder Implementation
+// ─────────────────────────────────────────────────────────────
+function loadGA4() {
+  // TODO: Replace 'G-XXXXXXXXXX' with your real GA4 Measurement ID
+  const GA_MEASUREMENT_ID = "G-XXXXXXXXXX";
+  if (!GA_MEASUREMENT_ID || GA_MEASUREMENT_ID === "G-XXXXXXXXXX") return;
+
+  // Prevent duplicate injection
+  if (window.gtag) return;
+
+  // Inject gtag.js
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+  document.head.appendChild(script);
+
+  // Inline gtag config
+  const inlineScript = document.createElement("script");
+  inlineScript.innerHTML = `
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '${GA_MEASUREMENT_ID}');
+  `;
+  document.head.appendChild(inlineScript);
+}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Apply all theme values from shopConfig BEFORE React renders.
@@ -70,5 +104,24 @@ function applyShopTheme() {
 }
 
 applyShopTheme();
+
+// Listen for cookie consent updates to load GA4 only if analytics cookies are accepted
+window.addEventListener('cookieConsentUpdate', (e) => {
+  const consent = (e as CustomEvent).detail;
+  if (consent?.analytics) {
+    loadGA4();
+  }
+});
+
+// On first load, check if analytics cookies are already accepted
+try {
+  const consentRaw = localStorage.getItem(shopConfig.cookieConsentKey || "cookie-consent-preferences");
+  if (consentRaw) {
+    const { preferences } = JSON.parse(consentRaw);
+    if (preferences?.analytics) {
+      loadGA4();
+    }
+  }
+} catch {}
 
 createRoot(document.getElementById("root")!).render(<App />);

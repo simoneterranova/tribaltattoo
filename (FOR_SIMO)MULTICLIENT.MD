@@ -80,22 +80,20 @@ Run all migrations in supabase folder in order.
 7. Enable booking link if available
 8. Ask first customers for Google reviews immediately after launch
 
+
 ### 7.3 Google Analytics 4
 1. Go to https://analytics.google.com
 2. Create a new GA4 property for the client
 3. Copy the Measurement ID (e.g., `G-XXXXXXXXXX`)
-4. Add to `index.html` before `</head>`:
-```html
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
-</script>
-```
-5. Link GA4 to Search Console:
-   GA4 → Admin → Search Console Links → Add
+4. Open `src/main.tsx` and update the `GA_MEASUREMENT_ID` placeholder in the `loadGA4()` function with the real value:
+  ```ts
+  // src/main.tsx
+  const GA_MEASUREMENT_ID = "G-XXXXXXXXXX"; // ← Replace with real ID
+  ```
+5. **Do NOT** add GA4 scripts to `index.html` — the codebase loads GA4 dynamically **only if the user accepts analytics cookies** (privacy compliant).
+6. GA4 will be loaded automatically after consent, or on first load if consent is already given.
+7. Link GA4 to Search Console:
+  GA4 → Admin → Search Console Links → Add
 
 ### 7.4 Validation & Testing
 Run all of these before going live:
