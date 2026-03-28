@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowUpRight, User, CalendarDays, LayoutDashboard, LogOut } from "lucide-react";
+import { Menu, X, ArrowUpRight, CalendarDays, LayoutDashboard, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import BookingDialog from "./BookingDialog";
+import ContactDialog from "./ContactDialog";
+// import BookingDialog from "./BookingDialog"; // COMMENTED OUT - replaced with ContactDialog
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 import { useAuth } from "@/contexts/AuthContext";
 import shopConfig from "@/config/shopConfig";
@@ -13,7 +14,7 @@ const navLinks = shopConfig.nav.links;
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [bookingOpen, setBookingOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
   const { user, profile, isBarber, signOut } = useAuth();
 
   // Extract section IDs from nav links
@@ -34,8 +35,8 @@ const Navbar = () => {
 
   return (
     <>
-    {/* Controlled booking dialog — lives outside AnimatePresence so it is never unmounted by the mobile overlay */}
-    {!isBarber && <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />}
+    {/* Controlled contact dialog — lives outside AnimatePresence so it is never unmounted by the mobile overlay */}
+    {!isBarber && <ContactDialog open={contactOpen} onOpenChange={setContactOpen} />}
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -122,20 +123,13 @@ const Navbar = () => {
                   Sign Out
                 </Button>
               </div>
-            ) : (
-              <Link to="/auth">
-                <Button variant="ghost" size="sm" className="text-[11px] tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground">
-                  <User className="h-3.5 w-3.5 mr-1.5" />
-                  Sign In
-                </Button>
-              </Link>
-            )}
+            ) : null}
             {!isBarber && (
-              <BookingDialog>
+              <ContactDialog>
                 <Button variant="hero" size="default" className="text-xs tracking-[0.15em] uppercase">
                   {shopConfig.nav.bookingCta} <ArrowUpRight className="ml-1.5 h-3.5 w-3.5" />
                 </Button>
-              </BookingDialog>
+              </ContactDialog>
             )}
           </motion.div>
 
@@ -235,20 +229,13 @@ const Navbar = () => {
                     Sign Out
                   </Button>
                 </>
-              ) : (
-                <Link to="/auth" onClick={() => setMobileOpen(false)}>
-                  <Button variant="ghost" size="lg" className="w-full rounded-none text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground">
-                    <User className="h-4 w-4 mr-1.5" />
-                    Sign In
-                  </Button>
-                </Link>
-              )}
+              ) : null}
               {!isBarber && (
                 <Button
                   variant="hero"
                   size="lg"
                   className="w-full rounded-none text-xs tracking-[0.15em]"
-                  onClick={() => { setMobileOpen(false); setBookingOpen(true); }}
+                  onClick={() => { setMobileOpen(false); setContactOpen(true); }}
                 >
                   {shopConfig.nav.bookingCta} <ArrowUpRight className="ml-1.5 h-4 w-4" />
                 </Button>

@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Star, Quote } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import shopConfig from "@/config/shopConfig";
@@ -6,11 +6,42 @@ import shopConfig from "@/config/shopConfig";
 const testimonials = shopConfig.testimonials;
 const N = testimonials.length;
 
-// ── Constants — identical ratios to GallerySection ───────────
-const CARD_W          = 380;  // px
-const CARD_H          = 280;  // px
-const SPACING         = 420;  // px center-to-center
-const DRAG_SENSITIVITY = 260; // px drag = 1 card advance
+// ── Responsive constants helper ───────────
+function getResponsiveConstants(isMobile: boolean) {
+  if (isMobile) {
+    return {
+      CARD_W: 300,          // Smaller cards for mobile
+      CARD_H: 400,          // Taller aspect ratio for mobile
+      SPACING: 320,         // Less spacing between cards
+      DRAG_SENSITIVITY: 160,
+      PERSPECTIVE: 800,     // Less dramatic 3D effect
+      TZ_FACTOR: 30,        // Reduced depth
+      SCALE_MIN: 0.85,      // Less scale difference
+      SCALE_FACTOR: 0.05,
+      OPACITY_MIN: 0.3,
+      OPACITY_FACTOR: 0.25,
+      SHADOW_ACTIVE: "0 16px 40px rgba(0,0,0,.5), 0 4px 12px rgba(0,0,0,.3)",
+      SHADOW_INACTIVE: "0 6px 20px rgba(0,0,0,.3)",
+      FADE_WIDTH: 80,       // Narrower edge fades
+    };
+  }
+  return {
+    CARD_W: 480,
+    CARD_H: 360,
+    SPACING: 530,
+    DRAG_SENSITIVITY: 260,
+    PERSPECTIVE: 1600,
+    TZ_FACTOR: 55,
+    SCALE_MIN: 0.72,
+    SCALE_FACTOR: 0.10,
+    OPACITY_MIN: 0.18,
+    OPACITY_FACTOR: 0.30,
+    SHADOW_ACTIVE: "0 32px 80px rgba(0,0,0,.65), 0 8px 24px rgba(0,0,0,.35)",
+    SHADOW_INACTIVE: "0 12px 40px rgba(0,0,0,.4)",
+    FADE_WIDTH: 200,
+  };
+}
+
 const MAX_THROW       = 2;
 const LERP            = 0.10;
 const SETTLE_E        = 0.0005;
@@ -23,16 +54,19 @@ const tp = {
   timer: null as ReturnType<typeof setInterval> | null,
   down: false, x0: 0, pos0: 0,
   lx: 0, lt: 0, iv: 0,
+  isMobile: false, // Track current mobile state
+  constants: getResponsiveConstants(false), // Initialize with desktop
 };
 
 type CardEl = HTMLDivElement & { _overlay?: HTMLElement | null };
 const cardEls: (CardEl | null)[] = Array(N).fill(null);
 const dotEls:  (HTMLButtonElement | null)[] = Array(N).fill(null);
 
-// ── paint() — exact same formula as GallerySection ───────────
+// ── paint() — responsive to screen size ───────────
 function paint() {
   const pos = tp.pos;
   const ai  = ((Math.round(pos) % N) + N) % N;
+  const c = tp.constants; // Use responsive constants
 
   for (let i = 0; i < N; i++) {
     const el = cardEls[i];
@@ -49,20 +83,18 @@ function paint() {
     if (abs > 2.85) { el.style.visibility = "hidden"; continue; }
     el.style.visibility = "";
 
-    // ── Exact same values as GallerySection ──
-    const tx    = d * SPACING;
-    const tz    = -abs * 55;
+    // ── Use responsive values ──
+    const tx    = d * c.SPACING;
+    const tz    = -abs * c.TZ_FACTOR;
     const ry    = d * -10;
-    const scale = Math.max(0.72, 1 - abs * 0.10);
-    const op    = Math.max(0.18, 1 - abs * 0.30);
+    const scale = Math.max(c.SCALE_MIN, 1 - abs * c.SCALE_FACTOR);
+    const op    = Math.max(c.OPACITY_MIN, 1 - abs * c.OPACITY_FACTOR);
     const zi    = String((20 - abs * 5) | 0);
 
     el.style.transform = `translateX(${tx}px) translateZ(${tz}px) rotateY(${ry}deg) scale(${scale})`;
     el.style.opacity   = String(op);
     el.style.zIndex    = zi;
-    el.style.boxShadow = (i === ai)
-      ? "0 32px 80px rgba(0,0,0,.65), 0 8px 24px rgba(0,0,0,.35)"
-      : "0 12px 40px rgba(0,0,0,.4)";
+    el.style.boxShadow = (i === ai) ? c.SHADOW_ACTIVE : c.SHADOW_INACTIVE;
 
     if (el._overlay) el._overlay.style.opacity = (i === ai) ? "0" : "1";
   }
@@ -122,6 +154,27 @@ function goTo(idx: number) {
 // ────────────────────────────────────────────────────────────
 const TestimonialsSection = () => {
   const stageRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile and update constants
+  useEffect(() => {
+    const checkMobile = () => {
+      const mobile = window.innerWidth < 768;
+      if (mobile !== tp.isMobile) {
+        tp.isMobile = mobile;
+        tp.constants = getResponsiveConstants(mobile);
+        setIsMobile(mobile);
+        paint(); // Repaint with new constants
+      }
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Get current constants
+  const c = tp.constants;
 
   // Reset on mount
   useEffect(() => {
@@ -146,11 +199,11 @@ const TestimonialsSection = () => {
       const now = performance.now();
       const dt  = now - tp.lt;
       if (dt > 0) {
-        const raw = (x - tp.lx) / dt / DRAG_SENSITIVITY;
+        const raw = (x - tp.lx) / dt / tp.constants.DRAG_SENSITIVITY;
         tp.iv = tp.iv * 0.70 + raw * 0.30;
       }
       tp.lx = x; tp.lt = now;
-      tp.pos    = tp.pos0 - (x - tp.x0) / DRAG_SENSITIVITY;
+      tp.pos    = tp.pos0 - (x - tp.x0) / tp.constants.DRAG_SENSITIVITY;
       tp.target = tp.pos;
       if (!tp.raf) tp.raf = requestAnimationFrame(() => { tp.raf = null; paint(); });
     };
@@ -206,16 +259,16 @@ const TestimonialsSection = () => {
   }, []);
 
   return (
-    <section id="testimonials" className="py-24 md:py-40 border-t border-border overflow-hidden">
+    <section id="testimonials" className="py-16 md:py-24 lg:py-40 border-t border-border overflow-hidden">
       {/* Header */}
-      <div className="container mx-auto px-6 mb-10">
+      <div className="container mx-auto px-4 md:px-6 mb-8 md:mb-10">
         <ScrollReveal direction="up" duration={0.7}>
           <div className="flex items-end justify-between">
             <div>
-              <span className="font-body text-xs tracking-[0.4em] text-primary uppercase">
+              <span className="font-body text-xs tracking-[0.3em] md:tracking-[0.4em] text-primary uppercase">
                 {shopConfig.sections.testimonials.label}
               </span>
-              <h2 className="font-heading text-6xl md:text-8xl text-foreground mt-2 leading-none">
+              <h2 className="font-heading text-4xl md:text-6xl lg:text-8xl text-foreground mt-2 leading-none">
                 {shopConfig.sections.testimonials.heading}
                 <span className="text-primary">.</span>
               </h2>
@@ -227,13 +280,13 @@ const TestimonialsSection = () => {
         </ScrollReveal>
       </div>
 
-      {/* 3D Stage — identical structure to GallerySection */}
+      {/* 3D Stage — responsive structure */}
       <div className="relative w-full">
         <div
           ref={stageRef}
           style={{
-            perspective: "1600px",           // exact same as GallerySection
-            height: `${CARD_H + 160}px`,
+            perspective: `${c.PERSPECTIVE}px`,
+            height: `${c.CARD_H + (isMobile ? 100 : 160)}px`,
             position: "relative",
             display: "flex",
             alignItems: "center",
@@ -244,17 +297,17 @@ const TestimonialsSection = () => {
             overflow: "hidden",
           }}
         >
-          {/* Left edge fade — exact same as GallerySection */}
+          {/* Left edge fade — responsive */}
           <div style={{
             position: "absolute", top: 0, bottom: 0, left: 0,
-            width: "200px", zIndex: 10, pointerEvents: "none",
+            width: `${c.FADE_WIDTH}px`, zIndex: 10, pointerEvents: "none",
             background: "linear-gradient(90deg, var(--background) 0%, transparent 100%)",
           }} />
 
-          {/* Right edge fade — exact same as GallerySection */}
+          {/* Right edge fade — responsive */}
           <div style={{
             position: "absolute", top: 0, bottom: 0, right: 0,
-            width: "200px", zIndex: 10, pointerEvents: "none",
+            width: `${c.FADE_WIDTH}px`, zIndex: 10, pointerEvents: "none",
             background: "linear-gradient(-90deg, var(--background) 0%, transparent 100%)",
           }} />
 
@@ -275,8 +328,8 @@ const TestimonialsSection = () => {
               }}
               style={{
                 position: "absolute",
-                width: `${CARD_W}px`,
-                height: `${CARD_H}px`,
+                width: `${c.CARD_W}px`,
+                height: `${c.CARD_H}px`,
                 willChange: "transform, opacity",
                 backfaceVisibility: "hidden",
                 transform: "translateZ(0)",
@@ -284,27 +337,37 @@ const TestimonialsSection = () => {
                 cursor: "pointer",
               }}
             >
-              {/* Card content */}
+              {/* Card content — responsive padding and text */}
               <div
-                className="border border-border bg-background h-full flex flex-col justify-between p-8"
+                className={`border border-border bg-background h-full flex flex-col justify-between ${
+                  isMobile ? 'p-6' : 'p-10'
+                }`}
               >
                 <div>
-                  <Quote className="h-6 w-6 mb-6" style={{ color: "var(--primary)", opacity: 0.3 }} />
-                  <p className="font-body text-base leading-relaxed text-secondary-foreground">
+                  <Quote 
+                    className={`${isMobile ? 'h-6 w-6 mb-4' : 'h-8 w-8 mb-8'}`}
+                    style={{ color: "var(--primary)", opacity: 0.3 }} 
+                  />
+                  <p className={`font-body ${isMobile ? 'text-base' : 'text-lg'} leading-relaxed text-secondary-foreground`}>
                     {t.text}
                   </p>
                 </div>
-                <div className="flex items-center justify-between mt-8">
-                  <span className="font-heading text-lg text-foreground">{t.name}</span>
+                <div className={`flex items-center justify-between ${isMobile ? 'mt-6' : 'mt-8'}`}>
+                  <span className={`font-heading ${isMobile ? 'text-lg' : 'text-xl'} text-foreground`}>
+                    {t.name}
+                  </span>
                   <div className="flex gap-0.5">
                     {[...Array(5)].map((_, j) => (
-                      <Star key={j} className="h-3 w-3 fill-primary text-primary" />
+                      <Star 
+                        key={j} 
+                        className={`${isMobile ? 'h-3.5 w-3.5' : 'h-4 w-4'} fill-primary text-primary`} 
+                      />
                     ))}
                   </div>
                 </div>
               </div>
 
-              {/* Overlay — dims inactive cards, same as GallerySection */}
+              {/* Overlay — dims inactive cards */}
               <div
                 className="t-ov"
                 style={{
@@ -318,10 +381,12 @@ const TestimonialsSection = () => {
           ))}
         </div>
 
-        {/* Progress dots — exact same as GallerySection */}
+        {/* Progress dots — responsive */}
         <div style={{
-          display: "flex", gap: "6px",
-          justifyContent: "center", marginTop: "32px", alignItems: "center",
+          display: "flex", gap: isMobile ? "4px" : "6px",
+          justifyContent: "center", 
+          marginTop: isMobile ? "24px" : "32px", 
+          alignItems: "center",
         }}>
           {testimonials.map((_, i) => (
             <button
@@ -330,7 +395,9 @@ const TestimonialsSection = () => {
               onClick={() => goTo(i)}
               aria-label={`Review ${i + 1}`}
               style={{
-                height: "5px", width: "6px", borderRadius: "3px",
+                height: isMobile ? "4px" : "5px", 
+                width: isMobile ? "5px" : "6px", 
+                borderRadius: "3px",
                 background: "var(--border)", border: "none",
                 cursor: "pointer", padding: 0,
                 transition: "background 0.3s, width 0.4s cubic-bezier(0.34,1.56,0.64,1)",

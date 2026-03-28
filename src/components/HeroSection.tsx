@@ -3,7 +3,8 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight, LayoutDashboard } from "lucide-react";
-import BookingDialog from "./BookingDialog";
+import ContactDialog from "./ContactDialog";
+// import BookingDialog from "./BookingDialog"; // COMMENTED OUT - replaced with ContactDialog
 import { useAuth } from "@/contexts/AuthContext";
 import shopConfig from "@/config/shopConfig";
 
@@ -70,11 +71,11 @@ const HeroSection = () => {
               </Button>
             </Link>
           ) : (
-            <BookingDialog>
+            <ContactDialog>
               <Button variant="hero" size="lg">
                 {shopConfig.hero.bookingCta} <ArrowUpRight className="ml-2 h-5 w-5" />
               </Button>
-            </BookingDialog>
+            </ContactDialog>
           )}
         </motion.div>
       </div>

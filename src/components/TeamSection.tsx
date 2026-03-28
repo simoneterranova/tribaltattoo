@@ -31,7 +31,7 @@ const TeamSection = () => {
               </p>
               <div className="flex items-center gap-3">
                 <div className="h-px w-8 bg-primary/60" />
-                <span className="font-heading text-5xl text-foreground leading-none">{team.length}</span>
+                <span className="font-heading text-5xl text-foreground leading-none">{team[0]?.years || team.length}</span>
                 <div className="font-body text-xs text-muted-foreground leading-tight">
                   <p>{shopConfig.sections.team.counterLabel[0]}</p>
                   <p>{shopConfig.sections.team.counterLabel[1]}</p>
@@ -55,6 +55,7 @@ function TeamRow({ member, rowIndex }: { member: TeamMember; rowIndex: number })
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
   const isEven = rowIndex % 2 === 0;
+  const isVideo = member.image.endsWith('.mp4') || member.image.endsWith('.webm') || member.image.endsWith('.mov');
 
   return (
     <div ref={ref} className="border-t border-border group relative">
@@ -64,18 +65,32 @@ function TeamRow({ member, rowIndex }: { member: TeamMember; rowIndex: number })
       />
 
       <div className={`flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"}`}>
-        {/* === Image Pane === */}
+        {/* === Image/Video Pane === */}
         <motion.div
           initial={{ opacity: 0, x: isEven ? -80 : 80 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 1, ease: [0.25, 0.4, 0.25, 1] }}
-          className="relative aspect-[4/3] md:aspect-auto md:w-1/2 overflow-hidden"
+          className={`relative aspect-[4/3] md:aspect-auto ${isVideo ? 'md:w-2/5' : 'md:w-1/2'} overflow-hidden md:max-h-[600px]`}
         >
-          <img
-            src={member.image}
-            alt={member.name}
-            className="h-full w-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-[1.03] transition-all duration-700 ease-out"
-          />
+          {isVideo ? (
+            <video
+              src={member.image}
+              autoPlay
+              loop
+              muted
+              playsInline
+              disablePictureInPicture
+              disableRemotePlayback
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
+              className="grayscale group-hover:grayscale-0 scale-100 group-hover:scale-[1.03] transition-all duration-700 ease-out"
+            />
+          ) : (
+            <img
+              src={member.image}
+              alt={member.name}
+              className="h-full w-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-[1.03] transition-all duration-700 ease-out"
+            />
+          )}
           {/* Subtle directional vignette */}
           <div
             className={`absolute inset-0 pointer-events-none ${
@@ -97,7 +112,7 @@ function TeamRow({ member, rowIndex }: { member: TeamMember; rowIndex: number })
           initial={{ opacity: 0, x: isEven ? 80 : -80 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 1, delay: 0.15, ease: [0.25, 0.4, 0.25, 1] }}
-          className="relative md:w-1/2 flex flex-col justify-end overflow-hidden bg-card px-8 py-10 md:px-12 md:py-14 lg:px-16 lg:py-20 min-h-[300px] md:min-h-0"
+          className={`relative ${isVideo ? 'md:w-3/5' : 'md:w-1/2'} flex flex-col justify-end overflow-hidden bg-card px-8 py-10 md:px-12 md:py-14 lg:px-16 lg:py-20 min-h-[300px] md:min-h-0`}
         >
           {/* Giant ghost index watermark */}
           <motion.span

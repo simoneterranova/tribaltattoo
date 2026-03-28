@@ -88,6 +88,11 @@ const FooterSection = () => {
                       Facebook <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </a>
                   )}
+                  {shopConfig.social.tiktok && (
+                    <a href={shopConfig.social.tiktok} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-foreground transition-colors group">
+                      TikTok <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

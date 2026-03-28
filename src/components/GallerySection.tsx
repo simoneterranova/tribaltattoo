@@ -6,6 +6,11 @@ import shopConfig from "@/config/shopConfig";
 const images = shopConfig.gallery;
 const N = images.length;
 
+// Helper to detect video files
+const isVideo = (src: string) => {
+  return src.endsWith('.mp4') || src.endsWith('.webm') || src.endsWith('.mov');
+};
+
 // ── Physics carousel constants ──────────────────────────────
 const CARD_W          = 460;  // px — card intrinsic width
 const CARD_H          = 600;  // px — card intrinsic height
@@ -371,17 +376,35 @@ const MobileGallery = () => {
                 cursor: "pointer",
               }}
             >
-              <img
-                src={img.src}
-                alt={img.alt}
-                draggable={false}
-                loading={i === 0 ? "eager" : "lazy"}
-                style={{
-                  width: "100%", height: "100%",
-                  objectFit: "cover", display: "block",
-                  pointerEvents: "none",
-                }}
-              />
+              {isVideo(img.src) ? (
+                <video
+                  src={img.src}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  disablePictureInPicture
+                  disableRemotePlayback
+                  draggable={false}
+                  style={{
+                    width: "100%", height: "100%",
+                    objectFit: "cover", display: "block",
+                    pointerEvents: "none",
+                  }}
+                />
+              ) : (
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  draggable={false}
+                  loading={i === 0 ? "eager" : "lazy"}
+                  style={{
+                    width: "100%", height: "100%",
+                    objectFit: "cover", display: "block",
+                    pointerEvents: "none",
+                  }}
+                />
+              )}
 
               {/* Dark overlay — hidden on active */}
               <div
@@ -600,74 +623,6 @@ const DesktopGallery = () => {
             }}
           />
 
-          {/* Previous arrow */}
-          <button
-            onClick={() => stepBy(-1)}
-            aria-label="Previous"
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.14)";
-              (e.currentTarget as HTMLButtonElement).style.color = "var(--foreground)";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.06)";
-              (e.currentTarget as HTMLButtonElement).style.color = "var(--muted-foreground)";
-            }}
-            style={{
-              position: "absolute", left: "20px", top: "50%",
-              transform: "translateY(-50%)", zIndex: 20,
-              width: "40px", height: "40px", borderRadius: "50%",
-              background: "rgba(255,255,255,0.06)",
-              border: "1px solid var(--border)",
-              backdropFilter: "blur(14px)",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              cursor: "pointer", color: "var(--muted-foreground)",
-              transition: "background 0.2s, color 0.2s",
-              outline: "none",
-            }}
-          >
-            <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
-              <path
-                d="M9.5 3L5 7.5l4.5 4.5"
-                stroke="currentColor" strokeWidth="1.6"
-                strokeLinecap="round" strokeLinejoin="round"
-              />
-            </svg>
-          </button>
-
-          {/* Next arrow */}
-          <button
-            onClick={() => stepBy(1)}
-            aria-label="Next"
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.14)";
-              (e.currentTarget as HTMLButtonElement).style.color = "var(--foreground)";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.06)";
-              (e.currentTarget as HTMLButtonElement).style.color = "var(--muted-foreground)";
-            }}
-            style={{
-              position: "absolute", right: "20px", top: "50%",
-              transform: "translateY(-50%)", zIndex: 20,
-              width: "40px", height: "40px", borderRadius: "50%",
-              background: "rgba(255,255,255,0.06)",
-              border: "1px solid var(--border)",
-              backdropFilter: "blur(14px)",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              cursor: "pointer", color: "var(--muted-foreground)",
-              transition: "background 0.2s, color 0.2s",
-              outline: "none",
-            }}
-          >
-            <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
-              <path
-                d="M5.5 3L10 7.5 5.5 12"
-                stroke="currentColor" strokeWidth="1.6"
-                strokeLinecap="round" strokeLinejoin="round"
-              />
-            </svg>
-          </button>
-
           {/* Cards */}
           {images.map((img, i) => (
             <div
@@ -697,17 +652,35 @@ const DesktopGallery = () => {
                 visibility: "hidden",
               }}
             >
-              <img
-                src={img.src}
-                alt={img.alt}
-                draggable={false}
-                loading={i === 0 ? "eager" : "lazy"}
-                style={{
-                  width: "100%", height: "100%",
-                  objectFit: "cover", display: "block",
-                  pointerEvents: "none", userSelect: "none",
-                }}
-              />
+              {isVideo(img.src) ? (
+                <video
+                  src={img.src}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  disablePictureInPicture
+                  disableRemotePlayback
+                  draggable={false}
+                  style={{
+                    width: "100%", height: "100%",
+                    objectFit: "cover", display: "block",
+                    pointerEvents: "none", userSelect: "none",
+                  }}
+                />
+              ) : (
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  draggable={false}
+                  loading={i === 0 ? "eager" : "lazy"}
+                  style={{
+                    width: "100%", height: "100%",
+                    objectFit: "cover", display: "block",
+                    pointerEvents: "none", userSelect: "none",
+                  }}
+                />
+              )}
 
               {/* Dark overlay — hidden on active card */}
               <div
