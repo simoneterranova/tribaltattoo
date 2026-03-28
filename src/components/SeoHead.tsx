@@ -71,6 +71,12 @@ export function SeoHead() {
     <Helmet>
       {/* ── PRIMARY META TAGS ──────────────────────────────────────────────── */}
       <title>{title}</title>
+
+      {/* ── GOOGLE SEARCH CONSOLE VERIFICATION ─────────────────────────────── */}
+      {shopConfig.meta.googleSiteVerification && (
+        <meta name="google-site-verification" content={shopConfig.meta.googleSiteVerification} />
+      )}
+      
       <meta name="description" content={description} />
       <meta name="robots" content="index, follow" />
       <link rel="canonical" href={canonicalUrl} />

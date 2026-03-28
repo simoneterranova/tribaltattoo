@@ -59,6 +59,22 @@ const shopConfig = {
     /** og:locale */
     locale: "it_IT",
 
+    /**
+     * Google Search Console verification code.
+     * Get it from: https://search.google.com/search-console
+     * Add property → URL prefix → Copy the content="..." value from the meta tag.
+     * Leave empty or remove this field if not using Google Search Console.
+     */
+    googleSiteVerification: "YOUR_GOOGLE_VERIFICATION_CODE_HERE",
+    
+    /**
+     * Google Analytics 4 Measurement ID.
+     * Get it from: https://analytics.google.com → Admin → Data Streams
+     * Format: "G-XXXXXXXXXX"
+     * Leave empty or set to placeholder if not using GA4.
+     */
+    googleAnalyticsId: "G-XXXXXXXXXX",
+    
     title: "Tatuaggi Torino | Gran Babar | Studio di Tatuaggi Personalizzati",
     description:
       "Studio di tatuaggi a Torino. Tatuaggi personalizzati, cover-up, realistici, old school, geometrici e tribali. Consulenza gratuita. Contatta Francesco.",

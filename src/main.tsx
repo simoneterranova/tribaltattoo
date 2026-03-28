@@ -10,11 +10,11 @@ import "./index.css";
 import shopConfig from "@/config/shopConfig";
 
 // ─────────────────────────────────────────────────────────────
-// Google Analytics 4 (GA4) Loader — Placeholder Implementation
+// Google Analytics 4 (GA4) Loader — Privacy-Compliant Implementation
+// Only loads if analytics cookies are accepted.
 // ─────────────────────────────────────────────────────────────
 function loadGA4() {
-  // TODO: Replace 'G-XXXXXXXXXX' with your real GA4 Measurement ID
-  const GA_MEASUREMENT_ID = "G-XXXXXXXXXX";
+  const GA_MEASUREMENT_ID = shopConfig.meta.googleAnalyticsId;
   if (!GA_MEASUREMENT_ID || GA_MEASUREMENT_ID === "G-XXXXXXXXXX") return;
 
   // Prevent duplicate injection
@@ -36,6 +36,7 @@ function loadGA4() {
   `;
   document.head.appendChild(inlineScript);
 }
+
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Apply all theme values from shopConfig BEFORE React renders.
