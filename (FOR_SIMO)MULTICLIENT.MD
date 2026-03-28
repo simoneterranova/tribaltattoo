@@ -7,6 +7,8 @@
 - meta.siteUrl ← CRITICAL (e.g., "https://clientdomain.com")
 - meta.locale (e.g., "en_US", "it_IT")
 - meta.title, description, ogTitle, ogDescription
+- meta.googleSiteVerification ← After Search Console setup (section 7.1)
+- meta.googleAnalyticsId ← After GA4 setup (section 7.3)
 - contact.countryCode ← CRITICAL (e.g., "US", "IT", "GB")
 - contact.priceRange ← CRITICAL (e.g., "$$")
 - contact.geo (optional lat/lng)
