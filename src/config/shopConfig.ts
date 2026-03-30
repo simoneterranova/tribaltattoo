@@ -163,8 +163,19 @@ const shopConfig = {
   // `durationMinutes` is approximate; tattoo sessions vary greatly.
   services: [
     {
+    id: "consultation",
+    index: "01",
+    name: "Consulenza",
+    price: 0,
+    duration: "30 min",
+    durationMinutes: 30,
+    description:
+      "Un primo confronto per definire l'idea, valutare la fattibilità e costruire insieme il progetto ideale per il tuo tatuaggio.",
+    badge: "Iniziale" as string | null,
+    },
+    {
       id: "custom-tattoo",
-      index: "01",
+      index: "02",
       name: "Tattoo Personalizzato",
       price: 150,
       duration: "da 1 ora",
@@ -175,7 +186,7 @@ const shopConfig = {
     },
     {
       id: "cover-up",
-      index: "02",
+      index: "03",
       name: "Cover-up & Correzioni",
       price: 180,
       duration: "da 1 ora",
@@ -186,7 +197,7 @@ const shopConfig = {
     },
     {
       id: "aftercare",
-      index: "03",
+      index: "04",
       name: "Cura Post-Tatuaggio",
       price: 0,
       duration: "inclusa",
