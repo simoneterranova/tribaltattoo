@@ -215,7 +215,7 @@ const shopConfig = {
   testimonials: [
     {
       name: "Clara Collino",
-      text: "L'esperienza è stata fantastica fin dal primo momento: l'ambiente è pulito, accogliente e professionale. Francesco è stato molto attento a capire le mie esigenze e ha creato un design personalizzato che ha superato le mie aspettative. I dettagli sono incredibili!",
+      text: "L'esperienza è stata fantastica fin dal primo momento: l'ambiente è pulito, accogliente e professionale. Francesco è stato molto attento a capire le mie esigenze e ha creato un design personalizzato che mi ha stupita!",
     },
     {
       name: "Carlotta Irene G.",
