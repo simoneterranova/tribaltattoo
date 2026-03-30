@@ -8,7 +8,7 @@ const N = images.length;
 
 // Helper to detect video files
 const isVideo = (src: string) => {
-  return src.endsWith('.mp4') || src.endsWith('.webm') || src.endsWith('.mov');
+  return src.includes('.mp4') || src.includes('.webm') || src.includes('.mov');
 };
 
 // ── Physics carousel constants ──────────────────────────────

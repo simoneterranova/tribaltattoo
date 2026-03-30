@@ -91,7 +91,7 @@ const shopConfig = {
     bookingCta: "Contattami",
     links: [
       { label: "Servizi",    href: "#services"     },
-      { label: "L'Artista",  href: "#team"         },
+      { label: "Francesco",  href: "#team"         },
       { label: "Recensioni", href: "#testimonials" },
       { label: "Gallery",    href: "#gallery"      },
       { label: "Contatti",   href: "#contact"      },
@@ -136,8 +136,8 @@ const shopConfig = {
         "Tutti i preventivi sono concordati durante la consulenza · I prezzi variano in base a dimensione e complessità del progetto",
     },
     team: {
-      label: "L'Artista",
-      heading: ["Chi è", "Gran Babar"],
+      label: "Francesco",
+      heading: ["Chi è", "Francesco"],
       counterLabel: ["Anni di", "Esperienza"],
     },
     testimonials: {
@@ -185,41 +185,8 @@ const shopConfig = {
       badge: "Specialità" as string | null,
     },
     {
-      id: "old-school",
-      index: "03",
-      name: "Old School",
-      price: 120,
-      duration: "da 45 min",
-      durationMinutes: 45,
-      description:
-        "Linee decise, colori saturi e soggetti iconici. Il classico del tatuaggio tradizionale con un tocco personale.",
-      badge: null as string | null,
-    },
-    {
-      id: "realistic",
-      index: "04",
-      name: "Realistico & Black Grey",
-      price: 200,
-      duration: "da 2 ore",
-      durationMinutes: 120,
-      description:
-        "Ritratti, nature morte, paesaggi. Una resa fotografica direttamente sulla pelle, con sfumature e profondità senza eguali.",
-      badge: "Premium" as string | null,
-    },
-    {
-      id: "geometric",
-      index: "05",
-      name: "Geometrico & Tribale",
-      price: 130,
-      duration: "da 1 ora",
-      durationMinutes: 60,
-      description:
-        "Simmetrie perfette, linee pulite e pattern ancestrali. Eleganza matematica che si adatta alla forma del corpo.",
-      badge: null as string | null,
-    },
-    {
       id: "aftercare",
-      index: "06",
+      index: "03",
       name: "Cura Post-Tatuaggio",
       price: 0,
       duration: "inclusa",
@@ -235,7 +202,7 @@ const shopConfig = {
   team: [
     {
       index: "01",
-      name: "Francesco",
+      name: "FRANCESCO",
       role: "Fondatore & Artista Tatuatore",
       image: artist1,
       bio: "Il percorso di Francesco è segnato dalla passione per il disegno, la musica e il volontariato. Il nome Gran Babar nasce da una storia speciale con suo figlio Samuele. L'aggiunta di 'Gran' rappresenta il desiderio di essere un punto di riferimento per chi cerca un tatuaggio che vada oltre il semplice disegno.",
@@ -347,7 +314,7 @@ const shopConfig = {
     /** Full legal entity name. */
     legalName:     "Tatuaggi e Piercing – Gran Babar",
     /** Privacy / legal contact email. */
-    privacyEmail:  "info@granbabar.it",
+    privacyEmail:  "granbabarstudio@gmail.com",
     /** Registered postal address. */
     postalAddress: "Lungo Dora Napoli 16 – 10152 – Torino (TO)",
     /** VAT / Partita IVA. */
@@ -357,7 +324,7 @@ const shopConfig = {
     /** Share Capital — update if applicable. */
     shareCapital:  "[Inserire Capitale Sociale]",
     /** PEC — strongly recommended for Italian businesses. */
-    pecEmail:      "[Inserire PEC]",
+    pecEmail:      "francesco.sansone@pec.fiscozen.it",
   },
 
   // ── THEME ────────────────────────────────────────────────────────────────────
@@ -384,11 +351,11 @@ const shopConfig = {
      * DM Sans: clean, modern body text with quiet personality.
      */
     googleFontsUrl:
-      "https://fonts.googleapis.com/css2?family=Barrio&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap",
-
+      "https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&family=Share+Tech+Mono&display=swap",
+ 
     fonts: {
-      heading: "Barrio",  // expressive, hand-drawn character
-      body:    "DM Sans", // legible, contemporary
+      heading: "Orbitron",        // geometric HUD display, sci-fi squared letterforms
+      body:    "Share Tech Mono", // terminal monospace, cold and precise
     },
 
     /** Sharp edges — fitting for the raw aesthetic of tattooing. */

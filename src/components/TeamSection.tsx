@@ -55,7 +55,7 @@ function TeamRow({ member, rowIndex }: { member: TeamMember; rowIndex: number })
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
   const isEven = rowIndex % 2 === 0;
-  const isVideo = member.image.endsWith('.mp4') || member.image.endsWith('.webm') || member.image.endsWith('.mov');
+  const isVideo = member.image.includes('.mp4') || member.image.includes('.webm') || member.image.includes('.mov');
 
   return (
     <div ref={ref} className="border-t border-border group relative">
@@ -81,8 +81,8 @@ function TeamRow({ member, rowIndex }: { member: TeamMember; rowIndex: number })
               playsInline
               disablePictureInPicture
               disableRemotePlayback
-              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
-              className="grayscale group-hover:grayscale-0 scale-100 group-hover:scale-[1.03] transition-all duration-700 ease-out"
+              style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center' }}
+              className="grayscale group-hover:grayscale-0 scale-100 group-hover:scale-[1.03] transition-all duration-700 ease-out bg-card"
             />
           ) : (
             <img
