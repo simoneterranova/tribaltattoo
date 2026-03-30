@@ -29,6 +29,7 @@ import {
  * - Open Graph tags for social sharing
  * - Twitter Card tags
  * - Canonical URL
+ * - Geo meta tags for local SEO (geo.region, geo.placename, geo.position, ICBM)
  * - Theme color for mobile browsers
  * - Preload/Preconnect hints for performance
  * - JSON-LD structured data (LocalBusiness, Services, Team, Breadcrumbs, FAQ)
@@ -80,6 +81,26 @@ export function SeoHead() {
       <meta name="description" content={description} />
       <meta name="robots" content="index, follow" />
       <link rel="canonical" href={canonicalUrl} />
+      
+      {/* ── GEO TAGS FOR LOCAL SEO ─────────────────────────────────────────── */}
+      {/* These tags help search engines understand your exact physical location */}
+      {shopConfig.contact.geo?.latitude && shopConfig.contact.geo?.longitude && (
+        <>
+          <meta 
+            name="geo.region" 
+            content={`${shopConfig.contact.countryCode}-${shopConfig.city.split(",")[1]?.trim() || ""}`} 
+          />
+          <meta name="geo.placename" content={shopConfig.city.split(",")[0].trim()} />
+          <meta 
+            name="geo.position" 
+            content={`${shopConfig.contact.geo.latitude};${shopConfig.contact.geo.longitude}`} 
+          />
+          <meta 
+            name="ICBM" 
+            content={`${shopConfig.contact.geo.latitude}, ${shopConfig.contact.geo.longitude}`} 
+          />
+        </>
+      )}
       
       {/* ── LANGUAGE & HREFLANG ────────────────────────────────────────────── */}
       <html lang={shopConfig.meta.locale.split("_")[0]} />

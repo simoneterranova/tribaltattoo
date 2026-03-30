@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -8,19 +8,33 @@ import { HelmetProvider } from "react-helmet-async";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { BarberNotificationsProvider } from "@/hooks/useBarberNotifications";
-import Index from "./pages/Index";
-import Auth from "./pages/Auth";
-import MyBookings from "./pages/MyBookings";
-import Dashboard from "./pages/Dashboard";
-import NotFound from "./pages/NotFound";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import CookiePolicy from "./pages/CookiePolicy";
 import LoadingScreen from "@/components/LoadingScreen";
 import { CookieBanner } from "@/components/CookieBanner";
 import ScrollToTop from "@/components/ScrollToTop";
 import { SeoHead } from "@/components/SeoHead";
 
+// ── CODE SPLITTING WITH REACT.LAZY() ──────────────────────────────────────────
+// Lazy load route components to reduce initial bundle size and improve performance
+const Index = lazy(() => import("./pages/Index"));
+const Auth = lazy(() => import("./pages/Auth"));
+const MyBookings = lazy(() => import("./pages/MyBookings"));
+const Dashboard = lazy(() => import("./pages/Dashboard"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const CookiePolicy = lazy(() => import("./pages/CookiePolicy"));
+
 const queryClient = new QueryClient();
+
+// ── SUSPENSE FALLBACK ──────────────────────────────────────────────────────────
+// Lightweight loading indicator for code-split routes
+const RouteLoadingFallback = () => (
+  <div className="min-h-screen flex items-center justify-center bg-background">
+    <div className="flex flex-col items-center gap-4">
+      <div className="h-12 w-12 border-4 border-primary/30 border-t-primary rounded-full animate-spin" />
+      <p className="font-body text-sm text-muted-foreground tracking-wider">Caricamento...</p>
+    </div>
+  </div>
+);
 
 const App = () => {
   // Skip loading animation if landing directly on legal pages
@@ -60,15 +74,17 @@ const App = () => {
                 )}
                 <BrowserRouter>
                   <ScrollToTop />
-                  <Routes>
-                    <Route path="/" element={<Index />} />
-                    <Route path="/auth" element={<Auth />} />
-                    <Route path="/my-bookings" element={<MyBookings />} />
-                    <Route path="/dashboard" element={<Dashboard />} />
-                    <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                    <Route path="/cookie-policy" element={<CookiePolicy />} />
-                    <Route path="*" element={<NotFound />} />
-                  </Routes>
+                  <Suspense fallback={<RouteLoadingFallback />}>
+                    <Routes>
+                      <Route path="/" element={<Index />} />
+                      <Route path="/auth" element={<Auth />} />
+                      <Route path="/my-bookings" element={<MyBookings />} />
+                      <Route path="/dashboard" element={<Dashboard />} />
+                      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                      <Route path="/cookie-policy" element={<CookiePolicy />} />
+                      <Route path="*" element={<NotFound />} />
+                    </Routes>
+                  </Suspense>
                   <CookieBanner />
                 </BrowserRouter>
               </TooltipProvider>
