@@ -20,8 +20,8 @@ function getResponsiveConstants(isMobile: boolean) {
       SCALE_FACTOR: 0.05,
       OPACITY_MIN: 0.3,
       OPACITY_FACTOR: 0.25,
-      SHADOW_ACTIVE: "0 16px 40px rgba(0,0,0,.5), 0 4px 12px rgba(0,0,0,.3)",
-      SHADOW_INACTIVE: "0 6px 20px rgba(0,0,0,.3)",
+      SHADOW_ACTIVE: "0 16px 40px rgba(0,0,0,.12), 0 4px 12px rgba(0,0,0,.08)",
+      SHADOW_INACTIVE: "0 6px 20px rgba(0,0,0,.08)",
       FADE_WIDTH: 80,       // Narrower edge fades
     };
   }
@@ -36,8 +36,8 @@ function getResponsiveConstants(isMobile: boolean) {
     SCALE_FACTOR: 0.10,
     OPACITY_MIN: 0.18,
     OPACITY_FACTOR: 0.30,
-    SHADOW_ACTIVE: "0 32px 80px rgba(0,0,0,.65), 0 8px 24px rgba(0,0,0,.35)",
-    SHADOW_INACTIVE: "0 12px 40px rgba(0,0,0,.4)",
+    SHADOW_ACTIVE: "0 32px 80px rgba(0,0,0,.15), 0 8px 24px rgba(0,0,0,.1)",
+    SHADOW_INACTIVE: "0 12px 40px rgba(0,0,0,.1)",
     FADE_WIDTH: 200,
   };
 }

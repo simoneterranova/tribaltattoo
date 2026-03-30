@@ -67,8 +67,8 @@ function paint() {
     el.style.opacity   = String(op);
     el.style.zIndex    = zi;
     el.style.boxShadow = (i === ai)
-      ? "0 32px 80px rgba(0,0,0,.65), 0 8px 24px rgba(0,0,0,.35)"
-      : "0 12px 40px rgba(0,0,0,.4)";
+      ? "0 32px 80px rgba(0,0,0,.15), 0 8px 24px rgba(0,0,0,.1)"
+      : "0 12px 40px rgba(0,0,0,.1)";
 
     if (el._overlay) el._overlay.style.opacity = (i === ai) ? "0" : "1";
     if (el._label)   el._label.style.opacity   = (i === ai) ? "1" : "0";
