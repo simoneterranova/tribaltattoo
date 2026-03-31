@@ -26,7 +26,7 @@ const ServicesSection = () => {
               <br />
               {shopConfig.sections.services.heading[1]}<span className="text-primary">.</span>
               {/* Hidden SEO text with location keywords */}
-              <span className="sr-only"> — Barbershop Services in {shopConfig.city}</span>
+              <span className="sr-only"> - {shopConfig.activity} a {shopConfig.city.split(",")[0].trim()}</span>
             </h2>
           </ScrollReveal>
 

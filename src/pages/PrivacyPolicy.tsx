@@ -1,13 +1,30 @@
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import shopConfig from "@/config/shopConfig";
 
+/**
+ * Privacy Policy Page
+ * 
+ * SEO Implementation:
+ * - noindex, follow - Prevents indexing but allows link crawling
+ * - Proper title for browser tab and analytics
+ * - Legal compliance with GDPR requirements
+ */
 const PrivacyPolicy = () => {
     return (
+        <>
+        <Helmet>
+            {/* Legal pages should not appear in search results */}
+            <meta name="robots" content="noindex, follow" />
+            <title>Privacy Policy | {shopConfig.name}</title>
+            <meta name="description" content="Privacy policy and GDPR compliance information for {shopConfig.fullName}. Learn how we collect, use, and protect your personal data." />
+        </Helmet>
+
         <div className="min-h-screen bg-background text-foreground selection:bg-primary/30">
             <div className="container mx-auto px-6 py-12 md:py-24 max-w-4xl">
                 <div className="mb-12">
-                    <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8">
+                    <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8" title="Torna alla homepage Gran Babar">
                         <ArrowLeft className="h-4 w-4" /> Back to Home
                     </Link>
                     <h1 className="font-heading text-4xl md:text-6xl mb-4">Privacy <span className="text-primary">Policy</span>.</h1>
@@ -97,6 +114,7 @@ const PrivacyPolicy = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 

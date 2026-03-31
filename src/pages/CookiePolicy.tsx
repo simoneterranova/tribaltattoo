@@ -1,6 +1,16 @@
 import { ArrowLeft, Settings2 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import shopConfig from "@/config/shopConfig";
 
+/**
+ * Cookie Policy Page
+ * 
+ * SEO Implementation:
+ * - noindex, follow - Prevents indexing but allows link crawling
+ * - Proper title for browser tab
+ * - Compliant with Italian Data Protection Authority (Garante) requirements
+ */
 const CookiePolicy = () => {
     // Triggers the event listened to by the CookieBanner
     const openCookieSettings = () => {
@@ -8,10 +18,18 @@ const CookiePolicy = () => {
     };
 
     return (
+        <>
+        <Helmet>
+            {/* Legal pages should not appear in search results */}
+            <meta name="robots" content="noindex, follow" />
+            <title>Cookie Policy | {shopConfig.name}</title>
+            <meta name="description" content="Cookie policy for {shopConfig.fullName}. Learn about the cookies we use and how to manage your preferences." />
+        </Helmet>
+
         <div className="min-h-screen bg-background text-foreground selection:bg-primary/30">
             <div className="container mx-auto px-6 py-12 md:py-24 max-w-4xl">
                 <div className="mb-12">
-                    <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8">
+                    <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8" title="Torna alla homepage Gran Babar">
                         <ArrowLeft className="h-4 w-4" /> Back to Home
                     </Link>
                     <h1 className="font-heading text-4xl md:text-6xl mb-4">Cookie <span className="text-primary">Policy</span>.</h1>
@@ -99,6 +117,7 @@ const CookiePolicy = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 

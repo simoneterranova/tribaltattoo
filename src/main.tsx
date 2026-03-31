@@ -84,10 +84,13 @@ function applyShopTheme() {
     root.style.setProperty(prop, value);
   }
 
-  // Inject Google Fonts stylesheet
+  // Inject Google Fonts stylesheet with font-display: swap for performance
   const link = document.createElement("link");
   link.rel = "stylesheet";
-  link.href = theme.googleFontsUrl;
+  // Add &display=swap to prevent FOIT (Flash of Invisible Text)
+  link.href = theme.googleFontsUrl.includes('?') 
+    ? `${theme.googleFontsUrl}&display=swap`
+    : `${theme.googleFontsUrl}?display=swap`;
   document.head.prepend(link);
 
   // Meta tags (title + OG — crawlers that execute JS will see the correct values)

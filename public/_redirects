@@ -1,0 +1,22 @@
+# ╔══════════════════════════════════════════════════════════════╗
+# ║  SPA ROUTING CONFIGURATION — CRITICAL FOR PRODUCTION         ║
+# ║                                                              ║
+# ║  This file ensures all URL paths serve index.html so        ║
+# ║  React Router can handle client-side routing.               ║
+# ║                                                              ║
+# ║  Without this file, direct URL access to routes like:       ║
+# ║  /servizi/tatuaggi-old-school-torino will return 404        ║
+# ║                                                              ║
+# ║  Compatible with:                                           ║
+# ║  - Netlify                                                  ║
+# ║  - Cloudflare Pages                                         ║
+# ║  - Most static hosting platforms                            ║
+# ║                                                              ║
+# ║  Vercel: Auto-detects SPAs, this file is optional           ║
+# ║  Apache: Use .htaccess instead                              ║
+# ║  Nginx: Use try_files directive in nginx.conf               ║
+# ╚══════════════════════════════════════════════════════════════╝
+
+# Redirect all routes to index.html and return 200 (not 301/302)
+# This allows React Router to handle the routing on the client side
+/*    /index.html   200

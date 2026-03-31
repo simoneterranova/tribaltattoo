@@ -48,6 +48,12 @@ const shopConfig = {
   /** The type of business activity. */
   activity: "Studio di Tatuaggi",
 
+  /** Primary author/artist for blog posts and content authorship. */
+  author: {
+    name: "Francesco Sansone",
+    jobTitle: "Tatuatore Professionista",
+  },
+
   // ── SEO / HTML <head> ───────────────────────────────────────────────────────
   meta: {
     /** Full domain without trailing slash. */
@@ -75,9 +81,9 @@ const shopConfig = {
      */
     googleAnalyticsId: "G-XXXXXXXXXX",
     
-    title: "Tatuaggi Torino | Gran Babar | Studio di Tatuaggi Personalizzati",
+    title: "Tatuaggi Torino | Tatuatore Professionista | Gran Babar Studio",
     description:
-      "Studio di tatuaggi a Torino. Tatuaggi personalizzati, cover-up, realistici, old school, geometrici e tribali. Consulenza gratuita. Contatta Francesco.",
+      "Tatuaggi a Torino dal 2020. Francesco, tatuatore esperto in Old School, realistici, geometrici e cover-up. Studio professionale in Borgo Dora. Consulenza gratuita.",
     ogTitle: "Gran Babar – Studio di Tatuaggi a Torino",
     ogDescription:
       "Ogni tatuaggio è un'opera d'arte unica. Prenota la tua consulenza gratuita con Francesco, artista tatuatore a Torino.",

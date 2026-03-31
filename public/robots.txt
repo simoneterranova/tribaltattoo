@@ -2,7 +2,6 @@ User-agent: *
 Allow: /
 
 # ╔════════════════════════════════════════════════════════════════╗
-# ║  Sitemap location — UPDATE domain in shopConfig.meta.siteUrl   ║
-# ║  Replace "https://thegentry.com/" with actual domain           ║
+# ║  Sitemap location — Automatically synced with Gran Babar       ║
 # ╚════════════════════════════════════════════════════════════════╝
-Sitemap: https://thegentry.com/sitemap.xml
+Sitemap: https://www.granbabar.it/sitemap.xml

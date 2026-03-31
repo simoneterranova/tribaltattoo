@@ -48,7 +48,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           className="font-heading text-[clamp(3.5rem,12vw,11rem)] leading-[0.85] tracking-tight text-foreground"
-          aria-label={`${shopConfig.hero.headline.join(" ")} at ${shopConfig.name} Barbershop in ${shopConfig.city}`}
+          aria-label={`${shopConfig.hero.headline.join(" ")} - ${shopConfig.activity} a ${shopConfig.city.split(",")[0].trim()}`}
         >
           {shopConfig.hero.headline[0]}
           <br />
@@ -65,7 +65,7 @@ const HeroSection = () => {
             {shopConfig.hero.subheadline}
           </p>
           {isBarber ? (
-            <Link to="/dashboard">
+            <Link to="/dashboard" title="Vai alla dashboard barber">
               <Button variant="hero" size="lg">
                 Dashboard <LayoutDashboard className="ml-2 h-5 w-5" />
               </Button>

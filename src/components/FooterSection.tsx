@@ -63,10 +63,10 @@ const FooterSection = () => {
                   {shopConfig.sections.contact.contactLabel}
                 </h3>
                 <div className="space-y-2 font-body text-sm text-muted-foreground">
-                  <a href={shopConfig.contact.phoneHref} className="block hover:text-foreground transition-colors">
+                  <a href={shopConfig.contact.phoneHref} className="block hover:text-foreground transition-colors" title="Chiama Gran Babar Studio">
                     {shopConfig.contact.phone}
                   </a>
-                  <a href={`mailto:${shopConfig.contact.email}`} className="block hover:text-foreground transition-colors">
+                  <a href={`mailto:${shopConfig.contact.email}`} className="block hover:text-foreground transition-colors" title="Invia email a Gran Babar Studio">
                     {shopConfig.contact.email}
                   </a>
                 </div>
@@ -79,17 +79,18 @@ const FooterSection = () => {
                 </h3>
                 <div className="space-y-2">
                   {shopConfig.social.instagram && (
-                    <a href={shopConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-foreground transition-colors group">
+                    <a href={shopConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-foreground transition-colors group" title="Segui Gran Babar su Instagram">
                       Instagram <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </a>
                   )}
-                  {shopConfig.social.facebook && (
-                    <a href={shopConfig.social.facebook} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-foreground transition-colors group">
+                  {/* Facebook link - uncomment when added to shopConfig.social */}
+                  {/* {shopConfig.social.facebook && (
+                    <a href={shopConfig.social.facebook} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-foreground transition-colors group" title="Segui Gran Babar su Facebook">
                       Facebook <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </a>
-                  )}
+                  )} */}
                   {shopConfig.social.tiktok && (
-                    <a href={shopConfig.social.tiktok} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-foreground transition-colors group">
+                    <a href={shopConfig.social.tiktok} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-foreground transition-colors group" title="Segui Gran Babar su TikTok">
                       TikTok <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </a>
                   )}
@@ -105,7 +106,7 @@ const FooterSection = () => {
                 src={shopConfig.contact.googleMapsEmbedUrl}
                 width="100%"
                 height="100%"
-                style={{ border: 0, filter: "grayscale(1) contrast(1.1) brightness(0.9)" }}
+                style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -116,6 +117,156 @@ const FooterSection = () => {
               <div className="absolute inset-0 bg-primary/10 pointer-events-none" />
             </div>
           </ScrollReveal>
+        </div>
+        
+        {/* SEO Links Section - Service Pages & Blog */}
+        <div className="mt-20 pt-16 border-t border-border">
+          <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+            {/* Servizi Specializzati */}
+            <div>
+              <h3 className="font-body text-xs tracking-[0.3em] text-primary uppercase mb-4">
+                Servizi Specializzati
+              </h3>
+              <ul className="space-y-2 font-body text-sm">
+                <li>
+                  <Link to="/servizi/tatuaggi-old-school-torino" className="text-muted-foreground hover:text-foreground transition-colors" title="Scopri i tatuaggi Old School a Torino">
+                    Old School
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/servizi/tatuaggi-realistici-torino" className="text-muted-foreground hover:text-foreground transition-colors" title="Scopri i tatuaggi realistici a Torino">
+                    Realistici
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/servizi/cover-up-tatuaggi-torino" className="text-muted-foreground hover:text-foreground transition-colors" title="Scopri i cover-up di tatuaggi a Torino">
+                    Cover-up
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/servizi/tatuaggi-geometrici-torino" className="text-muted-foreground hover:text-foreground transition-colors" title="Scopri i tatuaggi geometrici a Torino">
+                    Geometrici
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/servizi/tatuaggi-black-grey-torino" className="text-muted-foreground hover:text-foreground transition-colors" title="Scopri i tatuaggi Black & Grey a Torino">
+                    Black & Grey
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Zona Torino */}
+            <div>
+              <h3 className="font-body text-xs tracking-[0.3em] text-primary uppercase mb-4">
+                Dove Siamo
+              </h3>
+              <ul className="space-y-2 font-body text-sm">
+                <li>
+                  <Link to="/borgo-dora-tatuaggi" className="text-muted-foreground hover:text-foreground transition-colors" title="Studio di tatuaggi in Borgo Dora, Torino">
+                    Tatuaggi Borgo Dora
+                  </Link>
+                </li>
+                <li>
+                  <a href="#contact" className="text-muted-foreground hover:text-foreground transition-colors" title="Vedi come raggiungerci">
+                    Come Raggiungerci
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Guide e Risorse */}
+            <div>
+              <h3 className="font-body text-xs tracking-[0.3em] text-primary uppercase mb-4">
+                Guide Utili
+              </h3>
+              <ul className="space-y-2 font-body text-sm">
+                <li>
+                  <Link to="/blog/quanto-costa-tatuaggio-torino" className="text-muted-foreground hover:text-foreground transition-colors" title="Guida completa ai prezzi dei tatuaggi a Torino">
+                    Prezzi Tatuaggi
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/blog/primo-tatuaggio-guida" className="text-muted-foreground hover:text-foreground transition-colors" title="Guida per chi fa il primo tatuaggio">
+                    Primo Tatuaggio
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/blog/cura-tatuaggio-aftercare" className="text-muted-foreground hover:text-foreground transition-colors" title="Come curare il tatuaggio dopo la sessione">
+                    Cura Tatuaggio
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/faq-tatuaggi-torino" className="text-muted-foreground hover:text-foreground transition-colors" title="Domande frequenti sui tatuaggi a Torino">
+                    FAQ Tatuaggi
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Info Studio */}
+            <div>
+              <h3 className="font-body text-xs tracking-[0.3em] text-primary uppercase mb-4">
+                Info Studio
+              </h3>
+              <ul className="space-y-2 font-body text-sm">
+                <li>
+                  <a href="#team" className="text-muted-foreground hover:text-foreground transition-colors" title="Scopri Francesco, tatuatore professionista">
+                    Francesco Tatuatore
+                  </a>
+                </li>
+                <li>
+                  <a href="#testimonials" className="text-muted-foreground hover:text-foreground transition-colors" title="Leggi le recensioni dei nostri clienti">
+                    Recensioni Clienti
+                  </a>
+                </li>
+                <li>
+                  <a href="#gallery" className="text-muted-foreground hover:text-foreground transition-colors" title="Guarda il portfolio di lavori realizzati">
+                    Portfolio Gallery
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Portfolio Completo */}
+            <div>
+              <h3 className="font-body text-xs tracking-[0.3em] text-primary uppercase mb-4">
+                Portfolio
+              </h3>
+              <ul className="space-y-2 font-body text-sm">
+                <li>
+                  <Link to="/portfolio" className="text-muted-foreground hover:text-foreground transition-colors" title="Vedi tutto il portfolio">
+                    Tutti i Lavori
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/portfolio/old-school-torino" className="text-muted-foreground hover:text-foreground transition-colors" title="Portfolio tatuaggi Old School">
+                    Old School
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/portfolio/realistici-torino" className="text-muted-foreground hover:text-foreground transition-colors" title="Portfolio tatuaggi realistici">
+                    Realistici
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/portfolio/cover-up-torino" className="text-muted-foreground hover:text-foreground transition-colors" title="Portfolio cover-up">
+                    Cover-up
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/portfolio/geometrici-torino" className="text-muted-foreground hover:text-foreground transition-colors" title="Portfolio tatuaggi geometrici">
+                    Geometrici
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/portfolio/black-grey-torino" className="text-muted-foreground hover:text-foreground transition-colors" title="Portfolio Black & Grey">
+                    Black & Grey
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -129,12 +280,13 @@ const FooterSection = () => {
               {shopConfig.fullName}
             </span>
             <div className="flex flex-wrap justify-center gap-4 md:gap-6 font-body text-xs text-muted-foreground uppercase tracking-widest">
-              <Link to="/privacy-policy" className="hover:text-foreground transition-colors">{shopConfig.footer.privacyPolicyLabel}</Link>
-              <Link to="/cookie-policy" className="hover:text-foreground transition-colors">{shopConfig.footer.cookiePolicyLabel}</Link>
+              <Link to="/privacy-policy" className="hover:text-foreground transition-colors" title="Leggi l'informativa sulla privacy">{shopConfig.footer.privacyPolicyLabel}</Link>
+              <Link to="/cookie-policy" className="hover:text-foreground transition-colors" title="Leggi la policy sui cookie">{shopConfig.footer.cookiePolicyLabel}</Link>
               {/* Mandatory Garante requirement: User must be able to reopen banner */}
               <button
                 onClick={openCookiePreferences}
                 className="hover:text-foreground transition-colors uppercase cursor-pointer"
+                title="Modifica le preferenze cookie"
               >
                 {shopConfig.footer.cookieSettingsLabel}
               </button>

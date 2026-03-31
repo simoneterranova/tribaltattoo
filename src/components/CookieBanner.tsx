@@ -97,7 +97,7 @@ export const CookieBanner = () => {
                                     We Value Your Privacy
                                 </div>
                                 <p className="text-xs sm:text-sm text-muted-foreground font-body leading-relaxed">
-                                    We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies. Closing this banner via the "X" will leave default settings unchanged, blocking non-essential cookies. Read our <Link to="/cookie-policy" className="text-primary hover:underline">Cookie Policy</Link> and <Link to="/privacy-policy" className="text-primary hover:underline">Privacy Policy</Link> to learn more.
+                                    We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies. Closing this banner via the "X" will leave default settings unchanged, blocking non-essential cookies. Read our <Link to="/cookie-policy" className="text-primary hover:underline" title="Leggi la policy sui cookie">Cookie Policy</Link> and <Link to="/privacy-policy" className="text-primary hover:underline" title="Leggi l'informativa sulla privacy">Privacy Policy</Link> to learn more.
                                 </p>
                             </div>
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">

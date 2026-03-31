@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import ScrollReveal from "./ScrollReveal";
 import shopConfig from "@/config/shopConfig";
 
@@ -22,7 +22,7 @@ const TeamSection = () => {
                 <br />
                 {shopConfig.sections.team.heading[1]}<span className="text-primary">.</span>
                 {/* Hidden SEO text with location keywords */}
-                <span className="sr-only"> — Our Expert Barbers in {shopConfig.city}</span>
+                <span className="sr-only"> - {shopConfig.team[0].role} a {shopConfig.city.split(",")[0].trim()}</span>
               </h2>
             </div>
             <div className="pb-1">
@@ -53,9 +53,18 @@ const TeamSection = () => {
 
 function TeamRow({ member, rowIndex }: { member: TeamMember; rowIndex: number }) {
   const ref = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
   const isEven = rowIndex % 2 === 0;
   const isVideo = member.image.includes('.mp4') || member.image.includes('.webm') || member.image.includes('.mov');
+  const [isVerticalVideo, setIsVerticalVideo] = useState(false);
+
+  const handleVideoMetadata = () => {
+    if (videoRef.current) {
+      const { videoWidth, videoHeight } = videoRef.current;
+      setIsVerticalVideo(videoHeight > videoWidth);
+    }
+  };
 
   return (
     <div ref={ref} className="border-t border-border group relative">
@@ -70,10 +79,17 @@ function TeamRow({ member, rowIndex }: { member: TeamMember; rowIndex: number })
           initial={{ opacity: 0, x: isEven ? -80 : 80 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 1, ease: [0.25, 0.4, 0.25, 1] }}
-          className={`relative aspect-[4/3] md:aspect-auto ${isVideo ? 'md:w-2/5' : 'md:w-1/2'} overflow-hidden md:max-h-[600px]`}
+          className={`relative overflow-hidden md:max-h-[600px] ${
+            isVideo && isVerticalVideo 
+              ? 'aspect-[9/16] md:aspect-auto md:w-auto md:max-w-[400px] mx-auto' 
+              : isVideo 
+                ? 'aspect-[4/3] md:aspect-auto md:w-2/5' 
+                : 'aspect-[4/3] md:aspect-auto md:w-1/2'
+          }`}
         >
           {isVideo ? (
             <video
+              ref={videoRef}
               src={member.image}
               autoPlay
               loop
@@ -81,13 +97,21 @@ function TeamRow({ member, rowIndex }: { member: TeamMember; rowIndex: number })
               playsInline
               disablePictureInPicture
               disableRemotePlayback
-              style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center' }}
-              className="grayscale group-hover:grayscale-0 scale-100 group-hover:scale-[1.03] transition-all duration-700 ease-out bg-card"
+              onLoadedMetadata={handleVideoMetadata}
+              style={{ 
+                width: '100%', 
+                height: '100%', 
+                objectFit: isVerticalVideo ? 'cover' : 'contain', 
+                objectPosition: 'center' 
+              }}
+              className="scale-100 group-hover:scale-[1.03] transition-all duration-700 ease-out bg-card"
             />
           ) : (
             <img
               src={member.image}
               alt={member.name}
+              width="800"
+              height="600"
               className="h-full w-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-[1.03] transition-all duration-700 ease-out"
             />
           )}
@@ -112,8 +136,16 @@ function TeamRow({ member, rowIndex }: { member: TeamMember; rowIndex: number })
           initial={{ opacity: 0, x: isEven ? 80 : -80 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 1, delay: 0.15, ease: [0.25, 0.4, 0.25, 1] }}
-          className={`relative ${isVideo ? 'md:w-3/5' : 'md:w-1/2'} flex flex-col justify-end overflow-hidden bg-card px-8 py-10 md:px-12 md:py-14 lg:px-16 lg:py-20 min-h-[300px] md:min-h-0`}
+          className={`relative flex flex-col justify-end overflow-hidden bg-card px-8 py-10 md:px-12 md:py-14 lg:px-16 lg:py-20 min-h-[300px] md:min-h-0 ${
+            isVideo && isVerticalVideo 
+              ? 'md:flex-1' 
+              : isVideo 
+                ? 'md:w-3/5' 
+                : 'md:w-1/2'
+          }`}
         >
+          {/* Inner content wrapper for vertical video layout */}
+          <div className={isVideo && isVerticalVideo ? 'md:max-w-2xl md:mx-auto' : ''}>
           {/* Giant ghost index watermark */}
           <motion.span
             initial={{ opacity: 0 }}
@@ -170,7 +202,7 @@ function TeamRow({ member, rowIndex }: { member: TeamMember; rowIndex: number })
             />
 
             {/* Bio */}
-            <p className="font-body text-sm text-muted-foreground leading-relaxed mb-6 max-w-[300px]">
+            <p className="font-body text-sm text-muted-foreground leading-relaxed mb-6 max-w-xl">
               {member.bio}
             </p>
 
@@ -196,6 +228,7 @@ function TeamRow({ member, rowIndex }: { member: TeamMember; rowIndex: number })
                 {member.years} years experience
               </span>
             </div>
+          </div>
           </div>
         </motion.div>
       </div>

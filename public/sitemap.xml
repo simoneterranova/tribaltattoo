@@ -1,87 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
   ╔════════════════════════════════════════════════════════════════╗
-  ║  STATIC SITEMAP FALLBACK — UPDATE DOMAIN IN shopConfig.ts     ║
-  ║                                                                ║
-  ║  This file serves as a fallback. For production deployments,  ║
-  ║  generate sitemap dynamically using config.meta.siteUrl.       ║
-  ║  See src/lib/generateSitemap.ts for dynamic implementation.    ║
-  ║                                                                ║
-  ║  MANUAL DEPLOYMENT: Replace "https://thegentry.com/" with      ║
-  ║  the value from shopConfig.meta.siteUrl before deploying.      ║
+  ║  GRAN BABAR SITEMAP — SEO-OPTIMIZED FOR MAXIMUM VISIBILITY    ║
+  ║  Updated: March 31, 2026 — Portfolio Pages Added              ║
   ╚════════════════════════════════════════════════════════════════╝
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <!-- Main landing page -->
   <url>
-    <loc>https://thegentry.com/</loc>
-    <lastmod>2026-03-10</lastmod>
+    <loc>https://www.granbabar.it/</loc>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- Services section -->
+  <!-- Style-specific landing pages (HIGH SEO VALUE) -->
   <url>
-    <loc>https://thegentry.com/#services</loc>
-    <lastmod>2026-03-10</lastmod>
+    <loc>https://www.granbabar.it/servizi/tatuaggi-old-school-torino</loc>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- Team section -->
+  
   <url>
-    <loc>https://thegentry.com/#team</loc>
-    <lastmod>2026-03-10</lastmod>
+    <loc>https://www.granbabar.it/servizi/tatuaggi-realistici-torino</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.granbabar.it/servizi/cover-up-tatuaggi-torino</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.granbabar.it/servizi/tatuaggi-geometrici-torino</loc>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- Testimonials section -->
+  
   <url>
-    <loc>https://thegentry.com/#testimonials</loc>
-    <lastmod>2026-03-10</lastmod>
+    <loc>https://www.granbabar.it/servizi/tatuaggi-black-grey-torino</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Neighborhood landing page (LOCAL SEO) -->
+  <url>
+    <loc>https://www.granbabar.it/borgo-dora-tatuaggi</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Blog posts (LONG-TAIL KEYWORDS) -->
+  <url>
+    <loc>https://www.granbabar.it/blog/quanto-costa-tatuaggio-torino</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.granbabar.it/blog/primo-tatuaggio-guida</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.granbabar.it/blog/cura-tatuaggio-aftercare</loc>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Gallery section -->
+  <!-- FAQ page (VOICE SEARCH OPTIMIZATION - HIGH VALUE) -->
   <url>
-    <loc>https://thegentry.com/#gallery</loc>
-    <lastmod>2026-03-10</lastmod>
+    <loc>https://www.granbabar.it/faq-tatuaggi-torino</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Portfolio pages (IMAGE SEO - HIGH VALUE) -->
+  <url>
+    <loc>https://www.granbabar.it/portfolio</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.granbabar.it/portfolio/old-school-torino</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.granbabar.it/portfolio/realistici-torino</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.granbabar.it/portfolio/cover-up-torino</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.granbabar.it/portfolio/geometrici-torino</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.granbabar.it/portfolio/black-grey-torino</loc>
+    <lastmod>2026-03-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Contact section -->
+  <!-- Legal pages -->
   <url>
-    <loc>https://thegentry.com/#contact</loc>
-    <lastmod>2026-03-10</lastmod>
+    <loc>https://www.granbabar.it/privacy-policy</loc>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.2</priority>
   </url>
 
-  <!-- Privacy Policy -->
   <url>
-    <loc>https://thegentry.com/privacy-policy</loc>
-    <lastmod>2026-03-10</lastmod>
+    <loc>https://www.granbabar.it/cookie-policy</loc>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.2</priority>
   </url>
-
-  <!-- Cookie Policy -->
-  <url>
-    <loc>https://thegentry.com/cookie-policy</loc>
-    <lastmod>2026-03-10</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-
-  <!-- 
-    NOTE: When deploying this template for a client:
-    1. Replace all instances of "https://thegentry.com/" with the actual domain
-    2. Update lastmod dates to current deployment date
-    3. Consider adding this domain to shopConfig for dynamic generation
-  -->
 
 </urlset>

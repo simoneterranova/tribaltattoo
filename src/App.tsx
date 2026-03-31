@@ -23,6 +23,33 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const CookiePolicy = lazy(() => import("./pages/CookiePolicy"));
 
+// ── SEO LANDING PAGES (NOT IN NAV MENU) ───────────────────────────────────────
+// Style-specific pages for keyword targeting
+const OldSchoolPage = lazy(() => import("./pages/services/OldSchoolPage"));
+const RealisticPage = lazy(() => import("./pages/services/RealisticPage"));
+const CoverUpPage = lazy(() => import("./pages/services/CoverUpPage"));
+const GeometricPage = lazy(() => import("./pages/services/GeometricPage"));
+const BlackGreyPage = lazy(() => import("./pages/services/BlackGreyPage"));
+
+// Local SEO page
+const BorgoDoraTattooPage = lazy(() => import("./pages/BorgoDoraTattooPage"));
+
+// Blog posts for long-tail keywords
+const PricingBlogPost = lazy(() => import("./pages/blog/PricingBlogPost"));
+const FirstTattooBlogPost = lazy(() => import("./pages/blog/FirstTattooBlogPost"));
+const AftercareBlogPost = lazy(() => import("./pages/blog/AftercareBlogPost"));
+
+// FAQ page for voice search & featured snippets
+const FaqPage = lazy(() => import("./pages/FaqPage"));
+
+// Portfolio pages - separated for SEO
+const MainPortfolio = lazy(() => import("./pages/portfolio/MainPortfolio"));
+const OldSchoolPortfolio = lazy(() => import("./pages/portfolio/OldSchoolPortfolio"));
+const RealisticPortfolio = lazy(() => import("./pages/portfolio/RealisticPortfolio"));
+const CoverUpPortfolio = lazy(() => import("./pages/portfolio/CoverUpPortfolio"));
+const GeometricPortfolio = lazy(() => import("./pages/portfolio/GeometricPortfolio"));
+const BlackGreyPortfolio = lazy(() => import("./pages/portfolio/BlackGreyPortfolio"));
+
 const queryClient = new QueryClient();
 
 // ── SUSPENSE FALLBACK ──────────────────────────────────────────────────────────
@@ -80,8 +107,37 @@ const App = () => {
                       <Route path="/auth" element={<Auth />} />
                       <Route path="/my-bookings" element={<MyBookings />} />
                       <Route path="/dashboard" element={<Dashboard />} />
+                      
+                      {/* Style-specific landing pages (SEO) */}
+                      <Route path="/servizi/tatuaggi-old-school-torino" element={<OldSchoolPage />} />
+                      <Route path="/servizi/tatuaggi-realistici-torino" element={<RealisticPage />} />
+                      <Route path="/servizi/cover-up-tatuaggi-torino" element={<CoverUpPage />} />
+                      <Route path="/servizi/tatuaggi-geometrici-torino" element={<GeometricPage />} />
+                      <Route path="/servizi/tatuaggi-black-grey-torino" element={<BlackGreyPage />} />
+                      
+                      {/* Local SEO page */}
+                      <Route path="/borgo-dora-tatuaggi" element={<BorgoDoraTattooPage />} />
+                      
+                      {/* Blog posts (high-intent keywords) */}
+                      <Route path="/blog/quanto-costa-tatuaggio-torino" element={<PricingBlogPost />} />
+                      <Route path="/blog/primo-tatuaggio-guida" element={<FirstTattooBlogPost />} />
+                      <Route path="/blog/cura-tatuaggio-aftercare" element={<AftercareBlogPost />} />
+                      
+                      {/* FAQ page (voice search optimization) */}
+                      <Route path="/faq-tatuaggi-torino" element={<FaqPage />} />
+                      
+                      {/* Portfolio pages */}
+                      <Route path="/portfolio" element={<MainPortfolio />} />
+                      <Route path="/portfolio/old-school-torino" element={<OldSchoolPortfolio />} />
+                      <Route path="/portfolio/realistici-torino" element={<RealisticPortfolio />} />
+                      <Route path="/portfolio/cover-up-torino" element={<CoverUpPortfolio />} />
+                      <Route path="/portfolio/geometrici-torino" element={<GeometricPortfolio />} />
+                      <Route path="/portfolio/black-grey-torino" element={<BlackGreyPortfolio />} />
+                      
+                      {/* Legal pages */}
                       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                       <Route path="/cookie-policy" element={<CookiePolicy />} />
+                      
                       <Route path="*" element={<NotFound />} />
                     </Routes>
                   </Suspense>

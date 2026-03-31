@@ -49,10 +49,12 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between px-6 py-4 relative">
         {/* Logo */}
-        <a href="#hero" className="relative group shrink-0">
+        <a href="#hero" className="relative group shrink-0" title="Torna all'inizio - Homepage Gran Babar">
           <img
             src={shopConfig.logo}
             alt={shopConfig.name}
+            width="200"
+            height="56"
             className="h-14 md:h-16 w-auto object-contain transition-opacity duration-300 group-hover:opacity-80"
             draggable={false}
           />
@@ -74,6 +76,7 @@ const Navbar = () => {
                     ? "text-foreground"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
+                title={`Vai alla sezione ${link.label}`}
               >
                 {link.label}
                 {/* Animated active indicator */}
@@ -104,7 +107,7 @@ const Navbar = () => {
                   <LogOut className="h-3.5 w-3.5 mr-1.5" />
                   Sign Out
                 </Button>
-                <Link to="/dashboard">
+                <Link to="/dashboard" title="Vai alla dashboard barber">
                   <Button variant="hero" size="default" className="text-xs tracking-[0.15em]">
                     Dashboard <LayoutDashboard className="ml-1.5 h-3.5 w-3.5" />
                   </Button>
@@ -112,7 +115,7 @@ const Navbar = () => {
               </>
             ) : user ? (
               <div className="flex items-center gap-1 border-r border-border/50 pr-3 mr-1">
-                <Link to="/my-bookings">
+                <Link to="/my-bookings" title="Vedi le tue prenotazioni">
                   <Button variant="ghost" size="sm" className="text-[11px] tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground">
                     <CalendarDays className="h-3.5 w-3.5 mr-1.5" />
                     My Bookings
@@ -160,6 +163,7 @@ const Navbar = () => {
                 href="#hero"
                 onClick={() => setMobileOpen(false)}
                 className="font-heading text-2xl tracking-[0.2em] text-foreground"
+                title="Torna all'inizio - Homepage Gran Babar"
               >
                 {shopConfig.name}
               </a>
@@ -187,6 +191,7 @@ const Navbar = () => {
                     className={`flex items-center justify-between py-5 border-b border-border/40 font-heading text-4xl transition-colors ${
                       isActive ? "text-primary" : "text-foreground"
                     }`}
+                    title={`Vai alla sezione ${link.label}`}
                   >
                     {link.label}
                     <ArrowUpRight
@@ -210,7 +215,7 @@ const Navbar = () => {
                     <LogOut className="h-4 w-4 mr-1.5" />
                     Sign Out
                   </Button>
-                  <Link to="/dashboard" onClick={() => setMobileOpen(false)}>
+                  <Link to="/dashboard" onClick={() => setMobileOpen(false)} title="Vai alla dashboard barber">
                     <Button variant="hero" size="lg" className="w-full rounded-none text-xs tracking-[0.15em]">
                       Dashboard <LayoutDashboard className="ml-1.5 h-4 w-4" />
                     </Button>
@@ -218,7 +223,7 @@ const Navbar = () => {
                 </>
               ) : user ? (
                 <>
-                  <Link to="/my-bookings" onClick={() => setMobileOpen(false)}>
+                  <Link to="/my-bookings" onClick={() => setMobileOpen(false)} title="Vedi le tue prenotazioni">
                     <Button variant="ghost" size="lg" className="w-full rounded-none text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground">
                       <CalendarDays className="h-4 w-4 mr-1.5" />
                       My Bookings
