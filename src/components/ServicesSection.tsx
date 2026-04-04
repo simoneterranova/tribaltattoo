@@ -13,31 +13,35 @@ const ServicesSection = () => {
   const [active, setActive] = useState<number | null>(null);
 
   return (
-    <section id="services" className="py-24 md:py-40" ref={ref}>
-      <div className="container mx-auto px-6">
+    <section id="services" className="py-24 md:py-40 cyber-razor-top cyber-razor-bottom relative" ref={ref}>
+      {/* Subtle grid pattern overlay */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.02]"
+           style={{ backgroundImage: "linear-gradient(hsl(127 14% 36% / 0.1) 1px, transparent 1px), linear-gradient(90deg, hsl(127 14% 36% / 0.1) 1px, transparent 1px)", backgroundSize: "50px 50px" }} />
+      
+      <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 md:mb-20">
           <ScrollReveal direction="up" duration={0.7}>
-            <span className="font-body text-xs tracking-[0.4em] text-primary uppercase">
+            <span className="font-body text-xs tracking-[0.4em] text-accent uppercase neon-glow">
               {shopConfig.sections.services.label}
             </span>
-            <h2 className="font-heading text-6xl md:text-8xl text-foreground mt-2 leading-none">
+            <h2 className="font-heading text-6xl md:text-8xl text-foreground mt-2 leading-none cyber-glitch-2" style={{ '--og-clip-path': 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' } as React.CSSProperties}>
               {shopConfig.sections.services.heading[0]}
               <br />
-              {shopConfig.sections.services.heading[1]}<span className="text-primary">.</span>
+              {shopConfig.sections.services.heading[1]}<span className="text-primary neon-glow-red cyber-glitch-4">.</span>
               {/* Hidden SEO text with location keywords */}
               <span className="sr-only"> - {shopConfig.activity} a {shopConfig.city.split(",")[0].trim()}</span>
             </h2>
           </ScrollReveal>
 
           <ScrollReveal direction="up" delay={0.2} duration={0.7}>
-            <div className="pb-1">
-              <p className="font-body text-[10px] tracking-[0.3em] text-muted-foreground uppercase mb-2">
+            <div className="pb-1 cyber-clip-corner border-2 border-accent/30 p-4 bg-card/50 backdrop-blur-sm">
+              <p className="font-body text-[10px] tracking-[0.3em] text-accent uppercase mb-2 neon-glow">
                 {shopConfig.city}
               </p>
               <div className="flex items-center gap-3">
-                <div className="h-px w-8 bg-primary/60" />
-                <span className="font-heading text-5xl text-foreground leading-none">{services.length}</span>
+                <div className="h-px w-8 bg-accent/60 shadow-[0_0_8px_rgba(0,255,210,0.6)]" />
+                <span className="font-heading text-5xl text-accent leading-none neon-glow cyber-glitch-3">{services.length}</span>
                 <div className="font-body text-xs text-muted-foreground leading-tight">
                   <p>{shopConfig.sections.services.counterLabel[0]}</p>
                   <p>{shopConfig.sections.services.counterLabel[1]}</p>
@@ -48,7 +52,7 @@ const ServicesSection = () => {
         </div>
 
         {/* Rows */}
-        <div className="border-t border-border">
+        <div className="border-t-2 border-accent/20">
           {services.map((service, i) => {
             const on = active === i;
             return (
@@ -58,14 +62,14 @@ const ServicesSection = () => {
                 initial={{ opacity: 0, x: -50 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.6, delay: i * 0.08, ease: [0.25, 0.4, 0.25, 1] }}
-                className="relative border-b border-border overflow-hidden cursor-pointer"
+                className="relative border-b-2 border-accent/20 overflow-hidden cursor-pointer cyber-razor-bottom"
                 onHoverStart={() => setActive(i)}
                 onHoverEnd={() => setActive(null)}
                 onClick={() => setActive(active === i ? null : i)}
               >
-                {/* Left-to-right sweep fill */}
+                {/* Left-to-right sweep fill with neon effect */}
                 <motion.div
-                  className="absolute inset-0 bg-muted/40 origin-left pointer-events-none"
+                  className="absolute inset-0 bg-accent/5 origin-left pointer-events-none border-l-2 border-accent/40"
                   animate={{ scaleX: on ? 1 : 0 }}
                   initial={{ scaleX: 0 }}
                   transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
@@ -73,9 +77,9 @@ const ServicesSection = () => {
 
                 {/* Ghost index watermark */}
                 <motion.span
-                  className="absolute right-0 top-1/2 -translate-y-1/2 font-heading select-none pointer-events-none leading-none pr-2"
+                  className="absolute right-0 top-1/2 -translate-y-1/2 font-heading select-none pointer-events-none leading-none pr-2 text-accent/10"
                   style={{ fontSize: "clamp(4rem, 10vw, 8rem)" }}
-                  animate={{ opacity: on ? 0.07 : 0.025 }}
+                  animate={{ opacity: on ? 0.15 : 0.05 }}
                   transition={{ duration: 0.35 }}
                 >
                   {service.index}
@@ -94,14 +98,14 @@ const ServicesSection = () => {
                           <motion.h3
                             className="font-heading leading-none"
                             style={{ fontSize: "clamp(1.6rem, 4vw, 2.8rem)" }}
-                            animate={{ color: on ? "hsl(var(--primary))" : "hsl(var(--foreground))" }}
+                            animate={{ color: on ? "hsl(127 14% 36%)" : "hsl(var(--foreground))" }}
                             transition={{ duration: 0.25 }}
                           >
                             {service.name}
                           </motion.h3>
                           {service.badge && (
                             <motion.span
-                              className="font-body text-[10px] tracking-[0.2em] uppercase px-2.5 py-1 border border-primary/30 text-primary bg-primary/5 shrink-0"
+                              className="font-body text-[10px] tracking-[0.2em] uppercase px-2.5 py-1 border-2 border-accent/30 text-accent bg-accent/10 shrink-0 cyber-clip-corner shadow-[0_0_10px_rgba(0,255,210,0.3)]"
                               initial={{ opacity: 0, scale: 0.9 }}
                               animate={isInView ? { opacity: 1, scale: 1 } : {}}
                               transition={{ duration: 0.4, delay: i * 0.08 + 0.3 }}
@@ -110,9 +114,9 @@ const ServicesSection = () => {
                             </motion.span>
                           )}
                         </div>
-                        {/* Underline draws on hover */}
+                        {/* Underline draws on hover with neon glow */}
                         <motion.div
-                          className="h-px bg-primary mt-1.5"
+                          className="h-[2px] bg-accent mt-1.5 shadow-[0_0_8px_rgba(0,255,210,0.8)]"
                           animate={{ scaleX: on ? 1 : 0 }}
                           initial={{ scaleX: 0 }}
                           transition={{ duration: 0.35, ease: "easeOut" }}
@@ -137,8 +141,9 @@ const ServicesSection = () => {
                         className="font-heading"
                         style={{ fontSize: "clamp(1.8rem, 4vw, 2.5rem)" }}
                         animate={{
-                          color: on ? "hsl(var(--primary))" : "hsl(var(--foreground))",
+                          color: on ? "hsl(6 61% 45%)" : "hsl(var(--foreground))",
                           scale: on ? 1.05 : 1,
+                          textShadow: on ? "0 0 20px rgba(184, 58, 45, 0.6)" : "none",
                         }}
                         transition={{ duration: 0.25 }}
                       >

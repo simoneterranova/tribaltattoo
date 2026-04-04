@@ -243,7 +243,7 @@ const shopConfig = {
       text: "Avevo timore di tatuarmi vista la mia età ed inesperienza. Grazie Francesco per la pazienza e la bravura — è stata un'esperienza molto bella. Mi sono sentita rassicurata e seguita molto bene.",
     },
     {
-      name: "Valentina Baudino Bessone",
+      name: "Valentina Bessone",
       text: "Francesco ha una cura del dettaglio e un realismo incredibile! È stato meraviglioso come ha interpretato i miei suggerimenti e li ha trasformati in un design perfetto. In più è stato davvero delicatissimo.",
     },
     {
@@ -251,7 +251,7 @@ const shopConfig = {
       text: "Sono più che soddisfatto, il tatuaggio è stupendo e Francesco ti accoglie benissimo. Raccomando a tutti!",
     },
     {
-      name: "Laura Pineda Ramon",
+      name: "Laura Ramon",
       text: "Lo studio è bellissimo, accogliente e curato nei minimi dettagli. Francesco ha la capacità di metterti subito a tuo agio. Non è solo un artista, ma una guida che ti aiuta a esprimere te stesso attraverso il tatuaggio.",
     },
   ],
@@ -348,89 +348,80 @@ const shopConfig = {
   // All colors are HSL without the hsl() wrapper: "hue saturation% lightness%"
   //
   // ┌─────────────────────────────────────────────────────────────────────┐
-  // │  LIGHT THEME — three-color system, no extras                        │
+  // │  CYBERPUNK DARK THEME — vintage dystopian aesthetic                 │
   // │                                                                     │
   // │  ANCHOR          HEX        HSL               ROLE                  │
-  // │  Parchment       #DCC9A9    38 42% 76%        page background       │
-  // │  Tattoo Red      #B83A2D     6 61% 45%        primary / CTA         │
-  // │  Forest Green    #4E6851   127 14% 36%        foreground / text     │
+  // │  Deep Charcoal   #1A1A18    30 4% 10%         page background       │
+  // │  Brick Red       #B83A2D     6 61% 45%        primary / CTA         │
+  // │  Forest Green    #4E6851   127 14% 36%        accents              │
+  // │  Parchment       #DCC9A9    38 42% 76%        foreground / text     │
   // │                                                                     │
-  // │  ALL other tokens are tonal derivations of these three anchors.     │
-  // │  Lighter parchment tones → cards, inputs, muted surfaces.           │
-  // │  Darker/lighter green tones → muted text, borders, sidebar.         │
-  // │  Red tones → hover states, ring, accent highlights.                 │
+  // │  Dark dystopian base with warm parchment text, brick red CTAs,      │
+  // │  and forest green accents. Cyberpunk razors, glitch effects, and    │
+  // │  angular UI elements throughout.                                     │
   // └─────────────────────────────────────────────────────────────────────┘
   //
   theme: {
     /**
      * Google Fonts stylesheet URL.
-     * Barrio: raw, expressive display font — perfect for a tattoo studio.
-     * DM Sans: clean, modern body text with quiet personality.
+     * Cyberpunk fonts will be loaded from local cyberpunk.css
+     * These Google fonts are fallbacks for body text
      */
     googleFontsUrl:
-      "https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&family=Share+Tech+Mono&display=swap",
+      "https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap",
  
     fonts: {
-      heading: "Orbitron",        // geometric HUD display, sci-fi squared letterforms
-      body:    "Share Tech Mono", // terminal monospace, cold and precise
+      heading: "Orbitron",        // Tech-inspired bold display font
+      body:    "Share Tech Mono", // Monospace cyberpunk body font
     },
 
-    /** Sharp edges — fitting for the raw aesthetic of tattooing. */
-    radius: "2px",
+    /** Angular cyberpunk aesthetic — sharp corners */
+    radius: "0px",
 
     colors: {
-      // ── Base surface — exact parchment anchor #DCC9A9 ───────────────────
-      background:              "38 42% 76%",
-      // ── Primary text — exact forest green anchor #4E6851 ────────────────
-      // Darkened one step (127 18% 26%) for WCAG AA on the parchment bg.
-      foreground:              "127 18% 26%",
+      // ── Base surface — Deep Charcoal #1A1A18 ─────────────────────────────
+      background:              "30 4% 10%",
+      // ── Primary text — Warm Parchment #DCC9A9 ────────────────────────────
+      foreground:              "38 42% 76%",
 
-      // ── Cards & popovers — lighter parchment tone (+8% L) ───────────────
-      // Creates gentle elevation above the background without leaving the palette.
-      card:                    "38 38% 84%",
-      cardForeground:          "127 18% 26%",
-      popover:                 "38 38% 84%",
-      popoverForeground:       "127 18% 26%",
+      // ── Cards & popovers — Slightly lighter charcoal ─────────────────────
+      card:                    "30 4% 14%",
+      cardForeground:          "38 42% 76%",
+      popover:                 "30 4% 12%",
+      popoverForeground:       "38 42% 76%",
 
-      // ── Primary / CTA — exact tattoo red anchor #B83A2D ─────────────────
+      // ── Primary / CTA — Brick Red #B83A2D ────────────────────────────────
       primary:                 "6 61% 45%",
-      // White-ish parchment for text on red buttons — stays in warm family.
-      primaryForeground:       "38 60% 95%",
+      primaryForeground:       "38 42% 90%",
 
-      // ── Secondary — mid parchment tone (−10% L, −8% S) ──────────────────
-      // Used for secondary buttons and less prominent surfaces.
-      secondary:               "38 28% 66%",
-      secondaryForeground:     "127 18% 26%",
+      // ── Secondary — Forest Green #4E6851 ─────────────────────────────────
+      secondary:               "127 14% 36%",
+      secondaryForeground:     "38 42% 85%",
 
-      // ── Muted — lightest parchment tone (+12% L) ────────────────────────
-      muted:                   "38 32% 88%",
-      // Muted text — forest green at reduced saturation & raised lightness.
-      mutedForeground:         "127 10% 50%",
+      // ── Muted — Dark muted surface ───────────────────────────────────────
+      muted:                   "30 4% 16%",
+      mutedForeground:         "38 20% 55%",
 
-      // ── Accent — same red as primary (consistent action color) ───────────
-      accent:                  "6 61% 45%",
-      accentForeground:        "38 60% 95%",
+      // ── Accent — Forest Green for vintage dystopian highlights ──────────
+      accent:                  "127 14% 36%",   // Forest Green #4E6851
+      accentForeground:        "38 42% 76%",
 
-      // ── Borders & inputs — green-tinted parchment border ─────────────────
-      // A desaturated blend of green + parchment for natural harmony.
-      border:                  "90 12% 62%",
-      // Input fields sit on a slightly lighter parchment than the bg.
-      input:                   "38 32% 82%",
+      // ── Borders & inputs — Subtle forest green tint ──────────────────────
+      border:                  "127 14% 25%",
+      input:                   "30 4% 18%",
 
-      // ── Focus ring — red, matching CTA (accessibility + brand) ───────────
-      ring:                    "6 61% 45%",
+      // ── Focus ring — Forest Green for vintage aesthetic ──────────────────
+      ring:                    "127 14% 36%",
 
-      // ── Sidebar — slightly deeper parchment to separate it from content ──
-      sidebarBackground:         "38 35% 70%",
-      sidebarForeground:         "127 18% 26%",
-      // Sidebar active item uses the red CTA color.
+      // ── Sidebar — Dark elevated surface ──────────────────────────────────
+      sidebarBackground:         "30 4% 12%",
+      sidebarForeground:         "38 42% 76%",
       sidebarPrimary:            "6 61% 45%",
-      sidebarPrimaryForeground:  "38 60% 95%",
-      // Sidebar hover — light parchment lift.
-      sidebarAccent:             "38 38% 80%",
-      sidebarAccentForeground:   "127 18% 26%",
-      sidebarBorder:             "90 12% 58%",
-      sidebarRing:               "6 61% 45%",
+      sidebarPrimaryForeground:  "38 42% 90%",
+      sidebarAccent:             "30 4% 18%",
+      sidebarAccentForeground:   "38 42% 76%",
+      sidebarBorder:             "127 14% 25%",
+      sidebarRing:               "127 14% 36%",
     },
   },
 

@@ -191,7 +191,10 @@ const DesktopGallery = () => {
   // ─────────────────────────────────────────────────────────────────────────
 
   return (
-    <section id="gallery" className="border-t border-border py-20">
+    <section id="gallery" className="border-t-2 border-accent/20 py-20 cyber-razor-top cyber-razor-bottom relative">
+      {/* Grid pattern overlay */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.02]"
+           style={{ backgroundImage: "linear-gradient(hsl(127 14% 36% / 0.1) 1px, transparent 1px), linear-gradient(90deg, hsl(127 14% 36% / 0.1) 1px, transparent 1px)", backgroundSize: "50px 50px" }} />
 
       {/* Keyframes injected once — avoids needing an external .css file */}
       <style>{`
@@ -209,15 +212,16 @@ const DesktopGallery = () => {
           left: 0; top: 0;
           width: 100%; height: 100%;
           object-fit: cover;
-          border-radius: 10px;
-          box-shadow: 0 0 8px rgba(255,255,255,0.25);
+          border-radius: 0;
+          box-shadow: 0 0 20px rgba(0,255,210,0.3), 0 0 40px rgba(0,255,210,0.1);
+          border: 2px solid rgba(0,255,210,0.2);
           -webkit-box-reflect: below 12px
             linear-gradient(transparent 60%, rgba(0,0,0,0.45));
           cursor: pointer;
-          transition: box-shadow 0.3s;
+          transition: box-shadow 0.3s, border-color 0.3s;
         }
         .g3d-item:hover {
-          box-shadow: 0 0 22px color-mix(in srgb, var(--primary) 50%, transparent),
+          box-shadow: 0 0 30px rgba(0,255,210,0.6), 0 0 60px rgba(0,255,210,0.3),
                       0 0  8px rgba(255,255,255,0.4);
         }
       `}</style>
@@ -230,9 +234,9 @@ const DesktopGallery = () => {
               <span className="font-body text-xs tracking-[0.4em] text-primary uppercase">
                 {shopConfig.sections.gallery.label}
               </span>
-              <h2 className="font-heading text-6xl md:text-8xl text-foreground mt-2 leading-none">
+              <h2 className="font-heading text-6xl md:text-8xl text-foreground mt-2 leading-none cyber-glitch-2" style={{ '--og-clip-path': 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' } as React.CSSProperties}>
                 {shopConfig.sections.gallery.heading}
-                <span className="text-primary">.</span>
+                <span className="text-primary cyber-glitch-4">.</span>
               </h2>
             </div>
             <span className="font-body text-xs text-muted-foreground tracking-widest uppercase hidden md:flex flex-col items-end gap-1">
@@ -571,30 +575,34 @@ const MobileGallery = () => {
   }, []);
 
   return (
-    <section id="gallery" className="border-t border-border py-16 px-6">
+    <section id="gallery" className="border-t-2 border-accent/20 py-16 px-6 cyber-razor-top cyber-razor-bottom relative">
+      {/* Grid pattern overlay */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.02]"
+           style={{ backgroundImage: "linear-gradient(hsl(127 14% 36% / 0.1) 1px, transparent 1px), linear-gradient(90deg, hsl(127 14% 36% / 0.1) 1px, transparent 1px)", backgroundSize: "50px 50px" }} />
+           
       <ScrollReveal direction="up" duration={0.7}>
-        <div className="mb-8">
-          <span className="font-body text-xs tracking-[0.4em] text-primary uppercase">
+        <div className="mb-8 relative z-10">
+          <span className="font-body text-xs tracking-[0.4em] text-accent uppercase neon-glow">
             {shopConfig.sections.gallery.label}
           </span>
           <h2 className="font-heading text-5xl text-foreground mt-2 leading-none">
             {shopConfig.sections.gallery.heading}
-            <span className="text-primary">.</span>
+            <span className="text-primary neon-glow-red">.</span>
           </h2>
         </div>
       </ScrollReveal>
 
       {/* Carousel track */}
       <div style={{ position: "relative", overflow: "hidden" }}>
-        {/* Edge fades */}
+        {/* Edge fades with vintage forest green tint */}
         <div style={{
           position: "absolute", top: 0, bottom: 0, left: 0, width: "10vw",
-          background: "linear-gradient(90deg, var(--background), transparent)",
+          background: "linear-gradient(90deg, hsl(30 4% 10%), transparent)",
           zIndex: 5, pointerEvents: "none",
         }} />
         <div style={{
           position: "absolute", top: 0, bottom: 0, right: 0, width: "10vw",
-          background: "linear-gradient(-90deg, var(--background), transparent)",
+          background: "linear-gradient(-90deg, hsl(30 4% 10%), transparent)",
           zIndex: 5, pointerEvents: "none",
         }} />
 

@@ -20,16 +20,20 @@ const HeroSection = () => {
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0.3]);
 
   return (
-    <section ref={sectionRef} id="hero" className="relative min-h-screen flex flex-col justify-end overflow-hidden pb-16 md:pb-24">
+    <section ref={sectionRef} id="hero" className="relative min-h-screen flex flex-col justify-end overflow-hidden pb-16 md:pb-24 cyber-razor-bottom">
       {/* Background with parallax */}
       <motion.div
-        className="absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0 bg-cover bg-center cyber-glitch-0"
         style={{ backgroundImage: `url(${shopConfig.hero.backgroundImage})`, y }}
       />
       <motion.div 
-        className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/30" 
+        className="absolute inset-0 bg-gradient-to-t from-background via-background/90 to-background/40" 
         style={{ opacity }}
       />
+
+      {/* Scanline effect overlay */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.03]" 
+           style={{ backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 2px, hsl(127 14% 36%) 2px, hsl(127 14% 36%) 4px)" }} />
 
       <div className="relative z-10 container mx-auto px-6">
         <motion.div
@@ -38,7 +42,7 @@ const HeroSection = () => {
           transition={{ duration: 1, delay: 0.2 }}
           className="mb-6"
         >
-          <span className="font-body text-xs tracking-[0.4em] text-primary uppercase">
+          <span className="font-body text-xs tracking-[0.4em] text-accent uppercase neon-glow">
             {shopConfig.city} — Est. {shopConfig.established}
           </span>
         </motion.div>
@@ -47,12 +51,17 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="font-heading text-[clamp(3.5rem,12vw,11rem)] leading-[0.85] tracking-tight text-foreground"
+          className="font-heading text-[clamp(5rem,12vw,11rem)] leading-[0.85] tracking-tight text-foreground cyber-glitch-2 relative"
+          data-text={shopConfig.hero.headline.join(" ")}
           aria-label={`${shopConfig.hero.headline.join(" ")} - ${shopConfig.activity} a ${shopConfig.city.split(",")[0].trim()}`}
+          style={{ 
+            textShadow: "0 0 20px rgba(220, 201, 169, 0.3)",
+            '--og-clip-path': 'polygon(0 0, 100% 0, 100% 100%, 0 100%)'
+          } as React.CSSProperties}
         >
           {shopConfig.hero.headline[0]}
           <br />
-          {shopConfig.hero.headline[1]}<span className="text-primary">.</span>
+          {shopConfig.hero.headline[1]}<span className="text-primary neon-glow-red cyber-glitch-3">.</span>
         </motion.h1>
 
         <motion.div
@@ -80,13 +89,13 @@ const HeroSection = () => {
         </motion.div>
       </div>
 
-      {/* Marquee strip */}
-      <div className="absolute bottom-0 left-0 right-0 border-t border-border bg-background/60 backdrop-blur-sm overflow-hidden">
+      {/* Marquee strip with cyberpunk styling */}
+      <div className="absolute bottom-0 left-0 right-0 border-t-2 border-accent/30 bg-background/80 backdrop-blur-sm overflow-hidden">
         <div className="animate-marquee flex whitespace-nowrap py-3">
           {Array.from({ length: 8 }).map((_, i) => (
             <span
               key={i}
-              className="mx-8 font-heading text-sm tracking-[0.3em] text-muted-foreground/40 uppercase"
+              className="mx-8 font-heading text-sm tracking-[0.3em] text-accent/60 uppercase"
             >
               {shopConfig.hero.marqueeItems.join(" • ")}
             </span>
