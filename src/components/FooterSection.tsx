@@ -125,7 +125,7 @@ const FooterSection = () => {
         
         {/* SEO Links Section - Service Pages & Blog */}
         <div className="mt-20 pt-16 border-t border-border">
-          <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+          <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
             {/* Servizi Specializzati */}
             <div>
               <h3 className="font-body text-xs tracking-[0.3em] text-primary uppercase mb-4">
@@ -157,24 +157,127 @@ const FooterSection = () => {
                     Black & Grey
                   </Link>
                 </li>
+                <li>
+                  <Link to="/tatuaggio-sigillo-a-torino" className="text-muted-foreground hover:text-foreground transition-colors" title="Scopri il Tatuaggio Sigillo con mappatura energetica a Torino">
+                    Sigillo
+                  </Link>
+                </li>
               </ul>
             </div>
 
-            {/* Zona Torino */}
+            {/* Altri Stili */}
             <div>
               <h3 className="font-body text-xs tracking-[0.3em] text-primary uppercase mb-4">
-                Dove Siamo
+                Altri Stili
               </h3>
               <ul className="space-y-2 font-body text-sm">
                 <li>
-                  <Link to="/borgo-dora-tatuaggi" className="text-muted-foreground hover:text-foreground transition-colors" title="Studio di tatuaggi in Borgo Dora, Torino">
-                    Tatuaggi Borgo Dora
+                  <Link to="/tatuaggio-fine-line-a-torino" className="text-muted-foreground hover:text-foreground transition-colors" title="Tatuaggi Fine Line a Torino">
+                    Fine Line
                   </Link>
                 </li>
                 <li>
-                  <a href="#contact" className="text-muted-foreground hover:text-foreground transition-colors" title="Vedi come raggiungerci">
-                    Come Raggiungerci
-                  </a>
+                  <Link to="/tatuaggio-dotwork-a-torino" className="text-muted-foreground hover:text-foreground transition-colors" title="Tatuaggi Dotwork a Torino">
+                    Dotwork
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/tatuaggio-floreale-a-torino" className="text-muted-foreground hover:text-foreground transition-colors" title="Tatuaggi Floreali a Torino">
+                    Floreale
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/tatuaggio-watercolor-a-torino" className="text-muted-foreground hover:text-foreground transition-colors" title="Tatuaggi Watercolor a Torino">
+                    Watercolor
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/tatuaggio-lettering-a-torino" className="text-muted-foreground hover:text-foreground transition-colors" title="Tatuaggi Lettering a Torino">
+                    Lettering
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/tatuaggio-minimalista-a-torino" className="text-muted-foreground hover:text-foreground transition-colors" title="Tatuaggi Minimalisti a Torino">
+                    Minimalista
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Stili Tradizionali */}
+            <div>
+              <h3 className="font-body text-xs tracking-[0.3em] text-primary uppercase mb-4">
+                Stili Tradizionali
+              </h3>
+              <ul className="space-y-2 font-body text-sm">
+                <li>
+                  <Link to="/tatuaggio-giapponese-irezumi-a-torino" className="text-muted-foreground hover:text-foreground transition-colors" title="Tatuaggi Giapponesi Irezumi a Torino">
+                    Giapponese
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/tatuaggio-tribale-a-torino" className="text-muted-foreground hover:text-foreground transition-colors" title="Tatuaggi Tribali a Torino">
+                    Tribale
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/tatuaggio-neo-tradizionale-a-torino" className="text-muted-foreground hover:text-foreground transition-colors" title="Tatuaggi Neo Tradizionali a Torino">
+                    Neo Tradizionale
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/tatuaggio-gotico-a-torino" className="text-muted-foreground hover:text-foreground transition-colors" title="Tatuaggi Gotici a Torino">
+                    Gotico
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/tatuaggio-new-school-a-torino" className="text-muted-foreground hover:text-foreground transition-colors" title="Tatuaggi New School a Torino">
+                    New School
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/tatuaggio-surrealista-a-torino" className="text-muted-foreground hover:text-foreground transition-colors" title="Tatuaggi Surrealisti a Torino">
+                    Surrealista
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Studio */}
+            <div>
+              <h3 className="font-body text-xs tracking-[0.3em] text-primary uppercase mb-4">
+                Studio
+              </h3>
+              <ul className="space-y-2 font-body text-sm">
+                <li>
+                  <Link to="/about-me" className="text-muted-foreground hover:text-foreground transition-colors" title="Scopri Francesco Gran Babar">
+                    Chi Sono
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/tatuaggi" className="text-muted-foreground hover:text-foreground transition-colors" title="Tutti gli stili di tatuaggio">
+                    Tutti i Tatuaggi
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/servizi" className="text-muted-foreground hover:text-foreground transition-colors" title="Servizi dello studio">
+                    Servizi
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/gallery" className="text-muted-foreground hover:text-foreground transition-colors" title="Guarda il portfolio completo">
+                    Gallery
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/contatti" className="text-muted-foreground hover:text-foreground transition-colors" title="Contattaci per una consulenza">
+                    Contatti
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/borgo-dora-tatuaggi" className="text-muted-foreground hover:text-foreground transition-colors" title="Studio di tatuaggi in Borgo Dora, Torino">
+                    Borgo Dora
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -185,6 +288,11 @@ const FooterSection = () => {
                 Guide Utili
               </h3>
               <ul className="space-y-2 font-body text-sm">
+                <li>
+                  <Link to="/cura-post-tatuaggio" className="text-muted-foreground hover:text-foreground transition-colors" title="Guida alla cura del tatuaggio">
+                    Cura Post-Tatuaggio
+                  </Link>
+                </li>
                 <li>
                   <Link to="/blog/quanto-costa-tatuaggio-torino" className="text-muted-foreground hover:text-foreground transition-colors" title="Guida completa ai prezzi dei tatuaggi a Torino">
                     Prezzi Tatuaggi
@@ -197,7 +305,7 @@ const FooterSection = () => {
                 </li>
                 <li>
                   <Link to="/blog/cura-tatuaggio-aftercare" className="text-muted-foreground hover:text-foreground transition-colors" title="Come curare il tatuaggio dopo la sessione">
-                    Cura Tatuaggio
+                    Aftercare Blog
                   </Link>
                 </li>
                 <li>

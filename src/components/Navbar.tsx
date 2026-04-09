@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight, CalendarDays, LayoutDashboard, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -16,12 +16,38 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
   const { user, profile, isBarber, signOut } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   // Extract section IDs from nav links
   const sectionIds = ["hero", ...navLinks.map((link) => link.href.replace("#", ""))];
   
   // Use scroll-spy hook to track active section and update URL
   const activeSection = useScrollSpy({ sectionIds, offset: 120, updateUrl: true });
+
+  // Handler for navigation links
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const sectionId = href.replace("#", "");
+    
+    // If we're on the home page, just scroll to section
+    if (location.pathname === "/") {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const offset = 120;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
+    } else {
+      // Navigate to home page with hash, the Index component will handle scrolling
+      navigate(`/${href}`);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,7 +75,12 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between px-6 py-4 relative">
         {/* Logo */}
-        <a href="#hero" className="relative group shrink-0" title="Torna all'inizio - Homepage Gran Babar">
+        <a 
+          href="#hero" 
+          onClick={(e) => handleNavClick(e, "#hero")} 
+          className="relative group shrink-0" 
+          title="Torna all'inizio - Homepage Gran Babar"
+        >
           <img
             src={shopConfig.logo}
             alt={shopConfig.name}
@@ -68,6 +99,7 @@ const Navbar = () => {
               <motion.a
                 key={link.href}
                 href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.1 * i + 0.3 }}
@@ -165,7 +197,10 @@ const Navbar = () => {
             <div className="flex items-center justify-between px-6 py-4 border-b-2 border-accent/20 shrink-0 cyber-razor-bottom relative z-10">
               <a
                 href="#hero"
-                onClick={() => setMobileOpen(false)}
+                onClick={(e) => {
+                  handleNavClick(e, "#hero");
+                  setMobileOpen(false);
+                }}
                 className="font-heading text-2xl tracking-[0.2em] text-accent neon-glow"
                 title="Torna all'inizio - Homepage Gran Babar"
               >
@@ -188,7 +223,10 @@ const Navbar = () => {
                   <motion.a
                     key={link.href}
                     href={link.href}
-                    onClick={() => setMobileOpen(false)}
+                    onClick={(e) => {
+                      handleNavClick(e, link.href);
+                      setMobileOpen(false);
+                    }}
                     initial={{ opacity: 0, x: -24 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: 0.06 * i + 0.08 }}

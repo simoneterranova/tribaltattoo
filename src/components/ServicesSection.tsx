@@ -147,7 +147,7 @@ const ServicesSection = () => {
                         }}
                         transition={{ duration: 0.25 }}
                       >
-                        € {service.price}
+                        {service.price}
                       </motion.span>
                     </div>
                   </div>

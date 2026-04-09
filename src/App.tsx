@@ -22,6 +22,12 @@ const Dashboard = lazy(() => import("./pages/Dashboard"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const CookiePolicy = lazy(() => import("./pages/CookiePolicy"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const GalleryPage = lazy(() => import("./pages/GalleryPage"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
+const ServiziPage = lazy(() => import("./pages/ServiziPage"));
+const TatuaggiPage = lazy(() => import("./pages/TatuaggiPage"));
+const AftercarePage = lazy(() => import("./pages/AftercarePage"));
 
 // ── SEO LANDING PAGES (NOT IN NAV MENU) ───────────────────────────────────────
 // Style-specific pages for keyword targeting
@@ -30,6 +36,19 @@ const RealisticPage = lazy(() => import("./pages/services/RealisticPage"));
 const CoverUpPage = lazy(() => import("./pages/services/CoverUpPage"));
 const GeometricPage = lazy(() => import("./pages/services/GeometricPage"));
 const BlackGreyPage = lazy(() => import("./pages/services/BlackGreyPage"));
+const FineLinePage = lazy(() => import("./pages/services/FineLinePage"));
+const DotworkPage = lazy(() => import("./pages/services/DotworkPage"));
+const FloralePage = lazy(() => import("./pages/services/FloralePage"));
+const JapanesePage = lazy(() => import("./pages/services/JapanesePage"));
+const LetteringPage = lazy(() => import("./pages/services/LetteringPage"));
+const MinimalistPage = lazy(() => import("./pages/services/MinimalistPage"));
+const GothicPage = lazy(() => import("./pages/services/GothicPage"));
+const NeoTraditionalPage = lazy(() => import("./pages/services/NeoTraditionalPage"));
+const NewSchoolPage = lazy(() => import("./pages/services/NewSchoolPage"));
+const SurrealistPage = lazy(() => import("./pages/services/SurrealistPage"));
+const TribalPage = lazy(() => import("./pages/services/TribalPage"));
+const WatercolorPage = lazy(() => import("./pages/services/WatercolorPage"));
+const SigilloPage = lazy(() => import("./pages/services/SigilloPage"));
 
 // Local SEO page
 const BorgoDoraTattooPage = lazy(() => import("./pages/BorgoDoraTattooPage"));
@@ -110,10 +129,29 @@ const App = () => {
                       
                       {/* Style-specific landing pages (SEO) */}
                       <Route path="/servizi/tatuaggi-old-school-torino" element={<OldSchoolPage />} />
+                      <Route path="/tatuaggi-old-school-torino" element={<OldSchoolPage />} />
                       <Route path="/servizi/tatuaggi-realistici-torino" element={<RealisticPage />} />
+                      <Route path="/tatuaggio-realistico-a-torino" element={<RealisticPage />} />
                       <Route path="/servizi/cover-up-tatuaggi-torino" element={<CoverUpPage />} />
                       <Route path="/servizi/tatuaggi-geometrici-torino" element={<GeometricPage />} />
+                      <Route path="/tatuaggio-geometrico-a-torino" element={<GeometricPage />} />
                       <Route path="/servizi/tatuaggi-black-grey-torino" element={<BlackGreyPage />} />
+                      <Route path="/tatuaggio-black-grey-a-torino" element={<BlackGreyPage />} />
+                      
+                      {/* Additional tattoo styles */}
+                      <Route path="/tatuaggio-fine-line-a-torino" element={<FineLinePage />} />
+                      <Route path="/tatuaggio-dotwork-a-torino" element={<DotworkPage />} />
+                      <Route path="/tatuaggio-floreale-a-torino" element={<FloralePage />} />
+                      <Route path="/tatuaggio-giapponese-irezumi-a-torino" element={<JapanesePage />} />
+                      <Route path="/tatuaggio-lettering-a-torino" element={<LetteringPage />} />
+                      <Route path="/tatuaggio-minimalista-a-torino" element={<MinimalistPage />} />
+                      <Route path="/tatuaggio-gotico-a-torino" element={<GothicPage />} />
+                      <Route path="/tatuaggio-neo-tradizionale-a-torino" element={<NeoTraditionalPage />} />
+                      <Route path="/tatuaggio-new-school-a-torino" element={<NewSchoolPage />} />
+                      <Route path="/tatuaggio-surrealista-a-torino" element={<SurrealistPage />} />
+                      <Route path="/tatuaggio-tribale-a-torino" element={<TribalPage />} />
+                      <Route path="/tatuaggio-watercolor-a-torino" element={<WatercolorPage />} />
+                      <Route path="/tatuaggio-sigillo-a-torino" element={<SigilloPage />} />
                       
                       {/* Local SEO page */}
                       <Route path="/borgo-dora-tatuaggi" element={<BorgoDoraTattooPage />} />
@@ -137,6 +175,15 @@ const App = () => {
                       {/* Legal pages */}
                       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                       <Route path="/cookie-policy" element={<CookiePolicy />} />
+                      
+                      {/* General pages */}
+                      <Route path="/about-me" element={<AboutPage />} />
+                      <Route path="/gallery" element={<GalleryPage />} />
+                      <Route path="/contatti" element={<ContactPage />} />
+                      <Route path="/servizi" element={<ServiziPage />} />
+                      <Route path="/tatuaggi" element={<TatuaggiPage />} />
+                      <Route path="/cura-post-tatuaggio" element={<AftercarePage />} />
+                      <Route path="/cover-up-e-correzioni-tatuaggi" element={<CoverUpPage />} />
                       
                       <Route path="*" element={<NotFound />} />
                     </Routes>

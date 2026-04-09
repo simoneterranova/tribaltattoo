@@ -8,50 +8,51 @@ import shopConfig from "@/config/shopConfig";
 
 const GeometricPage = () => {
   const styleData = {
-    slug: "tatuaggi-geometrici-torino",
-    title: "Tatuaggi Geometrici Torino",
-    metaTitle: "Tatuaggi Geometrici a Torino | Stile Sacred Geometry | Gran Babar",
+    slug: "tatuaggio-geometrico-a-torino",
+    title: "Tatuaggio geometrico a Torino",
+    metaTitle: "Tatuaggio geometrico a Torino - GranBabar",
     metaDescription:
-      "Tatuaggi geometrici e sacred geometry a Torino. Design matematici, mandala, pattern simmetrici e forme sacre. Francesco al Gran Babar Studio. Consulenza gratuita.",
-    h1: "Tatuaggi Geometrici a Torino",
+      "Il tatuaggio geometrico è l'incontro tra arte, matematica e simbolismo. Linee perfette, figure astratte e motivi complessi. Gran Babar realizza tatuaggi geometrici a Torino con una precisione assoluta.",
+    h1: "Tatuaggio geometrico a Torino",
     intro:
-      "Il tatuaggio geometrico combina arte, matematica e spiritualità. Forme pure, pattern ripetuti, mandala e sacred geometry creano composizioni ipnotiche e cariche di significato simbolico.",
+      "Il tatuaggio geometrico è l'incontro tra arte, matematica e simbolismo. Linee perfette, figure astratte e motivi complessi si intrecciano per creare tatuaggi dal forte impatto visivo e dal significato profondo. Gran Babar realizza tatuaggi geometrici a Torino con una precisione assoluta, studiando ogni composizione per valorizzare al massimo l'armonia delle forme e l'anatomia del corpo.",
     about: [
-      "Lo stile geometrico ha radici antiche nelle culture di tutto il mondo: dai mandala buddhisti, alla geometria sacra islamica, ai pattern tribali polinesiani. Ogni forma ha un significato: il cerchio rappresenta l'unità, il triangolo la trinità, l'esagono l'equilibrio naturale.",
-      "Al Gran Babar Studio di Torino, Francesco crea tatuaggi geometrici personalizzati che fondono estetica minimale con profondità simbolica. Ogni design è progettato con precisione matematica: simmetrie perfette, proporzioni auree, pattern che si ripetono con armonia.",
-      "I tatuaggi geometrici funzionano magnificamente sia come pezzi autonomi che come elementi di composizioni più ampie. Sono particolarmente adatti per braccia, avambracci, polpacci e schiena, dove le linee possono seguire la muscolatura naturale del corpo."
+      "Il tatuaggio geometrico si basa sull'uso di linee nette, forme simmetriche e figure astratte per creare immagini armoniose ed essenziali. Questo stile può essere utilizzato per rappresentare elementi naturali stilizzati, simboli esoterici o disegni puramente decorativi. La sua estetica minimalista lo rende perfetto per chi cerca un tatuaggio elegante, preciso e senza tempo.",
+      "La realizzazione di un tatuaggio geometrico richiede massima precisione e una mano ferma. Gran Babar utilizza tecniche avanzate per garantire che ogni linea sia nitida e perfettamente bilanciata. L'attenzione ai dettagli è fondamentale per ottenere un tatuaggio che mantenga la sua pulizia e definizione nel tempo.",
+      "Per Gran Babar, il tatuaggio geometrico è un'arte di precisione. Ogni progetto è eseguito con cura millimetrica per garantire simmetria e armonia. Grazie all'utilizzo di strumenti all'avanguardia e alla sua esperienza nel campo, riesce a creare tatuaggi con linee impeccabili e design che si adattano perfettamente alle curve del corpo."
     ],
     features: [
-      "Disegni basati su geometria sacra e proporzioni matematiche",
-      "Mandala personalizzati con simbolismi specifici per te",
-      "Pattern ripetuti e tessellazioni ipnotiche",
-      "Linework ultra-preciso con linee perfettamente dritte",
-      "Dotwork (puntinismo) per creare sfumature geometriche",
-      "Fusione di stili: geometrico + realistico, geometrico + nature",
-      "Simmetrie perfette calculate digitalmente prima dell'esecuzione",
-      "Possibilità di espandere il design nel tempo con nuove sezioni"
+      "Elementi naturali stilizzati: fiori, alberi, montagne e animali trasformati in figure geometriche",
+      "Simboli spirituali e sacri: mandala, metatron, cubo di Metatron, fiore della vita",
+      "Figure astratte e minimaliste: triangoli, esagoni, pattern ripetuti e linee sottili",
+      "Tatuaggi ispirati alla matematica e alla scienza: sequenza di Fibonacci, frattali e forme ispirate alla fisica",
+      "Linee nette e perfettamente bilanciate",
+      "Massima precisione e mano ferma",
+      "Forme simmetriche e figure astratte",
+      "Estetica minimalista ed elegante"
     ],
     process: [
-      "Consulenza e significati: parliamo dei simboli che ti parlano. Sacred geometry? Mandala? Pattern astratti? Ogni forma ha un significato e ti spiego le opzioni.",
-      "Design digitale: creo il progetto al computer usando software di design geometrico. Questo garantisce simmetrie perfette e proporzioni precise. Ti mostro rendering 3D su foto del tuo corpo.",
-      "Trasferimento accurato: lo stencil è fondamentale per la geometria. Lo posiziono con cura assoluta, controllando angoli e centrature. Anche 1mm di errore si nota nei pattern geometrici.",
-      "Esecuzione metodica: lavoro a sezioni, costruendo il pattern passo dopo passo. Le linee devono essere perfettamente dritte e uniformi. Uso righelli e strumenti di precisione.",
-      "Verifica finale: dopo la guarigione controlliamo che tutte le linee siano definite. I ritocchi sono rari ma inclusi se necessari."
+      "Consulenza iniziale: Gran Babar lavora con ogni cliente per sviluppare un design su misura, studiando l'equilibrio delle forme e l'effetto ottico sulla pelle.",
+      "Design personalizzato: ogni progetto è eseguito con cura millimetrica per garantire simmetria e armonia.",
+      "Preparazione: utilizziamo strumenti all'avanguardia per garantire linee impeccabili.",
+      "Esecuzione: ogni linea è realizzata con massima precisione per mantenere la pulizia e definizione nel tempo.",
+      "Follow-up: resto disponibile per qualsiasi domanda o necessità."
     ],
     pricing:
-      "I tatuaggi geometrici richiedono design digitale personalizzato e precisione maniacale nell'esecuzione. Pezzi piccoli (8-10cm) partono da €180. Mandala medi (15-20cm) costano €300-€500. Composizioni geometriche grandi (mezze maniche, polpacci completi) hanno prezzi personalizzati da €600 in su. Consulenza gratuita con visualizzazione digitale del design sul tuo corpo.",
+      "Contattaci per un preventivo personalizzato. Il costo varia in base alle dimensioni e alla complessità del design. Durante la consulenza ti forniremo una stima precisa.",
     gallery: [
       { src: shopConfig.gallery[2].src, alt: "Tatuaggio geometrico con mandala - Gran Babar Torino" }
     ],
     relatedStyles: [
       { slug: "tatuaggi-old-school-torino", name: "Old School" },
-      { slug: "tatuaggi-realistici-torino", name: "Realistici" },
-      { slug: "tatuaggi-black-grey-torino", name: "Black & Grey" }
+      { slug: "tatuaggio-realistico-a-torino", name: "Realistico" },
+      { slug: "tatuaggio-black-grey-a-torino", name: "Black & Grey" }
     ],
-    portfolioSlug: "geometrici-torino",
-    relatedBlogPosts: [
-      { slug: "primo-tatuaggio-guida", title: "Primo Tatuaggio: Cosa Sapere" },
-      { slug: "quanto-costa-tatuaggio-torino", title: "Prezzi Tatuaggi Geometrici" }
+    portfolioSlug: "geometric-torino",
+    faqs: [
+      { question: "Il tatuaggio geometrico mantiene la sua precisione nel tempo?", answer: "È una tecnica di tatuaggio che utilizza forme geometriche, linee pulite e simmetria per creare design moderni e simbolici, realizzati con precisione e cura." },
+      { question: "Qual è la storia del Geometric Tattoo?", answer: "Le origini del Geometric Tattoo risalgono a tradizioni antiche, dove le forme geometriche erano usate per rappresentare concetti spirituali e matematici. Con il tempo, questa arte si è evoluta, fondendo elementi tradizionali e moderni per creare design innovativi." },
+      { question: "Come avviene la cura post-tatuaggio per un Geometric Tattoo?", answer: "Dopo la seduta, riceverai istruzioni dettagliate per la cura post-tatuaggio, fondamentali per mantenere intatta la precisione delle linee e la qualità del design, garantendo una guarigione ottimale." }
     ]
   };
 

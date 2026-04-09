@@ -8,49 +8,44 @@ import shopConfig from "@/config/shopConfig";
 
 const CoverUpPage = () => {
   const styleData = {
-    slug: "cover-up-tatuaggi-torino",
-    title: "Cover-up Tatuaggi Torino",
-    metaTitle: "Cover-up Tatuaggi a Torino | Correzione Tatuaggi | Gran Babar Studio",
+    slug: "cover-up-e-correzioni-tatuaggi",
+    title: "Cover-up e correzioni tatuaggi",
+    metaTitle: "Cover up e correzioni tatuaggi - GranBabar",
     metaDescription:
-      "Cover-up e correzione tatuaggi a Torino con Francesco. Copriamo vecchi tatuaggi con nuovi design creativi. Valutazione gratuita della fattibilità. Studio in Borgo Dora.",
-    h1: "Cover-up e Correzione Tatuaggi a Torino",
+      "Se hai un vecchio tatuaggio che non ti rappresenta più, o se desideri trasformare un tatuaggio poco riuscito in un'opera d'arte, Gran Babar è specializzato nel cover-up di tatuaggi a Torino.",
+    h1: "Cover-up di Vecchi Tatuaggi",
     intro:
-      "Un cover-up è l'arte di coprire un vecchio tatuaggio indesiderato con un nuovo design. Richiede esperienza tecnica, creatività e comprensione di come gli inchiostri interagiscono sulla pelle già tatuata.",
+      "Se hai un vecchio tatuaggio che non ti rappresenta più, o se desideri trasformare un tatuaggio poco riuscito in un'opera d'arte, sei nel posto giusto. Gran Babar è specializzato nel cover-up di tatuaggi a Torino, creando nuovi disegni che non solo coprono, ma arricchiscono e rinnovano la tua pelle con creatività e precisione.",
     about: [
-      "Il cover-up è una delle specialità del Gran Babar Studio. Francesco ha anni di esperienza nel trasformare tatuaggi vecchi, sbiaditi o semplicemente non più graditi in nuove opere d'arte. La chiave è progettare un design che incorpori o mascheri completamente il tatuaggio esistente.",
-      "Non tutti i tatuaggi sono cover-abili: dipende da colore, dimensione, posizione e densità dell'inchiostro originale. Durante la consulenza valutiamo la fattibilità e ti mostro esempi simili dal portfolio. In alcuni casi suggeriamo qualche seduta laser prima del cover-up per schiarire l'inchiostro vecchio.",
-      "A Torino offriamo consulenza gratuita per cover-up: porta foto del tatuaggio esistente da diverse angolazioni e parliamo delle opzioni creative. Il risultato finale sarà un tatuaggio di cui andare fieri, che racconta il tuo percorso e la tua evoluzione."
-    ],
-    features: [
-      "Valutazione gratuita della fattibilità del cover-up",
-      "Design creativi che incorporano o mascherano completamente il vecchio tatuaggio",
-      "Uso strategico di colori scuri e contrasti per coprire inchiostri esistenti",
-      "Esperienza con tatuaggi sbiaditi, neri, colorati e tribali anni '90",
-      "Opzione di rework (miglioramento) invece di copertura totale quando possibile",
-      "Collaborazione con centri laser per preparazione ottimale della pelle",
-      "Sessioni pianificate con cura per risultati perfetti",
-      "Garanzia di lavoro professionale con follow-up incluso"
+      "Un cover-up non è solo una semplice copertura di un tatuaggio esistente, ma un processo artistico che richiede attenzione e conoscenza tecnica. Gran Babar esamina il tuo tatuaggio attuale, valuta le sue caratteristiche (come i colori, la forma e la posizione), e sviluppa un nuovo design che si integra perfettamente con il lavoro precedente, senza compromettere la qualità e l'estetica.",
+      "Gran Babar si dedica alla creazione di tatuaggi personalizzati che raccontano storie uniche. Con anni di esperienza, ha perfezionato la tecnica del cover-up, trasformando vecchi tatuaggi in opere d'arte contemporanee. Ogni cover-up che realizza è studiato con precisione, per garantire che la nuova creazione non solo copra il vecchio disegno, ma lo renda parte di una nuova storia.",
+      "Con il nostro approccio personalizzato, il tuo vecchio tatuaggio può diventare un nuovo capolavoro che ti farà sentire finalmente soddisfatto."
+    ],\n    features: [
+      "Consulenza personalizzata per valutare il tatuaggio esistente",
+      "Progettazione di nuovi disegni che integrano il lavoro precedente",
+      "Tecnica avanzata per cover-up efficaci",
+      "Trasformazione di vecchi tatuaggi in opere d'arte",
+      "Valutazione di colori, forma e posizione",
+      "Design studiati con precisione",
+      "Anni di esperienza nel cover-up",
+      "Risultati duraturi e di qualità"
     ],
     process: [
-      "Consulenza e fotografie: porta foto dettagliate del tatuaggio da coprire. Valutiamo insieme la fattibilità, discutiamo le tue preferenze stilistiche e vediamo cosa è possibile fare.",
-      "Progettazione creativa: creo 2-3 bozzetti di cover-up. Il design deve essere più grande e scuro del tatuaggio originale per coprire efficacemente. Ti mostro simulazioni su foto.",
-      "Eventuale preparazione laser: se l'inchiostro vecchio è troppo denso, ti consiglio 2-4 sedute laser per schiarirlo (non collaboriamo direttamente, ma ti indirizzo ai centri migliori).",
-      "Esecuzione del cover-up: spesso richiede sessioni più lunghe (4-6 ore) perché dobbiamo saturare l'area con nuovo inchiostro. Lavoriamo con tecnica stratificata.",
-      "Ritocco finale: dopo guarigione completa (2 mesi), valutiamo se serve un ritocco per perfezionare la copertura. Incluso nel prezzo."
+      "Consultazione: La prima cosa da fare è una chiacchierata per capire cosa non ti piace del tuo tatuaggio e quali sono le tue aspettative.",
+      "Progettazione del nuovo disegno: Dopo aver ascoltato le tue esigenze, inizia la fase di progettazione. Il disegno viene creato tenendo conto del tatuaggio esistente e delle sue dimensioni, per garantire una copertura adeguata.",
+      "Valutazione tecnica: Gran Babar esamina caratteristiche come colori, forma e posizione.",
+      "Realizzazione: Una volta approvato il disegno, il tatuaggio viene realizzato utilizzando inchiostri e tecniche avanzate per ottenere un risultato duraturo e dettagliato.",
+      "Follow-up: resto disponibile per qualsiasi domanda o necessità di ritocchi."
     ],
     pricing:
-      "I cover-up costano più dei tatuaggi normali per la complessità tecnica coinvolta. Prezzi partono da €250 per cover-up piccoli e semplici. Un cover-up medio (15x20cm) costa €400-€600. Pezzi grandi hanno prezzi personalizzati. Il preventivo finale dipende da dimensione del vecchio tatuaggio, colori presenti e complessità del nuovo design. Consulenza sempre gratuita.",
+      "Contattaci per un preventivo personalizzato. Il costo varia in base alle dimensioni e alla complessità del cover-up. Durante la consulenza ti forniremo una stima precisa.",
     gallery: [],
     relatedStyles: [
       { slug: "tatuaggi-old-school-torino", name: "Old School" },
-      { slug: "tatuaggi-realistici-torino", name: "Realistici" },
-      { slug: "tatuaggi-black-grey-torino", name: "Black & Grey" }
+      { slug: "tatuaggio-realistico-a-torino", name: "Realistico" },
+      { slug: "tatuaggio-black-grey-a-torino", name: "Black & Grey" }
     ],
-    portfolioSlug: "cover-up-torino",
-    relatedBlogPosts: [
-      { slug: "quanto-costa-tatuaggio-torino", title: "Prezzi Cover-up a Torino" },
-      { slug: "cura-tatuaggio-aftercare", title: "Cura Post-Tatuaggio" }
-    ]
+    portfolioSlug: "cover-up-torino"
   };
 
   return <TattooStylePage style={styleData} />;

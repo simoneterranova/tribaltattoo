@@ -139,7 +139,7 @@ const shopConfig = {
       heading: ["I Nostri", "Servizi"],
       counterLabel: ["Trattamenti", "Personalizzati"],
       footnote:
-        "Tutti i preventivi sono concordati durante la consulenza · I prezzi variano in base a dimensione e complessità del progetto",
+        "Ogni progetto è unico · I preventivi sono personalizzati in base a dimensione, complessità e tempo richiesto · Consulenza gratuita",
     },
     team: {
       label: "Francesco",
@@ -165,14 +165,14 @@ const shopConfig = {
   },
 
   // ── SERVICES ────────────────────────────────────────────────────────────────
-  // Prices are indicative starting points — final quote agreed during consultation.
-  // `durationMinutes` is approximate; tattoo sessions vary greatly.
+  // All prices are customized based on project complexity and client needs.
+  // Final quote agreed during free consultation. `durationMinutes` is approximate.
   services: [
     {
     id: "consultation",
     index: "01",
     name: "Consulenza",
-    price: 0,
+    price: "Gratuita",
     duration: "30 min",
     durationMinutes: 30,
     description:
@@ -183,7 +183,7 @@ const shopConfig = {
       id: "custom-tattoo",
       index: "02",
       name: "Tattoo Personalizzato",
-      price: 150,
+      price: "Su Preventivo",
       duration: "da 1 ora",
       durationMinutes: 60,
       description:
@@ -194,7 +194,7 @@ const shopConfig = {
       id: "cover-up",
       index: "03",
       name: "Cover-up & Correzioni",
-      price: 180,
+      price: "Su Preventivo",
       duration: "da 1 ora",
       durationMinutes: 60,
       description:
@@ -202,16 +202,28 @@ const shopConfig = {
       badge: "Specialità" as string | null,
     },
     {
-      id: "aftercare",
+      id: "tatuaggio-sigillo",
       index: "04",
+      name: "Tatuaggio Sigillo",
+      price: "Su Preventivo",
+      duration: "da 45 min",
+      durationMinutes: 45,
+      description:
+        "Mappatura energetica del tattoo: un'analisi incrociata tra il simbolismo del tatuaggio e l'energia del cliente. Il costo varia se è analisi di un tattoo esistente o creazione di un nuovo progetto personalizzato.",
+      badge: "Unico" as string | null,
+    },
+    {
+      id: "aftercare",
+      index: "05",
       name: "Cura Post-Tatuaggio",
-      price: 0,
+      price: "Inclusa",
       duration: "inclusa",
       durationMinutes: 30,
       description:
         "Istruzioni dettagliate e assistenza continua per la guarigione del tuo tatuaggio. Il lavoro non finisce con l'ago.",
       badge: "Inclusa" as string | null,
     },
+
   ],
 
   // ── TEAM ────────────────────────────────────────────────────────────────────

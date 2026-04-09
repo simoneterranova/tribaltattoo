@@ -1,0 +1,64 @@
+<svg width="1200" height="800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#1a1a1a"/>
+  
+  <!-- Symbolic seal design -->
+  <g transform="translate(600, 400)">
+    <!-- Outer protective circle -->
+    <circle cx="0" cy="0" r="280" fill="none" stroke="#8b7355" stroke-width="3"/>
+    
+    <!-- Inner circle with symbols -->
+    <circle cx="0" cy="0" r="240" fill="none" stroke="#8b7355" stroke-width="1.5" stroke-dasharray="5,5"/>
+    
+    <!-- Symbolic elements around the circle -->
+    <!-- Top symbol (triangle/mountain) -->
+    <path d="M 0,-200 L 30,-140 L -30,-140 Z" fill="none" stroke="#8b7355" stroke-width="2"/>
+    
+    <!-- Right symbol (sun/star) -->
+    <g transform="translate(175, 0)">
+      <circle cx="0" cy="0" r="25" fill="none" stroke="#8b7355" stroke-width="2"/>
+      <line x1="-35" y1="0" x2="-25" y2="0" stroke="#8b7355" stroke-width="1.5"/>
+      <line x1="35" y1="0" x2="25" y2="0" stroke="#8b7355" stroke-width="1.5"/>
+      <line x1="0" y1="-35" x2="0" y2="-25" stroke="#8b7355" stroke-width="1.5"/>
+      <line x1="0" y1="35" x2="0" y2="25" stroke="#8b7355" stroke-width="1.5"/>
+    </g>
+    
+    <!-- Bottom symbol (waves/water) -->
+    <path d="M -60,180 Q -40,160 -20,180 Q 0,160 20,180 Q 40,160 60,180" 
+          fill="none" stroke="#8b7355" stroke-width="2"/>
+    <path d="M -60,200 Q -40,180 -20,200 Q 0,180 20,200 Q 40,180 60,200" 
+          fill="none" stroke="#8b7355" stroke-width="2"/>
+    
+    <!-- Left symbol (moon) -->
+    <g transform="translate(-175, 0)">
+      <circle cx="0" cy="0" r="25" fill="none" stroke="#8b7355" stroke-width="2"/>
+      <circle cx="10" cy="0" r="25" fill="#1a1a1a"/>
+    </g>
+    
+    <!-- Central sigil/knot -->
+    <circle cx="0" cy="0" r="80" fill="none" stroke="#8b7355" stroke-width="2"/>
+    <path d="M -40,-40 Q 0,-60 40,-40 Q 60,0 40,40 Q 0,60 -40,40 Q -60,0 -40,-40" 
+          fill="none" stroke="#8b7355" stroke-width="2.5"/>
+    
+    <!-- Inner personal symbol -->
+    <text x="0" y="15" text-anchor="middle" font-family="serif" font-size="60" fill="#8b7355" font-weight="bold">✱</text>
+    
+    <!-- Decorative dots -->
+    <circle cx="0" cy="-240" r="4" fill="#8b7355"/>
+    <circle cx="170" cy="-170" r="4" fill="#8b7355"/>
+    <circle cx="240" cy="0" r="4" fill="#8b7355"/>
+    <circle cx="170" cy="170" r="4" fill="#8b7355"/>
+    <circle cx="0" cy="240" r="4" fill="#8b7355"/>
+    <circle cx="-170" cy="170" r="4" fill="#8b7355"/>
+    <circle cx="-240" cy="0" r="4" fill="#8b7355"/>
+    <circle cx="-170" cy="-170" r="4" fill="#8b7355"/>
+  </g>
+  
+  <!-- Placeholder text -->
+  <text x="600" y="700" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#8b7355" opacity="0.7">
+    Tatuaggio Sigillo Simbolico - Placeholder
+  </text>
+  <text x="600" y="730" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#8b7355" opacity="0.5">
+    Protezione Personale e Simboli Ancestrali
+  </text>
+</svg>

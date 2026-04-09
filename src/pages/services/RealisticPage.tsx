@@ -8,50 +8,51 @@ import shopConfig from "@/config/shopConfig";
 
 const RealisticPage = () => {
   const styleData = {
-    slug: "tatuaggi-realistici-torino",
-    title: "Tatuaggi Realistici Torino",
-    metaTitle: "Tatuaggi Realistici a Torino | Iperrealismo | Gran Babar Studio",
+    slug: "tatuaggio-realistico-a-torino",
+    title: "Tatuaggio realistico a Torino",
+    metaTitle: "Tatuaggio realistico a Torino - GranBabar",
     metaDescription:
-      "Tatuaggi realistici e iperrealisti a Torino. Francesco specializzato in ritratti fotorealistici, animali e nature morte. Tecnica black & grey e colore. Consulenza gratuita.",
-    h1: "Tatuaggi Realistici a Torino",
+      "Il tatuaggio realistico è la massima espressione tecnica dell'arte del tatuaggio. Basato sulla precisione dei dettagli e sull'uso sapiente delle sfumature. Gran Babar è un punto di riferimento per chi desidera un tatuaggio realistico a Torino.",
+    h1: "Tatuaggio realistico a Torino",
     intro:
-      "Il tatuaggio realistico riproduce immagini con fedeltà fotografica sulla pelle. Ritratti, animali, paesaggi: ogni dettaglio è curato per creare l'illusione della tridimensionalità.",
+      "Il tatuaggio realistico è la massima espressione tecnica dell'arte del tatuaggio. Basato sulla precisione dei dettagli e sull'uso sapiente delle sfumature, questo stile consente di riprodurre immagini fedeli alla realtà, dai ritratti umani agli animali, dagli elementi naturali ai paesaggi. Gran Babar è un punto di riferimento per chi desidera un tatuaggio realistico a Torino, realizzato con cura, esperienza e una profonda sensibilità artistica.",
     about: [
-      "Il realismo è lo stile più tecnico e impegnativo nel mondo del tatuaggio. Richiede anni di studio dell'anatomia, delle luci e ombre, della prospettiva. Francesco ha perfezionato questa tecnica lavorando principalmente in black & grey, dove ogni sfumatura conta.",
-      "Al Gran Babar Studio realizziamo ritratti di persone care, animali domestici, soggetti naturalistici e composizioni artistiche. Ogni tatuaggio è un'opera unica che racconta una storia personale. La tecnica richiede tempo: un ritratto medio può richiedere 4-6 ore di lavoro.",
-      "A Torino siamo specialisti del realismo che dura nel tempo. Studiamo attentamente la posizione sulla pelle per garantire che le sfumature rimangano leggibili anche dopo anni. La preparazione del design è meticolosa: ogni ritratto richiede uno studio fotografico approfondito."
+      "Il tatuaggio realistico si distingue per la capacità di riprodurre soggetti con un alto livello di dettaglio, dando l'impressione di tridimensionalità e profondità. Ogni sfumatura e ogni linea sono studiate per rendere il disegno il più fedele possibile alla realtà. Questo stile può essere eseguito in Black and Grey, per un effetto elegante e senza tempo, o a colori, per una resa ancora più vivida e d'impatto.",
+      "La tecnica del tatuaggio realistico si basa su un lavoro meticoloso di sfumature e transizioni tonali. A differenza di altri stili, non utilizza contorni marcati, ma lavora con contrasti delicati per ottenere un effetto naturale. Gran Babar utilizza strumenti di alta precisione e pigmenti di qualità per garantire un risultato nitido e duraturo.",
+      "Realizzare un tatuaggio realistico richiede una profonda conoscenza della tecnica e un occhio attento ai dettagli. Gran Babar si distingue per la sua capacità di riprodurre sfumature morbide, dettagli nitidi e proporzioni perfette, garantendo risultati straordinari. Ogni tatuaggio è studiato con cura per adattarsi armoniosamente alla zona del corpo scelta, valorizzando la forma e l'effetto visivo."
     ],
     features: [
-      "Riproduzioni fotografiche fedeli con attenzione a ogni dettaglio",
-      "Tecnica black & grey con sfumature progressive da bianco a nero",
-      "Ritratti di persone: studio dei tratti somatici e delle espressioni",
-      "Animali: pellicce texturizzate, occhi realistici, anatomia corretta",
-      "Gestione professionale di luci, ombre e prospettiva",
-      "Possibilità di realismo a colori per soggetti naturalistici",
-      "Sessioni lunghe (4-8 ore) per garantire qualità fotografica",
-      "Dopo la guarigione il risultato è permanente e impressionante"
+      "Ritratti: volti di persone care, icone famose o personaggi cinematografici",
+      "Animali: rappresentazioni dettagliate di cani, gatti, leoni, lupi e altri",
+      "Paesaggi e natura: scenari evocativi, alberi e ambientazioni suggestive",
+      "Elementi simbolici: oggetti dal forte valore emotivo, come orologi, mani intrecciate o occhi espressivi",
+      "Sfumature morbide e dettagli nitidi",
+      "Proporzioni perfette",
+      "Black and Grey o a colori",
+      "Strumenti di alta precisione e pigmenti di qualità"
     ],
     process: [
-      "Consulenza approfondita: porti le foto di riferimento (ritratti, animali) e discutiamo dimensioni e posizionamento. Ti spiego la fattibilità tecnica e i tempi necessari.",
-      "Studio fotografico: analizzo le foto, scelgo l'inquadratura migliore e creo un bozzetto dettagliato. Per ritratti richiedo foto ad alta risoluzione con illuminazione chiara.",
-      "Appuntamento per tatuaggio: le sessioni realistiche durano 4-8 ore. Lavoriamo con pause regolari per gestire il dolore e mantenere la concentrazione.",
-      "Tecnica di esecuzione: uso aghi shader per sfumature morbide e liner per dettagli precisi. Il lavoro procede per zone, costruendo gradualmente l'immagine.",
-      "Follow-up: dopo 1 mese valutiamo la guarigione e, se necessario, facciamo un ritocco per perfezionare le sfumature (incluso nel prezzo)."
+      "Consulenza iniziale: discutiamo il soggetto che desideri e valutiamo insieme le dimensioni e il posizionamento ideale.",
+      "Design personalizzato: Gran Babar lavora in stretta collaborazione con ogni cliente per creare un'opera su misura, che racconti una storia e trasmetta emozione.",
+      "Preparazione: ogni tatuaggio è studiato con cura per adattarsi armoniosamente alla zona del corpo scelta.",
+      "Esecuzione: utilizziamo strumenti di alta precisione e pigmenti di qualità per garantire un risultato nitido e duraturo.",
+      "Follow-up: resto disponibile per qualsiasi domanda o necessità di ritocchi."
     ],
     pricing:
-      "I tatuaggi realistici richiedono tempo e tecnica avanzata. Un ritratto medio (15x20cm) costa tra €400 e €700 a seconda della complessità. Pezzi più grandi o a colori hanno prezzi personalizzati. Durante la consulenza ti mostro il portfolio e ti fornisco un preventivo dettagliato basato sul tuo progetto specifico.",
+      "Contattaci per un preventivo personalizzato. Il costo varia in base alle dimensioni e alla complessità del disegno. Alcuni tatuaggi realistici richiedono più sessioni per ottenere il massimo livello di dettaglio e sfumatura. Durante la consulenza ti forniremo una stima precisa.",
     gallery: [
       { src: shopConfig.gallery[1].src, alt: "Tatuaggio realistico black and grey - Gran Babar Torino" }
     ],
     relatedStyles: [
       { slug: "tatuaggi-old-school-torino", name: "Old School" },
-      { slug: "tatuaggi-black-grey-torino", name: "Black & Grey" },
-      { slug: "tatuaggi-geometrici-torino", name: "Geometrici" }
+      { slug: "tatuaggio-black-grey-a-torino", name: "Black & Grey" },
+      { slug: "tatuaggio-geometrico-a-torino", name: "Geometrico" }
     ],
-    portfolioSlug: "realistici-torino",
-    relatedBlogPosts: [
-      { slug: "primo-tatuaggio-guida", title: "Guida al Primo Tatuaggio" },
-      { slug: "cura-tatuaggio-aftercare", title: "Come Curare il Tatuaggio" }
+    portfolioSlug: "realistic-torino",
+    faqs: [
+      { question: "È possibile fare un tatuaggio realistico di piccole dimensioni?", answer: "Sì, ma per ottenere un effetto iperrealistico è consigliabile una dimensione sufficiente a valorizzare i dettagli." },
+      { question: "Il tatuaggio realistico si può fare in un'unica sessione?", answer: "Dipende dalla complessità del disegno. Alcuni tatuaggi realistici richiedono più sessioni per ottenere il massimo livello di dettaglio e sfumatura." },
+      { question: "Meglio un tatuaggio realistico in Black and Grey o a colori?", answer: "Entrambe le versioni hanno il loro fascino. Il Black and Grey è più classico e duraturo, mentre il colore dona un effetto più vivido e d'impatto. Gran Babar aiuta ogni cliente a scegliere la soluzione più adatta alle proprie preferenze." }
     ]
   };
 

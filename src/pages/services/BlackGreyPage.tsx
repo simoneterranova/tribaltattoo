@@ -8,50 +8,52 @@ import shopConfig from "@/config/shopConfig";
 
 const BlackGreyPage = () => {
   const styleData = {
-    slug: "tatuaggi-black-grey-torino",
-    title: "Tatuaggi Black & Grey Torino",
-    metaTitle: "Tatuaggi Black & Grey a Torino | Sfumature Realistiche | Gran Babar",
+    slug: "tatuaggio-black-grey-a-torino",
+    title: "Tatuaggio Black & Grey a Torino",
+    metaTitle: "Tatuaggio Black & Grey a Torino - GranBabar",
     metaDescription:
-      "Tatuaggi black and grey (bianco e nero) a Torino. Ritratti, realistico, chicano, horror, biomeccanico. Francesco specializzato in sfumature perfette. Studio Borgo Dora.",
-    h1: "Tatuaggi Black & Grey a Torino",
+      "Il tatuaggio Black and Grey rappresenta l'arte della sfumatura e del chiaroscuro, uno stile senza tempo che esprime forza, emozione e realismo. Gran Babar realizza tatuaggi Black and Grey a Torino con un'attenzione maniacale ai dettagli.",
+    h1: "Black & Grey Tattoo a Torino",
     intro:
-      "Il Black & Grey è lo stile più versatile del tatuaggio: usando solo inchiostro nero diluito in diverse tonalità di grigio, si creano immagini dall'incredibile profondità e realismo.",
+      "Il tatuaggio Black and Grey rappresenta l'arte della sfumatura e del chiaroscuro, uno stile senza tempo che esprime forza, emozione e realismo. Gran Babar realizza tatuaggi Black and Grey a Torino con un'attenzione maniacale ai dettagli, trasformando ogni disegno in un'opera d'arte che resiste al tempo. Se cerchi un tatuaggio dal forte impatto visivo, capace di raccontare una storia attraverso il contrasto tra luce e ombra, sei nel posto giusto.",
     about: [
-      "Lo stile Black & Grey nasce nelle carceri americane dove i detenuti usavano inchiostro nero diluito con acqua o cenere per creare tatuaggi con sfumature. Da tecnica improvvisata è diventato uno degli stili più raffinati e richiesti nel tatuaggio professionale.",
-      "Al Gran Babar Studio di Torino, Francesco è specializzato in Black & Grey da oltre 10 anni. Questa tecnica permette infinite possibilità: ritratti fotorealistici, scene horror, chicano, biomeccanico, floreale, religioso. L'assenza di colore dona un'eleganza senza tempo ai tatuaggi.",
-      "Il Black & Grey invecchia splendidamente: senza colori che sbiadiscono, il tatuaggio mantiene contrasto e leggibilità anche dopo decenni. È particolarmente adatto per pelle chiara ma funziona magnificamente anche su pelle scura con la giusta tecnica."
+      "Lo stile Black and Grey nasce dall'utilizzo esclusivo dell'inchiostro nero, diluito in diverse gradazioni di grigio per creare profondità e tridimensionalità. Questa tecnica è ideale per tatuaggi realistici, ritratti, soggetti religiosi e motivi dettagliati, offrendo un effetto sofisticato e intenso. Gran Babar utilizza tecniche avanzate per ottenere sfumature fluide e omogenee, assicurando un risultato armonioso e duraturo.",
+      "Il tatuaggio Black and Grey richiede esperienza e precisione. La qualità delle sfumature dipende dalla capacità di dosare l'inchiostro e dalla conoscenza delle transizioni tonali. Questo stile è apprezzato per la sua versatilità, adatto sia a disegni minimali sia a opere più complesse. Gli effetti di chiaroscuro sono perfetti per esaltare dettagli, creando tatuaggi che mantengono la loro intensità nel tempo senza bisogno di grandi ritocchi.",
+      "Ogni tatuaggio è il risultato di uno studio attento delle forme e delle sfumature. Gran Babar unisce competenza tecnica e sensibilità artistica per garantire risultati eccellenti, lavorando con precisione su ogni dettaglio. L'obiettivo è creare tatuaggi che mantengano definizione e profondità nel tempo, offrendo un'estetica forte e duratura."
     ],
     features: [
-      "Sfumature progressive da bianco pelle a nero saturo",
-      "Versatilità stilistica: realistico, horror, religioso, chicano, biomeccanico",
-      "Ritratti fotografici con profondità incredibile",
-      "Contrasti drammatici che catturano l'attenzione",
-      "Tecnica smooth shading per transizioni morbide",
-      "Nessuno sbiadimento dei colori (perché non ci sono colori)",
-      "Adatto a tutte le zone del corpo e tutte le carnagioni",
-      "Estetica elegante e senza tempo"
+      "Ritratti realistici con chiaroscuro perfetto",
+      "Elementi sacri e religiosi",
+      "Teschi e motivi dark",
+      "Paesaggi dettagliati",
+      "Animali in stile realistico",
+      "Sfumature fluide e omogenee",
+      "Inchiostro nero diluito in gradazioni di grigio",
+      "Effetto sofisticato e intenso"
     ],
     process: [
-      "Consulenza sul soggetto: il Black & Grey permette qualsiasi soggetto. Porti riferimenti fotografici e discutiamo stile e posizionamento. Ti mostro portfolio con esempi simili.",
-      "Bozzetto personalizzato: creo il design studiando luci, ombre e valori tonali. Per ritratti richiedo foto ad alta risoluzione. Ti mostro preview del lavoro finito.",
-      "Pianificazione delle sessioni: pezzi piccoli (fino a 15cm) si completano in 3-5 ore. Pezzi grandi richiedono sessioni multiple da 4-6 ore per costruire gradualmente le sfumature.",
-      "Tecnica di esecuzione: uso diverse configurazioni di aghi (magnum, round shader) per creare sfumature di diversa morbidezza. Lavoro da chiaro a scuro, costruendo la profondità per strati.",
-      "Aftercare specifico: il Black & Grey guarisce con poca perdita di dettaglio se curato bene. Ti fornisco istruzioni precise e prodotti consigliati."
+      "Consulenza iniziale: Gran Babar lavora con i clienti per sviluppare disegni personalizzati, traducendo ogni idea in un'opera unica.",
+      "Design personalizzato: ogni progetto è studiato su misura per valorizzare al massimo la composizione e l'anatomia del corpo.",
+      "Preparazione: utilizziamo tecniche avanzate per ottenere sfumature fluide e omogenee.",
+      "Esecuzione: lavoriamo con precisione su ogni dettaglio per garantire risultati eccellenti.",
+      "Follow-up: resto disponibile per qualsiasi domanda o necessità di ritocchi."
     ],
     pricing:
-      "I tatuaggi Black & Grey hanno prezzi variabili in base alla complessità delle sfumature. Pezzi piccoli (8-12cm) partono da €150. Ritratti e pezzi medi (15-20cm) costano €350-€600. Mezze maniche, intere maniche o pezzi grandi hanno prezzi personalizzati da €800 in su, spesso divisi in più sessioni. La consulenza è gratuita e ti fornisco un preventivo trasparente basato su ore di lavoro stimate.",
+      "Contattaci per un preventivo personalizzato. Il costo varia in base alle dimensioni e alla complessità del design. Durante la consulenza ti forniremo una stima precisa.",
     gallery: [
       { src: shopConfig.gallery[1].src, alt: "Tatuaggio black and grey realistico - Gran Babar Torino" }
     ],
     relatedStyles: [
-      { slug: "tatuaggi-realistici-torino", name: "Realistici" },
-      { slug: "cover-up-tatuaggi-torino", name: "Cover-up" },
+      { slug: "tatuaggio-realistico-a-torino", name: "Realistico" },
+      { slug: "cover-up-e-correzioni-tatuaggi", name: "Cover-up" },
       { slug: "tatuaggi-old-school-torino", name: "Old School" }
     ],
     portfolioSlug: "black-grey-torino",
-    relatedBlogPosts: [
-      { slug: "cura-tatuaggio-aftercare", title: "Cura del Tatuaggio Black & Grey" },
-      { slug: "primo-tatuaggio-guida", title: "Primo Tatuaggio: Consigli Utili" }
+    faqs: [
+      { question: "Il tatuaggio Black and Grey sbiadisce più velocemente?", answer: "Se realizzato con inchiostri di qualità e curato adeguatamente, mantiene la sua intensità per molti anni senza perdere definizione." },
+      { question: "Quali soggetti si adattano meglio a questo stile?", answer: "Ritratti, elementi realistici, teschi, nature morte e simboli sacri sono tra le scelte più popolari per il Black and Grey." },
+      { question: "È possibile aggiungere dettagli a colori a un tatuaggio Black and Grey?", answer: "Sì, alcuni clienti scelgono di inserire piccoli accenti cromatici per enfatizzare determinati dettagli e creare un contrasto unico." },
+      { question: "Come avviene la cura post-tatuaggio?", answer: "Ti forniremo tutte le indicazioni necessarie per la corretta cura post-tatuaggio, essenziali per garantire una guarigione ottimale e la conservazione dei dettagli del lavoro." }
     ]
   };
 

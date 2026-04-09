@@ -29,19 +29,64 @@ interface TattooStylePageProps {
     relatedStyles: { slug: string; name: string }[];
     portfolioSlug?: string; // Link to full portfolio page
     relatedBlogPosts?: { slug: string; title: string }[]; // Related blog posts
+    faqs?: { question: string; answer: string }[]; // Optional FAQ section
   };
 }
 
 export const TattooStylePage = ({ style }: TattooStylePageProps) => {
+  // Generate canonical URL for this page
+  const canonicalUrl = `${shopConfig.meta.siteUrl}/${style.slug}`;
+  
+  // Use first gallery image for social media if available
+  const socialImage = style.gallery.length > 0 
+    ? `${shopConfig.meta.siteUrl}${style.gallery[0].src}`
+    : `${shopConfig.meta.siteUrl}/images/tatuaggi/gran-babar-social.jpg`;
+
+  // Generate FAQ structured data if FAQs exist
+  const faqSchema = style.faqs && style.faqs.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": style.faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  } : null;
+
   return (
     <>
       <Helmet>
+        {/* ── PRIMARY META TAGS ──────────────────────────────────────────────── */}
         <title>{style.metaTitle}</title>
         <meta name="description" content={style.metaDescription} />
+        <link rel="canonical" href={canonicalUrl} />
+        
+        {/* ── OPEN GRAPH / FACEBOOK / LINKEDIN ───────────────────────────────── */}
+        <meta property="og:type" content="article" />
         <meta property="og:title" content={style.metaTitle} />
         <meta property="og:description" content={style.metaDescription} />
-        <meta property="og:type" content="article" />
-        <link rel="canonical" href={`${shopConfig.meta.siteUrl}/servizi/${style.slug}`} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:image" content={socialImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:locale" content="it_IT" />
+        <meta property="og:site_name" content="Gran Babar - Studio Tatuaggi Torino" />
+        
+        {/* ── TWITTER CARD ───────────────────────────────────────────────────── */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={style.metaTitle} />
+        <meta name="twitter:description" content={style.metaDescription} />
+        <meta name="twitter:image" content={socialImage} />
+        
+        {/* ── FAQ STRUCTURED DATA (Schema.org) ───────────────────────────────── */}
+        {faqSchema && (
+          <script type="application/ld+json">
+            {JSON.stringify(faqSchema)}
+          </script>
+        )}
       </Helmet>
 
       <div className="min-h-screen bg-background">
@@ -300,6 +345,36 @@ export const TattooStylePage = ({ style }: TattooStylePageProps) => {
             </div>
           </div>
         </section>
+
+        {/* FAQ Section */}
+        {style.faqs && style.faqs.length > 0 && (
+          <section className="py-16 px-6 bg-card">
+            <div className="container mx-auto max-w-4xl">
+              <h2 className="font-heading text-3xl md:text-4xl text-foreground mb-8">
+                Domande Frequenti
+              </h2>
+              <div className="space-y-6">
+                {style.faqs.map((faq, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className="border border-border rounded-sm p-6"
+                  >
+                    <h3 className="font-heading text-xl text-foreground mb-3">
+                      {faq.question}
+                    </h3>
+                    <p className="font-body text-muted-foreground leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Final CTA */}
         <section className="py-20 px-6 bg-primary text-primary-foreground">
