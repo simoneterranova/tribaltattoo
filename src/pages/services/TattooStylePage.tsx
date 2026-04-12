@@ -73,7 +73,7 @@ export const TattooStylePage = ({ style }: TattooStylePageProps) => {
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:locale" content="it_IT" />
-        <meta property="og:site_name" content="Gran Babar - Studio Tatuaggi Torino" />
+        <meta property="og:site_name" content="Tribal Tattoo - Studio Tatuaggi Tribali Moncalieri" />
         
         {/* ── TWITTER CARD ───────────────────────────────────────────────────── */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -386,7 +386,7 @@ export const TattooStylePage = ({ style }: TattooStylePageProps) => {
             </p>
             <ContactDialog>
               <Button variant="secondary" size="lg">
-                Contatta Francesco
+                Contatta Claudio Ciliberti
               </Button>
             </ContactDialog>
           </div>

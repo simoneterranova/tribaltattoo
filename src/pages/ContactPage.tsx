@@ -11,8 +11,8 @@ const ContactPage = () => {
   return (
     <>
       <Helmet>
-        <title>Contatti - Prenota Appuntamento | Gran Babar Torino</title>
-        <meta name="description" content="Contatta Gran Babar per prenotare il tuo tatuaggio a Torino. WhatsApp, telefono, email. Studio in Largo Dora Napoli 16D." />
+        <title>Contatti - Prenota Appuntamento | {shopConfig.name} {shopConfig.city.split(",")[0]}</title>
+        <meta name="description" content={`Contatta ${shopConfig.name} per prenotare il tuo tatuaggio a ${shopConfig.city.split(",")[0]}. WhatsApp, telefono, email. Studio in ${shopConfig.contact.addressLines[0]}.`} />
         <link rel="canonical" href={`${shopConfig.meta.siteUrl}/contatti`} />
       </Helmet>
 
@@ -36,7 +36,7 @@ const ContactPage = () => {
               className="space-y-8"
             >
               <p className="font-body text-lg text-muted-foreground">
-                Prenota un appuntamento per il tuo tatuaggio a Torino. Rispondiamo a tutte le tue domande 
+                Prenota un appuntamento per il tuo tatuaggio a {shopConfig.city.split(",")[0]}. Rispondiamo a tutte le tue domande 
                 e fissiamo insieme la consulenza personalizzata.
               </p>
 
@@ -46,7 +46,7 @@ const ContactPage = () => {
                   <h2 className="font-heading text-2xl text-foreground mb-6">Contattaci</h2>
                   
                   <a 
-                    href="https://wa.me/393470174082" 
+                    href={`https://wa.me/${shopConfig.contact.phone.replace(/\s|\+/g, '')}`}
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="flex items-start gap-4 p-4 bg-card rounded-sm border-2 border-accent/20 hover:border-accent/40 transition-colors"
@@ -54,7 +54,7 @@ const ContactPage = () => {
                     <Phone className="h-6 w-6 text-accent mt-1" />
                     <div>
                       <h3 className="font-heading text-lg text-foreground mb-1">WhatsApp / Telefono</h3>
-                      <p className="font-body text-muted-foreground">+39 347 017 4082</p>
+                      <p className="font-body text-muted-foreground">{shopConfig.contact.phone}</p>
                       <p className="text-sm text-accent mt-1">Clicca per scrivere su WhatsApp</p>
                     </div>
                   </a>
@@ -64,12 +64,12 @@ const ContactPage = () => {
                     <div>
                       <h3 className="font-heading text-lg text-foreground mb-1">Instagram</h3>
                       <a 
-                        href="https://www.instagram.com/granbabar_tattoo/" 
+                        href={shopConfig.social.instagram}
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="font-body text-accent hover:underline"
                       >
-                        @granbabar_tattoo
+                        @{shopConfig.social.instagram.split('/').pop()}
                       </a>
                     </div>
                   </div>
@@ -79,8 +79,8 @@ const ContactPage = () => {
                     <div>
                       <h3 className="font-heading text-lg text-foreground mb-1">Studio</h3>
                       <p className="font-body text-muted-foreground">
-                        Largo Dora Napoli 16D<br />
-                        Torino, Italia
+                        {shopConfig.contact.addressLines[0]}<br />
+                        {shopConfig.contact.addressLines[1]}, Italia
                       </p>
                     </div>
                   </div>
@@ -104,7 +104,7 @@ const ContactPage = () => {
                       Oppure scrivici direttamente su WhatsApp per una risposta immediata:
                     </p>
                     <a 
-                      href="https://wa.me/393470174082" 
+                      href={`https://wa.me/${shopConfig.contact.phone.replace(/\s|\+/g, '')}`}
                       target="_blank" 
                       rel="noopener noreferrer"
                     >
@@ -130,7 +130,7 @@ const ContactPage = () => {
                     <strong className="text-foreground">Pagamenti:</strong> Contanti, carta, bonifico
                   </p>
                   <p>
-                    <strong className="text-foreground">Dove siamo:</strong> Nel cuore di Torino, zona Borgo Dora, facilmente raggiungibile con mezzi pubblici
+                    <strong className="text-foreground">Dove siamo:</strong> A {shopConfig.city}, facilmente raggiungibile con mezzi pubblici
                   </p>
                 </div>
               </div>

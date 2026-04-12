@@ -32,8 +32,8 @@ const TatuaggiPage = () => {
   return (
     <>
       <Helmet>
-        <title>Tatuaggi Torino - Tutti gli Stili | Gran Babar Studio</title>
-        <meta name="description" content="Scopri tutti gli stili di tatuaggio disponibili da Gran Babar a Torino. Da realistici a tribali, old school a watercolor. Studio professionale in Borgo Dora." />
+        <title>Tatuaggi Torino - Tutti gli Stili | Tribal Tattoo Studio</title>
+        <meta name="description" content="Scopri tutti gli stili di tatuaggio disponibili da Tribal Tattoo a Moncalieri. Specializzazione in tribali, polinesiani, maori e freehand. Studio professionale dal 1994." />
         <link rel="canonical" href={`${shopConfig.meta.siteUrl}/tatuaggi`} />
       </Helmet>
 
@@ -51,9 +51,9 @@ const TatuaggiPage = () => {
                 Tatuaggi
               </h1>
               <p className="font-body text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-                Da Gran Babar ogni tatuaggio nasce come un progetto unico, dove creatività e tecnica si 
-                fondono per trasformare il tuo corpo in un'opera d'arte. Dai design realistici ai tribali, 
-                passando per il lettering, il dotwork e il minimalista, realizziamo soluzioni su misura per 
+                Da Tribal Tattoo ogni tatuaggio nasce come un progetto unico, dove creatività e tecnica si 
+                fondono per trasformare il tuo corpo in un'opera d'arte. Dai design tribali autentici ai polinesiani, 
+                passando per il maori, il dotwork e il freehand, realizziamo soluzioni su misura per 
                 ogni personalità.
               </p>
               <ContactDialog>
@@ -112,7 +112,7 @@ const TatuaggiPage = () => {
                     >
                       <img
                         src={style.image}
-                        alt={`Tatuaggio ${style.name} - Gran Babar Torino`}
+                        alt={`Tatuaggio ${style.name} - Tribal Tattoo Torino`}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         loading="lazy"
                       />
@@ -137,7 +137,7 @@ const TatuaggiPage = () => {
               </h2>
               <p className="font-body text-muted-foreground mb-8 max-w-2xl mx-auto">
                 Se sei pronto a fare il grande passo e a esprimere la tua personalità attraverso un tatuaggio, 
-                contattaci subito! Il nostro studio in Largo Dora Napoli 16D, Torino, offre un ambiente 
+                contattaci subito! Il nostro studio in {shopConfig.contact.addressLines[0]}, {shopConfig.city}, offre un ambiente 
                 accogliente e sicuro.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -146,9 +146,9 @@ const TatuaggiPage = () => {
                     Prenota Appuntamento
                   </Button>
                 </ContactDialog>
-                <a href="https://wa.me/393470174082" target="_blank" rel="noopener noreferrer">
+                <a href={`https://wa.me/${shopConfig.contact.phone.replace(/\s|\+/g, '')}`} target="_blank" rel="noopener noreferrer">
                   <Button variant="outline" size="lg">
-                    WhatsApp: 347 017 4082
+                    WhatsApp: {shopConfig.contact.phone.replace('+39 ', '')}
                   </Button>
                 </a>
               </div>

@@ -18,15 +18,24 @@
 // ── IMAGE ASSETS ──────────────────────────────────────────────────────────────
 // Replace these files in src/assets/ with Tribal Tattoo's own photos/videos.
 import heroBg    from "@/assets/hero-bg.jpg";
-import artist1   from "@/assets/fra.mp4";   // CEO – main portrait / video
-import gallery1  from "@/assets/tattoo-1.jpeg";
-import gallery2  from "@/assets/tattoo-2.mp4";
-import gallery3  from "@/assets/tattoo-3.mp4";
-import gallery4  from "@/assets/tattoo-4.mp4";
-import gallery5  from "@/assets/tattoo-5.mp4";
-import gallery6  from "@/assets/tattoo-6.jpg";
-import gallery7  from "@/assets/studio.mp4";
-import logo      from "@/assets/logo.png";     // Fishbone logo (red)
+import artist1   from "@/assets/claudio1.webp";   // CEO – portrait 1
+import artist2   from "@/assets/claudio2.webp";   // CEO – portrait 2
+import artist3   from "@/assets/claudio3.webp";   // CEO – portrait 3
+import gallery1  from "@/assets/tattoo-1.webp";
+import gallery2  from "@/assets/tattoo-2.webp";
+import gallery3  from "@/assets/tattoo-3.webp";
+import gallery4  from "@/assets/tattoo-4.webp";
+import gallery5  from "@/assets/tattoo-5.webp";
+import gallery6  from "@/assets/tattoo-6.webp";
+import gallery7  from "@/assets/tattoo-7.webp";
+import gallery8  from "@/assets/tattoo-8.webp";
+import gallery9  from "@/assets/tattoo-9.webp";
+import gallery10 from "@/assets/tattoo-10.webp";
+import gallery11 from "@/assets/tattoo-11.webp";
+import gallery12 from "@/assets/tattoo-12.webp";
+import gallery13 from "@/assets/tattoo-13.webp";  
+import gallery14  from "@/assets/studio.mp4";
+import logo      from "@/assets/logo_coloured__no_bg.svg";     // Fishbone logo (red)
 
 // ── IDENTITY ──────────────────────────────────────────────────────────────────
 const shopConfig = {
@@ -224,7 +233,8 @@ const shopConfig = {
       index: "01",
       name: "Claudio Ciliberti",                  // ← update with CEO's name
       role: "Fondatore & Maestro Tatuatore",
-      image: artist1,
+      image: artist1,  // Kept for backward compatibility
+      images: [artist1, artist2, artist3],  // Multiple images carousel
       bio: "Dal 1994 porta nel corpo dei suoi clienti l'essenza delle culture tribali di tutto il mondo. I suoi viaggi in Polinesia, Nuova Zelanda e nei luoghi sacri dell'Asia gli hanno permesso di costruire un rapporto autentico con l'arte tribale originale — non semplici copie, ma magie antiche reinterpretate sull'energia di ogni individuo.",
       tags: ["Polinesiano", "Maori", "Tribale", "Freehand", "Dot Work", "Black Work"],
       years: "30+",
@@ -257,6 +267,12 @@ const shopConfig = {
     { src: gallery5, alt: "Tatuaggio tribale full sleeve",          label: "Full Sleeve"  },
     { src: gallery6, alt: "Dettaglio freehand tribale",             label: "Freehand"     },
     { src: gallery7, alt: "Interno dello studio Tribal Tattoo",     label: "Lo Studio"    },
+    { src: gallery8, alt: "Tatuaggio polinesiano su spalla",          label: "Polinesiano"  },
+    { src: gallery9, alt: "Tatuaggio maori su gamba",                label: "Maori"        },
+    { src: gallery10, alt: "Tatuaggio dot work geometrico su braccio", label: "Dot Work"     },
+    { src: gallery11, alt: "Tatuaggio black work tribale su petto",  label: "Black Work"   },
+    { src: gallery12, alt: "Tatuaggio tribale freehand su schiena", label: "Freehand"     },
+    { src: gallery13, alt: "Video dello studio Tribal Tattoo",       label: "Lo Studio"    },
   ],
 
   // ── CONTACT & LOCATION ──────────────────────────────────────────────────────
@@ -297,7 +313,8 @@ const shopConfig = {
   // ── SOCIAL LINKS ────────────────────────────────────────────────────────────
   social: {
     instagram: "https://www.instagram.com/tribaltattoo",  // ← update
-    // facebook:  "https://www.facebook.com/tribaltattoo",
+    facebook:  "https://www.facebook.com/TribaltattooItalia",
+    youtube:   "https://www.youtube.com/@tribaltattooitalia",
     // tiktok:    "https://www.tiktok.com/@tribaltattoo",
   },
 

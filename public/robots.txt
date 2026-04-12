@@ -2,6 +2,6 @@ User-agent: *
 Allow: /
 
 # ╔════════════════════════════════════════════════════════════════╗
-# ║  Sitemap location — Automatically synced with Gran Babar       ║
+# ║  Sitemap location — Automatically synced with Tribal Tattoo       ║
 # ╚════════════════════════════════════════════════════════════════╝
-Sitemap: https://www.granbabar.it/sitemap.xml
+Sitemap: https://www.tribaltattoo.it/sitemap.xml

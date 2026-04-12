@@ -12,8 +12,8 @@ const GalleryPage = () => {
   return (
     <>
       <Helmet>
-        <title>Gallery - Portfolio Tatuaggi | Gran Babar Torino</title>
-        <meta name="description" content="Sfoglia la galleria dei tatuaggi realizzati da Gran Babar a Torino. Trova ispirazione per il tuo prossimo tatuaggio." />
+        <title>Gallery - Portfolio Tatuaggi | {shopConfig.name} {shopConfig.city.split(",")[0]}</title>
+        <meta name="description" content={`Sfoglia la galleria dei tatuaggi realizzati da ${shopConfig.name} a ${shopConfig.city.split(",")[0]}. Trova ispirazione per il tuo prossimo tatuaggio.`} />
         <link rel="canonical" href={`${shopConfig.meta.siteUrl}/gallery`} />
       </Helmet>
 
@@ -42,7 +42,7 @@ const GalleryPage = () => {
               
               <p>
                 Sfogliando le immagini nella gallery, puoi trovare idee e ispirazioni per il tuo prossimo 
-                tatuaggio. Se vedi uno stile che ti piace, Gran Babar sarà felice di aiutarti a personalizzarlo 
+                tatuaggio. Se vedi uno stile che ti piace, il maestro Claudio Ciliberti sarà felice di aiutarti a personalizzarlo 
                 secondo le tue esigenze.
               </p>
 
@@ -67,11 +67,11 @@ const GalleryPage = () => {
         <section className="py-16 px-6 bg-card">
           <div className="container mx-auto max-w-4xl text-center">
             <h3 className="font-heading text-3xl text-foreground mb-6">
-              Prenota il Tuo Tatuaggio con Gran Babar
+              Prenota il Tuo Tatuaggio Tribale
             </h3>
             <p className="font-body text-base text-muted-foreground mb-8 max-w-2xl mx-auto">
               Se una delle opere presenti nella gallery ti ha colpito o se hai un'idea tutta tua, 
-              non esitare a contattare Gran Babar per una consulenza personalizzata.
+              non esitare a contattare Tribal Tattoo per una consulenza personalizzata.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <ContactDialog>
@@ -79,14 +79,14 @@ const GalleryPage = () => {
                   Prenota Appuntamento
                 </Button>
               </ContactDialog>
-              <a href="https://wa.me/393470174082" target="_blank" rel="noopener noreferrer">
+              <a href={`https://wa.me/${shopConfig.contact.phone.replace(/\s|\+/g, '')}`} target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" size="lg">
-                  WhatsApp: 347 017 4082
+                  WhatsApp: {shopConfig.contact.phone.replace('+39 ', '')}
                 </Button>
               </a>
             </div>
             <p className="mt-6 text-sm text-muted-foreground">
-              Studio a Torino - Largo Dora Napoli 16D
+              Studio a {shopConfig.city} - {shopConfig.contact.addressLines[0]}
             </p>
           </div>
         </section>

@@ -87,11 +87,11 @@ export const BlogPostTemplate = ({ post }: BlogPostProps) => {
           <div className="container mx-auto max-w-3xl">
             {/* Breadcrumbs */}
             <nav className="mb-8 flex items-center gap-2 text-sm text-muted-foreground">
-              <Link to="/" className="hover:text-foreground transition-colors" title="Torna alla homepage">
+              <Link to="/" className="hover:text-foreground transition-colors" title="Torna alla homepage Tribal Tattoo">
                 Home
               </Link>
               <span>/</span>
-              <Link to="/blog" className="hover:text-foreground transition-colors" title="Torna al blog">
+              <Link to="/blog" className="hover:text-foreground transition-colors" title="Torna al blog Tribal Tattoo">
                 Blog
               </Link>
               <span>/</span>
@@ -224,7 +224,7 @@ export const BlogPostTemplate = ({ post }: BlogPostProps) => {
 
             {/* Back to Home */}
             <div className="mt-16 text-center">
-              <Link to="/" title="Torna alla homepage Gran Babar">
+              <Link to="/" title="Torna alla homepage Tribal Tattoo Studio">
                 <Button variant="outline">
                   <ArrowLeft className="mr-2 h-4 w-4" />
                   Torna alla Home

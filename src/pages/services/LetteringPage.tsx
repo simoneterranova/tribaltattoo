@@ -9,15 +9,15 @@ const LetteringPage = () => {
   const styleData = {
     slug: "tatuaggio-lettering-a-torino",
     title: "Tatuaggio Lettering a Torino",
-    metaTitle: "Tatuaggio Lettering a Torino | Gran Babar | Scritte e Citazioni",
+    metaTitle: "Tatuaggio Lettering a Moncalieri (Torino) | Tribal Tattoo | Scritte e Citazioni",
     metaDescription:
-      "Tatuaggi lettering a Torino. Scritte personalizzate, citazioni, nomi. Font calligrafico, gotico, minimal. Studio Gran Babar. Prenota consulenza.",
-    h1: "Lettering Tattoo a Torino",
+      "Tatuaggi lettering a Moncalieri (Torino). Scritte personalizzate, citazioni, nomi. Font calligrafico, gotico, minimal. Studio Tribal Tattoo. Prenota consulenza.",
+    h1: "Lettering Tattoo a Moncalieri (Torino)",
     intro:
       "Il tatuaggio lettering è molto più di una semplice scritta: è un messaggio personale che prende vita attraverso forme, stili e dettagli unici. Ogni parola, frase o citazione racchiude un significato profondo, ed è per questo che la scelta del font, della composizione e dell'armonia delle lettere è essenziale.",
     about: [
       "Un tatuaggio lettering può rappresentare un ricordo, un valore, un motto di vita o un tributo a qualcuno di speciale. La scelta della frase giusta è fondamentale, così come il carattere tipografico che ne esalterà il significato.",
-      "Le citazioni motivazionali esprimono determinazione e coraggio, i versi poetici raccontano emozioni profonde, mentre le iniziali o i nomi rendono omaggio a persone importanti. Gran Babar aiuta ogni cliente a trovare la perfetta combinazione di parole e stile.",
+      "Le citazioni motivazionali esprimono determinazione e coraggio, i versi poetici raccontano emozioni profonde, mentre le iniziali o i nomi rendono omaggio a persone importanti. Claudio Ciliberti aiuta ogni cliente a trovare la perfetta combinazione di parole e stile.",
       "La scelta dello stile tipografico è uno degli elementi più importanti. Ogni font trasmette un'emozione diversa: calligrafico per eleganza, gotico per impatto visivo, minimal per discrezione, scrittura a mano per intimità."
     ],
     features: [
@@ -40,7 +40,7 @@ const LetteringPage = () => {
     pricing:
       "I tatuaggi lettering variano in base alla lunghezza del testo, complessità del font e dimensione. Scritte brevi partono da €80-100. Citazioni più lunghe richiedono un preventivo personalizzato. Consulenza gratuita disponibile.",
     gallery: [
-      { src: "/images/styles/tatuaggio-lettering-a-torino/tatuaggio-lettering-2.jpg", alt: "Tatuaggio Lettering elegante - Gran Babar Torino" }
+      { src: "/images/styles/tatuaggio-lettering-a-torino/tatuaggio-lettering-2.jpg", alt: "Tatuaggio Lettering elegante - Tribal Tattoo Moncalieri (Torino)" }
     ],
     relatedStyles: [
       { slug: "tatuaggio-fine-line-a-torino", name: "Fine Line" },
@@ -51,7 +51,7 @@ const LetteringPage = () => {
     faqs: [
       {
         question: "Qual è la dimensione ideale per un tatuaggio lettering?",
-        answer: "Dipende dalla posizione e dal font scelto. Gran Babar ti aiuterà a trovare la grandezza perfetta per garantire leggibilità e durata nel tempo."
+        answer: "Dipende dalla posizione e dal font scelto. Claudio Ciliberti ti aiuterà a trovare la grandezza perfetta per garantire leggibilità e durata nel tempo."
       },
       {
         question: "Quali sono le tecniche principali per realizzare un lettering tattoo?",

@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import ScrollReveal from "./ScrollReveal";
 import shopConfig from "@/config/shopConfig";
 
@@ -58,15 +58,40 @@ const TeamSection = () => {
 function TeamRow({ member, rowIndex }: { member: TeamMember; rowIndex: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
   const isEven = rowIndex % 2 === 0;
-  const isVideo = member.image.includes('.mp4') || member.image.includes('.webm') || member.image.includes('.mov');
-  const [isVerticalVideo, setIsVerticalVideo] = useState(false);
+  
+  // Support both single image and multiple images
+  const images = member.images || [member.image];
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const currentImage = images[currentImageIndex];
+  
+  const isVideo = currentImage.includes('.mp4') || currentImage.includes('.webm') || currentImage.includes('.mov');
+  const [isPortrait, setIsPortrait] = useState(false);
+  
+  // Auto-rotate images every 4 seconds if multiple images exist
+  useEffect(() => {
+    if (images.length <= 1) return;
+    
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    }, 4000);
+    
+    return () => clearInterval(interval);
+  }, [images.length]);
 
   const handleVideoMetadata = () => {
     if (videoRef.current) {
       const { videoWidth, videoHeight } = videoRef.current;
-      setIsVerticalVideo(videoHeight > videoWidth);
+      setIsPortrait(videoHeight > videoWidth);
+    }
+  };
+
+  const handleImageLoad = () => {
+    if (imageRef.current) {
+      const { naturalWidth, naturalHeight } = imageRef.current;
+      setIsPortrait(naturalHeight > naturalWidth);
     }
   };
 
@@ -84,17 +109,15 @@ function TeamRow({ member, rowIndex }: { member: TeamMember; rowIndex: number })
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 1, ease: [0.25, 0.4, 0.25, 1] }}
           className={`relative overflow-hidden md:max-h-[600px] ${
-            isVideo && isVerticalVideo 
+            isPortrait 
               ? 'aspect-[9/16] md:aspect-auto md:w-auto md:max-w-[400px] mx-auto' 
-              : isVideo 
-                ? 'aspect-[4/3] md:aspect-auto md:w-2/5' 
-                : 'aspect-[4/3] md:aspect-auto md:w-1/2'
+              : 'aspect-[4/3] md:aspect-auto md:w-2/5'
           }`}
         >
           {isVideo ? (
             <video
               ref={videoRef}
-              src={member.image}
+              src={currentImage}
               autoPlay
               loop
               muted
@@ -102,21 +125,31 @@ function TeamRow({ member, rowIndex }: { member: TeamMember; rowIndex: number })
               disablePictureInPicture
               disableRemotePlayback
               onLoadedMetadata={handleVideoMetadata}
+              key={currentImage}
               style={{ 
                 width: '100%', 
                 height: '100%', 
-                objectFit: isVerticalVideo ? 'cover' : 'contain', 
+                objectFit: isPortrait ? 'cover' : 'contain', 
                 objectPosition: 'center' 
               }}
               className="scale-100 group-hover:scale-[1.03] transition-all duration-700 ease-out bg-card"
             />
           ) : (
             <img
-              src={member.image}
-              alt={member.name}
+              ref={imageRef}
+              src={currentImage}
+              alt={`${member.name} - Image ${currentImageIndex + 1}`}
               width="800"
               height="600"
-              className="h-full w-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-[1.03] transition-all duration-700 ease-out"
+              onLoad={handleImageLoad}
+              key={currentImage}
+              style={{ 
+                width: '100%', 
+                height: '100%', 
+                objectFit: isPortrait ? 'cover' : 'cover', 
+                objectPosition: 'center' 
+              }}
+              className="scale-100 group-hover:scale-[1.03] transition-all duration-700 ease-out"
             />
           )}
           {/* Subtle directional vignette */}
@@ -133,6 +166,24 @@ function TeamRow({ member, rowIndex }: { member: TeamMember; rowIndex: number })
           >
             {member.index}
           </div>
+          
+          {/* Image carousel dots - only show if multiple images */}
+          {images.length > 1 && (
+            <div className={`absolute bottom-5 ${isEven ? "right-5" : "left-5"} flex gap-2`}>
+              {images.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentImageIndex(idx)}
+                  className={`h-1.5 transition-all duration-300 ${
+                    idx === currentImageIndex 
+                      ? "w-8 bg-primary" 
+                      : "w-1.5 bg-white/30 hover:bg-white/50"
+                  }`}
+                  aria-label={`View image ${idx + 1}`}
+                />
+              ))}
+            </div>
+          )}
         </motion.div>
 
         {/* === Content Pane === */}
@@ -141,15 +192,13 @@ function TeamRow({ member, rowIndex }: { member: TeamMember; rowIndex: number })
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 1, delay: 0.15, ease: [0.25, 0.4, 0.25, 1] }}
           className={`relative flex flex-col justify-end overflow-hidden bg-card px-8 py-10 md:px-12 md:py-14 lg:px-16 lg:py-20 min-h-[300px] md:min-h-0 ${
-            isVideo && isVerticalVideo 
+            isPortrait 
               ? 'md:flex-1' 
-              : isVideo 
-                ? 'md:w-3/5' 
-                : 'md:w-1/2'
+              : 'md:w-3/5'
           }`}
         >
-          {/* Inner content wrapper for vertical video layout */}
-          <div className={isVideo && isVerticalVideo ? 'md:max-w-2xl md:mx-auto' : ''}>
+          {/* Inner content wrapper for portrait layout */}
+          <div className={isPortrait ? 'md:max-w-2xl md:mx-auto' : ''}>
           {/* Giant ghost index watermark */}
           <motion.span
             initial={{ opacity: 0 }}

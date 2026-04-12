@@ -9,16 +9,16 @@ const NewSchoolPage = () => {
   const styleData = {
     slug: "tatuaggio-new-school-a-torino",
     title: "Tatuaggio New School a Torino",
-    metaTitle: "Tatuaggio New School a Torino - GranBabar",
+    metaTitle: "Tatuaggio New School a Moncalieri (Torino) - Tribal Tattoo",
     metaDescription:
-      "Se sei alla ricerca di un tatuaggio che unisca espressività, colori accesi e linee dinamiche, lo stile New School è la scelta perfetta. Gran Babar realizza tatuaggi New School a Torino, trasformando idee in opere d'arte uniche.",
-    h1: "New School Tattoo a Torino",
+      "Se sei alla ricerca di un tatuaggio che unisca espressività, colori accesi e linee dinamiche, lo stile New School è la scelta perfetta. Tribal Tattoo realizza tatuaggi New School a Moncalieri (Torino), trasformando idee in opere d'arte uniche.",
+    h1: "New School Tattoo a Moncalieri (Torino)",
     intro:
-      "Se sei alla ricerca di un tatuaggio che unisca espressività, colori accesi e linee dinamiche, lo stile New School è la scelta perfetta. Gran Babar realizza tatuaggi New School a Torino, trasformando idee in opere d'arte uniche, con uno stile audace e inconfondibile.",
+      "Se sei alla ricerca di un tatuaggio che unisca espressività, colori accesi e linee dinamiche, lo stile New School è la scelta perfetta. Tribal Tattoo realizza tatuaggi New School a Moncalieri (Torino), trasformando idee in opere d'arte uniche, con uno stile audace e inconfondibile.",
     about: [
       "Lo stile New School nasce negli anni '80 e si evolve come un'interpretazione moderna e più esagerata dello stile Old School. Prendendo ispirazione da fumetti, graffiti e cultura pop, questo genere si distingue per linee spesse e dinamiche che danno un effetto quasi tridimensionale, colori sgargianti e sfumature audaci per un impatto visivo esplosivo, e personaggi ed elementi cartoonizzati con un'estetica esagerata e irriverente.",
-      "Gran Babar combina tecnica ed esperienza per realizzare tatuaggi New School a Torino con dettagli vibranti e un carattere inconfondibile. Il segreto di un new school tattoo di successo risiede nella precisione tecnica e nell'attenzione ai dettagli. UtilizziamometodI tradizionali che garantiscono inchiostri duraturi e disegni nitidi.",
-      "Gran Babar non si limita a riprodurre uno stile: ogni tatuaggio diventa una reinterpretazione originale di un'idea, trasformandola in un'opera d'arte personalizzata. Grazie alla sua esperienza e al suo background artistico, è in grado di dare vita a tatuaggi unici, che rispettano i canoni del New School ma con un tocco distintivo. Lavorando con inchiostri di alta qualità e tecniche avanzate."
+      "Tribal Tattoo combina tecnica ed esperienza, con oltre 30 anni dal 1994, per realizzare tatuaggi New School a Moncalieri (Torino) con dettagli vibranti e un carattere inconfondibile. Il segreto di un new school tattoo di successo risiede nella precisione tecnica e nell'attenzione ai dettagli. Utilizziamo metodi tradizionali che garantiscono inchiostri duraturi e disegni nitidi.",
+      "Claudio Ciliberti non si limita a riprodurre uno stile: ogni tatuaggio diventa una reinterpretazione originale di un'idea, trasformandola in un'opera d'arte personalizzata. Grazie alla sua esperienza e al suo background artistico, è in grado di dare vita a tatuaggi unici, che rispettano i canoni del New School ma con un tocco distintivo. Lavorando con inchiostri di alta qualità e tecniche avanzate."
     ],
     features: [
       "Colori vivaci, brillanti, spesso fluorescenti",
@@ -40,7 +40,7 @@ const NewSchoolPage = () => {
     pricing:
       "I tatuaggi new school, ricchi di colori e dettagli, partono da €150 per pezzi piccoli. La complessità dei colori e delle sfumature influenza il prezzo. Preventivo personalizzato durante la consulenza gratuita.",
     gallery: [
-      { src: "/images/tatuaggi/new-school.jpg", alt: "Tatuaggio New School colorato - Gran Babar Torino" }
+      { src: "/images/tatuaggi/new-school.jpg", alt: "Tatuaggio New School colorato - Tribal Tattoo Moncalieri (Torino)" }
     ],
     relatedStyles: [
       { slug: "tatuaggi-old-school-torino", name: "Old School" },
@@ -49,9 +49,9 @@ const NewSchoolPage = () => {
     ],
     portfolioSlug: undefined,
     faqs: [
-      { question: "Il tatuaggio New School si rovina più facilmente per via dei colori accesi?", answer: "No, con una corretta cura post-tatuaggio e protezione dal sole, i colori rimangono vividi nel tempo. Gran Babar utilizza pigmenti di alta qualità per garantire una durata eccellente." },
-      { question: "Posso portare un mio disegno e farlo reinterpretare in stile New School?", answer: "Assolutamente sì! Gran Babar lavora sempre sulla personalizzazione, adattando qualsiasi idea allo stile New School, per un risultato unico e su misura." },
-      { question: "Il tatuaggio New School può essere combinato con altri stili?", answer: "Sì! È possibile integrare elementi realistici, tradizionali o surrealisti per creare un mix originale e creativo. Gran Babar può consigliarti la soluzione migliore per un risultato armonioso." }
+      { question: "Il tatuaggio New School si rovina più facilmente per via dei colori accesi?", answer: "No, con una corretta cura post-tatuaggio e protezione dal sole, i colori rimangono vividi nel tempo. Tribal Tattoo utilizza pigmenti di alta qualità per garantire una durata eccellente." },
+      { question: "Posso portare un mio disegno e farlo reinterpretare in stile New School?", answer: "Assolutamente sì! Claudio Ciliberti lavora sempre sulla personalizzazione, adattando qualsiasi idea allo stile New School, per un risultato unico e su misura." },
+      { question: "Il tatuaggio New School può essere combinato con altri stili?", answer: "Sì! È possibile integrare elementi realistici, tradizionali o surrealisti per creare un mix originale e creativo. Claudio Ciliberti può consigliarti la soluzione migliore per un risultato armonioso." }
     ]
   };
 

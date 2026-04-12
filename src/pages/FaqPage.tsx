@@ -29,9 +29,9 @@ const FaqPage = () => {
       questions: [
         {
           id: "dove-si-trova",
-          question: "Dove si trova Gran Babar Studio?",
+          question: "Dove si trova Tribal Tattoo Studio?",
           answer: `Il nostro studio di tatuaggi si trova in ${shopConfig.contact.addressLines[0]}, ${shopConfig.contact.addressLines[1]}, nel cuore del quartiere ${shopConfig.contact.quarter[0]}. Siamo facilmente raggiungibili con i mezzi pubblici e c'è parcheggio nelle vicinanze.`,
-          link: { to: "/borgo-dora-tatuaggi", text: "Vedi come arrivare" }
+          link: { to: "/moncalieri-tatuaggi-tribali", text: "Vedi come arrivare" }
         },
         {
           id: "orari-apertura",
@@ -40,15 +40,15 @@ const FaqPage = () => {
           link: { to: "/#contact", text: "Prenota ora" }
         },
         {
-          id: "chi-e-francesco",
-          question: "Chi è Francesco, il tatuatore?",
-          answer: "Francesco Sansone è il fondatore e artista tatuatore di Gran Babar Studio. Con oltre 10 anni di esperienza, è specializzato in stili Old School, realistici, geometrici, Black & Grey e cover-up. La sua passione per l'arte del tatuaggio si riflette in ogni lavoro personalizzato.",
-          link: { to: "/#team", text: "Scopri di più su Francesco" }
+          id: "chi-e-claudio",
+          question: `Chi è ${shopConfig.author.name}, il maestro tatuatore?`,
+          answer: `${shopConfig.author.name} è il fondatore e maestro tatuatore di ${shopConfig.fullName}. Con oltre ${shopConfig.team[0].years} anni di esperienza, è specializzato in stili ${shopConfig.team[0].tags.join(", ")}. La sua passione per l'arte tribale sacra si riflette in ogni lavoro personalizzato.`,
+          link: { to: "/#team", text: `Scopri di più su ${shopConfig.author.name}` }
         },
         {
-          id: "perche-gran-babar",
-          question: "Perché scegliere Gran Babar Studio?",
-          answer: "Gran Babar offre consulenza gratuita, design 100% personalizzati, massimi standard di igiene, oltre 60 lavori documentati nel portfolio e un approccio professionale ma umano. Ogni tatuaggio è un'opera d'arte unica studiata per te.",
+          id: "perche-tribal-tattoo",
+          question: `Perché scegliere ${shopConfig.fullName}?`,
+          answer: "Tribal Tattoo offre consulenza gratuita, design 100% personalizzati e freehand, massimi standard di igiene, oltre 60 lavori documentati nel portfolio e un approccio professionale ma umano. Ogni tatuaggio è un'opera d'arte unica studiata per te e disegnata direttamente sul tuo corpo.",
           link: { to: "/portfolio", text: "Vedi i nostri lavori" }
         }
       ]
@@ -66,7 +66,7 @@ const FaqPage = () => {
         {
           id: "preventivo-gratuito",
           question: "Come posso ottenere un preventivo?",
-          answer: "Prenota una consulenza gratuita chiamando il +39 347 017 4082 o scrivendoci a info@granbabar.it. Durante l'incontro discuteremo la tua idea, valorizziamo dimensioni e posizionamento, e ti forniremo un preventivo dettagliato senza impegno.",
+          answer: `Prenota una consulenza gratuita chiamando il ${shopConfig.contact.phone} o scrivendoci a ${shopConfig.contact.email}. Durante l'incontro discuteremo la tua idea, valutiamo dimensioni e posizionamento, e ti forniremo un preventivo dettagliato senza impegno.`,
           link: { to: "/#contact", text: "Contattaci ora" }
         },
         {
@@ -114,7 +114,7 @@ const FaqPage = () => {
         {
           id: "posso-portare-idea",
           question: "Posso portare la mia idea o un disegno?",
-          answer: "Assolutamente sì! Puoi portare foto, disegni, riferimenti o semplicemente descrivere la tua idea. Francesco lavorerà con te per trasformarla in un design personalizzato che funzioni perfettamente sulla tua pelle.",
+          answer: "Assolutamente sì! Puoi portare foto, disegni, riferimenti o semplicemente descrivere la tua idea. Claudio Ciliberti lavorerà con te per trasformarla in un design personalizzato che funzioni perfettamente sulla tua pelle.",
           link: { to: "/#contact", text: "Prenota consulenza" }
         }
       ]
@@ -156,7 +156,7 @@ const FaqPage = () => {
         {
           id: "quali-stili",
           question: "Quali stili di tatuaggio realizzate?",
-          answer: "Siamo specializzati in Old School (tradizionale americano), Realistici (ritratti e Black & Grey), Geometrici (mandala e sacred geometry), Cover-up, e tatuaggi personalizzati. Ogni stile ha caratteristiche uniche che possiamo spiegarti in consulenza.",
+          answer: "Siamo specializzati in Polinesiano, Maori, Tribale, Freehand, Dot Work, Black Work e tatuaggi geometrici. Ogni stile ha caratteristiche uniche che possiamo spiegarti in consulenza. La nostra specialità è l'arte tribale autentica, non semplici copie.",
           link: { to: "/#services", text: "Vedi tutti gli stili" }
         },
         {
@@ -254,14 +254,14 @@ const FaqPage = () => {
   return (
     <>
       <Helmet>
-        <title>FAQ Tatuaggi Torino | Domande Frequenti | Gran Babar Studio</title>
+        <title>FAQ Tatuaggi Torino | Domande Frequenti | Tribal Tattoo Studio</title>
         <meta 
           name="description" 
-          content="Domande frequenti sui tatuaggi a Torino. Prezzi, preparazione, cura, stili, igiene. Risposte complete da Francesco, tatuatore professionista con 10+ anni esperienza." 
+          content={`Domande frequenti sui tatuaggi tribali a ${shopConfig.city}. Prezzi, preparazione, cura, stili, igiene. Risposte complete da ${shopConfig.author.name}, maestro tatuatore con ${shopConfig.team[0].years} anni esperienza.`} 
         />
         <meta name="author" content={shopConfig.author.name} />
         <meta property="og:title" content="FAQ Tatuaggi Torino | Tutte le Risposte" />
-        <meta property="og:description" content="Tutte le risposte alle domande più frequenti sui tatuaggi: prezzi, dolore, cura, stili, igiene. Guida completa by Gran Babar Studio Torino." />
+        <meta property="og:description" content="Tutte le risposte alle domande più frequenti sui tatuaggi tribali: prezzi, dolore, cura, stili, igiene. Guida completa by Tribal Tattoo Studio Moncalieri." />
         <meta property="og:type" content="website" />
         <link rel="canonical" href={`${shopConfig.meta.siteUrl}/faq-tatuaggi-torino`} />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
@@ -396,11 +396,11 @@ const FaqPage = () => {
               Non Hai Trovato la Risposta?
             </h2>
             <p className="font-body text-lg mb-8 opacity-90">
-              Contattaci per una consulenza gratuita. Francesco sarà felice di rispondere 
+              Contattaci per una consulenza gratuita. Claudio Ciliberti sarà felice di rispondere 
               a tutte le tue domande e aiutarti a realizzare il tatuaggio perfetto.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href={`tel:${shopConfig.contact.phoneHref.replace('tel:', '')}`} title="Chiama Gran Babar Studio per informazioni">
+              <a href={`tel:${shopConfig.contact.phoneHref.replace('tel:', '')}`} title="Chiama Tribal Tattoo Studio per informazioni">
                 <Button variant="secondary" size="lg">
                   Chiama Ora
                 </Button>

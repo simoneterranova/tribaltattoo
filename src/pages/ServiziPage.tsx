@@ -26,7 +26,7 @@ const services = [
   {
     icon: Heart,
     title: "Cura Post-Tatuaggio",
-    description: "Gran Babar ti consiglierà le migliori tecniche e prodotti per guarire al meglio il tuo tatuaggio, così da garantire un risultato finale ottimale.",
+    description: "Il maestro Claudio Ciliberti ti consiglierà le migliori tecniche e prodotti per guarire al meglio il tuo tatuaggio, così da garantire un risultato finale ottimale.",
     link: "/cura-post-tatuaggio",
     linkText: "Scopri di più"
   }
@@ -36,8 +36,8 @@ const ServiziPage = () => {
   return (
     <>
       <Helmet>
-        <title>Servizi - Tatuaggi e Cover-up | Gran Babar Torino</title>
-        <meta name="description" content="Servizi professionali di tatuaggio a Torino: tatuaggi personalizzati, cover-up, correzioni e cura post-tatuaggio. Studio Gran Babar in Borgo Dora." />
+        <title>Servizi - Tatuaggi e Cover-up | Tribal Tattoo Torino</title>
+        <meta name="description" content="Servizi professionali di tatuaggio tribale a Moncalieri: tatuaggi personalizzati, cover-up, correzioni e cura post-tatuaggio. Tribal Tattoo Studio." />
         <link rel="canonical" href={`${shopConfig.meta.siteUrl}/servizi`} />
       </Helmet>
 
@@ -153,7 +153,7 @@ const ServiziPage = () => {
               <p className="font-body text-muted-foreground mb-8 max-w-2xl mx-auto">
                 Se sei pronto a fare il grande passo e a esprimere la tua personalità attraverso un tatuaggio, 
                 contattaci subito! Utilizza il pulsante WhatsApp per prenotare la tua consulenza. Il nostro studio, 
-                situato nel cuore di Torino in Largo Dora Napoli 16D, offre un ambiente accogliente e sicuro.
+                situato a {shopConfig.city} in {shopConfig.contact.addressLines[0]}, offre un ambiente accogliente e sicuro.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <ContactDialog>
@@ -161,9 +161,9 @@ const ServiziPage = () => {
                     Prenota Consulenza <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </ContactDialog>
-                <a href="https://wa.me/393470174082" target="_blank" rel="noopener noreferrer">
+                <a href={`https://wa.me/${shopConfig.contact.phone.replace(/\s|\+/g, '')}`} target="_blank" rel="noopener noreferrer">
                   <Button variant="outline" size="lg">
-                    WhatsApp: 347 017 4082
+                    WhatsApp: {shopConfig.contact.phone.replace('+39 ', '')}
                   </Button>
                 </a>
               </div>

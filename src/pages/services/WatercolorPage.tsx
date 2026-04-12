@@ -9,16 +9,16 @@ const WatercolorPage = () => {
   const styleData = {
     slug: "tatuaggio-watercolor-a-torino",
     title: "Tatuaggio Watercolor a Torino",
-    metaTitle: "Tatuaggio Watercolor a Torino | Gran Babar | Effetto Acquerello",
+    metaTitle: "Tatuaggio Watercolor a Moncalieri (Torino) | Tribal Tattoo | Effetto Acquerello",
     metaDescription:
-      "Tatuaggi watercolor a Torino. Effetto acquerello, colori sfumati, pennellate artistiche. Studio Gran Babar. Arte pittorica sulla pelle. Prenota consulenza.",
-    h1: "Tatuaggio Watercolor a Torino",
+      "Tatuaggi watercolor a Moncalieri (Torino). Effetto acquerello, colori sfumati, pennellate artistiche. Studio Tribal Tattoo. Arte pittorica sulla pelle. Prenota consulenza.",
+    h1: "Tatuaggio Watercolor a Moncalieri (Torino)",
     intro:
       "Il tatuaggio watercolor porta sulla pelle la leggerezza e la luminosità della pittura ad acquerello, con pennellate fluide, sfumature delicate e colori che sembrano sciogliersi l'uno nell'altro. È uno stile artistico e contemporaneo, perfetto per chi cerca un tatuaggio che sembri un'opera d'arte dipinta direttamente sulla pelle.",
     about: [
       "Lo stile watercolor nel tatuaggio emula le tecniche della pittura ad acquerello, con colori traslucidi che si fondono senza linee definite, macchie di colore che sembrano schizzi spontanei, e sfumature che creano profondità e movimento. A differenza degli stili tradizionali, il watercolor spesso omette i contorni neri, lasciando che siano i colori stessi a definire la forma.",
       "Questo stile è particolarmente adatto per soggetti naturalistici come fiori, uccelli, farfalle, paesaggi e animali, ma può essere applicato anche a design astratti e geometrici. L'effetto finale è etereo, leggero e incredibilmente pittorico.",
-      "Gran Babar realizza tatuaggi watercolor con tecnica raffinata, utilizzando sfumature morbide e transizioni di colore che richiedono grande maestria. Ogni tatuaggio viene studiato per mantenere la sua vibrazione cromatica nel tempo."
+      "Tribal Tattoo realizza tatuaggi watercolor con tecnica raffinata, utilizzando sfumature morbide e transizioni di colore che richiedono grande maestria. Ogni tatuaggio viene studiato per mantenere la sua vibrazione cromatica nel tempo."
     ],
     features: [
       "Effetto acquerello con pennellate fluide",
@@ -40,7 +40,7 @@ const WatercolorPage = () => {
     pricing:
       "I tatuaggi watercolor richiedono tempo per le sfumature elaborate. Pezzi medi partono da €180. La complessità della palette cromatica influenza il prezzo. Preventivo personalizzato durante la consulenza gratuita.",
     gallery: [
-      { src: "/images/styles/tatuaggio-watercolor-a-torino/Watercolor.jpg", alt: "Tatuaggio Watercolor artistico - Gran Babar Torino" }
+      { src: "/images/styles/tatuaggio-watercolor-a-torino/Watercolor.jpg", alt: "Tatuaggio Watercolor artistico - Tribal Tattoo Moncalieri (Torino)" }
     ],
     relatedStyles: [
       { slug: "tatuaggio-floreale-a-torino", name: "Floreale" },
@@ -58,8 +58,8 @@ const WatercolorPage = () => {
         answer: "Utilizzo tecniche specifiche per diluire e diffondere l'inchiostro, abbinando strumenti di precisione e inchiostri di alta qualità, per garantire sfumature armoniose e dettagli impeccabili."
       },
       {
-        question: "Perché scegliere GRAN BABAR per il tuo tatuaggio Watercolor a Torino?",
-        answer: "Scegliere GRAN BABAR significa affidarsi a vent'anni di esperienza e a una passione per l'arte che si traduce in tatuaggi Watercolor unici e personalizzati. La mia attenzione ai dettagli, l'uso di tecnologie all'avanguardia e un approccio empatico assicurano risultati che non solo incantano per la loro bellezza, ma raccontano storie e emozioni in modo autentico e duraturo."
+        question: "Perché scegliere TRIBAL TATTOO per il tuo tatuaggio Watercolor a Moncalieri (Torino)?",
+        answer: "Scegliere TRIBAL TATTOO significa affidarsi a oltre 30 anni di esperienza dal 1994 e a una passione per l'arte che si traduce in tatuaggi Watercolor unici e personalizzati. La mia attenzione ai dettagli, l'uso di tecnologie all'avanguardia e un approccio empatico assicurano risultati che non solo incantano per la loro bellezza, ma raccontano storie e emozioni in modo autentico e duraturo."
       }
     ]
   };

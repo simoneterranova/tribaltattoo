@@ -11,7 +11,7 @@ const AftercarePage = () => {
   return (
     <>
       <Helmet>
-        <title>Cura Post-Tatuaggio - Guida Completa | Gran Babar Torino</title>
+        <title>Cura Post-Tatuaggio - Guida Completa | Tribal Tattoo Torino</title>
         <meta name="description" content="Guida completa alla cura post-tatuaggio. Istruzioni dettagliate per preservare bellezza, colori e dettagli del tuo tatuaggio a Torino." />
         <link rel="canonical" href={`${shopConfig.meta.siteUrl}/cura-post-tatuaggio`} />
       </Helmet>
@@ -204,9 +204,9 @@ const AftercarePage = () => {
                       Prenota Consulenza <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
                   </ContactDialog>
-                  <a href="https://wa.me/393470174082" target="_blank" rel="noopener noreferrer">
+                  <a href={`https://wa.me/${shopConfig.contact.phone.replace(/\s|\+/g, '')}`} target="_blank" rel="noopener noreferrer">
                     <Button variant="outline" size="lg">
-                      WhatsApp: 347 017 4082
+                      WhatsApp: {shopConfig.contact.phone.replace('+39 ', '')}
                     </Button>
                   </a>
                 </div>

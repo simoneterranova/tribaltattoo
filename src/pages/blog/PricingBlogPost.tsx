@@ -8,15 +8,15 @@ import { BlogPostTemplate } from "./BlogPostTemplate";
 const PricingBlogPost = () => {
   const postData = {
     slug: "quanto-costa-tatuaggio-torino",
-    title: "Quanto Costa un Tatuaggio a Torino? Guida Completa ai Prezzi 2026",
-    metaTitle: "Quanto Costa un Tatuaggio a Torino? Prezzi e Costi | Gran Babar Studio",
+    title: "Quanto Costa un Tatuaggio a Moncalieri (Torino)? Guida Completa ai Prezzi 2026",
+    metaTitle: "Quanto Costa un Tatuaggio a Moncalieri (Torino)? Prezzi | Tribal Tattoo Studio",
     metaDescription:
-      "Guida completa ai prezzi tatuaggi a Torino 2026. Costi per dimensione, stile (Old School, realistico, cover-up) e fattori che influenzano il preventivo. Trasparenza totale.",
+      "Guida completa ai prezzi tatuaggi specializzati a Moncalieri (Torino) 2026. Costi per dimensione, stile (Polinesiano, Maori, Tribale, Freehand, Dot Work) e fattori che influenzano il preventivo. Trasparenza totale.",
     publishDate: "2026-03-30",
     readTime: "8 minuti",
     content: {
       intro:
-        "Una delle domande più frequenti che riceviamo al Gran Babar Studio è: quanto costa un tatuaggio a Torino? La risposta non è semplice perché ogni tatuaggio è unico. In questa guida ti spiego in dettaglio i fattori che determinano il prezzo e ti fornisco una tabella indicativa per aiutarti a fare un preventivo realistico.",
+        "Una delle domande più frequenti che riceviamo al Tribal Tattoo Studio è: quanto costa un tatuaggio a Moncalieri (Torino)? La risposta non è semplice perché ogni tatuaggio è unico. In questa guida ti spiego in dettaglio i fattori che determinano il prezzo e ti fornisco una tabella indicativa per aiutarti a fare un preventivo realistico.",
       sections: [
         {
           heading: "Fattori Che Determinano il Prezzo di un Tatuaggio",
@@ -34,41 +34,41 @@ const PricingBlogPost = () => {
           ]
         },
         {
-          heading: "Listino Prezzi Indicativo per Tatuaggi a Torino (2026)",
+          heading: "Listino Prezzi Indicativo per Tatuaggi a Moncalieri (Torino) (2026)",
           paragraphs: [
-            "Al Gran Babar Studio i prezzi sono trasparenti. Ecco una tabella indicativa basata su dimensioni e complessità. Considera che si tratta di stime: il preventivo preciso te lo fornisco durante la consulenza gratuita, dopo aver visto il tuo progetto specifico."
+            "Al Tribal Tattoo Studio i prezzi sono trasparenti e riflettono 30 anni di esperienza specializzata in stili tribali di alta qualità. Ecco una tabella indicativa basata su dimensioni e complessità. Considera che si tratta di stime: il preventivo preciso te lo fornisco durante la consulenza gratuita, dopo aver visto il tuo progetto specifico."
           ],
           table: {
             headers: ["Dimensione", "Tempo Stimato", "Prezzo Indicativo", "Note"],
             rows: [
-              ["Extra Small (3-5cm)", "30min - 1h", "€80 - €120", "Minimal, scritte piccole, simboli semplici"],
-              ["Small (5-8cm)", "1-2 ore", "€120 - €200", "Piccoli tattoo con dettagli"],
-              ["Medium (10-15cm)", "2-4 ore", "€200 - €400", "Pezzi decorativi, old school medi"],
-              ["Large (15-25cm)", "4-6 ore", "€400 - €800", "Ritratti, composizioni elaborate"],
-              ["Extra Large (>25cm)", "6+ ore", "€800+", "Mezze maniche, pezzi grandi, sessioni multiple"],
-              ["Cover-up piccolo", "2-3 ore", "€250 - €400", "Dipende dal tatuaggio esistente"],
-              ["Cover-up medio/grande", "4-8 ore", "€500 - €1500+", "Progettazione creativa inclusa"]
+              ["Extra Small (3-5cm)", "30min - 1h", "€100 - €150", "Simboli tribali semplici"],
+              ["Small (5-8cm)", "1-2 ore", "€150 - €250", "Piccoli pattern polinesiani o maori"],
+              ["Medium (10-15cm)", "2-4 ore", "€300 - €600", "Bracciali tribali, pattern elaborati"],
+              ["Large (15-25cm)", "4-6 ore", "€600 - €1200", "Mezze maniche tribali, Freehand complessi"],
+              ["Extra Large (>25cm)", "6+ ore", "€1200+", "Maniche complete polinesiane, pezzi grandi sessioni multiple"],
+              ["Cover-up piccolo", "2-3 ore", "€300 - €500", "Dipende dal tatuaggio esistente"],
+              ["Cover-up medio/grande", "4-8 ore", "€600 - €2000+", "Progettazione creativa tribale inclusa"]
             ]
           }
         },
         {
           heading: "Prezzi per Stile di Tatuaggio",
           paragraphs: [
-            "Ogni stile ha caratteristiche tecniche diverse che influenzano il prezzo. Ecco una panoramica dei nostri stili principali:"
+            "Ogni stile ha caratteristiche tecniche diverse che influenzano il prezzo. Ecco una panoramica dei nostri stili specializzati:"
           ],
           list: [
-            "Old School: €150-€500 per pezzi medi. Tempi ridotti grazie a linee bold senza sfumature complesse.",
-            "Realistico / Black & Grey: €300-€800+ per ritratti medi. Richiede molte ore per sfumature fotografiche.",
-            "Cover-up: €250-€1500+ dipende dalla dimensione e densità del vecchio tatuaggio.",
-            "Geometrico / Mandala: €200-€600 per pezzi medi. Design digitale personalizzato incluso.",
-            "Minimal / Fineline: €100-€300 per pezzi piccoli/medi. Linee delicate e precise.",
-            "Lettering / Scritte: €80-€300 in base a dimensione e font. Calligrafia personalizzata."
+            "Polinesiano: €300-€1200+ per pezzi medi/grandi. Pattern tradizionali con significati profondi, richiede precisione estrema.",
+            "Maori: €350-€1500+ per lavori autentici. Simboli ancestrali complessi, studio approfondito del significato.",
+            "Tribale: €250-€1000+ per design geometrici organici. Linee bold e flussi armonici.",
+            "Freehand: €400-€2000+ per lavori unici disegnati direttamente sulla pelle. Massima personalizzazione e creatività.",
+            "Dot Work: €300-€1200+ per lavori puntinati. Richiede ore di lavoro meticoloso per effetti sfumati.",
+            "Cover-up Tribale: €400-€2500+ dipende dalla dimensione e densità del vecchio tatuaggio. Trasformazione creativa garantita."
           ]
         },
         {
           heading: "Cosa Include il Prezzo del Tatuaggio?",
           paragraphs: [
-            "Al Gran Babar Studio il preventivo include tutto il necessario. Non ci sono costi nascosti o sorprese. Ecco cosa ottieni:"
+            "Al Tribal Tattoo Studio il preventivo include tutto il necessario. Non ci sono costi nascosti o sorprese. Ecco cosa ottieni:"
           ],
           list: [
             "Consulenza gratuita iniziale per discutere il progetto",
@@ -96,13 +96,14 @@ const PricingBlogPost = () => {
         {
           heading: "Perché i Prezzi Variano Tra Studi?",
           paragraphs: [
-            "A Torino troverai tatuatori con prezzi da €50/ora fino a €200+/ora. La differenza riflette esperienza, qualità e costi di gestione dello studio. Ecco come orientarti:"
+            "A Moncalieri (Torino) troverai tatuatori con prezzi da €50/ora fino a €250+/ora. La differenza riflette esperienza, specializzazione e qualità. Ecco come orientarti:"
           ],
           list: [
             "Prezzi molto bassi (<€50/ora): spesso tatuatori principianti, rischi sulla qualità e igiene.",
-            "Prezzi medi (€80-€120/ora): tatuatori con esperienza solida, come Gran Babar Studio. Miglior rapporto qualità-prezzo.",
-            "Prezzi alti (€150-€200+/ora): celebrity tattoo artist con fama internazionale. Qualità eccellente ma liste d'attesa lunghe.",
-            "Attenzione: un tatuaggio è permanente. Risparmiare €100 oggi può costarti 10 volte tanto in futuro per laser o cover-up."
+            "Prezzi medi (€80-€120/ora): tatuatori generici con esperienza base.",
+            "Prezzi specializzati (€120-€180/ora): tatuatori esperti specializzati in stili specifici, come Tribal Tattoo Studio con 30 anni di esperienza in tribale. Qualità superiore garantita.",
+            "Prezzi premium (€200-€250+/ora): celebrity tattoo artist con fama internazionale. Liste d'attesa molto lunghe.",
+            "Attenzione: un tatuaggio tribale mal eseguito è difficilissimo da correggere. Risparmiare €200 oggi può costarti €2000+ in futuro per laser o cover-up complesso."
           ]
         },
         {
@@ -111,27 +112,27 @@ const PricingBlogPost = () => {
             "Vuoi un tatuaggio di qualità ma hai un budget limitato? Ecco alcuni consigli onesti:"
           ],
           list: [
-            "Scegli un design più piccolo ma ben eseguito invece di uno grande fatto male",
+            "Scegli un design tribale più piccolo ma perfettamente eseguito invece di uno grande fatto male",
             "Evita zone dolorose (costole, piedi) per la prima volta: risparmierai tempo = meno costo",
-            "Old School costa meno del realismo perché richiede meno ore di lavoro",
-            "Flash tattoo: alcuni studi offrono design pre-disegnati a prezzi ridotti",
-            "Split sessions: dividi un progetto grande in più appuntamenti e paga a rate",
-            "Non cercare sconti su Groupon: i tatuaggi economici si vedono (e non in senso positivo)"
+            "Inizia con un pattern tribale semplice e amplialo in futuro in sessioni successive",
+            "Split sessions: dividi un progetto grande (es. manica completa polinesiana) in più appuntamenti e paga a rate",
+            "Investi in qualità: i tatuaggi tribali sono permanenti e molto visibili, meglio spendere il giusto per un risultato perfetto",
+            "Non cercare sconti su Groupon: i tatuaggi tribali economici sono impossibili da correggere"
           ]
         },
         {
           heading: "Preventivo Gratuito: Come Funziona",
           paragraphs: [
-            "Al Gran Babar Studio la consulenza è sempre gratuita e senza impegno. Ecco come ottenerla:",
-            "Contattami via WhatsApp, Instagram o telefono. Mandami una descrizione del progetto, dimensioni desiderate e foto della zona del corpo.",
-            "Fissiamo un appuntamento in studio (15-30 minuti). Parliamo del design, ti mostro portfolio simile, valutiamo dimensioni e posizionamento.",
+            "Al Tribal Tattoo Studio la consulenza è sempre gratuita e senza impegno. Ecco come ottenerla:",
+            "Contattami via WhatsApp, Instagram o telefono. Mandami una descrizione del progetto tribale, dimensioni desiderate e foto della zona del corpo.",
+            "Fissiamo un appuntamento in studio a Moncalieri (15-30 minuti). Parliamo del design, ti mostro il mio portfolio specializzato in Polinesiano, Maori, Tribale, Freehand e Dot Work, valutiamo dimensioni e posizionamento.",
             "Ti fornisco un preventivo trasparente basato sulle ore stimate. Se accetti, prenotiamo l'appuntamento per l'esecuzione.",
-            "Prima della sessione finalizzo il bozzetto e lo approvi. Solo dopo iniziamo il tatuaggio. Massima trasparenza, zero sorprese."
+            "Prima della sessione finalizzo il bozzetto personalizzato e lo approvi. Solo dopo iniziamo il tatuaggio. Massima trasparenza, zero sorprese."
           ]
         }
       ],
       conclusion:
-        "I prezzi dei tatuaggi a Torino variano molto, ma ora hai tutti gli elementi per fare una scelta informata. Al Gran Babar Studio la trasparenza è fondamentale: durante la consulenza gratuita ti fornisco un preventivo dettagliato senza sorprese. Ricorda: un tatuaggio è per sempre. Investire il giusto significa portare sulla pelle un'opera d'arte di cui andrai fiero per tutta la vita."
+        "I prezzi dei tatuaggi specializzati a Moncalieri (Torino) riflettono qualità ed esperienza. Al Tribal Tattoo Studio, con 30 anni di esperienza dal 1994 in stili Polinesiano, Maori, Tribale, Freehand e Dot Work, la trasparenza è fondamentale: durante la consulenza gratuita ti fornisco un preventivo dettagliato senza sorprese. Ricorda: un tatuaggio tribale è per sempre e molto visibile. Investire il giusto significa portare sulla pelle un'opera d'arte autentica di cui andrai fiero per tutta la vita."
     },
     relatedPosts: [
       { slug: "primo-tatuaggio-guida", title: "Primo Tatuaggio: Guida Completa" },

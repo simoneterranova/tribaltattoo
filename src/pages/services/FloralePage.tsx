@@ -9,15 +9,15 @@ const FloralePage = () => {
   const styleData = {
     slug: "tatuaggio-floreale-a-torino",
     title: "Tatuaggio Floreale a Torino",
-    metaTitle: "Tatuaggio Floreale a Torino | Gran Babar Studio | Bellezza Naturale",
+    metaTitle: "Tatuaggio Floreale a Moncalieri (Torino) | Tribal Tattoo Studio | Bellezza Naturale",
     metaDescription:
-      "Tatuaggi floreali a Torino. Rose, loto, peonie, fiori di ciliegio. Realismo, acquerello, fine line. Studio Gran Babar. Prenota consulenza gratuita.",
-    h1: "Tatuaggio Floreale a Torino",
+      "Tatuaggi floreali a Moncalieri (Torino). Rose, loto, peonie, fiori di ciliegio. Realismo, acquerello, fine line. Studio Tribal Tattoo. Prenota consulenza gratuita.",
+    h1: "Tatuaggio Floreale a Moncalieri (Torino)",
     intro:
       "Dai delicati boccioli ai rami intricati, ogni tatuaggio floreale viene progettato per valorizzare il corpo e riflettere la personalità di chi lo indossa. Lo stile può variare dal realismo all'acquerello, dal fine line al blackwork, mantenendo sempre un'armonia perfetta tra forma e simbolismo.",
     about: [
       "Ogni fiore ha un significato profondo, radicato nella cultura e nelle emozioni di chi lo sceglie. La rosa, simbolo di passione e bellezza, si presta a interpretazioni sia classiche che moderne. Il fiore di loto, legato alla rinascita e alla spiritualità, si adatta perfettamente a chi cerca un disegno elegante e pieno di significato.",
-      "I fiori di ciliegio, delicati e fugaci, rappresentano la bellezza effimera della vita, mentre la peonia evoca prosperità e forza interiore. Gran Babar guida ogni cliente nella scelta del fiore più adatto, aiutandolo a trovare il giusto equilibrio tra estetica e messaggio personale.",
+      "I fiori di ciliegio, delicati e fugaci, rappresentano la bellezza effimera della vita, mentre la peonia evoca prosperità e forza interiore. Claudio Ciliberti guida ogni cliente nella scelta del fiore più adatto, aiutandolo a trovare il giusto equilibrio tra estetica e messaggio personale.",
       "Il tatuaggio floreale può essere declinato in molteplici stili: il realismo cattura ogni dettaglio con sfumature morbide, lo stile acquerello dona un tocco etereo, il blackwork esalta luci e ombre, mentre il fine line permette tatuaggi sottili e delicati."
     ],
     features: [
@@ -40,7 +40,7 @@ const FloralePage = () => {
     pricing:
       "I tatuaggi floreali variano molto nel prezzo in base allo stile, dimensione e complessità. Pezzi piccoli partono da €120, mentre composizioni più elaborate richiedono un preventivo personalizzato. Consulenza gratuita disponibile.",
     gallery: [
-      { src: "/images/styles/tatuaggio-floreale-a-torino/3-1.jpg", alt: "Tatuaggio Floreale delicato - Gran Babar Torino" }
+      { src: "/images/styles/tatuaggio-floreale-a-torino/3-1.jpg", alt: "Tatuaggio Floreale delicato - Tribal Tattoo Moncalieri (Torino)" }
     ],
     relatedStyles: [
       { slug: "tatuaggio-watercolor-a-torino", name: "Watercolor" },
@@ -59,7 +59,7 @@ const FloralePage = () => {
       },
       {
         question: "Quali tecniche vengono utilizzate per realizzare un tatuaggio floreale?",
-        answer: "GRAN BABAR impiega tecniche che combinano metodi tradizionali e innovativi, utilizzando strumenti di precisione e inchiostri di alta qualità per ottenere linee morbide, ombreggiature delicate e colori vibranti, che riproducono fedelmente la bellezza della natura."
+        answer: "TRIBAL TATTOO impiega tecniche che combinano metodi tradizionali e innovativi, utilizzando strumenti di precisione e inchiostri di alta qualità per ottenere linee morbide, ombreggiature delicate e colori vibranti, che riproducono fedelmente la bellezza della natura."
       },
       {
         question: "Come avviene la cura post-tatuaggio?",

@@ -67,10 +67,10 @@ const FooterSection = () => {
                   {shopConfig.sections.contact.contactLabel}
                 </h3>
                 <div className="space-y-2 font-body text-sm text-muted-foreground">
-                  <a href={shopConfig.contact.phoneHref} className="block hover:text-accent transition-colors" title="Chiama Gran Babar Studio">
+                  <a href={shopConfig.contact.phoneHref} className="block hover:text-accent transition-colors" title="Chiama Tribal Tattoo Studio">
                     {shopConfig.contact.phone}
                   </a>
-                  <a href={`mailto:${shopConfig.contact.email}`} className="block hover:text-accent transition-colors" title="Invia email a Gran Babar Studio">
+                  <a href={`mailto:${shopConfig.contact.email}`} className="block hover:text-accent transition-colors" title="Invia email a Tribal Tattoo Studio">
                     {shopConfig.contact.email}
                   </a>
                 </div>
@@ -83,19 +83,19 @@ const FooterSection = () => {
                 </h3>
                 <div className="space-y-2">
                   {shopConfig.social.instagram && (
-                    <a href={shopConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-accent transition-colors group" title="Segui Gran Babar su Instagram">
+                    <a href={shopConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-accent transition-colors group" title="Segui Tribal Tattoo su Instagram">
                       Instagram <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </a>
                   )}
                   {/* Facebook link - uncomment when added to shopConfig.social */}
-                  {/* {shopConfig.social.facebook && (
-                    <a href={shopConfig.social.facebook} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-accent transition-colors group" title="Segui Gran Babar su Facebook">
+                  {shopConfig.social.facebook && (
+                    <a href={shopConfig.social.facebook} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-accent transition-colors group" title="Segui Tribal Tattoo su Facebook">
                       Facebook <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </a>
-                  )} */}
-                  {shopConfig.social.tiktok && (
-                    <a href={shopConfig.social.tiktok} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-accent transition-colors group" title="Segui Gran Babar su TikTok">
-                      TikTok <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  )}
+                  {shopConfig.social.youtube && (
+                    <a href={shopConfig.social.youtube} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-accent transition-colors group" title="Segui Tribal Tattoo su YouTube">
+                      YouTube <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </a>
                   )}
                 </div>
@@ -250,7 +250,7 @@ const FooterSection = () => {
               </h3>
               <ul className="space-y-2 font-body text-sm">
                 <li>
-                  <Link to="/about-me" className="text-muted-foreground hover:text-foreground transition-colors" title="Scopri Francesco Gran Babar">
+                  <Link to="/about-me" className="text-muted-foreground hover:text-foreground transition-colors" title="Scopri Claudio Ciliberti">
                     Chi Sono
                   </Link>
                 </li>
@@ -275,8 +275,8 @@ const FooterSection = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/borgo-dora-tatuaggi" className="text-muted-foreground hover:text-foreground transition-colors" title="Studio di tatuaggi in Borgo Dora, Torino">
-                    Borgo Dora
+                  <Link to="/moncalieri-tatuaggi-tribali" className="text-muted-foreground hover:text-foreground transition-colors" title="Studio di tatuaggi tribali a Moncalieri">
+                    Moncalieri
                   </Link>
                 </li>
               </ul>
@@ -323,8 +323,8 @@ const FooterSection = () => {
               </h3>
               <ul className="space-y-2 font-body text-sm">
                 <li>
-                  <a href="#team" className="text-muted-foreground hover:text-foreground transition-colors" title="Scopri Francesco, tatuatore professionista">
-                    Francesco Tatuatore
+                  <a href="#team" className="text-muted-foreground hover:text-foreground transition-colors" title="Scopri Claudio Ciliberti, maestro tatuatore">
+                    Claudio Ciliberti
                   </a>
                 </li>
                 <li>

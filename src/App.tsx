@@ -154,7 +154,7 @@ const App = () => {
                       <Route path="/tatuaggio-sigillo-a-torino" element={<SigilloPage />} />
                       
                       {/* Local SEO page */}
-                      <Route path="/borgo-dora-tatuaggi" element={<BorgoDoraTattooPage />} />
+                      <Route path="/moncalieri-tatuaggi-tribali" element={<BorgoDoraTattooPage />} />
                       
                       {/* Blog posts (high-intent keywords) */}
                       <Route path="/blog/quanto-costa-tatuaggio-torino" element={<PricingBlogPost />} />

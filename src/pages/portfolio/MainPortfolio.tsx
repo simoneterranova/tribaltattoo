@@ -1,7 +1,7 @@
 // ╔══════════════════════════════════════════════════════════════╗
 // ║     MAIN PORTFOLIO HUB PAGE                                  ║
 // ║     Overview of all tattoo style portfolios                  ║
-// ║     Target: "portfolio tatuaggi torino", "galleria gran babar"║
+// ║     Target: "portfolio tatuaggi tribali", "tribal tattoo"    ║
 // ╚══════════════════════════════════════════════════════════════╝
 
 import { motion } from "framer-motion";
@@ -56,15 +56,15 @@ const MainPortfolio = () => {
   return (
     <>
       <Helmet>
-        <title>Portfolio Tatuaggi Torino | Galleria Completa | Gran Babar Studio</title>
+        <title>Portfolio Tatuaggi Torino | Galleria Completa | Tribal Tattoo Studio</title>
         <meta 
           name="description" 
-          content="Esplora il portfolio completo di tatuaggi realizzati a Torino da Francesco. Old School, Realistici, Geometrici, Black & Grey e Cover-up. 60+ lavori in galleria." 
+          content="Esplora il portfolio completo di tatuaggi realizzati a Moncalieri (Torino) da Claudio Ciliberti. Old School, Realistici, Geometrici, Black & Grey e Cover-up. 60+ lavori in galleria." 
         />
-        <meta property="og:title" content="Portfolio Completo Tatuaggi Torino | Gran Babar" />
+        <meta property="og:title" content="Portfolio Completo Tatuaggi Torino | Tribal Tattoo" />
         <meta 
           property="og:description" 
-          content="Guarda oltre 60 tatuaggi realizzati nel nostro studio a Torino. Ogni stile, dalla tradizione americana al realismo contemporaneo." 
+          content="Guarda oltre 60 tatuaggi realizzati nel nostro studio a Moncalieri (Torino). Ogni stile, dalla tradizione americana al realismo contemporaneo." 
         />
         <meta property="og:type" content="website" />
         <meta property="og:image" content={shopConfig.meta.ogImage} />
@@ -110,7 +110,7 @@ const MainPortfolio = () => {
                 transition={{ delay: 0.2 }}
                 className="font-body text-lg text-muted-foreground leading-relaxed mb-8"
               >
-                Esplora oltre 60 tatuaggi realizzati nel nostro studio a Torino dal 2020. 
+                Esplora oltre 60 tatuaggi realizzati nel nostro studio a Moncalieri (Torino) con oltre 30 anni di esperienza. 
                 Ogni pezzo racconta una storia unica, dalla tradizione Old School americana 
                 al realismo contemporaneo. Scegli uno stile per vedere la collezione completa.
               </motion.p>
@@ -160,7 +160,7 @@ const MainPortfolio = () => {
                       ) : (
                         <img
                           src={portfolio.image}
-                          alt={`Portfolio ${portfolio.name} - Gran Babar Torino`}
+                          alt={`Portfolio ${portfolio.name} - Tribal Tattoo Moncalieri`}
                           width="600"
                           height="600"
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -206,7 +206,7 @@ const MainPortfolio = () => {
                 <p className="font-body text-sm text-muted-foreground uppercase tracking-wider">Stili Specializzati</p>
               </div>
               <div>
-                <p className="font-heading text-5xl text-foreground mb-2">10+</p>
+                <p className="font-heading text-5xl text-foreground mb-2">30+</p>
                 <p className="font-body text-sm text-muted-foreground uppercase tracking-wider">Anni di Esperienza</p>
               </div>
               <div>

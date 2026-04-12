@@ -98,7 +98,7 @@ const NotFound = () => {
 
           {/* Primary CTA - Back to Homepage */}
           <div className="mb-12">
-            <Link to="/" title="Torna alla homepage Gran Babar">
+            <Link to="/" title="Torna alla homepage Tribal Tattoo">
               <Button size="lg" variant="default" className="gap-2">
                 <ArrowLeft className="h-5 w-5" />
                 Torna alla Homepage

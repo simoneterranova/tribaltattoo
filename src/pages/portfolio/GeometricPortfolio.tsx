@@ -10,16 +10,16 @@ const GeometricPortfolio = () => {
   const portfolioData = {
     slug: "geometrici-torino",
     title: "Portfolio Geometrici",
-    metaTitle: "Portfolio Tatuaggi Geometrici Torino | Galleria Gran Babar",
+    metaTitle: "Portfolio Tatuaggi Geometrici Torino | Galleria Tribal Tattoo",
     metaDescription:
-      "Galleria tatuaggi geometrici e mandala a Torino. Disegni sacri, forme pure e pattern simmetrici realizzati con precisione millimetrica. 12+ lavori geometrici.",
+      "Galleria tatuaggi geometrici e mandala a Moncalieri (Torino). Disegni sacri, forme pure e pattern simmetrici realizzati con precisione millimetrica. 12+ lavori geometrici.",
     h1: "Portfolio Tatuaggi Geometrici Torino",
     intro:
       "Esplora la nostra collezione di tatuaggi geometrici: mandala, forme sacre, pattern simmetrici. Ogni linea è tracciata con precisione millimetrica per creare armonia perfetta.",
     gallery: [
       {
         src: shopConfig.gallery[2].src,
-        alt: "Tatuaggio geometrico con mandala realizzato a Torino da Gran Babar",
+        alt: "Tatuaggio geometrico con mandala realizzato a Moncalieri da Tribal Tattoo",
         caption: "Geometrico - Mandala con pattern simmetrici"
       },
       // Aggiungi più immagini geometriche qui

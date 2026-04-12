@@ -4,15 +4,15 @@ import { BlogPostTemplate } from "./BlogPostTemplate";
 const FirstTattooBlogPost = () => {
   const postData = {
     slug: "primo-tatuaggio-guida",
-    title: "Primo Tatuaggio: Guida Completa per Chi Inizia a Torino",
+    title: "Primo Tatuaggio: Guida Completa per Chi Inizia a Moncalieri (Torino)",
     metaTitle: "Primo Tatuaggio: Cosa Sapere Prima di Iniziare | Guida Completa 2026",
     metaDescription:
-      "Guida completa per il tuo primo tatuaggio a Torino. Cosa sapere, come prepararsi, quanto fa male, come scegliere il design. Consigli da Francesco - Gran Babar Studio.",
+      "Guida completa per il tuo primo tatuaggio a Moncalieri (Torino). Cosa sapere, come prepararsi, quanto fa male, come scegliere il design. Consigli da Claudio Ciliberti - Tribal Tattoo Studio.",
     publishDate: "2026-03-30",
     readTime: "10 minuti",
     content: {
       intro:
-        "Stai pensando al tuo primo tatuaggio ma hai mille domande? È normalissimo. In questa guida rispondo a tutte le domande che ricevo quotidianamente al Gran Babar Studio da chi si tatua per la prima volta. Dall'idea al risultato finale, ti accompagno passo dopo passo.",
+        "Stai pensando al tuo primo tatuaggio ma hai mille domande? È normalissimo. In questa guida rispondo a tutte le domande che ricevo quotidianamente al Tribal Tattoo Studio da chi si tatua per la prima volta. Dall'idea al risultato finale, ti accompagno passo dopo passo.",
       sections: [
         {
           heading: "Prima di Tatuarti: Le Domande Fondamentali",
@@ -35,7 +35,7 @@ const FirstTattooBlogPost = () => {
           list: [
             "Raccogli ispirazioni - Salva foto di tatuaggi che ti piacciono su Pinterest/Instagram per 2-3 mesi. Vedrai emergere uno stile ricorrente.",
             "Pensa al significato - I tatuaggi migliori raccontano una storia personale. Può essere minimale ma deve significare qualcosa per te.",
-            "Scegli lo stile giusto - Old School (colorato, bold), Realistico (fotografico), Minimal (linee sottili), Geometrico (mandala), Lettering (scritte).",
+            "Scegli lo stile giusto - Polinesiano (tribale tradizionale), Maori (simboli ancestrali), Tribale (geometrie organiche), Freehand (disegno libero), Dot Work (puntinismo).",
             "Dimensione adeguata - Per il primo tatuaggio consiglio 8-15cm. Abbastanza grande da avere impatto ma non troppo per gestirel'esperienza.",
             "Evita nomi di partner - Fidanzamenti finiscono, tatuaggi rimangono. Eccezioni: figli, genitori, nonni.",
             "Chiedi consulenza professionale - Il tatuatore può migliorare la tua idea, adattarla alla zona del corpo, suggerirti modifiche."
@@ -44,7 +44,7 @@ const FirstTattooBlogPost = () => {
         {
           heading: "Zone del Corpo: Dove Fa Più Male?",
           paragraphs: [
-            "Il dolore è soggettivo ma alcune zone sono oggettivamente più dolorose di altre. Ecco la mia scala del dolore basata su 10 anni di esperienza:"
+            "Il dolore è soggettivo ma alcune zone sono oggettivamente più dolorose di altre. Ecco la mia scala del dolore basata su 30 anni di esperienza dal 1994:"
           ],
           table: {
             headers: ["Zona Corpo", "Livello Dolore", "Note"],
@@ -90,7 +90,7 @@ const FirstTattooBlogPost = () => {
         {
           heading: "Cosa Aspettarsi Durante la Sessione",
           paragraphs: [
-            "Ecco come si svolge una tipica sessione di tatuaggio al Gran Babar Studio:"
+            "Ecco come si svolge una tipica sessione di tatuaggio al Tribal Tattoo Studio:"
           ],
           list: [
             "Arrivo e accoglienza (5 min) - Ti faccio accomodare, offro caffè/acqua, spiego il processo",
@@ -105,18 +105,18 @@ const FirstTattooBlogPost = () => {
         {
           heading: "Quanto Costa? (Per Primi Tatuaggi)",
           paragraphs: [
-            "I primi tatuaggi tendono ad essere piccoli-medi. Range di prezzo realistici per Gran Babar Studio a Torino:"
+            "I primi tatuaggi tendono ad essere piccoli-medi. Range di prezzo realistici per Tribal Tattoo Studio a Moncalieri (Torino):"
           ],
           list: [
-            "Tatuaggio piccolo (5-8cm) - €120-200 | 1-2 ore | Es: simbolo, scritta corta, piccolo old school",
-            "Tatuaggio medio (10-15cm) - €200-400 | 2-4 ore | Es: mandala, old school elaborato, ritratto piccolo",
-            "Consulenza sempre gratuita - Ti mostro portfolio, discutiamo design, preventivo trasparente"
+            "Tatuaggio piccolo (5-8cm) - €150-250 | 1-2 ore | Es: simbolo tribale semplice, piccolo motivo maori",
+            "Tatuaggio medio (10-15cm) - €300-500 | 2-4 ore | Es: bracciale polinesiano, pattern tribale elaborato",
+            "Consulenza sempre gratuita - Ti mostro portfolio specializzato in stili tribali, discutiamo design personalizzato, preventivo trasparente"
           ]
         },
         {
           heading: "Errori Comuni da Evitare",
           paragraphs: [
-            "Dopo 10 anni di esperienza, ecco gli errori che vedo ripetere dai principianti:"
+            "Dopo 30 anni di esperienza dal 1994, ecco gli errori che vedo ripetere dai principianti:"
           ],
           list: [
             "❌ Tatuarsi il nome del partner dopo 3 mesi di relazione",
@@ -131,10 +131,10 @@ const FirstTattooBlogPost = () => {
         }
       ],
       conclusion:
-        "Il primo tatuaggio è un'esperienza unica che ricorderai per sempre. Con la giusta preparazione e scegliendo un tatuatore esperto, sarà un momento positivo e gratificante. Al Gran Babar Studio do massima attenzione ai clienti al primo tatuaggio: ti seguo passo dopo passo, rispondo a ogni domanda, ti metto a tuo agio. La consulenza è gratuita e senza impegno: vieni a parlarne, vediamo insieme se è il momento giusto per te."
+        "Il primo tatuaggio è un'esperienza unica che ricorderai per sempre. Con la giusta preparazione e scegliendo un tatuatore esperto, sarà un momento positivo e gratificante. Al Tribal Tattoo Studio do massima attenzione ai clienti al primo tatuaggio: ti seguo passo dopo passo, rispondo a ogni domanda, ti metto a tuo agio. Con 30 anni di esperienza specializzata in stili Polinesiano, Maori, Tribale, Freehand e Dot Work, garantisco lavori di altissima qualità. La consulenza è gratuita e senza impegno: vieni a parlarne a Moncalieri (Torino), vediamo insieme se è il momento giusto per te."
     },
     relatedPosts: [
-      { slug: "quanto-costa-tatuaggio-torino", title: "Quanto Costa un Tatuaggio a Torino" },
+      { slug: "quanto-costa-tatuaggio-torino", title: "Quanto Costa un Tatuaggio a Moncalieri (Torino)" },
       { slug: "cura-tatuaggio-aftercare", title: "Come Curare un Tatuaggio Nuovo" }
     ]
   };

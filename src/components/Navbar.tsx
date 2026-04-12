@@ -79,7 +79,7 @@ const Navbar = () => {
           href="#hero" 
           onClick={(e) => handleNavClick(e, "#hero")} 
           className="relative group shrink-0" 
-          title="Torna all'inizio - Homepage Gran Babar"
+          title="Torna all'inizio - Homepage Tribal Tattoo"
         >
           <img
             src={shopConfig.logo}
@@ -198,7 +198,7 @@ const Navbar = () => {
                   setMobileOpen(false);
                 }}
                 className="font-heading text-2xl tracking-[0.2em] text-accent"
-                title="Torna all'inizio - Homepage Gran Babar"
+                title="Torna all'inizio - Homepage Tribal Tattoo"
               >
                 {shopConfig.name}
               </a>

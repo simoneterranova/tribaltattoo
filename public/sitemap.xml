@@ -1,142 +1,142 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
   ╔════════════════════════════════════════════════════════════════╗
-  ║  GRAN BABAR SITEMAP — SEO-OPTIMIZED FOR MAXIMUM VISIBILITY    ║
-  ║  Updated: April 9, 2026 — All Service Pages Added             ║
+  ║  TRIBAL TATTOO SITEMAP — SEO-OPTIMIZED FOR MAXIMUM VISIBILITY ║
+  ║  Updated: April 12, 2026 — All Service Pages Added            ║
   ╚════════════════════════════════════════════════════════════════╝
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <!-- Main landing page -->
   <url>
-    <loc>https://www.granbabar.it/</loc>
-    <lastmod>2026-04-09</lastmod>
+    <loc>https://www.tribaltattoo.it/</loc>
+    <lastmod>2026-04-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- Style-specific landing pages (HIGH SEO VALUE) -->
   <url>
-    <loc>https://www.granbabar.it/servizi/tatuaggi-old-school-torino</loc>
+    <loc>https://www.tribaltattoo.it/servizi/tatuaggi-old-school-torino</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.granbabar.it/servizi/tatuaggi-realistici-torino</loc>
+    <loc>https://www.tribaltattoo.it/servizi/tatuaggi-realistici-torino</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.granbabar.it/servizi/cover-up-tatuaggi-torino</loc>
+    <loc>https://www.tribaltattoo.it/servizi/cover-up-tatuaggi-torino</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.granbabar.it/servizi/tatuaggi-geometrici-torino</loc>
+    <loc>https://www.tribaltattoo.it/servizi/tatuaggi-geometrici-torino</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://www.granbabar.it/servizi/tatuaggi-black-grey-torino</loc>
+    <loc>https://www.tribaltattoo.it/servizi/tatuaggi-black-grey-torino</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://www.granbabar.it/tatuaggio-sigillo-a-torino</loc>
+    <loc>https://www.tribaltattoo.it/tatuaggio-sigillo-a-torino</loc>
     <lastmod>2026-04-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.granbabar.it/tatuaggio-fine-line-a-torino</loc>
+    <loc>https://www.tribaltattoo.it/tatuaggio-fine-line-a-torino</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://www.granbabar.it/tatuaggio-dotwork-a-torino</loc>
+    <loc>https://www.tribaltattoo.it/tatuaggio-dotwork-a-torino</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://www.granbabar.it/tatuaggio-floreale-a-torino</loc>
+    <loc>https://www.tribaltattoo.it/tatuaggio-floreale-a-torino</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://www.granbabar.it/tatuaggio-giapponese-irezumi-a-torino</loc>
+    <loc>https://www.tribaltattoo.it/tatuaggio-giapponese-irezumi-a-torino</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://www.granbabar.it/tatuaggio-lettering-a-torino</loc>
+    <loc>https://www.tribaltattoo.it/tatuaggio-lettering-a-torino</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://www.granbabar.it/tatuaggio-minimalista-a-torino</loc>
+    <loc>https://www.tribaltattoo.it/tatuaggio-minimalista-a-torino</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://www.granbabar.it/tatuaggio-gotico-a-torino</loc>
+    <loc>https://www.tribaltattoo.it/tatuaggio-gotico-a-torino</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://www.granbabar.it/tatuaggio-neo-tradizionale-a-torino</loc>
+    <loc>https://www.tribaltattoo.it/tatuaggio-neo-tradizionale-a-torino</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://www.granbabar.it/tatuaggio-new-school-a-torino</loc>
+    <loc>https://www.tribaltattoo.it/tatuaggio-new-school-a-torino</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://www.granbabar.it/tatuaggio-surrealista-a-torino</loc>
+    <loc>https://www.tribaltattoo.it/tatuaggio-surrealista-a-torino</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://www.granbabar.it/tatuaggio-tribale-a-torino</loc>
+    <loc>https://www.tribaltattoo.it/tatuaggio-tribale-a-torino</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://www.granbabar.it/tatuaggio-watercolor-a-torino</loc>
+    <loc>https://www.tribaltattoo.it/tatuaggio-watercolor-a-torino</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -144,50 +144,50 @@
   
   <!-- Neighborhood landing page (LOCAL SEO) -->
   <url>
-    <loc>https://www.granbabar.it/borgo-dora-tatuaggi</loc>
-    <lastmod>2026-03-30</lastmod>
+    <loc>https://www.tribaltattoo.it/moncalieri-tatuaggi-tribali</loc>
+    <lastmod>2026-04-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <!-- Main content pages -->
   <url>
-    <loc>https://www.granbabar.it/tatuaggi</loc>
+    <loc>https://www.tribaltattoo.it/tatuaggi</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.granbabar.it/servizi</loc>
+    <loc>https://www.tribaltattoo.it/servizi</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://www.granbabar.it/about-me</loc>
+    <loc>https://www.tribaltattoo.it/about-me</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://www.granbabar.it/cura-post-tatuaggio</loc>
+    <loc>https://www.tribaltattoo.it/cura-post-tatuaggio</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://www.granbabar.it/contatti</loc>
+    <loc>https://www.tribaltattoo.it/contatti</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://www.granbabar.it/gallery</loc>
+    <loc>https://www.tribaltattoo.it/gallery</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -195,21 +195,21 @@
   
   <!-- Blog posts (LONG-TAIL KEYWORDS) -->
   <url>
-    <loc>https://www.granbabar.it/blog/quanto-costa-tatuaggio-torino</loc>
+    <loc>https://www.tribaltattoo.it/blog/quanto-costa-tatuaggio-torino</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://www.granbabar.it/blog/primo-tatuaggio-guida</loc>
+    <loc>https://www.tribaltattoo.it/blog/primo-tatuaggio-guida</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://www.granbabar.it/blog/cura-tatuaggio-aftercare</loc>
+    <loc>https://www.tribaltattoo.it/blog/cura-tatuaggio-aftercare</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -217,7 +217,7 @@
 
   <!-- FAQ page (VOICE SEARCH OPTIMIZATION - HIGH VALUE) -->
   <url>
-    <loc>https://www.granbabar.it/faq-tatuaggi-torino</loc>
+    <loc>https://www.tribaltattoo.it/faq-tatuaggi-torino</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -225,42 +225,42 @@
 
   <!-- Portfolio pages (IMAGE SEO - HIGH VALUE) -->
   <url>
-    <loc>https://www.granbabar.it/portfolio</loc>
+    <loc>https://www.tribaltattoo.it/portfolio</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.granbabar.it/portfolio/old-school-torino</loc>
+    <loc>https://www.tribaltattoo.it/portfolio/old-school-torino</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://www.granbabar.it/portfolio/realistici-torino</loc>
+    <loc>https://www.tribaltattoo.it/portfolio/realistici-torino</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://www.granbabar.it/portfolio/cover-up-torino</loc>
+    <loc>https://www.tribaltattoo.it/portfolio/cover-up-torino</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://www.granbabar.it/portfolio/geometrici-torino</loc>
+    <loc>https://www.tribaltattoo.it/portfolio/geometrici-torino</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://www.granbabar.it/portfolio/black-grey-torino</loc>
+    <loc>https://www.tribaltattoo.it/portfolio/black-grey-torino</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -268,14 +268,14 @@
 
   <!-- Legal pages -->
   <url>
-    <loc>https://www.granbabar.it/privacy-policy</loc>
+    <loc>https://www.tribaltattoo.it/privacy-policy</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
 
   <url>
-    <loc>https://www.granbabar.it/cookie-policy</loc>
+    <loc>https://www.tribaltattoo.it/cookie-policy</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>

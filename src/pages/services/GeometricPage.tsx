@@ -10,16 +10,16 @@ const GeometricPage = () => {
   const styleData = {
     slug: "tatuaggio-geometrico-a-torino",
     title: "Tatuaggio geometrico a Torino",
-    metaTitle: "Tatuaggio geometrico a Torino - GranBabar",
+    metaTitle: "Tatuaggio geometrico a Moncalieri (Torino) - Tribal Tattoo",
     metaDescription:
-      "Il tatuaggio geometrico è l'incontro tra arte, matematica e simbolismo. Linee perfette, figure astratte e motivi complessi. Gran Babar realizza tatuaggi geometrici a Torino con una precisione assoluta.",
-    h1: "Tatuaggio geometrico a Torino",
+      "Il tatuaggio geometrico è l'incontro tra arte, matematica e simbolismo. Linee perfette, figure astratte e motivi complessi. Tribal Tattoo realizza tatuaggi geometrici a Moncalieri (Torino) con una precisione assoluta.",
+    h1: "Tatuaggio geometrico a Moncalieri (Torino)",
     intro:
-      "Il tatuaggio geometrico è l'incontro tra arte, matematica e simbolismo. Linee perfette, figure astratte e motivi complessi si intrecciano per creare tatuaggi dal forte impatto visivo e dal significato profondo. Gran Babar realizza tatuaggi geometrici a Torino con una precisione assoluta, studiando ogni composizione per valorizzare al massimo l'armonia delle forme e l'anatomia del corpo.",
+      "Il tatuaggio geometrico è l'incontro tra arte, matematica e simbolismo. Linee perfette, figure astratte e motivi complessi si intrecciano per creare tatuaggi dal forte impatto visivo e dal significato profondo. Tribal Tattoo realizza tatuaggi geometrici a Moncalieri (Torino) con una precisione assoluta, studiando ogni composizione per valorizzare al massimo l'armonia delle forme e l'anatomia del corpo.",
     about: [
       "Il tatuaggio geometrico si basa sull'uso di linee nette, forme simmetriche e figure astratte per creare immagini armoniose ed essenziali. Questo stile può essere utilizzato per rappresentare elementi naturali stilizzati, simboli esoterici o disegni puramente decorativi. La sua estetica minimalista lo rende perfetto per chi cerca un tatuaggio elegante, preciso e senza tempo.",
-      "La realizzazione di un tatuaggio geometrico richiede massima precisione e una mano ferma. Gran Babar utilizza tecniche avanzate per garantire che ogni linea sia nitida e perfettamente bilanciata. L'attenzione ai dettagli è fondamentale per ottenere un tatuaggio che mantenga la sua pulizia e definizione nel tempo.",
-      "Per Gran Babar, il tatuaggio geometrico è un'arte di precisione. Ogni progetto è eseguito con cura millimetrica per garantire simmetria e armonia. Grazie all'utilizzo di strumenti all'avanguardia e alla sua esperienza nel campo, riesce a creare tatuaggi con linee impeccabili e design che si adattano perfettamente alle curve del corpo."
+      "La realizzazione di un tatuaggio geometrico richiede massima precisione e una mano ferma. Tribal Tattoo utilizza tecniche avanzate per garantire che ogni linea sia nitida e perfettamente bilanciata. L'attenzione ai dettagli è fondamentale per ottenere un tatuaggio che mantenga la sua pulizia e definizione nel tempo.",
+      "Per Tribal Tattoo, con oltre 30 anni di esperienza dal 1994, il tatuaggio geometrico è un'arte di precisione. Ogni progetto è eseguito con cura millimetrica per garantire simmetria e armonia. Grazie all'utilizzo di strumenti all'avanguardia e alla sua esperienza nel campo, riesce a creare tatuaggi con linee impeccabili e design che si adattano perfettamente alle curve del corpo."
     ],
     features: [
       "Elementi naturali stilizzati: fiori, alberi, montagne e animali trasformati in figure geometriche",
@@ -32,7 +32,7 @@ const GeometricPage = () => {
       "Estetica minimalista ed elegante"
     ],
     process: [
-      "Consulenza iniziale: Gran Babar lavora con ogni cliente per sviluppare un design su misura, studiando l'equilibrio delle forme e l'effetto ottico sulla pelle.",
+      "Consulenza iniziale: Claudio Ciliberti lavora con ogni cliente per sviluppare un design su misura, studiando l'equilibrio delle forme e l'effetto ottico sulla pelle.",
       "Design personalizzato: ogni progetto è eseguito con cura millimetrica per garantire simmetria e armonia.",
       "Preparazione: utilizziamo strumenti all'avanguardia per garantire linee impeccabili.",
       "Esecuzione: ogni linea è realizzata con massima precisione per mantenere la pulizia e definizione nel tempo.",
@@ -41,7 +41,7 @@ const GeometricPage = () => {
     pricing:
       "Contattaci per un preventivo personalizzato. Il costo varia in base alle dimensioni e alla complessità del design. Durante la consulenza ti forniremo una stima precisa.",
     gallery: [
-      { src: shopConfig.gallery[2].src, alt: "Tatuaggio geometrico con mandala - Gran Babar Torino" }
+      { src: shopConfig.gallery[2].src, alt: "Tatuaggio geometrico con mandala - Tribal Tattoo Moncalieri (Torino)" }
     ],
     relatedStyles: [
       { slug: "tatuaggi-old-school-torino", name: "Old School" },

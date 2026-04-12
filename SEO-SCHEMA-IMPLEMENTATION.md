@@ -80,7 +80,7 @@ Each page with FAQs now generates:
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:locale" content="it_IT" />
-<meta property="og:site_name" content="Gran Babar - Studio Tatuaggi Torino" />
+<meta property="og:site_name" content="Tribal Tattoo - Studio Tatuaggi Tribali Moncalieri" />
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
@@ -100,13 +100,13 @@ Each page with FAQs now generates:
 ### 1. Google Search Rich Snippets
 **Before:**
 ```
-Tatuaggio Old School a Torino | Gran Babar
+Tatuaggio Old School a Torino | Tribal Tattoo
 Meta description text only...
 ```
 
 **After:**
 ```
-Tatuaggio Old School a Torino | Gran Babar
+Tatuaggio Old School a Torino | Tribal Tattoo
 Meta description text only...
 
 ❓ Cos'è un old school tattoo?

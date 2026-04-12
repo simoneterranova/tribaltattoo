@@ -10,16 +10,16 @@ const OldSchoolPortfolio = () => {
   const portfolioData = {
     slug: "old-school-torino",
     title: "Portfolio Old School",
-    metaTitle: "Portfolio Tatuaggi Old School Torino | Galleria Gran Babar",
+    metaTitle: "Portfolio Tatuaggi Old School Torino | Galleria Tribal Tattoo",
     metaDescription:
-      "Guarda il portfolio completo di tatuaggi Old School realizzati a Torino da Francesco. Stile tradizionale americano con linee bold e colori brillanti. 20+ lavori.",
+      "Guarda il portfolio completo di tatuaggi Old School realizzati a Moncalieri (Torino) da Claudio Ciliberti. Stile tradizionale americano con linee bold e colori brillanti. 20+ lavori.",
     h1: "Portfolio Old School Torino",
     intro:
-      "Esplora la nostra collezione di tatuaggi Old School realizzati a Torino. Ogni pezzo rispetta la tradizione americana: linee bold, colori primari saturi e soggetti iconici come ancore, rondini, rose e pin-up.",
+      "Esplora la nostra collezione di tatuaggi Old School realizzati a Moncalieri (Torino). Ogni pezzo rispetta la tradizione americana: linee bold, colori primari saturi e soggetti iconici come ancore, rondini, rose e pin-up.",
     gallery: [
       {
         src: shopConfig.gallery[0].src,
-        alt: "Tatuaggio Old School con ancora e rondini realizzato a Torino da Gran Babar",
+        alt: "Tatuaggio Old School con ancora e rondini realizzato a Moncalieri da Tribal Tattoo",
         caption: "Old School - Ancora con rondini"
       },
       // In futuro, aggiungi più immagini qui per popolare la galleria

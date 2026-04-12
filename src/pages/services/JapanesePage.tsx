@@ -9,15 +9,15 @@ const JapanesePage = () => {
   const styleData = {
     slug: "tatuaggio-giapponese-irezumi-a-torino",
     title: "Tatuaggio Giapponese (Irezumi) a Torino",
-    metaTitle: "Tatuaggio Giapponese Irezumi a Torino | Gran Babar | Tradizione Nipponica",
+    metaTitle: "Tatuaggio Giapponese Irezumi a Moncalieri (Torino) | Tribal Tattoo | Tradizione Nipponica",
     metaDescription:
-      "Tatuaggi giapponesi Irezumi a Torino. Draghi, carpe koi, fiori di ciliegio. Tradizione e significato. Studio Gran Babar. Prenota consulenza.",
-    h1: "Tatuaggio Giapponese (Irezumi) a Torino",
+      "Tatuaggi giapponesi Irezumi a Moncalieri (Torino). Draghi, carpe koi, fiori di ciliegio. Tradizione e significato. Studio Tribal Tattoo. Prenota consulenza.",
+    h1: "Tatuaggio Giapponese (Irezumi) a Moncalieri (Torino)",
     intro:
       "Il tatuaggio giapponese Irezumi è uno degli stili più affascinanti e ricchi di significato nella storia del tatuaggio. Con le sue figure imponenti, le ombreggiature raffinate e i colori intensi, questo stile racconta storie di forza, coraggio e spiritualità.",
     about: [
       "L'Irezumi ha origini antichissime, risalenti al periodo Edo (1603-1868), quando i tatuaggi venivano usati per segnare criminali o identificare membri della yakuza. Con il tempo, questa pratica è diventata una vera e propria forma d'arte, adottata dai guerrieri samurai e dagli artigiani come simbolo di protezione e status.",
-      "Oggi, il tatuaggio giapponese continua a rappresentare forza, onore e resistenza, mantenendo un forte legame con la cultura e la tradizione nipponica. Gran Babar, con la sua esperienza e il suo rispetto per la tradizione, realizza tatuaggi giapponesi a Torino con un'attenta ricerca stilistica e una tecnica impeccabile.",
+      "Oggi, il tatuaggio giapponese continua a rappresentare forza, onore e resistenza, mantenendo un forte legame con la cultura e la tradizione nipponica. Tribal Tattoo, con oltre 30 anni di esperienza dal 1994 e il suo rispetto per la tradizione, realizza tatuaggi giapponesi a Moncalieri (Torino) con un'attenta ricerca stilistica e una tecnica impeccabile.",
       "I simboli che caratterizzano l'Irezumi sono intrisi di miti e leggende secolari. Il drago rappresenta potere e saggezza, mentre la carpa koi simboleggia la perseveranza. Il fiore di ciliegio richiama il ciclo della vita e il continuo rinnovarsi dell'esistenza."
     ],
     features: [
@@ -40,7 +40,7 @@ const JapanesePage = () => {
     pricing:
       "I tatuaggi giapponesi sono generalmente progetti ampi che richiedono più sessioni. I prezzi vengono discussi in base all'estensione del progetto (mezza manica, manica completa, schiena, ecc.). Consulenza gratuita per valutare insieme il tuo progetto Irezumi.",
     gallery: [
-      { src: "/images/styles/tatuaggio-giapponese-irezumi-a-torino/giapponese.jpg", alt: "Tatuaggio Giapponese Irezumi - Gran Babar Torino" }
+      { src: "/images/styles/tatuaggio-giapponese-irezumi-a-torino/giapponese.jpg", alt: "Tatuaggio Giapponese Irezumi - Tribal Tattoo Moncalieri (Torino)" }
     ],
     relatedStyles: [
       { slug: "tatuaggio-black-grey-a-torino", name: "Black & Grey" },

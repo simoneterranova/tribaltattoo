@@ -10,16 +10,16 @@ const FineLinePage = () => {
   const styleData = {
     slug: "tatuaggio-fine-line-a-torino",
     title: "Tatuaggio Fine Line a Torino",
-    metaTitle: "Tatuaggio Fine Line a Torino | Gran Babar Studio | Eleganza Minimalista",
+    metaTitle: "Tatuaggio Fine Line a Moncalieri (Torino) | Tribal Tattoo Studio | Eleganza Minimalista",
     metaDescription:
-      "Tatuaggi fine line a Torino. Linee sottili, design minimalisti ed eleganti. Studio Gran Babar, esperienza ventennale. Prenota consulenza gratuita.",
-    h1: "Tatuaggio Fine Line a Torino",
+      "Tatuaggi fine line a Moncalieri (Torino). Linee sottili, design minimalisti ed eleganti. Studio Tribal Tattoo, esperienza di oltre 30 anni dal 1994. Prenota consulenza gratuita.",
+    h1: "Tatuaggio Fine Line a Moncalieri (Torino)",
     intro:
-      "Il tatuaggio fine line a Torino rappresenta una delle forme più raffinate e contemporanee dell'arte del tatuaggio. Da Gran Babar, ogni linea sottile diventa una dichiarazione di stile, una scelta di eleganza e precisione che trasforma la pelle in un racconto personale.",
+      "Il tatuaggio fine line a Moncalieri (Torino) rappresenta una delle forme più raffinate e contemporanee dell'arte del tatuaggio. Da Tribal Tattoo, ogni linea sottile diventa una dichiarazione di stile, una scelta di eleganza e precisione che trasforma la pelle in un racconto personale.",
     about: [
       "Lo stile Fine Line si distingue per l'utilizzo di linee sottilissime, disegnate con ago singolo o aghi estremamente fini, che permettono di realizzare tatuaggi dal tratto pulito e delicato. Questa tecnica richiede una mano esperta, un controllo assoluto della pressione e una sensibilità artistica capace di bilanciare minimalismo e dettaglio.",
       "Il tatuaggio fine line non è solo una scelta estetica, ma una forma d'espressione intima e moderna. Le linee sottili, spesso monocromatiche, raccontano emozioni e momenti significativi senza bisogno di colori o riempimenti complessi. È la scelta ideale per chi desidera un tatuaggio elegante, discreto e senza tempo.",
-      "La realizzazione di un tatuaggio fine line richiede esperienza, controllo e strumenti di altissima qualità. Nel nostro studio a Torino utilizziamo macchinette precise e aghi ultrasottili che consentono di creare tratti netti, senza sbavature e con una definizione che resiste nel tempo."
+      "La realizzazione di un tatuaggio fine line richiede esperienza, controllo e strumenti di altissima qualità. Nel nostro studio a Moncalieri (Torino) utilizziamo macchinette precise e aghi ultrasottili che consentono di creare tratti netti, senza sbavature e con una definizione che resiste nel tempo."
     ],
     features: [
       "Linee sottilissime e tratti delicati per tatuaggi minimalisti",
@@ -32,7 +32,7 @@ const FineLinePage = () => {
       "Stile contemporaneo che non passa di moda"
     ],
     process: [
-      "Consulenza personalizzata: Gran Babar ascolta le tue idee e ti guida nella scelta del design perfetto per il tuo tatuaggio fine line.",
+      "Consulenza personalizzata: Claudio Ciliberti ascolta le tue idee e ti guida nella scelta del design perfetto per il tuo tatuaggio fine line.",
       "Progettazione del disegno: ogni linea viene studiata per garantire equilibrio, armonia e significato personale.",
       "Preparazione della sessione: ti spieghiamo come preparare la pelle e cosa aspettarti durante la seduta.",
       "Esecuzione con precisione: utilizziamo aghi ultrasottili e tecnica impeccabile per creare tratti netti e definiti.",
@@ -41,7 +41,7 @@ const FineLinePage = () => {
     pricing:
       "I tatuaggi fine line partono da €100 per design molto piccoli. La complessità del disegno e la dimensione influenzano il prezzo finale. Durante la consulenza gratuita ti forniremo un preventivo preciso e trasparente.",
     gallery: [
-      { src: "/images/tatuaggi/Minimal-tattoo-1.jpg", alt: "Tatuaggio Fine Line elegante - Gran Babar Torino" }
+      { src: "/images/tatuaggi/Minimal-tattoo-1.jpg", alt: "Tatuaggio Fine Line elegante - Tribal Tattoo Moncalieri (Torino)" }
     ],
     relatedStyles: [
       { slug: "tatuaggio-minimalista-a-torino", name: "Minimalista" },

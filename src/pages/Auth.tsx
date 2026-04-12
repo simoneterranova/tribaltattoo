@@ -115,7 +115,7 @@ const Auth = () => {
     <div className="min-h-screen bg-background flex flex-col">
       {/* Top bar */}
       <div className="border-b border-border px-6 py-4">
-        <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors font-body text-sm" title="Torna alla homepage Gran Babar">
+        <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors font-body text-sm" title="Torna alla homepage Tribal Tattoo">
           <ArrowLeft className="h-4 w-4" />
           Back to Home
         </Link>
@@ -130,7 +130,7 @@ const Auth = () => {
         >
           {/* Header */}
           <div className="mb-10">
-            <Link to="/" title="Torna alla homepage Gran Babar">
+            <Link to="/" title="Torna alla homepage Tribal Tattoo">
               <span className="font-heading text-3xl tracking-[0.2em] text-foreground">
                 {shopConfig.name}
               </span>

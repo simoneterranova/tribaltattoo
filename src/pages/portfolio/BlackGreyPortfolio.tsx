@@ -10,16 +10,16 @@ const BlackGreyPortfolio = () => {
   const portfolioData = {
     slug: "black-grey-torino",
     title: "Portfolio Black & Grey",
-    metaTitle: "Portfolio Tatuaggi Black & Grey Torino | Galleria Gran Babar",
+    metaTitle: "Portfolio Tatuaggi Black & Grey Torino | Galleria Tribal Tattoo",
     metaDescription:
-      "Galleria tatuaggi Black & Grey a Torino. Sfumature, chiaroscuri e contrasti drammatici senza colori. Stile elegante e senza tempo. 18+ lavori.",
+      "Galleria tatuaggi Black & Grey a Moncalieri (Torino). Sfumature, chiaroscuri e contrasti drammatici senza colori. Stile elegante e senza tempo. 18+ lavori.",
     h1: "Portfolio Black & Grey Torino",
     intro:
       "Scopri i nostri tatuaggi Black & Grey: sfumature eleganti, contrasti drammatici e profondità senza l'uso del colore. Uno stile senza tempo che invecchia perfettamente.",
     gallery: [
       {
         src: shopConfig.gallery[1].src,
-        alt: "Tatuaggio Black & Grey con sfumature realizzato a Torino da Gran Babar",
+        alt: "Tatuaggio Black & Grey con sfumature realizzato a Moncalieri da Tribal Tattoo",
         caption: "Black & Grey - Sfumature e chiaroscuri"
       },
       // Aggiungi più immagini Black & Grey qui

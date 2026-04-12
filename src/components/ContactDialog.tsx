@@ -51,7 +51,7 @@ const ContactDialog = ({
         
         <div className="grid gap-4 py-6">
           {/* Call Button */}
-          <a href={shopConfig.contact.phoneHref} className="block" title="Chiama Gran Babar Studio">
+          <a href={shopConfig.contact.phoneHref} className="block" title="Chiama Tribal Tattoo Studio">
             <Button 
               variant="outline" 
               size="lg" 

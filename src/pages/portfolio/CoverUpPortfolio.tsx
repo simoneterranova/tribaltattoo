@@ -10,9 +10,9 @@ const CoverUpPortfolio = () => {
   const portfolioData = {
     slug: "cover-up-torino",
     title: "Portfolio Cover-up",
-    metaTitle: "Portfolio Cover-up Tatuaggi Torino | Prima e Dopo | Gran Babar",
+    metaTitle: "Portfolio Cover-up Tatuaggi Torino | Prima e Dopo | Tribal Tattoo",
     metaDescription:
-      "Galleria cover-up e coperture tatuaggi a Torino. Trasformiamo vecchi tatuaggi in opere d'arte nuove. Confronto prima/dopo. 10+ trasformazioni completate.",
+      "Galleria cover-up e coperture tatuaggi a Moncalieri (Torino). Trasformiamo vecchi tatuaggi in opere d'arte nuove. Confronto prima/dopo. 10+ trasformazioni completate.",
     h1: "Portfolio Cover-up Torino",
     intro:
       "Trasformiamo vecchi tatuaggi in nuove opere d'arte. Ogni cover-up richiede studio approfondito per garantire una copertura impeccabile che rispetta la tua pelle e il nuovo design.",

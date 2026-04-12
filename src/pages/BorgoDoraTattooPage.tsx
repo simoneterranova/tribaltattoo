@@ -1,6 +1,6 @@
 // ╔══════════════════════════════════════════════════════════════╗
-// ║     BORGO DORA TATUAGGI - LOCAL SEO LANDING PAGE             ║
-// ║     Target keywords: "tatuaggi borgo dora", "tatuatore borgo dora"  ║
+// ║     MONCALIERI TATUAGGI - LOCAL SEO LANDING PAGE            ║
+// ║     Target keywords: "tatuaggi moncalieri", "tatuatore moncalieri"  ║
 // ╚══════════════════════════════════════════════════════════════╝
 
 import { motion } from "framer-motion";
@@ -17,17 +17,17 @@ const BorgoDoraTattooPage = () => {
   return (
     <>
       <Helmet>
-        <title>Tatuaggi a Borgo Dora, Torino | Gran Babar Studio | Zona Dora</title>
+        <title>Tatuaggi Tribali {shopConfig.city.split(",")[0]} | {shopConfig.fullName} | Arte Sacra dal {shopConfig.established}</title>
         <meta
           name="description"
-          content="Studio di tatuaggi professionale a Borgo Dora, Torino. Francesco tatuatore con 10+ anni esperienza. Vicino a Porta Palazzo, Balon, Lungo Dora Napoli 16. Consulenza gratuita."
+          content={`Studio di tatuaggi tribali professionali a ${shopConfig.city}. ${shopConfig.author.name}, maestro tatuatore con ${shopConfig.team[0].years} anni esperienza. Arte polinesiaca, maori e tribale originale. ${shopConfig.contact.addressLines[0]}.`}
         />
-        <meta property="og:title" content="Tatuaggi a Borgo Dora | Gran Babar Studio Torino" />
+        <meta property="og:title" content={`Tatuaggi Tribali ${shopConfig.city.split(",")[0]} | ${shopConfig.fullName}`} />
         <meta
           property="og:description"
-          content="Studio di tatuaggi nel cuore artistico di Borgo Dora. Francesco specializzato in Old School, realistici e cover-up."
+          content={`Vera arte tribale originale a ${shopConfig.city.split(",")[0]} dal ${shopConfig.established}. ${shopConfig.author.name} specializzato in ${shopConfig.team[0].tags.slice(0, 3).join(", ").toLowerCase()}.`}
         />
-        <link rel="canonical" href={`${shopConfig.meta.siteUrl}/borgo-dora-tatuaggi`} />
+        <link rel="canonical" href={`${shopConfig.meta.siteUrl}/moncalieri-tatuaggi-tribali`} />
       </Helmet>
 
       <div className="min-h-screen bg-background">
@@ -46,17 +46,16 @@ const BorgoDoraTattooPage = () => {
                   Home
                 </Link>
                 <span>/</span>
-                <span className="text-foreground font-medium">Borgo Dora</span>
+                <span className="text-foreground font-medium">{shopConfig.city.split(",")[0]}</span>
               </div>
 
               <h1 className="font-heading text-5xl md:text-7xl text-foreground mb-6">
-                Tatuaggi a Borgo Dora, Torino
+                Tatuaggi Tribali a {shopConfig.city.split(",")[0]}
               </h1>
 
               <p className="font-body text-lg text-muted-foreground leading-relaxed mb-8">
-                Nel cuore artistico di Torino, tra il mercato del Balon e le rive della Dora, Gran
-                Babar Studio è il punto di riferimento per tatuaggi di qualità in Borgo Dora dal
-                2020.
+                A {shopConfig.city}, {shopConfig.fullName} è il tempio dell'arte tribale sacra dal {shopConfig.established}. 
+                Vera arte original di magie antiche polinesiache e maori — non semplici copie.
               </p>
 
               <ContactDialog>
@@ -68,33 +67,32 @@ const BorgoDoraTattooPage = () => {
           </div>
         </section>
 
-        {/* About Borgo Dora */}
+        {/* About Moncalieri */}
         <section className="py-16 px-6 bg-card">
           <div className="container mx-auto max-w-4xl">
             <div className="flex items-start gap-4 mb-6">
               <Landmark className="h-8 w-8 text-primary shrink-0 mt-1" />
               <div>
                 <h2 className="font-heading text-3xl md:text-4xl text-foreground mb-4">
-                  Perché Borgo Dora per il Tuo Tatuaggio?
+                  Perché {shopConfig.city.split(",")[0]} per il Tuo Tatuaggio Tribale?
                 </h2>
                 <div className="space-y-4 font-body text-base text-foreground">
                   <p>
-                    Borgo Dora è il quartiere più autentico e artistico di Torino. Storicamente zona
-                    operaia, oggi è un crocevia di culture, creatività e artigianato. Qui convivono
-                    il famoso mercato delle pulci del Balon, gallerie d'arte indipendenti,
-                    laboratori artigianali e studi creativi.
+                    {shopConfig.city.split(",")[0]} è una città storica alle porte di Torino, con un centro caratteristico 
+                    e una forte identità culturale. Qui, dal {shopConfig.established}, {shopConfig.fullName} custodisce 
+                    l'arte sacra dei tatuaggi tribali, portando nei corpi dei clienti l'essenza delle 
+                    culture polinesiache e maori autentiche.
                   </p>
                   <p>
-                    Gran Babar Studio si trova in Lungo Dora Napoli 16, a pochi passi da Porta
-                    Palazzo e dal fiume Dora. La posizione è strategica: raggiungibile in 10 minuti
-                    a piedi da Porta Susa, ben collegata con mezzi pubblici (linee 3, 4, 11, 72), e
-                    con parcheggio disponibile nelle vie limitrofe.
+                    {shopConfig.fullName} si trova in {shopConfig.contact.addressLines[0]}, nel cuore di {shopConfig.city.split(",")[0]}, facilmente 
+                    raggiungibile da Torino (10 minuti in auto), ben collegato con mezzi pubblici e con 
+                    ampio parcheggio nelle vicinanze. La posizione strategica permette di accogliere 
+                    clienti da tutta la provincia di Torino.
                   </p>
                   <p>
-                    Scegliere uno studio a Borgo Dora significa immergersi in un'atmosfera unica,
-                    dove l'arte del tatuaggio si fonde con lo spirito bohémien del quartiere. Dopo
-                    la tua sessione puoi passeggiare tra i mercatini vintage, prendere un caffè nei
-                    bar storici o esplorare le gallerie d'arte contemporanea.
+                    Scegliere uno studio a {shopConfig.city.split(",")[0]} significa affidarsi a un maestro con {shopConfig.team[0].years} anni di esperienza 
+                    e viaggi nei luoghi sacri dell'arte tribale. Qui ogni tatuaggio è un rito, ogni segno viene 
+                    disegnato a mano sull'energia del tuo corpo — non copie, ma magie antiche reinterpretate.
                   </p>
                 </div>
               </div>
@@ -115,9 +113,9 @@ const BorgoDoraTattooPage = () => {
                 <div>
                   <h3 className="font-heading text-xl text-foreground mb-2">Indirizzo</h3>
                   <p className="font-body text-foreground">
-                    Lungo Dora Napoli 16<br />
-                    10152 Torino (TO)<br />
-                    Zona: Borgo Dora / Porta Palazzo
+                    {shopConfig.contact.addressLines[0]}<br />
+                    {shopConfig.contact.addressLines[1]}<br />
+                    Zona: {shopConfig.contact.quarter[0]}
                   </p>
                 </div>
               </div>
@@ -139,35 +137,39 @@ const BorgoDoraTattooPage = () => {
 
             <div className="space-y-6 font-body text-foreground">
               <div>
-                <h3 className="font-heading text-xl mb-3">🚇 Mezzi Pubblici</h3>
+                <h3 className="font-heading text-xl mb-3">� In Auto</h3>
                 <ul className="list-disc list-inside space-y-2 ml-4">
                   <li>
-                    <strong>Metropolitana:</strong> Fermata Porta Susa (10 minuti a piedi)
+                    <strong>Da Torino:</strong> 10 minuti via Corso Moncalieri o Strada Genova
                   </li>
                   <li>
-                    <strong>Tram:</strong> Linee 3, 4 - fermata Porta Palazzo
+                    <strong>Parcheggio:</strong> Disponibile in Corso Roma e vie limitrofe
                   </li>
                   <li>
-                    <strong>Bus:</strong> Linee 11, 72 - fermata Borgo Dora
+                    <strong>Zone sosta:</strong> Parcheggi gratuiti nelle vicinanze del centro
                   </li>
                 </ul>
               </div>
 
               <div>
-                <h3 className="font-heading text-xl mb-3">🚗 In Auto</h3>
-                <p>
-                  Parcheggio disponibile in Via Bologna e nelle vie limitrofe. Zone a pagamento GTT:
-                  tariffe orarie convenienti. Parcheggio gratuito dopo le 20:00 e la domenica.
-                </p>
+                <h3 className="font-heading text-xl mb-3">🚌 Mezzi Pubblici</h3>
+                <ul className="list-disc list-inside space-y-2 ml-4">
+                  <li>
+                    <strong>Autobus:</strong> Linee GTT da Torino verso Moncalieri (fermata Corso Roma)
+                  </li>
+                  <li>
+                    <strong>Treno:</strong> Stazione Moncalieri (10 minuti a piedi)
+                  </li>
+                </ul>
               </div>
 
               <div>
                 <h3 className="font-heading text-xl mb-3">🏛️ Punti di Riferimento</h3>
                 <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li>Mercato di Porta Palazzo (5 minuti a piedi)</li>
-                  <li>Balon - Mercato delle Pulci (sabato e seconda domenica del mese)</li>
-                  <li>Parco Dora (10 minuti a piedi)</li>
-                  <li>MAO - Museo d'Arte Orientale (15 minuti)</li>
+                  <li>Castello Reale di Moncalieri (5 minuti a piedi)</li>
+                  <li>Centro storico di Moncalieri</li>
+                  <li>A 10 km dal centro di Torino</li>
+                  <li>Vicinanza con Nichelino, Trofarello, Cambiano</li>
                 </ul>
               </div>
             </div>
@@ -181,18 +183,18 @@ const BorgoDoraTattooPage = () => {
               <Heart className="h-8 w-8 text-primary shrink-0 mt-1" />
               <div>
                 <h2 className="font-heading text-3xl md:text-4xl text-foreground mb-6">
-                  Perché Scegliere Gran Babar Studio
+                  Perché Scegliere {shopConfig.fullName}
                 </h2>
                 <div className="grid md:grid-cols-2 gap-6">
                   {[
-                    "Francesco con 10+ anni di esperienza professionale",
-                    "Specializzazione in Old School, realistico e cover-up",
-                    "Studio privato e riservato in atmosfera rilassante",
-                    "Massimi standard di igiene e sicurezza (autoclave, monouso)",
-                    "Consulenza gratuita per ogni progetto",
-                    "Design personalizzati studiati su misura per te",
-                    "Aftercare completo con assistenza post-tatuaggio",
-                    "Portfolio verificabile su Instagram con lavori recenti"
+                    `${shopConfig.author.name}, maestro tatuatore con ${shopConfig.team[0].years} anni di esperienza dal ${shopConfig.established}`,
+                    `Specializzazione tribale: ${shopConfig.team[0].tags.join(", ")}`,
+                    "Arte tribale originale — non copie, ma magie antiche autentiche",
+                    "Design freehand disegnati a mano direttamente sul corpo",
+                    "Studio privato con atmosfera sacra e rilassante",
+                    "Massimi standard di igiene e sicurezza (autoclave, monouso certificati)",
+                    "Consulenza gratuita per ogni progetto tribale",
+                    "Viaggi nei luoghi sacri: Polinesia, Nuova Zelanda, Asia per approfondire la cultura tribale"
                   ].map((feature, index) => (
                     <motion.div
                       key={index}
@@ -216,15 +218,15 @@ const BorgoDoraTattooPage = () => {
         <section className="py-16 px-6">
           <div className="container mx-auto max-w-4xl">
             <h2 className="font-heading text-3xl md:text-4xl text-foreground mb-8">
-              I Nostri Servizi a Borgo Dora
+              Servizi Tribali a Moncalieri
             </h2>
             <div className="grid md:grid-cols-3 gap-4">
               {[
-                { slug: "tatuaggi-old-school-torino", name: "Old School", desc: "Stile tradizionale" },
-                { slug: "tatuaggi-realistici-torino", name: "Realistici", desc: "Ritratti e nature" },
-                { slug: "cover-up-tatuaggi-torino", name: "Cover-up", desc: "Coperture professionali" },
-                { slug: "tatuaggi-geometrici-torino", name: "Geometrici", desc: "Sacred geometry" },
-                { slug: "tatuaggi-black-grey-torino", name: "Black & Grey", desc: "Sfumature perfette" }
+                { slug: "tatuaggio-polinesiano-a-torino", name: "Polinesiano", desc: "Arte sacra delle isole" },
+                { slug: "tatuaggio-maori-a-torino", name: "Maori", desc: "Tradizione Neozelandese" },
+                { slug: "tatuaggio-tribale-a-torino", name: "Tribale Freehand", desc: "Disegnato sul corpo" },
+                { slug: "tatuaggio-dotwork-a-torino", name: "Dot Work", desc: "Puntinatura sacra" },
+                { slug: "tatuaggio-black-work-a-torino", name: "Black Work", desc: "Solido e potente" }
               ].map((service) => (
                 <Link
                   key={service.slug}
