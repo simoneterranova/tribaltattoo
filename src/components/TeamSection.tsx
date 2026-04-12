@@ -9,7 +9,7 @@ type TeamMember = (typeof team)[number];
 
 const TeamSection = () => {
   return (
-    <section id="team" className="py-24 md:py-40 border-t-2 border-accent/20 overflow-hidden cyber-razor-top cyber-razor-bottom relative">
+    <section id="team" className="py-24 md:py-40 border-t-2 border-accent/20 overflow-hidden relative">
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.02]"
            style={{ backgroundImage: "linear-gradient(hsl(127 14% 36% / 0.1) 1px, transparent 1px), linear-gradient(90deg, hsl(127 14% 36% / 0.1) 1px, transparent 1px)", backgroundSize: "50px 50px" }} />
@@ -18,24 +18,24 @@ const TeamSection = () => {
         <ScrollReveal direction="up" duration={0.7}>
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
             <div>
-              <span className="font-body text-xs tracking-[0.4em] text-accent uppercase neon-glow">
+              <span className="font-body text-xs tracking-[0.4em] text-accent uppercase">
                 {shopConfig.sections.team.label}
               </span>
-              <h2 className="font-heading text-6xl md:text-8xl text-foreground mt-2 leading-none cyber-glitch-2" style={{ '--og-clip-path': 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' } as React.CSSProperties}>
+              <h2 className="font-heading text-6xl md:text-8xl text-foreground mt-2 leading-none">
                 {shopConfig.sections.team.heading[0]}
                 <br />
-                {shopConfig.sections.team.heading[1]}<span className="text-primary neon-glow-red cyber-glitch-4">.</span>
+                {shopConfig.sections.team.heading[1]}<span className="text-primary">.</span>
                 {/* Hidden SEO text with location keywords */}
                 <span className="sr-only"> - {shopConfig.team[0].role} a {shopConfig.city.split(",")[0].trim()}</span>
               </h2>
             </div>
-            <div className="pb-1 cyber-clip-corner border-2 border-accent/30 p-4 bg-card/50">
-              <p className="font-body text-[10px] tracking-[0.3em] text-accent uppercase mb-2 neon-glow">
+            <div className="pb-1 border-2 border-accent/30 p-4 bg-card/50">
+              <p className="font-body text-[10px] tracking-[0.3em] text-accent uppercase mb-2">
                 {shopConfig.city}
               </p>
               <div className="flex items-center gap-3">
-                <div className="h-[2px] w-8 bg-accent/60 shadow-[0_0_8px_rgba(0,255,210,0.6)]" />
-                <span className="font-heading text-5xl text-accent leading-none neon-glow cyber-glitch-3">{team[0]?.years || team.length}</span>
+                <div className="h-[2px] w-8 bg-accent/60" />
+                <span className="font-heading text-5xl text-accent leading-none">{team[0]?.years || team.length}</span>
                 <div className="font-body text-xs text-muted-foreground leading-tight">
                   <p>{shopConfig.sections.team.counterLabel[0]}</p>
                   <p>{shopConfig.sections.team.counterLabel[1]}</p>
@@ -71,10 +71,10 @@ function TeamRow({ member, rowIndex }: { member: TeamMember; rowIndex: number })
   };
 
   return (
-    <div ref={ref} className="border-t-2 border-accent/20 group relative cyber-razor-top">
-      {/* Hover accent line that slides down with neon glow */}
+    <div ref={ref} className="border-t-2 border-accent/20 group relative">
+      {/* Hover accent line that slides down */}
       <div
-        className={`absolute ${isEven ? "left-0" : "right-0"} top-0 w-[2px] h-full bg-accent origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-700 ease-out z-10 pointer-events-none shadow-[0_0_10px_rgba(0,255,210,0.8)]`}
+        className={`absolute ${isEven ? "left-0" : "right-0"} top-0 w-[2px] h-full bg-accent origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-700 ease-out z-10 pointer-events-none`}
       />
 
       <div className={`flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"}`}>

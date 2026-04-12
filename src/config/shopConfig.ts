@@ -9,95 +9,83 @@
 // ║  5. Update domain in public/sitemap.xml and robots.txt       ║
 // ║  That's it — nothing else should need touching.              ║
 // ║                                                              ║
-// ║  PALETTE (LIGHT THEME)                                       ║
-// ║  #DCC9A9  →  HSL  38 42% 76%  — background (warm parchment) ║
-// ║  #B83A2D  →  HSL   6 61% 45%  — primary / CTA buttons (red) ║
-// ║  #4E6851  →  HSL 127 14% 36%  — foreground / text (green)   ║
+// ║  PALETTE (DARK THEME — "Premium Modern Primitivism")         ║
+// ║  #0D0D0B  →  HSL  60  6%  5%  — background (obsidian black) ║
+// ║  #C0392B  →  HSL   5 61% 46%  — primary / CTA (crimson red) ║
+// ║  #E8DCC8  →  HSL  38 42% 85%  — foreground / text (bone)    ║
 // ╚══════════════════════════════════════════════════════════════╝
 
 // ── IMAGE ASSETS ──────────────────────────────────────────────────────────────
-// Replace these files in src/assets/ with Gran Babar's own photos.
+// Replace these files in src/assets/ with Tribal Tattoo's own photos/videos.
 import heroBg    from "@/assets/hero-bg.jpg";
-import artist1   from "@/assets/fra.mp4";   // Francesco – main portrait
+import artist1   from "@/assets/fra.mp4";   // CEO – main portrait / video
 import gallery1  from "@/assets/tattoo-1.jpeg";
 import gallery2  from "@/assets/tattoo-2.mp4";
 import gallery3  from "@/assets/tattoo-3.mp4";
 import gallery4  from "@/assets/tattoo-4.mp4";
 import gallery5  from "@/assets/tattoo-5.mp4";
 import gallery6  from "@/assets/tattoo-6.jpg";
-import gallery7  from "@/assets/studio-babar.mp4";
-import logo      from "@/assets/logo.png";        // Gran Babar logo
+import gallery7  from "@/assets/studio.mp4";
+import logo      from "@/assets/logo.png";     // Fishbone logo (red)
 
 // ── IDENTITY ──────────────────────────────────────────────────────────────────
 const shopConfig = {
   /** Short brand name used in the navbar logo, loading screen, and auth page. */
-  name: "GRAN BABAR",
+  name: "TRIBAL TATTOO",
 
   /** Full brand name used in the footer bottom bar. */
-  fullName: "GRAN BABAR STUDIO",
+  fullName: "TRIBAL TATTOO STUDIO",
 
   /** Logo image. */
   logo: logo,
 
   /** City / location shown in hero tagline and section subtitles. RESPECT THE FORMATTING */
-  city: "Torino, TO",
+  city: "Moncalieri, TO",
 
   /** Year the shop was founded — shown in the hero tagline. */
-  established: "2020",
+  established: "1994",
 
   /** The type of business activity. */
-  activity: "Studio di Tatuaggi",
+  activity: "Studio di Tatuaggi Tribali",
 
   /** Primary author/artist for blog posts and content authorship. */
   author: {
-    name: "Francesco Sansone",
-    jobTitle: "Tatuatore Professionista",
+    name: "Claudio Ciliberti",                    // ← update with CEO's name
+    jobTitle: "Maestro Tatuatore Tribale",
   },
 
   // ── SEO / HTML <head> ───────────────────────────────────────────────────────
   meta: {
     /** Full domain without trailing slash. */
-    siteUrl: "https://www.granbabar.it",
+    siteUrl: "https://www.tribaltattoo.it",   // ← update with real domain
 
     /** Link di prenotazione o contatto */
-    bookingSiteUrl: "https://www.granbabar.it",
+    bookingSiteUrl: "https://www.tribaltattoo.it",
 
     /** og:locale */
     locale: "it_IT",
 
-    /**
-     * Google Search Console verification code.
-     * Get it from: https://search.google.com/search-console
-     * Add property → URL prefix → Copy the content="..." value from the meta tag.
-     * Leave empty or remove this field if not using Google Search Console.
-     */
     googleSiteVerification: "YOUR_GOOGLE_VERIFICATION_CODE_HERE",
-    
-    /**
-     * Google Analytics 4 Measurement ID.
-     * Get it from: https://analytics.google.com → Admin → Data Streams
-     * Format: "G-XXXXXXXXXX"
-     * Leave empty or set to placeholder if not using GA4.
-     */
-    googleAnalyticsId: "G-XXXXXXXXXX",
-    
-    title: "Tatuaggi Torino | Tatuatore Professionista | Gran Babar Studio",
+    googleAnalyticsId:      "G-XXXXXXXXXX",
+
+    title:
+      "Tatuaggi Tribali Moncalieri Torino | Arte Sacra Originale | Tribal Tattoo Studio",
     description:
-      "Tatuaggi a Torino dal 2020. Francesco, tatuatore esperto in Old School, realistici, geometrici e cover-up. Studio professionale in Borgo Dora. Consulenza gratuita.",
-    ogTitle: "Gran Babar – Studio di Tatuaggi a Torino",
+      "Tatuaggi tribali a Moncalieri (Torino) dal 1994. Arte polinesiaca, maori e tribale originale — non semplici copie. Design freehand su misura, rispettoso dell'anatomia. Consulenza gratuita.",
+    ogTitle:
+      "Tribal Tattoo – Arte Sacra Tribale a Moncalieri, Torino",
     ogDescription:
-      "Ogni tatuaggio è un'opera d'arte unica. Prenota la tua consulenza gratuita con Francesco, artista tatuatore a Torino.",
+      "Vera arte originale di magie antiche. Tatuaggi tribali freehand, polinesiaci e maori. Prenota la tua consultazione con il maestro.",
     /** Absolute path from the public/ folder or a full URL. */
     ogImage: "/og-image.jpg",
   },
 
   // ── NAVIGATION LABELS ───────────────────────────────────────────────────────
   nav: {
-    /** Text on the contact CTA button in the navbar. */
-    bookingCta: "Contattami",
+    bookingCta: "Prenota",
     links: [
       { label: "Servizi",    href: "#services"     },
-      { label: "Francesco",  href: "#team"         },
+      { label: "Il Maestro", href: "#team"         },
       { label: "Recensioni", href: "#testimonials" },
       { label: "Gallery",    href: "#gallery"      },
       { label: "Contatti",   href: "#contact"      },
@@ -106,29 +94,25 @@ const shopConfig = {
 
   // ── HERO SECTION ────────────────────────────────────────────────────────────
   hero: {
-    /** Background image — replace with Gran Babar's hero photo. */
     backgroundImage: heroBg,
 
     /** Two-line editorial headline rendered in giant type. */
-    headline: ["Gran", "Babar"],
+    headline: ["Tribal", "Tattoo"],
 
-    /** Short descriptor line under the headline. */
     subheadline:
-      "Studio di tatuaggi a Torino. Ogni segno racconta una storia, ogni opera d'arte è pensata su di te.",
+      "Sacred Ink in Sacred Places. Arte tribale originale dal 1994 — ogni segno disegnato a mano sull'energia del tuo corpo.",
 
-    /** Text on the contact CTA button inside the hero section. */
-    bookingCta: "Contattami",
+    bookingCta: "Prenota una Consulenza",
 
-    /** Items that scroll in the marquee strip at the bottom of the hero. */
     marqueeItems: [
-      "Old School",
-      "Realistico",
-      "Black & Grey",
-      "Geometrico",
-      "Gotico",
+      "Polinesiano",
+      "Maori",
       "Tribale",
-      "Cover-up",
-      "Personalizzato",
+      "Freehand",
+      "Dot Work",
+      "Black Work",
+      "Geometrico",
+      "Su Misura",
     ],
   },
 
@@ -136,14 +120,14 @@ const shopConfig = {
   sections: {
     services: {
       label: "Servizi",
-      heading: ["I Nostri", "Servizi"],
-      counterLabel: ["Trattamenti", "Personalizzati"],
+      heading: ["I Nostri", "Rituali"],
+      counterLabel: ["Anni di", "Esperienza"],
       footnote:
-        "Ogni progetto è unico · I preventivi sono personalizzati in base a dimensione, complessità e tempo richiesto · Consulenza gratuita",
+        "Ogni progetto è un rito unico · I preventivi sono personalizzati in base a dimensione, complessità e posizionamento anatomico · Consulenza gratuita",
     },
     team: {
-      label: "Francesco",
-      heading: ["Chi è", "Francesco"],
+      label: "Il Maestro",
+      heading: ["Chi è il", "Maestro"],
       counterLabel: ["Anni di", "Esperienza"],
     },
     testimonials: {
@@ -165,168 +149,156 @@ const shopConfig = {
   },
 
   // ── SERVICES ────────────────────────────────────────────────────────────────
-  // All prices are customized based on project complexity and client needs.
-  // Final quote agreed during free consultation. `durationMinutes` is approximate.
   services: [
     {
-    id: "consultation",
-    index: "01",
-    name: "Consulenza",
-    price: "Gratuita",
-    duration: "30 min",
-    durationMinutes: 30,
-    description:
-      "Un primo confronto per definire l'idea, valutare la fattibilità e costruire insieme il progetto ideale per il tuo tatuaggio.",
-    badge: "Iniziale" as string | null,
+      id: "consultation",
+      index: "01",
+      name: "Consulenza",
+      price: "Gratuita",
+      duration: "30 min",
+      durationMinutes: 30,
+      description:
+        "Un primo incontro per conoscersi, studiare l'anatomia e costruire insieme il progetto tribale ideale per il tuo corpo.",
+      badge: "Iniziale" as string | null,
     },
     {
-      id: "custom-tattoo",
+      id: "tribal-freehand",
       index: "02",
-      name: "Tattoo Personalizzato",
+      name: "Tribale Freehand",
       price: "Su Preventivo",
       duration: "da 1 ora",
       durationMinutes: 60,
       description:
-        "Ogni tatuaggio nasce da un'idea tua e si trasforma in un'opera d'arte unica. Consulenza inclusa, design su misura studiato per la tua pelle.",
+        "Il design viene disegnato a mano libera direttamente sul corpo con il marcatore rosso, seguendo il flusso dei muscoli. Arte viva, non copiata.",
       badge: "Più richiesto" as string | null,
     },
     {
-      id: "cover-up",
+      id: "polynesian",
       index: "03",
+      name: "Polinesiano & Maori",
+      price: "Su Preventivo",
+      duration: "da 2 ore",
+      durationMinutes: 120,
+      description:
+        "Vera arte originale di magie antiche. Motivi polinesiaci e maori studiati nel rispetto delle tradizioni culturali e dell'anatomia del cliente.",
+      badge: "Specialità" as string | null,
+    },
+    {
+      id: "dot-work",
+      index: "04",
+      name: "Dot Work & Black Work",
+      price: "Su Preventivo",
+      duration: "da 1 ora",
+      durationMinutes: 60,
+      description:
+        "Puntinatura di precisione e solido blackwork per chi cerca contrasti netti e una resa visiva potente.",
+      badge: null as string | null,
+    },
+    {
+      id: "cover-up",
+      index: "05",
       name: "Cover-up & Correzioni",
       price: "Su Preventivo",
       duration: "da 1 ora",
       durationMinutes: 60,
       description:
-        "Diamo nuova vita a vecchi tatuaggi. Studio approfondito del progetto per una copertura impeccabile che rispetta la tua pelle.",
-      badge: "Specialità" as string | null,
-    },
-    {
-      id: "tatuaggio-sigillo",
-      index: "04",
-      name: "Tatuaggio Sigillo",
-      price: "Su Preventivo",
-      duration: "da 45 min",
-      durationMinutes: 45,
-      description:
-        "Mappatura energetica del tattoo: un'analisi incrociata tra il simbolismo del tatuaggio e l'energia del cliente. Il costo varia se è analisi di un tattoo esistente o creazione di un nuovo progetto personalizzato.",
-      badge: "Unico" as string | null,
+        "Trasformiamo vecchi tatuaggi in nuove opere tribali. Studio approfondito per una copertura che rispetta la tua pelle.",
+      badge: null as string | null,
     },
     {
       id: "aftercare",
-      index: "05",
+      index: "06",
       name: "Cura Post-Tatuaggio",
       price: "Inclusa",
       duration: "inclusa",
       durationMinutes: 30,
       description:
-        "Istruzioni dettagliate e assistenza continua per la guarigione del tuo tatuaggio. Il lavoro non finisce con l'ago.",
+        "Istruzioni dettagliate e assistenza continua per la guarigione del tuo tatuaggio. Il rito non finisce con l'ago.",
       badge: "Inclusa" as string | null,
     },
-
   ],
 
   // ── TEAM ────────────────────────────────────────────────────────────────────
-  // Gran Babar è uno studio indipendente — un solo artista, Francesco.
   team: [
     {
       index: "01",
-      name: "FRANCESCO",
-      role: "Fondatore & Artista Tatuatore",
+      name: "Claudio Ciliberti",                  // ← update with CEO's name
+      role: "Fondatore & Maestro Tatuatore",
       image: artist1,
-      bio: "Il percorso di Francesco è segnato dalla passione per il disegno, la musica e il volontariato. Il nome Gran Babar nasce da una storia speciale con suo figlio Samuele. L'aggiunta di 'Gran' rappresenta il desiderio di essere un punto di riferimento per chi cerca un tatuaggio che vada oltre il semplice disegno.",
-      tags: ["Old School", "Realistico", "Geometrico", "Cover-up", "Gotico", "Tribale"],
-      years: "10+",
+      bio: "Dal 1994 porta nel corpo dei suoi clienti l'essenza delle culture tribali di tutto il mondo. I suoi viaggi in Polinesia, Nuova Zelanda e nei luoghi sacri dell'Asia gli hanno permesso di costruire un rapporto autentico con l'arte tribale originale — non semplici copie, ma magie antiche reinterpretate sull'energia di ogni individuo.",
+      tags: ["Polinesiano", "Maori", "Tribale", "Freehand", "Dot Work", "Black Work"],
+      years: "30+",
     },
   ],
 
   // ── TESTIMONIALS ────────────────────────────────────────────────────────────
+  // ← Replace / add with real reviews from Google / social
   testimonials: [
     {
-      name: "Clara Collino",
-      text: "L'esperienza è stata fantastica fin dal primo momento: l'ambiente è pulito, accogliente e professionale. Francesco è stato molto attento a capire le mie esigenze e ha creato un design personalizzato che mi ha stupita!",
+      name: "Cliente",
+      text: "Un'esperienza che va oltre il tatuaggio. Si sente che dietro ogni segno c'è una storia vera, un rispetto profondo per la tradizione. Unico.",
     },
     {
-      name: "Carlotta Irene G.",
-      text: "Cinque stelle per professionalità, impegno e lato artistico in continua evoluzione. C'è molta cura della persona e del suo progetto, con delicatezza e attenzione. Un artista che mette passione in ogni tratto.",
+      name: "Cliente",
+      text: "Ho scelto questo studio proprio per il modo in cui il maestro disegna direttamente sul corpo. Non è un semplice tatuaggio, è un rito.",
     },
     {
-      name: "Antonia Murdocca",
-      text: "Avevo timore di tatuarmi vista la mia età ed inesperienza. Grazie Francesco per la pazienza e la bravura — è stata un'esperienza molto bella. Mi sono sentita rassicurata e seguita molto bene.",
-    },
-    {
-      name: "Valentina Bessone",
-      text: "Francesco ha una cura del dettaglio e un realismo incredibile! È stato meraviglioso come ha interpretato i miei suggerimenti e li ha trasformati in un design perfetto. In più è stato davvero delicatissimo.",
-    },
-    {
-      name: "Luca Tedeschi",
-      text: "Sono più che soddisfatto, il tatuaggio è stupendo e Francesco ti accoglie benissimo. Raccomando a tutti!",
-    },
-    {
-      name: "Laura Ramon",
-      text: "Lo studio è bellissimo, accogliente e curato nei minimi dettagli. Francesco ha la capacità di metterti subito a tuo agio. Non è solo un artista, ma una guida che ti aiuta a esprimere te stesso attraverso il tatuaggio.",
+      name: "Cliente",
+      text: "Professionalità e cultura tribale autentica. Ho finalmente un tatuaggio polinesiano che rispetta la vera tradizione e il mio corpo.",
     },
   ],
 
   // ── GALLERY ─────────────────────────────────────────────────────────────────
   gallery: [
-    { src: gallery1, alt: "Tatuaggio Old School realizzato da Gran Babar",     label: "Old School"  },
-    { src: gallery2, alt: "Tatuaggio realistico Black & Grey",                  label: "Black & Grey" },
-    { src: gallery3, alt: "Tatuaggio geometrico a Torino",                      label: "Geometrico"  },
-    { src: gallery4, alt: "Tatuaggio gotico su braccio",                        label: "Gotico"      },
-    { src: gallery5, alt: "Tatuaggio tribale personalizzato",                   label: "Tribale"     },
-    { src: gallery6, alt: "Tatuaggio fineline personalizzato",                  label: "Fineline"    },
-    { src: gallery7, alt: "Interno dello studio Gran Babar Torino",             label: "Lo Studio"   },
+    { src: gallery1, alt: "Tatuaggio polinesiano freehand",         label: "Polinesiano"  },
+    { src: gallery2, alt: "Tatuaggio maori su braccio",             label: "Maori"        },
+    { src: gallery3, alt: "Dot work tribale geometrico",            label: "Dot Work"     },
+    { src: gallery4, alt: "Black work tribale su schiena",          label: "Black Work"   },
+    { src: gallery5, alt: "Tatuaggio tribale full sleeve",          label: "Full Sleeve"  },
+    { src: gallery6, alt: "Dettaglio freehand tribale",             label: "Freehand"     },
+    { src: gallery7, alt: "Interno dello studio Tribal Tattoo",     label: "Lo Studio"    },
   ],
 
   // ── CONTACT & LOCATION ──────────────────────────────────────────────────────
   contact: {
-    /** Each string becomes a line in the address block. */
-    addressLines: ["Lungo Dora Napoli 16", "10152 Torino TO"],
+    addressLines: ["Corso Roma, 51", "10024 Moncalieri TO"],
 
-    /** Neighborhood/district name — important for local SEO. */
-    quarter: ["Borgo Dora"],
+    quarter: ["Moncalieri"],
 
-    /** ISO 3166-1 alpha-2 country code for schema.org. */
     countryCode: "IT",
 
-    /** Schema.org priceRange indicator. */
     priceRange: "$$",
 
-    /** Lat/lng for schema.org geo property — improves local pack ranking. */
     geo: {
-      latitude:  "45.0778",
-      longitude: "7.6880",
+      latitude:  "44.9980",
+      longitude: "7.6863",
     },
 
-    phone:     "+39 347 017 4082",
-    phoneHref: "tel:+393470174082",
+    phone:     "+39 338 839 8005",
+    phoneHref: "tel:+393388398005",
 
-    email: "info@granbabar.it",
+    email: "info@tribaltattoo.it",   // ← update with real email
 
     /**
      * Google Maps embed URL.
      * Get it from: maps.google.com → Share → Embed a map → copy the src URL.
-     * Replace this placeholder with the actual embed URL for Lungo Dora Napoli 16, Torino.
      */
     googleMapsEmbedUrl:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2816.3!2d7.6880!3d45.0778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47886d6b5b5b5b5b%3A0x0!2zTHVuZ28gRG9yYSBOYXBvbGkgMTYsIFRvcmlubyBUTw!5e0!3m2!1sit!2sit!4v1700000000000",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2819!2d7.6863!3d44.9980!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zQ29yc28gUm9tYSA1MSwgTW9uY2FsaWVyaSBUTw!5e0!3m2!1sit!2sit!4v1700000000000",
   },
 
   // ── OPENING HOURS ───────────────────────────────────────────────────────────
-  // Orari non specificati sul sito — aggiornare con quelli reali.
   hours: [
-    { days: "Lun – Ven", time: "10:00 – 19:00" },
-    { days: "Sabato",    time: "10:00 – 17:00" },
-    { days: "Domenica",  time: "Solo su appuntamento" },
+    { days: "Lun – Ven", time: "10:00 – 12:30  |  15:00 – 19:30" },
+    { days: "Sabato",    time: "09:30 – 13:00  |  15:00 – 19:00" },
+    { days: "Domenica",  time: "Chiuso"                           },
   ],
 
   // ── SOCIAL LINKS ────────────────────────────────────────────────────────────
   social: {
-    instagram: "https://www.instagram.com/gran_babar_tattoo?igsh=MWtuamRheWl6NXUxeA==",
-    // facebook:  "https://www.facebook.com/granbabar",
-    tiktok:    "https://www.tiktok.com/@gran_babar_studio?_r=1&_t=ZN-953tCgIQjSA",
-    // whatsapp is handled via phoneHref — not a social profile link
+    instagram: "https://www.instagram.com/tribaltattoo",  // ← update
+    // facebook:  "https://www.facebook.com/tribaltattoo",
+    // tiktok:    "https://www.tiktok.com/@tribaltattoo",
   },
 
   // ── FOOTER ──────────────────────────────────────────────────────────────────
@@ -340,105 +312,92 @@ const shopConfig = {
 
   // ── LEGAL (Privacy Policy & Cookie Policy) ──────────────────────────────────
   legal: {
-    /** Full legal entity name. */
-    legalName:     "Tatuaggi e Piercing – Gran Babar",
-    /** Privacy / legal contact email. */
-    privacyEmail:  "granbabarstudio@gmail.com",
-    /** Registered postal address. */
-    postalAddress: "Lungo Dora Napoli 16 – 10152 – Torino (TO)",
-    /** VAT / Partita IVA. */
-    vatNumber:     "13057470018",
-    /** REA Number — update if registered with the Camera di Commercio. */
+    legalName:     "Tribal Tattoo Studio",          // ← update with legal entity
+    privacyEmail:  "info@tribaltattoo.it",          // ← update
+    postalAddress: "Corso Roma, 51 – 10024 – Moncalieri (TO)",
+    vatNumber:     "[Inserire Partita IVA]",
     reaNumber:     "[Inserire Numero REA]",
-    /** Share Capital — update if applicable. */
     shareCapital:  "[Inserire Capitale Sociale]",
-    /** PEC — strongly recommended for Italian businesses. */
-    pecEmail:      "francesco.sansone@pec.fiscozen.it",
+    pecEmail:      "[Inserire PEC]",
   },
 
   // ── THEME ────────────────────────────────────────────────────────────────────
-  // All colors are HSL without the hsl() wrapper: "hue saturation% lightness%"
   //
-  // ┌─────────────────────────────────────────────────────────────────────┐
-  // │  CYBERPUNK DARK THEME — vintage dystopian aesthetic                 │
-  // │                                                                     │
-  // │  ANCHOR          HEX        HSL               ROLE                  │
-  // │  Deep Charcoal   #1A1A18    30 4% 10%         page background       │
-  // │  Brick Red       #B83A2D     6 61% 45%        primary / CTA         │
-  // │  Forest Green    #4E6851   127 14% 36%        accents              │
-  // │  Parchment       #DCC9A9    38 42% 76%        foreground / text     │
-  // │                                                                     │
-  // │  Dark dystopian base with warm parchment text, brick red CTAs,      │
-  // │  and forest green accents. Cyberpunk razors, glitch effects, and    │
-  // │  angular UI elements throughout.                                     │
-  // └─────────────────────────────────────────────────────────────────────┘
+  // ┌──────────────────────────────────────────────────────────────────────┐
+  // │  DARK THEME — "Premium Modern Primitivism & Sacred Ritual"           │
+  // │                                                                      │
+  // │  ANCHOR        HEX        HSL               ROLE                    │
+  // │  Obsidian      #0D0D0B    60  6%  5%        page background         │
+  // │  Crimson Red   #C0392B     5 61% 46%        primary / CTA           │
+  // │  Bone White    #E8DCC8    38 42% 85%        foreground / text       │
+  // │  Charcoal      #1C1C1A    60  4% 11%        cards & surfaces        │
+  // └──────────────────────────────────────────────────────────────────────┘
   //
   theme: {
     /**
-     * Google Fonts stylesheet URL.
-     * Cyberpunk fonts will be loaded from local cyberpunk.css
-     * These Google fonts are fallbacks for body text
+     * Google Fonts — rugged display heading + clean modern body.
+     * Oswald gives a blocky, carved feel; Inter keeps body readable.
      */
     googleFontsUrl:
-      "https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap",
- 
+      "https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap",
+
     fonts: {
-      heading: "Orbitron",        // Tech-inspired bold display font
-      body:    "Share Tech Mono", // Monospace cyberpunk body font
+      heading: "Oswald",
+      body:    "Inter",
     },
 
-    /** Angular cyberpunk aesthetic — sharp corners */
+    /** Sharp corners — raw, uncompromising aesthetic */
     radius: "0px",
 
     colors: {
-      // ── Base surface — Deep Charcoal #1A1A18 ─────────────────────────────
-      background:              "30 4% 10%",
-      // ── Primary text — Warm Parchment #DCC9A9 ────────────────────────────
-      foreground:              "38 42% 76%",
+      // ── Base surface — Obsidian Black #0D0D0B ────────────────────────────
+      background:              "60 6% 5%",
+      // ── Primary text — Bone White #E8DCC8 ────────────────────────────────
+      foreground:              "38 42% 85%",
 
-      // ── Cards & popovers — Slightly lighter charcoal ─────────────────────
-      card:                    "30 4% 14%",
-      cardForeground:          "38 42% 76%",
-      popover:                 "30 4% 12%",
-      popoverForeground:       "38 42% 76%",
+      // ── Cards & popovers — Charcoal #1C1C1A ──────────────────────────────
+      card:                    "60 4% 11%",
+      cardForeground:          "38 42% 85%",
+      popover:                 "60 4% 8%",
+      popoverForeground:       "38 42% 85%",
 
-      // ── Primary / CTA — Brick Red #B83A2D ────────────────────────────────
-      primary:                 "6 61% 45%",
-      primaryForeground:       "38 42% 90%",
+      // ── Primary / CTA — Crimson Red #C0392B ──────────────────────────────
+      primary:                 "5 61% 46%",
+      primaryForeground:       "38 42% 95%",
 
-      // ── Secondary — Forest Green #4E6851 ─────────────────────────────────
-      secondary:               "127 14% 36%",
+      // ── Secondary — Dark earthy brown (woodgrain) ─────────────────────────
+      secondary:               "25 20% 20%",
       secondaryForeground:     "38 42% 85%",
 
-      // ── Muted — Dark muted surface ───────────────────────────────────────
-      muted:                   "30 4% 16%",
-      mutedForeground:         "38 20% 55%",
+      // ── Muted — Dark muted surface ────────────────────────────────────────
+      muted:                   "60 4% 14%",
+      mutedForeground:         "38 20% 50%",
 
-      // ── Accent — Forest Green for vintage dystopian highlights ──────────
-      accent:                  "127 14% 36%",   // Forest Green #4E6851
-      accentForeground:        "38 42% 76%",
+      // ── Accent — Crimson Red highlights ──────────────────────────────────
+      accent:                  "5 61% 46%",
+      accentForeground:        "38 42% 95%",
 
-      // ── Borders & inputs — Subtle forest green tint ──────────────────────
-      border:                  "127 14% 25%",
-      input:                   "30 4% 18%",
+      // ── Borders & inputs — Subtle warm tint ───────────────────────────────
+      border:                  "38 10% 18%",
+      input:                   "60 4% 15%",
 
-      // ── Focus ring — Forest Green for vintage aesthetic ──────────────────
-      ring:                    "127 14% 36%",
+      // ── Focus ring — Crimson ─────────────────────────────────────────────
+      ring:                    "5 61% 46%",
 
-      // ── Sidebar — Dark elevated surface ──────────────────────────────────
-      sidebarBackground:         "30 4% 12%",
-      sidebarForeground:         "38 42% 76%",
-      sidebarPrimary:            "6 61% 45%",
-      sidebarPrimaryForeground:  "38 42% 90%",
-      sidebarAccent:             "30 4% 18%",
-      sidebarAccentForeground:   "38 42% 76%",
-      sidebarBorder:             "127 14% 25%",
-      sidebarRing:               "127 14% 36%",
+      // ── Sidebar ───────────────────────────────────────────────────────────
+      sidebarBackground:         "60 4% 8%",
+      sidebarForeground:         "38 42% 85%",
+      sidebarPrimary:            "5 61% 46%",
+      sidebarPrimaryForeground:  "38 42% 95%",
+      sidebarAccent:             "60 4% 14%",
+      sidebarAccentForeground:   "38 42% 85%",
+      sidebarBorder:             "38 10% 18%",
+      sidebarRing:               "5 61% 46%",
     },
   },
 
   // ── INTERNAL / STORAGE ──────────────────────────────────────────────────────
-  cookieConsentKey: "gran-babar-cookie-consent",
+  cookieConsentKey: "tribal-tattoo-cookie-consent",
 };
 
 export type ShopConfig = typeof shopConfig;

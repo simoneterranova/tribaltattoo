@@ -67,9 +67,9 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 cyber-razor-bottom ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-background/90 backdrop-blur-2xl border-b-2 border-accent/20 shadow-[0_4px_30px_rgba(0,255,210,0.1)]"
+          ? "bg-background/90 backdrop-blur-2xl border-b-2 border-accent/20"
           : "bg-background/60 backdrop-blur-xl border-b-2 border-border/30"
       }`}
     >
@@ -105,7 +105,7 @@ const Navbar = () => {
                 transition={{ duration: 0.4, delay: 0.1 * i + 0.3 }}
                 className={`relative px-3 py-2 font-body text-[11px] tracking-[0.25em] uppercase transition-colors duration-300 ${
                   isActive
-                    ? "text-accent neon-glow"
+                    ? "text-accent"
                     : "text-muted-foreground hover:text-accent"
                 }`}
                 title={`Vai alla sezione ${link.label}`}
@@ -113,7 +113,7 @@ const Navbar = () => {
                 {link.label}
                 {/* Animated active indicator */}
                 <motion.span
-                  className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-accent rounded-full shadow-[0_0_8px_rgba(0,255,210,0.8)]"
+                  className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-accent rounded-full"
                   initial={false}
                   animate={{
                     width: isActive ? 16 : 0,
@@ -189,25 +189,21 @@ const Navbar = () => {
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
             className="fixed inset-0 z-[60] bg-background flex flex-col md:hidden border-4 border-accent/20"
           >
-            {/* Scanline effect */}
-            <div className="absolute inset-0 pointer-events-none opacity-[0.02]" 
-                 style={{ backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 2px, hsl(127 14% 36%) 2px, hsl(127 14% 36%) 4px)" }} />
-
             {/* Header row */}
-            <div className="flex items-center justify-between px-6 py-4 border-b-2 border-accent/20 shrink-0 cyber-razor-bottom relative z-10">
+            <div className="flex items-center justify-between px-6 py-4 border-b-2 border-accent/20 shrink-0 relative z-10">
               <a
                 href="#hero"
                 onClick={(e) => {
                   handleNavClick(e, "#hero");
                   setMobileOpen(false);
                 }}
-                className="font-heading text-2xl tracking-[0.2em] text-accent neon-glow"
+                className="font-heading text-2xl tracking-[0.2em] text-accent"
                 title="Torna all'inizio - Homepage Gran Babar"
               >
                 {shopConfig.name}
               </a>
               <button
-                className="text-foreground p-2 hover:bg-accent/10 cyber-clip-corner transition-colors border border-accent/30"
+                className="text-foreground p-2 hover:bg-accent/10 transition-colors border border-accent/30"
                 onClick={() => setMobileOpen(false)}
                 aria-label="Close menu"
               >
@@ -230,8 +226,8 @@ const Navbar = () => {
                     initial={{ opacity: 0, x: -24 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: 0.06 * i + 0.08 }}
-                    className={`flex items-center justify-between py-5 border-b-2 border-accent/20 font-heading text-4xl transition-all cyber-razor-bottom ${
-                      isActive ? "text-accent neon-glow" : "text-foreground hover:text-accent"
+                    className={`flex items-center justify-between py-5 border-b-2 border-accent/20 font-heading text-4xl transition-all ${
+                      isActive ? "text-accent" : "text-foreground hover:text-accent"
                     }`}
                     title={`Vai alla sezione ${link.label}`}
                   >
@@ -249,7 +245,7 @@ const Navbar = () => {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.38 }}
-              className="px-6 pb-10 pt-6 space-y-3 shrink-0 border-t-2 border-accent/20 cyber-razor-top relative z-10"
+              className="px-6 pb-10 pt-6 space-y-3 shrink-0 border-t-2 border-accent/20 relative z-10"
             >
               {user && isBarber ? (
                 <>

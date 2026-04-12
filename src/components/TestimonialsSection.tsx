@@ -259,7 +259,7 @@ const TestimonialsSection = () => {
   }, []);
 
   return (
-    <section id="testimonials" className="py-16 md:py-24 lg:py-40 border-t-2 border-accent/20 overflow-hidden cyber-razor-top cyber-razor-bottom relative">
+    <section id="testimonials" className="py-16 md:py-24 lg:py-40 border-t-2 border-accent/20 overflow-hidden relative">
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.02]"
            style={{ backgroundImage: "linear-gradient(hsl(127 14% 36% / 0.1) 1px, transparent 1px), linear-gradient(90deg, hsl(127 14% 36% / 0.1) 1px, transparent 1px)", backgroundSize: "50px 50px" }} />
@@ -269,15 +269,15 @@ const TestimonialsSection = () => {
         <ScrollReveal direction="up" duration={0.7}>
           <div className="flex items-end justify-between">
             <div>
-              <span className="font-body text-xs tracking-[0.3em] md:tracking-[0.4em] text-accent uppercase neon-glow">
+              <span className="font-body text-xs tracking-[0.3em] md:tracking-[0.4em] text-accent uppercase">
                 {shopConfig.sections.testimonials.label}
               </span>
-              <h2 className="font-heading text-4xl md:text-6xl lg:text-8xl text-foreground mt-2 leading-none cyber-glitch-2" style={{ '--og-clip-path': 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' } as React.CSSProperties}>
+              <h2 className="font-heading text-4xl md:text-6xl lg:text-8xl text-foreground mt-2 leading-none">
                 {shopConfig.sections.testimonials.heading}
-                <span className="text-primary neon-glow-red cyber-glitch-4">.</span>
+                <span className="text-primary">.</span>
               </h2>
             </div>
-            <span className="font-body text-xs text-accent tracking-widest uppercase hidden md:block neon-glow">
+            <span className="font-body text-xs text-accent tracking-widest uppercase hidden md:block">
               Drag ←→
             </span>
           </div>

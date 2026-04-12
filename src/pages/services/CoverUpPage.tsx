@@ -20,7 +20,8 @@ const CoverUpPage = () => {
       "Un cover-up non è solo una semplice copertura di un tatuaggio esistente, ma un processo artistico che richiede attenzione e conoscenza tecnica. Gran Babar esamina il tuo tatuaggio attuale, valuta le sue caratteristiche (come i colori, la forma e la posizione), e sviluppa un nuovo design che si integra perfettamente con il lavoro precedente, senza compromettere la qualità e l'estetica.",
       "Gran Babar si dedica alla creazione di tatuaggi personalizzati che raccontano storie uniche. Con anni di esperienza, ha perfezionato la tecnica del cover-up, trasformando vecchi tatuaggi in opere d'arte contemporanee. Ogni cover-up che realizza è studiato con precisione, per garantire che la nuova creazione non solo copra il vecchio disegno, ma lo renda parte di una nuova storia.",
       "Con il nostro approccio personalizzato, il tuo vecchio tatuaggio può diventare un nuovo capolavoro che ti farà sentire finalmente soddisfatto."
-    ],\n    features: [
+    ],
+    features: [
       "Consulenza personalizzata per valutare il tatuaggio esistente",
       "Progettazione di nuovi disegni che integrano il lavoro precedente",
       "Tecnica avanzata per cover-up efficaci",

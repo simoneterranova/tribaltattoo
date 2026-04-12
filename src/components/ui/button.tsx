@@ -8,13 +8,13 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/85 cyber-clip-corner border-2 border-primary hover:shadow-[0_0_20px_rgba(184,58,45,0.5)]",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90 cyber-clip-corner",
-        outline: "border-2 border-foreground/30 bg-transparent text-foreground hover:bg-foreground/5 hover:border-accent cyber-clip-corner",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 cyber-clip-corner border-2 border-secondary",
+        default: "bg-primary text-primary-foreground hover:bg-primary/85 border-2 border-primary hover:shadow-[0_0_20px_rgba(184,58,45,0.5)]",
+        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        outline: "border-2 border-foreground/30 bg-transparent text-foreground hover:bg-foreground/5 hover:border-accent",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 border-2 border-secondary",
         ghost: "hover:bg-accent/10 hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        hero: "bg-primary text-primary-foreground hover:bg-primary/85 tracking-[0.2em] uppercase font-heading text-lg cyber-clip-corner border-2 border-primary hover:shadow-[0_0_30px_rgba(184,58,45,0.6)] before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700",
+        hero: "bg-primary text-primary-foreground hover:bg-primary/85 tracking-[0.2em] uppercase font-heading text-lg border-2 border-primary hover:shadow-[0_0_30px_rgba(184,58,45,0.6)] before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700",
       },
       size: {
         default: "h-11 px-6 py-2",

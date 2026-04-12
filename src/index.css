@@ -1,12 +1,9 @@
 /* ═══════════════════════════════════════════════════════════════
-   CYBERPUNK THEME — Dystopian aesthetic with razor edges and glitch
+   GLOBAL STYLES
    Theme colors, fonts, and radius are set at runtime from
    shopConfig.ts (via main.tsx → applyShopTheme).
    To deploy for a new barbershop, edit ONLY shopConfig.ts.
    ═══════════════════════════════════════════════════════════════ */
-
-/* Import Cyberpunk CSS Library */
-@import url('../cyberpunk-css/cyberpunk.css');
 
 /* Google Fonts are injected dynamically from shopConfig.theme.googleFontsUrl */
 
@@ -22,7 +19,6 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-body);
-    /* Cyberpunk aesthetic — crisp pixels */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -39,80 +35,8 @@
   }
 
   ::selection {
-    background: hsl(127 14% 36% / 0.5); /* Forest Green selection */
+    background: hsl(var(--accent) / 0.5);
     color: hsl(var(--foreground));
-  }
-}
-
-/* Cyberpunk glitch text effect utility */
-@layer utilities {
-  .cyber-glitch-text {
-    position: relative;
-  }
-  
-  .cyber-glitch-text:hover::before,
-  .cyber-glitch-text:hover::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .cyber-glitch-text:hover::before {
-    animation: glitch-1 0.3s infinite;
-    color: hsl(127 14% 36%); /* Forest Green */
-    z-index: -1;
-  }
-  
-  .cyber-glitch-text:hover::after {
-    animation: glitch-2 0.3s infinite;
-    color: hsl(6 61% 45%); /* Red */
-    z-index: -2;
-  }
-  
-  @keyframes glitch-1 {
-    0%, 100% { transform: translate(0); }
-    33% { transform: translate(-2px, 2px); }
-    66% { transform: translate(2px, -1px); }
-  }
-  
-  @keyframes glitch-2 {
-    0%, 100% { transform: translate(0); }
-    33% { transform: translate(2px, -2px); }
-    66% { transform: translate(-2px, 1px); }
-  }
-
-  /* Forest glow effect (muted vintage green) */
-  .neon-glow {
-    text-shadow: 0 0 10px hsl(127 14% 36% / 0.8),
-                 0 0 20px hsl(127 14% 36% / 0.6),
-                 0 0 30px hsl(127 14% 36% / 0.4);
-  }
-
-  .neon-glow-red {
-    text-shadow: 0 0 10px hsl(6 61% 45% / 0.8),
-                 0 0 20px hsl(6 61% 45% / 0.6),
-                 0 0 30px hsl(6 61% 45% / 0.4);
-  }
-
-  /* CSS variable needed for cyber-glitch-2 from cyberpunk.css */
-  .cyber-glitch-2 {
-    --og-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  }
-
-  /* Cyberpunk razor edges */
-  .cyber-clip-corner {
-    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
-  }
-
-  .cyber-clip-corner-both {
-    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% calc(100% - 20px), calc(100% - 20px) 100%, 20px 100%, 0 calc(100% - 20px));
-  }
-
-  .cyber-clip-bottom {
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
   }
 }
 

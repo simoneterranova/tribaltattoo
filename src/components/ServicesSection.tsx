@@ -13,7 +13,7 @@ const ServicesSection = () => {
   const [active, setActive] = useState<number | null>(null);
 
   return (
-    <section id="services" className="py-24 md:py-40 cyber-razor-top cyber-razor-bottom relative" ref={ref}>
+    <section id="services" className="py-24 md:py-40 relative" ref={ref}>
       {/* Subtle grid pattern overlay */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.02]"
            style={{ backgroundImage: "linear-gradient(hsl(127 14% 36% / 0.1) 1px, transparent 1px), linear-gradient(90deg, hsl(127 14% 36% / 0.1) 1px, transparent 1px)", backgroundSize: "50px 50px" }} />
@@ -22,26 +22,26 @@ const ServicesSection = () => {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 md:mb-20">
           <ScrollReveal direction="up" duration={0.7}>
-            <span className="font-body text-xs tracking-[0.4em] text-accent uppercase neon-glow">
+            <span className="font-body text-xs tracking-[0.4em] text-accent uppercase">
               {shopConfig.sections.services.label}
             </span>
-            <h2 className="font-heading text-6xl md:text-8xl text-foreground mt-2 leading-none cyber-glitch-2" style={{ '--og-clip-path': 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' } as React.CSSProperties}>
+            <h2 className="font-heading text-6xl md:text-8xl text-foreground mt-2 leading-none">
               {shopConfig.sections.services.heading[0]}
               <br />
-              {shopConfig.sections.services.heading[1]}<span className="text-primary neon-glow-red cyber-glitch-4">.</span>
+              {shopConfig.sections.services.heading[1]}<span className="text-primary">.</span>
               {/* Hidden SEO text with location keywords */}
               <span className="sr-only"> - {shopConfig.activity} a {shopConfig.city.split(",")[0].trim()}</span>
             </h2>
           </ScrollReveal>
 
           <ScrollReveal direction="up" delay={0.2} duration={0.7}>
-            <div className="pb-1 cyber-clip-corner border-2 border-accent/30 p-4 bg-card/50 backdrop-blur-sm">
-              <p className="font-body text-[10px] tracking-[0.3em] text-accent uppercase mb-2 neon-glow">
+            <div className="pb-1 border-2 border-accent/30 p-4 bg-card/50 backdrop-blur-sm">
+              <p className="font-body text-[10px] tracking-[0.3em] text-accent uppercase mb-2">
                 {shopConfig.city}
               </p>
               <div className="flex items-center gap-3">
-                <div className="h-px w-8 bg-accent/60 shadow-[0_0_8px_rgba(0,255,210,0.6)]" />
-                <span className="font-heading text-5xl text-accent leading-none neon-glow cyber-glitch-3">{services.length}</span>
+                <div className="h-px w-8 bg-accent/60" />
+                <span className="font-heading text-5xl text-accent leading-none">{services.length}</span>
                 <div className="font-body text-xs text-muted-foreground leading-tight">
                   <p>{shopConfig.sections.services.counterLabel[0]}</p>
                   <p>{shopConfig.sections.services.counterLabel[1]}</p>
@@ -62,12 +62,12 @@ const ServicesSection = () => {
                 initial={{ opacity: 0, x: -50 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.6, delay: i * 0.08, ease: [0.25, 0.4, 0.25, 1] }}
-                className="relative border-b-2 border-accent/20 overflow-hidden cursor-pointer cyber-razor-bottom"
+                className="relative border-b-2 border-accent/20 overflow-hidden cursor-pointer"
                 onHoverStart={() => setActive(i)}
                 onHoverEnd={() => setActive(null)}
                 onClick={() => setActive(active === i ? null : i)}
               >
-                {/* Left-to-right sweep fill with neon effect */}
+                {/* Left-to-right sweep fill effect */}
                 <motion.div
                   className="absolute inset-0 bg-accent/5 origin-left pointer-events-none border-l-2 border-accent/40"
                   animate={{ scaleX: on ? 1 : 0 }}
@@ -105,7 +105,7 @@ const ServicesSection = () => {
                           </motion.h3>
                           {service.badge && (
                             <motion.span
-                              className="font-body text-[10px] tracking-[0.2em] uppercase px-2.5 py-1 border-2 border-accent/30 text-accent bg-accent/10 shrink-0 cyber-clip-corner shadow-[0_0_10px_rgba(0,255,210,0.3)]"
+                              className="font-body text-[10px] tracking-[0.2em] uppercase px-2.5 py-1 border-2 border-accent/30 text-accent bg-accent/10 shrink-0"
                               initial={{ opacity: 0, scale: 0.9 }}
                               animate={isInView ? { opacity: 1, scale: 1 } : {}}
                               transition={{ duration: 0.4, delay: i * 0.08 + 0.3 }}
@@ -114,9 +114,9 @@ const ServicesSection = () => {
                             </motion.span>
                           )}
                         </div>
-                        {/* Underline draws on hover with neon glow */}
+                        {/* Underline draws on hover */}
                         <motion.div
-                          className="h-[2px] bg-accent mt-1.5 shadow-[0_0_8px_rgba(0,255,210,0.8)]"
+                          className="h-[2px] bg-accent mt-1.5"
                           animate={{ scaleX: on ? 1 : 0 }}
                           initial={{ scaleX: 0 }}
                           transition={{ duration: 0.35, ease: "easeOut" }}

@@ -11,7 +11,7 @@ const FooterSection = () => {
   };
 
   return (
-    <footer id="contact" className="border-t-2 border-accent/20 cyber-razor-top relative">
+    <footer id="contact" className="border-t-2 border-accent/20 relative">
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.02]"
            style={{ backgroundImage: "linear-gradient(hsl(127 14% 36% / 0.1) 1px, transparent 1px), linear-gradient(90deg, hsl(127 14% 36% / 0.1) 1px, transparent 1px)", backgroundSize: "50px 50px" }} />
@@ -20,14 +20,14 @@ const FooterSection = () => {
       <div className="container mx-auto px-6 py-20 md:py-32 relative z-10">
         {/* Section label */}
         <ScrollReveal direction="up" duration={0.7}>
-          <span className="font-body text-xs tracking-[0.4em] text-accent uppercase neon-glow">
+          <span className="font-body text-xs tracking-[0.4em] text-accent uppercase">
             {shopConfig.sections.contact.label}
           </span>
 
           {/* Big CTA text */}
           <div className="mt-6 mb-16 md:mb-24">
-            <h2 className="font-heading text-5xl md:text-[8rem] leading-none text-foreground cyber-glitch-2" style={{ '--og-clip-path': 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' } as React.CSSProperties}>
-              {shopConfig.sections.contact.heading[0]}<br />{shopConfig.sections.contact.heading[1]}<span className="text-primary neon-glow-red cyber-glitch-4">.</span>
+            <h2 className="font-heading text-5xl md:text-[8rem] leading-none text-foreground">
+              {shopConfig.sections.contact.heading[0]}<br />{shopConfig.sections.contact.heading[1]}<span className="text-primary">.</span>
             </h2>
           </div>
         </ScrollReveal>
@@ -38,8 +38,8 @@ const FooterSection = () => {
           <ScrollReveal direction="left" delay={0.2} duration={0.7}>
             <div className="grid gap-10 sm:grid-cols-2">
               {/* Location */}
-              <div className="cyber-clip-corner border-2 border-accent/20 p-4 bg-card/50">
-                <h3 className="font-body text-xs tracking-[0.3em] text-accent uppercase mb-4 neon-glow">
+              <div className="border-2 border-accent/20 p-4 bg-card/50">
+                <h3 className="font-body text-xs tracking-[0.3em] text-accent uppercase mb-4">
                   {shopConfig.sections.contact.locationLabel}
                 </h3>
                 <address className="font-body text-sm text-muted-foreground leading-relaxed not-italic">
@@ -50,8 +50,8 @@ const FooterSection = () => {
               </div>
 
               {/* Hours */}
-              <div className="cyber-clip-corner border-2 border-accent/20 p-4 bg-card/50">
-                <h3 className="font-body text-xs tracking-[0.3em] text-accent uppercase mb-4 neon-glow">
+              <div className="border-2 border-accent/20 p-4 bg-card/50">
+                <h3 className="font-body text-xs tracking-[0.3em] text-accent uppercase mb-4">
                   {shopConfig.sections.contact.hoursLabel}
                 </h3>
                 <div className="space-y-1 font-body text-sm text-muted-foreground">
@@ -62,8 +62,8 @@ const FooterSection = () => {
               </div>
 
               {/* Contact */}
-              <div className="cyber-clip-corner border-2 border-accent/20 p-4 bg-card/50">
-                <h3 className="font-body text-xs tracking-[0.3em] text-accent uppercase mb-4 neon-glow">
+              <div className="border-2 border-accent/20 p-4 bg-card/50">
+                <h3 className="font-body text-xs tracking-[0.3em] text-accent uppercase mb-4">
                   {shopConfig.sections.contact.contactLabel}
                 </h3>
                 <div className="space-y-2 font-body text-sm text-muted-foreground">
@@ -77,8 +77,8 @@ const FooterSection = () => {
               </div>
 
               {/* Social */}
-              <div className="cyber-clip-corner border-2 border-accent/20 p-4 bg-card/50">
-                <h3 className="font-body text-xs tracking-[0.3em] text-accent uppercase mb-4 neon-glow">
+              <div className="border-2 border-accent/20 p-4 bg-card/50">
+                <h3 className="font-body text-xs tracking-[0.3em] text-accent uppercase mb-4">
                   {shopConfig.sections.contact.socialLabel}
                 </h3>
                 <div className="space-y-2">
