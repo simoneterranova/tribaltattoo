@@ -38,7 +38,7 @@ const TribalPage = () => {
       "Esecuzione bold: linee spesse e neri solidi per un risultato potente e duraturo."
     ],
     pricing:
-      "I tatuaggi tribali, spesso di grandi dimensioni, partono da €150 per pezzi medi. Composizioni elaborate su braccia o gambe richiedono preventivo personalizzato in base all'estensione. Consulenza gratuita disponibile.",
+      "I tatuaggi tribali, spesso di grandi dimensioni, richiedono un preventivo personalizzato in base all'estensione e alla complessità del design. Consulenza gratuita disponibile per valutare il tuo progetto.",
     gallery: [
       { src: "/images/styles/tatuaggio-tribale-a-torino/tribale-tattoo-1.jpg", alt: "Tatuaggio Tribale polinesiano - Tribal Tattoo Moncalieri (Torino)" }
     ],

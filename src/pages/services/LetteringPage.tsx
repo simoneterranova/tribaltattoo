@@ -38,7 +38,7 @@ const LetteringPage = () => {
       "Esecuzione precisa: ogni lettera viene tatuata con attenzione per garantire tratti netti e duraturi."
     ],
     pricing:
-      "I tatuaggi lettering variano in base alla lunghezza del testo, complessità del font e dimensione. Scritte brevi partono da €80-100. Citazioni più lunghe richiedono un preventivo personalizzato. Consulenza gratuita disponibile.",
+      "I tatuaggi lettering variano in base alla lunghezza del testo, complessità del font e dimensione. Durante la consulenza gratuita valutiamo il tuo progetto e ti forniamo un preventivo personalizzato.",
     gallery: [
       { src: "/images/styles/tatuaggio-lettering-a-torino/tatuaggio-lettering-2.jpg", alt: "Tatuaggio Lettering elegante - Tribal Tattoo Moncalieri (Torino)" }
     ],

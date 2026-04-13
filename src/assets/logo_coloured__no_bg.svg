@@ -6,7 +6,7 @@
       
       :root {
         /* 👇 CHANGE THIS HEX CODE TO CHANGE THE COLOR OF THE ENTIRE LOGO 👇 */
-        --brand-color: #CC0000; 
+        --brand-color: #ffffff ; 
       }
       
       .text-tribal {

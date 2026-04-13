@@ -38,7 +38,7 @@ const GothicPage = () => {
       "Esecuzione artistica: creo il tuo tatuaggio gotico con attenzione ad ogni dettaglio decorativo."
     ],
     pricing:
-      "I tatuaggi gotici variano molto in complessità. Design semplici con elementi gotici partono da €120. Pezzi elaborati con molti dettagli ornamentali richiedono più tempo e un preventivo personalizzato. Consulenza gratuita disponibile.",
+      "I tatuaggi gotici variano molto in complessità. Il costo dipende dai dettagli ornamentali e dalle dimensioni del progetto. Un preventivo personalizzato viene fornito durante la consulenza gratuita.",
     gallery: [
       { src: "/images/styles/tatuaggio-gotico-a-torino/gotico-1.jpg", alt: "Tatuaggio Gotico elegante - Tribal Tattoo Moncalieri (Torino)" }
     ],

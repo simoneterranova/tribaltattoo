@@ -16,7 +16,7 @@ const ServicesSection = () => {
     <section id="services" className="py-24 md:py-40 relative" ref={ref}>
       {/* Subtle grid pattern overlay */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.02]"
-           style={{ backgroundImage: "linear-gradient(hsl(127 14% 36% / 0.1) 1px, transparent 1px), linear-gradient(90deg, hsl(127 14% 36% / 0.1) 1px, transparent 1px)", backgroundSize: "50px 50px" }} />
+           style={{ backgroundImage: "linear-gradient(hsl(var(--grid-pattern) / 0.1) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--grid-pattern) / 0.1) 1px, transparent 1px)", backgroundSize: "50px 50px" }} />
       
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
@@ -98,7 +98,7 @@ const ServicesSection = () => {
                           <motion.h3
                             className="font-heading leading-none"
                             style={{ fontSize: "clamp(1.6rem, 4vw, 2.8rem)" }}
-                            animate={{ color: on ? "hsl(127 14% 36%)" : "hsl(var(--foreground))" }}
+                            animate={{ color: on ? "hsl(var(--primary))" : "hsl(var(--foreground))" }}
                             transition={{ duration: 0.25 }}
                           >
                             {service.name}
@@ -141,9 +141,9 @@ const ServicesSection = () => {
                         className="font-heading"
                         style={{ fontSize: "clamp(1.8rem, 4vw, 2.5rem)" }}
                         animate={{
-                          color: on ? "hsl(6 61% 45%)" : "hsl(var(--foreground))",
+                          color: on ? "hsl(var(--primary))" : "hsl(var(--foreground))",
                           scale: on ? 1.05 : 1,
-                          textShadow: on ? "0 0 20px rgba(184, 58, 45, 0.6)" : "none",
+                          textShadow: on ? "0 0 20px hsl(var(--primary) / 0.6)" : "none",
                         }}
                         transition={{ duration: 0.25 }}
                       >

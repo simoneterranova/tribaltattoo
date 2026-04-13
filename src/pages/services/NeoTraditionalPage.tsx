@@ -38,7 +38,7 @@ const NeoTraditionalPage = () => {
       "Esecuzione artistica: linee bold per i contorni, sfumature sofisticate per la profondità."
     ],
     pricing:
-      "I tatuaggi neo tradizionali richiedono più tempo dell'old school per via dei dettagli elaborati. Pezzi medi partono da €200-300. Composizioni più grandi richiedono preventivo personalizzato. Consulenza gratuita disponibile.",
+      "I tatuaggi neo tradizionali richiedono più tempo dell'old school per via dei dettagli elaborati e delle sfumature complesse. Il costo varia in base alle dimensioni e alla complessità del design. Un preventivo personalizzato viene fornito durante la consulenza gratuita.",
     gallery: [
       { src: "/images/styles/tatuaggio-neo-tradizionale-a-torino/gotico.jpg", alt: "Tatuaggio Neo Tradizionale - Tribal Tattoo Moncalieri (Torino)" }
     ],

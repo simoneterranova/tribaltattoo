@@ -38,7 +38,7 @@ const DotworkPage = () => {
       "Aftercare completo: istruzioni dettagliate per garantire una guarigione perfetta e preservare i dettagli."
     ],
     pricing:
-      "I tatuaggi dotwork richiedono più tempo rispetto ad altri stili per via della tecnica meticolosa. I prezzi partono da €150 per pezzi piccoli e variano in base alla complessità. Un preventivo preciso viene fornito durante la consulenza gratuita.",
+      "I tatuaggi dotwork richiedono tempo e precisione per via della tecnica meticolosa. Il costo varia in base alla complessità e alle dimensioni del progetto. Un preventivo preciso viene fornito durante la consulenza gratuita.",
     gallery: [
       { src: "/images/styles/tatuaggio-dotwork-a-torino/Gran-Babar-torino.jpg", alt: "Tatuaggio Dotwork geometrico - Tribal Tattoo Moncalieri (Torino)" }
     ],

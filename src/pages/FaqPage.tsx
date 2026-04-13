@@ -60,7 +60,7 @@ const FaqPage = () => {
         {
           id: "quanto-costa",
           question: "Quanto costa un tatuaggio a Torino?",
-          answer: `I prezzi partono da €150 per tatuaggi piccoli. Il costo finale dipende da dimensione, complessità, colori e tempo di esecuzione. Durante la consulenza gratuita ti forniremo un preventivo preciso e trasparente per il tuo progetto.`,
+          answer: `Il costo finale dipende da dimensione, complessità, colori e tempo di esecuzione. Ogni tatuaggio è unico e il prezzo viene definito dopo la consulenza gratuita durante la quale ti forniremo un preventivo preciso e trasparente per il tuo progetto.`,
           link: { to: "/blog/quanto-costa-tatuaggio-torino", text: "Guida completa ai prezzi" }
         },
         {
@@ -78,7 +78,7 @@ const FaqPage = () => {
         {
           id: "costo-cover-up",
           question: "Quanto costa un cover-up?",
-          answer: "I cover-up partono da €250 perché richiedono più lavoro progettuale e tecnico. Il prezzo dipende dalla dimensione del vecchio tatuaggio, dai colori presenti e dalla complessità del nuovo design. Offriamo valutazione gratuita.",
+          answer: "I cover-up richiedono più lavoro progettuale e tecnico rispetto ad un tatuaggio standard. Il prezzo dipende dalla dimensione del vecchio tatuaggio, dai colori presenti e dalla complessità del nuovo design. Offriamo valutazione gratuita per fornirti un preventivo personalizzato.",
           link: { to: "/servizi/cover-up-tatuaggi-torino", text: "Info cover-up" }
         }
       ]

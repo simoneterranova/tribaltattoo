@@ -12,7 +12,7 @@ const TeamSection = () => {
     <section id="team" className="py-24 md:py-40 border-t-2 border-accent/20 overflow-hidden relative">
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.02]"
-           style={{ backgroundImage: "linear-gradient(hsl(127 14% 36% / 0.1) 1px, transparent 1px), linear-gradient(90deg, hsl(127 14% 36% / 0.1) 1px, transparent 1px)", backgroundSize: "50px 50px" }} />
+           style={{ backgroundImage: "linear-gradient(hsl(var(--grid-pattern) / 0.1) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--grid-pattern) / 0.1) 1px, transparent 1px)", backgroundSize: "50px 50px" }} />
            
       <div className="container mx-auto px-6 relative z-10">
         <ScrollReveal direction="up" duration={0.7}>

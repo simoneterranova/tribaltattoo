@@ -51,7 +51,7 @@ const HeroSection = () => {
           data-text={shopConfig.hero.headline.join(" ")}
           aria-label={`${shopConfig.hero.headline.join(" ")} - ${shopConfig.activity} a ${shopConfig.city.split(",")[0].trim()}`}
           style={{ 
-            textShadow: "0 0 20px rgba(220, 201, 169, 0.3)"
+            textShadow: "0 0 20px hsl(var(--primary) / 0.3)"
           } as React.CSSProperties}
         >
           {shopConfig.hero.headline[0]}

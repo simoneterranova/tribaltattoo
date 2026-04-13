@@ -39,7 +39,7 @@ const FineLinePage = () => {
       "Aftercare dettagliato: ti forniamo istruzioni complete per la cura post-tatuaggio, fondamentali per preservare i dettagli nel tempo."
     ],
     pricing:
-      "I tatuaggi fine line partono da €100 per design molto piccoli. La complessità del disegno e la dimensione influenzano il prezzo finale. Durante la consulenza gratuita ti forniremo un preventivo preciso e trasparente.",
+      "Il costo varia in base alla complessità del disegno e alle dimensioni. Durante la consulenza gratuita ti forniremo un preventivo preciso e trasparente per il tuo progetto.",
     gallery: [
       { src: "/images/tatuaggi/Minimal-tattoo-1.jpg", alt: "Tatuaggio Fine Line elegante - Tribal Tattoo Moncalieri (Torino)" }
     ],

@@ -97,9 +97,9 @@ const AftercareBlogPost = () => {
           list: [
             "Guarigione anomala - Alcune persone guariscono perdendo inchiostro in zone specifiche (non è colpa tua né del tatuatore, è fisiologia)",
             "Linee che necessitano rinforzo - Rare linee possono risultare più chiare dopo guarigione",
-            "Colori che sbiadiscono - Alcuni coloro (giallo, bianco) possono schiarirsi più del previsto",
-            "Aree con sfregamento costante -Mani, piedi tendono a perdere inchiostro",
-            "Il ritocco è incluso! Al Tribal Tattoo Studio il primo ritocco entro 3 mesi è compreso nel prezzo iniziale. Dopo guarigione completa (2 mesi) vediamo insieme se serve.",
+            "Colori che sbiadiscono - Alcuni colori (giallo, bianco) possono schiarirsi più del previsto",
+            "Aree con sfregamento costante - Mani, piedi tendono a perdere inchiostro",
+            "Il ritocco è incluso! Al Tribal Tattoo Studio offro una valutazione gratuita dopo la guarigione completa (circa 2-3 mesi) per verificare se serve un ritocco. Se necessario, lo realizzo senza costi aggiuntivi.",
             "Come si fa: Appuntamento breve (30-60min). Si rinforzano solo le aree necessarie. Guarigione più veloce della prima volta."
           ]
         },

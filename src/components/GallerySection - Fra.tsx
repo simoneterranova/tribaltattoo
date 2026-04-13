@@ -194,7 +194,7 @@ const DesktopGallery = () => {
     <section id="gallery" className="border-t-2 border-accent/20 py-20 relative">
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.02]"
-           style={{ backgroundImage: "linear-gradient(hsl(127 14% 36% / 0.1) 1px, transparent 1px), linear-gradient(90deg, hsl(127 14% 36% / 0.1) 1px, transparent 1px)", backgroundSize: "50px 50px" }} />
+           style={{ backgroundImage: "linear-gradient(hsl(var(--grid-pattern) / 0.1) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--grid-pattern) / 0.1) 1px, transparent 1px)", backgroundSize: "50px 50px" }} />
 
       {/* Keyframes injected once — avoids needing an external .css file */}
       <style>{`
@@ -213,16 +213,16 @@ const DesktopGallery = () => {
           width: 100%; height: 100%;
           object-fit: cover;
           border-radius: 0;
-          box-shadow: 0 0 20px rgba(78,104,81,0.3), 0 0 40px rgba(78,104,81,0.1);
-          border: 2px solid rgba(78,104,81,0.2);
+          box-shadow: 0 0 20px hsl(var(--primary-glow) / 0.3), 0 0 40px hsl(var(--primary-glow) / 0.1);
+          border: 2px solid hsl(var(--primary-glow) / 0.2);
           -webkit-box-reflect: below 12px
-            linear-gradient(transparent 60%, rgba(0,0,0,0.45));
+            linear-gradient(transparent 60%, hsl(var(--shadow-dark) / 0.45));
           cursor: pointer;
           transition: box-shadow 0.3s, border-color 0.3s;
         }
         .g3d-item:hover {
-          box-shadow: 0 0 30px rgba(78,104,81,0.6), 0 0 60px rgba(78,104,81,0.3),
-                      0 0  8px rgba(255,255,255,0.4);
+          box-shadow: 0 0 30px hsl(var(--primary-glow) / 0.6), 0 0 60px hsl(var(--primary-glow) / 0.3),
+                      0 0  8px hsl(var(--foreground) / 0.4);
         }
       `}</style>
 
@@ -578,7 +578,7 @@ const MobileGallery = () => {
     <section id="gallery" className="border-t-2 border-accent/20 py-16 px-6 relative">
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.02]"
-           style={{ backgroundImage: "linear-gradient(hsl(127 14% 36% / 0.1) 1px, transparent 1px), linear-gradient(90deg, hsl(127 14% 36% / 0.1) 1px, transparent 1px)", backgroundSize: "50px 50px" }} />
+           style={{ backgroundImage: "linear-gradient(hsl(var(--grid-pattern) / 0.1) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--grid-pattern) / 0.1) 1px, transparent 1px)", backgroundSize: "50px 50px" }} />
            
       <ScrollReveal direction="up" duration={0.7}>
         <div className="mb-8 relative z-10">
@@ -597,12 +597,12 @@ const MobileGallery = () => {
         {/* Edge fades with vintage forest green tint */}
         <div style={{
           position: "absolute", top: 0, bottom: 0, left: 0, width: "10vw",
-          background: "linear-gradient(90deg, hsl(30 4% 10%), transparent)",
+          background: "linear-gradient(90deg, hsl(var(--background)), transparent)",
           zIndex: 5, pointerEvents: "none",
         }} />
         <div style={{
           position: "absolute", top: 0, bottom: 0, right: 0, width: "10vw",
-          background: "linear-gradient(-90deg, hsl(30 4% 10%), transparent)",
+          background: "linear-gradient(-90deg, hsl(var(--background)), transparent)",
           zIndex: 5, pointerEvents: "none",
         }} />
 
@@ -666,7 +666,7 @@ const MobileGallery = () => {
                 className="mc-ov"
                 style={{
                   position: "absolute", inset: 0,
-                  background: "rgba(0,0,0,0.40)",
+                  background: "hsl(var(--shadow-dark) / 0.40)",
                   pointerEvents: "none",
                   transition: "opacity 0.4s ease",
                 }}
@@ -679,7 +679,7 @@ const MobileGallery = () => {
                   position:   "absolute",
                   bottom: 0, left: 0, right: 0,
                   padding:    "48px 16px 16px",
-                  background: "linear-gradient(to top, rgba(0,0,0,0.85), transparent)",
+                  background: "linear-gradient(to top, hsl(var(--shadow-dark) / 0.85), transparent)",
                   pointerEvents: "none",
                   opacity:    0,
                   transition: "opacity 0.4s ease",

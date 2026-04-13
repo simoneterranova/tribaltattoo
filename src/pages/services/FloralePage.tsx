@@ -38,7 +38,7 @@ const FloralePage = () => {
       "Cura post-tatuaggio: ti fornisco istruzioni complete per preservare i colori e i dettagli del tuo tatuaggio floreale."
     ],
     pricing:
-      "I tatuaggi floreali variano molto nel prezzo in base allo stile, dimensione e complessità. Pezzi piccoli partono da €120, mentre composizioni più elaborate richiedono un preventivo personalizzato. Consulenza gratuita disponibile.",
+      "I tatuaggi floreali variano molto nel prezzo in base allo stile, dimensione e complessità. Durante la consulenza gratuita valutiamo insieme il tuo progetto e ti forniamo un preventivo personalizzato.",
     gallery: [
       { src: "/images/styles/tatuaggio-floreale-a-torino/3-1.jpg", alt: "Tatuaggio Floreale delicato - Tribal Tattoo Moncalieri (Torino)" }
     ],

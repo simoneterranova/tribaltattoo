@@ -38,7 +38,7 @@ const WatercolorPage = () => {
       "Esecuzione delicata: applico i colori con tecnica che emula le pennellate dell'acquerello."
     ],
     pricing:
-      "I tatuaggi watercolor richiedono tempo per le sfumature elaborate. Pezzi medi partono da €180. La complessità della palette cromatica influenza il prezzo. Preventivo personalizzato durante la consulenza gratuita.",
+      "I tatuaggi watercolor richiedono tempo per le sfumature elaborate e la complessità della palette cromatica. Il costo varia in base alle dimensioni e alla complessità del design. Un preventivo personalizzato viene fornito durante la consulenza gratuita.",
     gallery: [
       { src: "/images/styles/tatuaggio-watercolor-a-torino/Watercolor.jpg", alt: "Tatuaggio Watercolor artistico - Tribal Tattoo Moncalieri (Torino)" }
     ],

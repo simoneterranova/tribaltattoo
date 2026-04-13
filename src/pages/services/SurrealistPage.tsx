@@ -38,7 +38,7 @@ const SurrealistPage = () => {
       "Esecuzione artistica: tecnica realistica per rendere credibili elementi irreali."
     ],
     pricing:
-      "I tatuaggi surrealisti sono generalmente complessi e richiedono tempo per i dettagli. Pezzi medi partono da €250. Composizioni elaborate richiedono più sessioni e preventivo personalizzato. Consulenza gratuita.",
+      "I tatuaggi surrealisti sono generalmente complessi e richiedono tempo per i dettagli e le composizioni elaborate. Progetti ampi possono richiedere più sessioni. Un preventivo personalizzato viene fornito durante la consulenza gratuita.",
     gallery: [
       { src: "/images/styles/tatuaggio-surrealista-a-torino/tattoo-gran-babar-torino.jpg", alt: "Tatuaggio Surrealista onirico - Tribal Tattoo Moncalieri (Torino)" }
     ],

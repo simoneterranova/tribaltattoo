@@ -105,12 +105,12 @@ const FirstTattooBlogPost = () => {
         {
           heading: "Quanto Costa? (Per Primi Tatuaggi)",
           paragraphs: [
-            "I primi tatuaggi tendono ad essere piccoli-medi. Range di prezzo realistici per Tribal Tattoo Studio a Moncalieri (Torino):"
+            "I primi tatuaggi tendono ad essere piccoli-medi. Il costo dipende da dimensione, complessità, tempo di esecuzione e stile scelto. Al Tribal Tattoo Studio a Moncalieri (Torino):"
           ],
           list: [
-            "Tatuaggio piccolo (5-8cm) - €150-250 | 1-2 ore | Es: simbolo tribale semplice, piccolo motivo maori",
-            "Tatuaggio medio (10-15cm) - €300-500 | 2-4 ore | Es: bracciale polinesiano, pattern tribale elaborato",
-            "Consulenza sempre gratuita - Ti mostro portfolio specializzato in stili tribali, discutiamo design personalizzato, preventivo trasparente"
+            "Consulenza sempre gratuita - Ti mostro portfolio specializzato in stili tribali, discutiamo design personalizzato",
+            "Preventivo trasparente - Durante la consulenza ricevi una stima precisa in base al tuo progetto specifico",
+            "Nessun costo nascosto - Il preventivo include tutto: design, esecuzione, aftercare kit, follow-up"
           ]
         },
         {

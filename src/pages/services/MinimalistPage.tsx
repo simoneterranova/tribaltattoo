@@ -38,7 +38,7 @@ const MinimalistPage = () => {
       "Esecuzione di precisione: linee pulite e nette che resistono nel tempo."
     ],
     pricing:
-      "I tatuaggi minimalisti, essendo generalmente piccoli, partono da €60-80 per design molto semplici. La complessità del disegno può influenzare il prezzo. Consulenza gratuita per valutare il tuo progetto.",
+      "I tatuaggi minimalisti variano in base alla complessità del disegno e alle dimensioni. Durante la consulenza gratuita valutiamo il tuo progetto e ti forniamo un preventivo personalizzato.",
     gallery: [
       { src: "/images/tatuaggi/Minimal-tattoo-1.jpg", alt: "Tatuaggio Minimalista discreto - Tribal Tattoo Moncalieri (Torino)" }
     ],

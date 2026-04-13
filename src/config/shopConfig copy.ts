@@ -10,9 +10,9 @@
 // ║  That's it — nothing else should need touching.              ║
 // ║                                                              ║
 // ║  PALETTE (TEMA SCURO — "Ossidiana & Oro Tribale")            ║
-// ║  #090805  →  HSL  40 10%  4%  — sfondo (ossidiana calda)   ║
-// ║  #B8870B  →  HSL  43 87% 38%  — primario, CTA (oro tribale)║
-// ║  #F2E8CE  →  HSL  40 52% 87%  — testo (pergamena antica)   ║
+// ║  #090805  →  HSL  40 10%  4%  — sfondo (ossidiana calda)    ║
+// ║  #B8870B  →  HSL  43 87% 38%  — primario / CTA (oro tribale)║
+// ║  #F2E8CE  →  HSL  40 52% 87%  — testo (pergamena antica)    ║
 // ║                                                              ║
 // ║  FONT STACK                                                  ║
 // ║  Heading: Cinzel         — inciso, monolitico, tribale       ║
@@ -37,9 +37,9 @@ import gallery9  from "@/assets/tattoo-9.webp";
 import gallery10 from "@/assets/tattoo-10.webp";
 import gallery11 from "@/assets/tattoo-11.webp";
 import gallery12 from "@/assets/tattoo-12.webp";
-import gallery13 from "@/assets/tattoo-13.webp";  
-import gallery14  from "@/assets/studio.mp4";
-import logo      from "@/assets/logo_coloured__no_bg.svg";     // Fishbone logo (red)
+import gallery13 from "@/assets/tattoo-13.webp";
+import gallery14 from "@/assets/studio.mp4";
+import logo      from "@/assets/logo_coloured__no_bg.svg";
 
 // ── IDENTITY ──────────────────────────────────────────────────────────────────
 const shopConfig = {
@@ -63,14 +63,14 @@ const shopConfig = {
 
   /** Primary author/artist for blog posts and content authorship. */
   author: {
-    name: "Claudio Ciliberti",                    // ← update with CEO's name
+    name: "Claudio Ciliberti",
     jobTitle: "Maestro Tatuatore Tribale",
   },
 
   // ── SEO / HTML <head> ───────────────────────────────────────────────────────
   meta: {
     /** Full domain without trailing slash. */
-    siteUrl: "https://www.tribaltattoo.it",   // ← update with real domain
+    siteUrl: "https://www.tribaltattoo.it",
 
     /** Link di prenotazione o contatto */
     bookingSiteUrl: "https://www.tribaltattoo.it",
@@ -82,13 +82,13 @@ const shopConfig = {
     googleAnalyticsId:      "G-XXXXXXXXXX",
 
     title:
-      "Tatuaggi Tribali Moncalieri Torino | Arte Sacra Originale | Tribal Tattoo Studio",
+      "Tatuaggi Tribali Moncalieri Torino | Arte Sacra Originale dal 1994 | Tribal Tattoo Studio",
     description:
-      "Tatuaggi tribali a Moncalieri (Torino) dal 1994. Arte polinesiaca, maori e tribale originale — non semplici copie. Design freehand su misura, rispettoso dell'anatomia. Consulenza gratuita.",
+      "Tatuaggi tribali a Moncalieri (Torino) dal 1994. Arte polinesiaca, maori e tribale originale — disegnata a mano libera, sul corpo, con rispetto per l'anatomia e per la tradizione. Consulenza gratuita.",
     ogTitle:
       "Tribal Tattoo – Arte Sacra Tribale a Moncalieri, Torino",
     ogDescription:
-      "Vera arte originale di magie antiche. Tatuaggi tribali freehand, polinesiaci e maori. Prenota la tua consultazione con il maestro.",
+      "Dal 1994 portiamo nel corpo magie antiche. Tatuaggi tribali freehand, polinesiani e maori. Prenota la tua consulenza con il maestro.",
     /** Absolute path from the public/ folder or a full URL. */
     ogImage: "/og-image.jpg",
   },
@@ -112,11 +112,14 @@ const shopConfig = {
     /** Two-line editorial headline rendered in giant type. */
     headline: ["Tribal", "Tattoo"],
 
+    // ✦ MODIFICA: interamente in italiano — eliminato l'incipit in inglese
     subheadline:
-      "Arte tribale originale dal 1994 — ogni segno disegnato a mano sull'energia del tuo corpo.",
+      "Inchiostro sacro in luoghi sacri. Arte tribale originale dal 1994 — ogni segno disegnato a mano sull'energia del tuo corpo.",
 
     bookingCta: "Prenota una Consulenza",
 
+    // ✦ MODIFICA: termini tecnici tatuaggio mantenuti (sono terminologia di settore
+    //   universalmente usata anche in italiano), resto in italiano
     marqueeItems: [
       "Polinesiano",
       "Maori",
@@ -155,9 +158,9 @@ const shopConfig = {
       label: "Contatti",
       heading: ["Vieni a", "Trovarci"],
       locationLabel: "Dove Siamo",
-      hoursLabel: "Orari di apertura",
+      hoursLabel: "Orari di Apertura",
       contactLabel: "Contatti",
-      socialLabel: "Social Networks",
+      socialLabel: "Seguici",
     },
   },
 
@@ -193,7 +196,7 @@ const shopConfig = {
       duration: "da 2 ore",
       durationMinutes: 120,
       description:
-        "Vera arte originale di magie antiche. Motivi polinesiaci e maori studiati nel rispetto delle tradizioni culturali e dell'anatomia del cliente.",
+        "Vera arte originale di magie antiche. Motivi polinesiani e maori studiati nel rispetto delle tradizioni culturali e dell'anatomia del cliente.",
       badge: "Specialità" as string | null,
     },
     {
@@ -235,10 +238,10 @@ const shopConfig = {
   team: [
     {
       index: "01",
-      name: "Claudio Ciliberti",                  // ← update with CEO's name
+      name: "Claudio Ciliberti",
       role: "Fondatore & Maestro Tatuatore",
-      image: artist1,  // Kept for backward compatibility
-      images: [artist1, artist2, artist3],  // Multiple images carousel
+      image: artist1,
+      images: [artist1, artist2, artist3],
       bio: "Dal 1994 porta nel corpo dei suoi clienti l'essenza delle culture tribali di tutto il mondo. I suoi viaggi in Polinesia, Nuova Zelanda e nei luoghi sacri dell'Asia gli hanno permesso di costruire un rapporto autentico con l'arte tribale originale — non semplici copie, ma magie antiche reinterpretate sull'energia di ogni individuo.",
       tags: ["Polinesiano", "Maori", "Tribale", "Freehand", "Dot Work", "Black Work"],
       years: "30+",
@@ -246,7 +249,7 @@ const shopConfig = {
   ],
 
   // ── TESTIMONIALS ────────────────────────────────────────────────────────────
-  // ← Replace / add with real reviews from Google / social
+  // ← Sostituire con recensioni reali da Google / social
   testimonials: [
     {
       name: "Cliente",
@@ -264,19 +267,19 @@ const shopConfig = {
 
   // ── GALLERY ─────────────────────────────────────────────────────────────────
   gallery: [
-    { src: gallery1, alt: "Tatuaggio polinesiano freehand",         label: "Polinesiano"  },
-    { src: gallery2, alt: "Tatuaggio maori su braccio",             label: "Maori"        },
-    { src: gallery3, alt: "Dot work tribale geometrico",            label: "Dot Work"     },
-    { src: gallery4, alt: "Black work tribale su schiena",          label: "Black Work"   },
-    { src: gallery5, alt: "Tatuaggio tribale full sleeve",          label: "Full Sleeve"  },
-    { src: gallery6, alt: "Dettaglio freehand tribale",             label: "Freehand"     },
-    { src: gallery7, alt: "Interno dello studio Tribal Tattoo",     label: "Lo Studio"    },
-    { src: gallery8, alt: "Tatuaggio polinesiano su spalla",          label: "Polinesiano"  },
-    { src: gallery9, alt: "Tatuaggio maori su gamba",                label: "Maori"        },
-    { src: gallery10, alt: "Tatuaggio dot work geometrico su braccio", label: "Dot Work"     },
-    { src: gallery11, alt: "Tatuaggio black work tribale su petto",  label: "Black Work"   },
-    { src: gallery12, alt: "Tatuaggio tribale freehand su schiena", label: "Freehand"     },
-    { src: gallery13, alt: "Video dello studio Tribal Tattoo",       label: "Lo Studio"    },
+    { src: gallery1,  alt: "Tatuaggio polinesiano freehand",            label: "Polinesiano"  },
+    { src: gallery2,  alt: "Tatuaggio maori su braccio",                label: "Maori"        },
+    { src: gallery3,  alt: "Dot work tribale geometrico",               label: "Dot Work"     },
+    { src: gallery4,  alt: "Black work tribale su schiena",             label: "Black Work"   },
+    { src: gallery5,  alt: "Tatuaggio tribale full sleeve",             label: "Full Sleeve"  },
+    { src: gallery6,  alt: "Dettaglio freehand tribale",                label: "Freehand"     },
+    { src: gallery7,  alt: "Interno dello studio Tribal Tattoo",        label: "Lo Studio"    },
+    { src: gallery8,  alt: "Tatuaggio polinesiano su spalla",           label: "Polinesiano"  },
+    { src: gallery9,  alt: "Tatuaggio maori su gamba",                  label: "Maori"        },
+    { src: gallery10, alt: "Tatuaggio dot work geometrico su braccio",  label: "Dot Work"     },
+    { src: gallery11, alt: "Tatuaggio black work tribale su petto",     label: "Black Work"   },
+    { src: gallery12, alt: "Tatuaggio tribale freehand su schiena",     label: "Freehand"     },
+    { src: gallery13, alt: "Video dello studio Tribal Tattoo",          label: "Lo Studio"    },
   ],
 
   // ── CONTACT & LOCATION ──────────────────────────────────────────────────────
@@ -297,7 +300,7 @@ const shopConfig = {
     phone:     "+39 338 839 8005",
     phoneHref: "tel:+393388398005",
 
-    email: "info@tribaltattoo.it",   // ← update with real email
+    email: "info@tribaltattoo.it",
 
     /**
      * Google Maps embed URL.
@@ -316,7 +319,7 @@ const shopConfig = {
 
   // ── SOCIAL LINKS ────────────────────────────────────────────────────────────
   social: {
-    instagram: "https://www.instagram.com/tribaltattoo",  // ← update
+    instagram: "https://www.instagram.com/tribaltattoo",
     facebook:  "https://www.facebook.com/TribaltattooItalia",
     youtube:   "https://www.youtube.com/@tribaltattooitalia",
     // tiktok:    "https://www.tiktok.com/@tribaltattoo",
@@ -325,16 +328,17 @@ const shopConfig = {
   // ── FOOTER ──────────────────────────────────────────────────────────────────
   footer: {
     copyrightYear:       "2025",
-    allRightsReserved:   "All rights reserved",
+    // ✦ MODIFICA: tradotto in italiano
+    allRightsReserved:   "Tutti i diritti riservati",
     privacyPolicyLabel:  "Privacy Policy",
     cookiePolicyLabel:   "Cookie Policy",
-    cookieSettingsLabel: "Cookie Settings",
+    cookieSettingsLabel: "Impostazioni Cookie",
   },
 
   // ── LEGAL (Privacy Policy & Cookie Policy) ──────────────────────────────────
   legal: {
-    legalName:     "Tribal Tattoo Studio",          // ← update with legal entity
-    privacyEmail:  "info@tribaltattoo.it",          // ← update
+    legalName:     "Tribal Tattoo Studio",
+    privacyEmail:  "info@tribaltattoo.it",
     postalAddress: "Corso Roma, 51 – 10024 – Moncalieri (TO)",
     vatNumber:     "[Inserire Partita IVA]",
     reaNumber:     "[Inserire Numero REA]",
@@ -342,19 +346,25 @@ const shopConfig = {
     pecEmail:      "[Inserire PEC]",
   },
 
-  
- // ── THEME ────────────────────────────────────────────────────────────────────
+
+  // ── THEME ────────────────────────────────────────────────────────────────────
   //
   // ┌──────────────────────────────────────────────────────────────────────────┐
-  // │  TEMA SCURO — "Ossidiana & Oro Tribale"                                  │
+  // │  TEMA SCURO — "Ossidiana & Oro Tribale"  (palette completa)              │
   // │                                                                          │
-  // │  ANCHOR           HEX        HSL               RUOLO                    │
-  // │  Ossidiana Calda  #090805    40 10%  4%        sfondo pagina             │
-  // │  Oro Tribale      #B8870B    43 87% 38%        primario / CTA            │
-  // │  Pergamena        #F2E8CE    40 52% 87%        testo principale          │
-  // │  Terracotta Scura #7A2E1A    12 62% 29%        accento / ring            │
-  // │  Superficie Calda #130D02    40 85%  5%        card & superfici          │
-  // │                                                                          │
+  // │  ANCHOR             HEX        HSL               RUOLO                  │
+  // │  Ossidiana Calda    #090805    40 10%  4%        sfondo pagina           │
+  // │  Oro Tribale        #B8870B    43 87% 38%        primario / CTA          │
+  // │  Pergamena          #F2E8CE    40 52% 87%        testo principale        │
+  // │  Superficie Calda   #130D02    40 70%  5%        card                    │
+  // │  ─────────────────────────────────────────────────────────────────────  │
+  // │  Terracotta Sacra   #7E2C14    12 68% 30%        destructive / errori    │
+  // │  Rame Antico        #9E4A0E    22 75% 35%        accent (≠ primary)      │
+  // │  Mana Verde         #1A3D28   145 30% 16%        secondary surfaces      │
+  // │  Oceano Profondo    #0E2438   210 55% 14%        popover / dropdown      │
+  // │  Osso Intagliato    #B8A98C    38 22% 68%        muted foreground        │
+  // │  Inchiostro Nero    #0D0B08    40  8%  5%        input / border forte    │
+  // │  ─────────────────────────────────────────────────────────────────────  │
   // │  FONT TRIBALE                                                            │
   // │  Cinzel  — inciso come la pietra, monolitico, ancestrale (heading)       │
   // │  Raleway — geometrico e artigianale, ottima leggibilità (body)           │
@@ -362,96 +372,106 @@ const shopConfig = {
   //
   theme: {
     /**
-     * ✦ MODIFICA FONT: Cinzel + Raleway
-     *
-     *   Cinzel è ispirato alle iscrizioni romane su pietra — pesante, inciso,
-     *   ancestrale. Funziona perfettamente per un brand tribale perché evoca
-     *   l'idea di qualcosa di scolpito, permanente, rituale.
-     *
-     *   Raleway è geometrico e leggermente artigianale — abbastanza moderno da
-     *   essere leggibile online, abbastanza caldo da non contrastare con Cinzel.
-     *   Molto meglio di Inter in questo contesto visivo.
-     *
-     *   Pesi caricati:
-     *   - Cinzel 400 (testo) / 700 (bold) / 900 (display)
-     *   - Raleway 300 (light body) / 400 (regular) / 500 (medium) / 700 (labels)
+     * Font: Cinzel + Raleway
+     *   Cinzel — iscrizioni romane su pietra, pesante, ancestrale, rituale.
+     *   Raleway — geometrico, artigianale, leggibile. Contrasto perfetto con Cinzel.
+     *   Pesi: Cinzel 400/700/900 · Raleway 300/400/500/700
      */
     googleFontsUrl:
       "https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Raleway:wght@300;400;500;700&display=swap",
- 
+
     fonts: {
       heading: "Cinzel",
       body:    "Raleway",
     },
- 
+
     /** Bordi netti — estetica grezza, senza compromessi */
     radius: "0px",
- 
+
     colors: {
       // ── Sfondo — Ossidiana Calda #090805 ─────────────────────────────────
-      // ✦ MODIFICA: più caldo (40 10% vs 60 6%) — ossidiana con sottotono terra
+      // Più caldo del nero neutro (60 6% 4%) — ossidiana con sottotono terra
       background:              "40 10% 4%",
- 
+
       // ── Testo principale — Pergamena #F2E8CE ─────────────────────────────
-      // ✦ MODIFICA: leggermente più calda e satura (40 52% 87% vs 38 65% 91%)
       foreground:              "40 52% 87%",
- 
-      // ── Card & popover — Superficie Calda #130D02 ────────────────────────
-      // ✦ MODIFICA: più profonda e calda (40 85% 5% vs 43 30% 9%)
+
+      // ── Card — Superficie Calda #130D02 ──────────────────────────────────
       card:                    "40 70% 5%",
       cardForeground:          "40 52% 87%",
-      popover:                 "40 60% 5%",
+
+      // ── Popover / Dropdown — Oceano Profondo #0E2438 ─────────────────────
+      // Unico tono freddo della palette: distingue visivamente i popover
+      // dalle card senza rompere l'atmosfera scura. Evoca il Pacifico,
+      // le origini dei maestri navigatori polinesiani.
+      popover:                 "210 55% 14%",
       popoverForeground:       "40 52% 87%",
- 
+
       // ── Primario / CTA — Oro Tribale #B8870B ─────────────────────────────
-      // ✦ MODIFICA: oro più ricco e profondo (43 87% 38% vs 43 66% 47%)
-      //   Il colore è ora più saturo e meno "dorato chiaro" — più primitivo,
-      //   più antico, quasi il colore dell'ambra o dell'oro di una maschera tribale.
+      // Oro saturo e profondo (87% sat, 38% light) — ambra antica,
+      // non "dorato moderno". Usato solo per CTA e azioni principali.
       primary:                 "43 87% 38%",
       primaryForeground:       "40 80% 8%",
- 
-      // ── Secondario — Bruno scuro caldo ────────────────────────────────────
-      secondary:               "40 25% 11%",
+
+      // ── Secondario — Mana Verde #1A3D28 ──────────────────────────────────
+      // Nelle culture polinesiane il verde è sacro quanto il mare.
+      // Pannelli secondari, tooltip, sezioni alternate — profondità
+      // cromatica senza competere con l'oro.
+      secondary:               "145 30% 16%",
       secondaryForeground:     "40 52% 87%",
- 
-      // ── Muted — Superficie smorzata calda ─────────────────────────────────
+
+      // ── Muted surface ─────────────────────────────────────────────────────
       muted:                   "40 18% 10%",
-      mutedForeground:         "40 20% 48%",
- 
-      // ── Accent — Stesso oro tribale per coerenza ──────────────────────────
-      accent:                  "43 87% 38%",
-      accentForeground:        "40 80% 8%",
- 
-      // ── Bordi & input — Tono caldo ────────────────────────────────────────
+      // Osso Intagliato #B8A98C — più leggibile del 40 20% 48% precedente.
+      // Ispirato ai materiali tribali tradizionali (denti di squalo, osso).
+      mutedForeground:         "38 22% 68%",
+
+      // ── Accent — Rame Antico #9E4A0E ─────────────────────────────────────
+      // Separato dal primary per la prima volta: gioielleria, metallo antico.
+      // Tag "Specialità", badge decorativi, icone hover, highlights secondari.
+      accent:                  "22 75% 35%",
+      accentForeground:        "40 52% 87%",
+
+      // ── Destructive — Terracotta Sacra #7E2C14 ───────────────────────────
+      // Pigmenti tribali originali: ocra rossa, argilla. Molto più identitario
+      // di un rosso generico. Usato per errori, avvertimenti, azioni distruttive.
+      destructive:             "12 68% 30%",
+      destructiveForeground:   "40 52% 87%",
+
+      // ── Bordi standard — tono caldo ───────────────────────────────────────
       border:                  "40 22% 14%",
-      input:                   "40 18% 11%",
- 
-      // ── Focus ring — Terracotta scura #7A2E1A ────────────────────────────
-      // ✦ MODIFICA: ring in terracotta invece che nell'oro — crea contrasto
-      //   visivo interessante e rafforza l'identità tribale/primitiva
-      ring:                    "12 62% 29%",
- 
+
+      // ── Input border — Inchiostro Nero #0D0B08 ───────────────────────────
+      // Leggermente più caldo e profondo del border standard.
+      // I form sembrano scritti a inchiostro vero, non stampati.
+      input:                   "40 8% 5%",
+
+      // ── Focus ring — Terracotta Sacra ─────────────────────────────────────
+      // Stesso tono del destructive — coerenza e contrasto visivo forte
+      // rispetto all'oro che domina il resto della UI.
+      ring:                    "12 68% 30%",
+
       // ── Effetti & overlay ─────────────────────────────────────────────────
       gridPattern:             "40 22% 14%",
       primaryGlow:             "43 87% 38%",
       shadowLight:             "0 0% 0%",
       shadowDark:              "0 0% 0%",
- 
+
       // ── Sidebar ───────────────────────────────────────────────────────────
-      sidebarBackground:         "40 60% 5%",
+      sidebarBackground:         "210 55% 14%",   // Oceano Profondo — distinto dalla pagina
       sidebarForeground:         "40 52% 87%",
       sidebarPrimary:            "43 87% 38%",
       sidebarPrimaryForeground:  "40 80% 8%",
-      sidebarAccent:             "40 18% 10%",
+      sidebarAccent:             "145 30% 16%",   // Mana Verde — hover item sidebar
       sidebarAccentForeground:   "40 52% 87%",
-      sidebarBorder:             "40 22% 14%",
+      sidebarBorder:             "210 30% 20%",   // bordo più chiaro dell'oceano
       sidebarRing:               "43 87% 38%",
     },
   },
- 
+
   // ── INTERNAL / STORAGE ──────────────────────────────────────────────────────
   cookieConsentKey: "tribal-tattoo-cookie-consent",
 };
- 
+
 export type ShopConfig = typeof shopConfig;
 export default shopConfig;

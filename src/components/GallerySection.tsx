@@ -67,8 +67,8 @@ function paint() {
     el.style.opacity   = String(op);
     el.style.zIndex    = zi;
     el.style.boxShadow = (i === ai)
-      ? "0 32px 80px rgba(0,0,0,.15), 0 8px 24px rgba(0,0,0,.1)"
-      : "0 12px 40px rgba(0,0,0,.1)";
+      ? "0 32px 80px hsl(var(--shadow-dark) / 0.15), 0 8px 24px hsl(var(--shadow-dark) / 0.1)"
+      : "0 12px 40px hsl(var(--shadow-dark) / 0.1)";
 
     if (el._overlay) el._overlay.style.opacity = (i === ai) ? "0" : "1";
     if (el._label)   el._label.style.opacity   = (i === ai) ? "1" : "0";
@@ -411,7 +411,7 @@ const MobileGallery = () => {
                 className="mc-ov"
                 style={{
                   position: "absolute", inset: 0,
-                  background: "rgba(0,0,0,0.40)",
+                  background: "hsl(var(--shadow-dark) / 0.40)",
                   pointerEvents: "none",
                   transition: "opacity 0.4s ease",
                 }}
@@ -423,7 +423,7 @@ const MobileGallery = () => {
                 style={{
                   position: "absolute", bottom: 0, left: 0, right: 0,
                   padding: "48px 16px 16px",
-                  background: "linear-gradient(to top, rgba(0,0,0,0.85), transparent)",
+                  background: "linear-gradient(to top, hsl(var(--shadow-dark) / 0.85), transparent)",
                   pointerEvents: "none",
                   opacity: 0,
                   transition: "opacity 0.4s ease",
@@ -687,7 +687,7 @@ const DesktopGallery = () => {
                 className="c-ov"
                 style={{
                   position: "absolute", inset: 0,
-                  background: "rgba(0,0,0,0.32)",
+                  background: "hsl(var(--shadow-dark) / 0.32)",
                   borderRadius: "18px",
                   pointerEvents: "none",
                   transition: "opacity 0.55s ease",
@@ -700,7 +700,7 @@ const DesktopGallery = () => {
                 style={{
                   position: "absolute", bottom: 0, left: 0, right: 0,
                   padding: "50px 18px 18px",
-                  background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%)",
+                  background: "linear-gradient(to top, hsl(var(--shadow-dark) / 0.85) 0%, transparent 100%)",
                   pointerEvents: "none",
                   transition: "opacity 0.55s ease",
                   opacity: 0,

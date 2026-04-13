@@ -38,7 +38,7 @@ const NewSchoolPage = () => {
       "Esecuzione vibrante: linee bold e colori brillanti per un risultato che cattura l'occhio."
     ],
     pricing:
-      "I tatuaggi new school, ricchi di colori e dettagli, partono da €150 per pezzi piccoli. La complessità dei colori e delle sfumature influenza il prezzo. Preventivo personalizzato durante la consulenza gratuita.",
+      "I tatuaggi new school, ricchi di colori e dettagli, richiedono tempo e precisione. La complessità dei colori e delle sfumature influenza il prezzo. Un preventivo personalizzato viene fornito durante la consulenza gratuita.",
     gallery: [
       { src: "/images/tatuaggi/new-school.jpg", alt: "Tatuaggio New School colorato - Tribal Tattoo Moncalieri (Torino)" }
     ],
