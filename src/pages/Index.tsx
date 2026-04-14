@@ -7,7 +7,9 @@ import ServicesSection from "@/components/ServicesSection";
 import TeamSection from "@/components/TeamSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import GallerySection from "@/components/GallerySection";
+import DisegniSection from "@/components/DisegniSection";
 import FooterSection from "@/components/FooterSection";
+import { SeoHead } from "@/components/SeoHead";
 
 const Index = () => {
   const location = useLocation();
@@ -34,7 +36,9 @@ const Index = () => {
   }, [location.hash]);
 
   return (
-    <motion.div 
+    <>
+      <SeoHead />
+      <motion.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
@@ -46,8 +50,10 @@ const Index = () => {
       <TeamSection />
       <TestimonialsSection />
       <GallerySection />
+      <DisegniSection />
       <FooterSection />
     </motion.div>
+  </>
   );
 };
 

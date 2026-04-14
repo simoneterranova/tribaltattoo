@@ -39,7 +39,9 @@ import gallery11 from "@/assets/tattoo-11.webp";
 import gallery12 from "@/assets/tattoo-12.webp";
 import gallery13 from "@/assets/tattoo-13.webp";  
 import gallery14  from "@/assets/studio.mp4";
-import logo      from "@/assets/logo_coloured__no_bg.svg";     // Fishbone logo (red)
+//import logo      from "@/assets/logo_coloured__no_bg.svg";     // Fishbone logo (red)
+import logo      from "@/assets/original_logo_no_bg.png";     // Fishbone logo (red)
+
 
 // ── IDENTITY ──────────────────────────────────────────────────────────────────
 const shopConfig = {
@@ -78,7 +80,7 @@ const shopConfig = {
     /** og:locale */
     locale: "it_IT",
 
-    googleSiteVerification: "YOUR_GOOGLE_VERIFICATION_CODE_HERE",
+    googleSiteVerification: "YOUR_GOOGLE_VERIFICATION_CODE_HERE", //metti in index.html per farlo leggere
     googleAnalyticsId:      "G-XXXXXXXXXX",
 
     title:
@@ -101,6 +103,7 @@ const shopConfig = {
       { label: "Il Maestro", href: "#team"         },
       { label: "Recensioni", href: "#testimonials" },
       { label: "Gallery",    href: "#gallery"      },
+      { label: "Disegni",    href: "#disegni"      },
       { label: "Contatti",   href: "#contact"      },
     ],
   },
@@ -150,6 +153,10 @@ const shopConfig = {
     gallery: {
       label: "Gallery",
       heading: "I nostri Lavori",
+    },
+    disegni: {
+      label: "Disegni",
+      heading: "I Nostri Disegni",
     },
     contact: {
       label: "Contatti",
