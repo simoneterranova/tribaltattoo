@@ -1,6 +1,9 @@
-import { useRef, useEffect, useState, useCallback } from "react";
+import { useRef, useEffect, useCallback, useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { Button } from "@/components/ui/button";
 import shopConfig from "@/config/shopConfig";
 
 const images = shopConfig.gallery;
@@ -320,13 +323,21 @@ const MobileGallery = () => {
     <section id="gallery" className="border-t border-border py-16 px-6">
       <ScrollReveal direction="up" duration={0.7}>
         <div className="mb-8">
-          <span className="font-body text-xs tracking-[0.4em] text-primary uppercase">
+          <span className="font-body text-xs tracking-[0.3em] md:tracking-[0.4em] text-accent uppercase">
             {shopConfig.sections.gallery.label}
           </span>
-          <h2 className="font-heading text-5xl text-foreground mt-2 leading-none">
+          <h2 className="font-heading text-4xl md:text-6xl lg:text-8xl text-foreground mt-2 leading-none">
             {shopConfig.sections.gallery.heading}
             <span className="text-primary">.</span>
           </h2>
+        </div>
+        <div className="mb-6">
+          <Link to="/portfolio" title="Guarda il portfolio completo di tutti gli stili">
+            <Button variant="hero" size="lg" className="group">
+              PORTFOLIO
+              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </Link>
         </div>
       </ScrollReveal>
 
@@ -574,17 +585,22 @@ const DesktopGallery = () => {
         <ScrollReveal direction="up" duration={0.7}>
           <div className="flex items-end justify-between">
             <div>
-              <span className="font-body text-xs tracking-[0.4em] text-primary uppercase">
+              <span className="font-body text-xs tracking-[0.3em] md:tracking-[0.4em] text-accent uppercase">
                 {shopConfig.sections.gallery.label}
               </span>
-              <h2 className="font-heading text-6xl md:text-8xl text-foreground mt-2 leading-none">
+              <h2 className="font-heading text-4xl md:text-6xl lg:text-8xl text-foreground mt-2 leading-none">
                 {shopConfig.sections.gallery.heading}
                 <span className="text-primary">.</span>
               </h2>
             </div>
-            <span className="font-body text-xs text-muted-foreground tracking-widest uppercase hidden md:block">
-              Drag ←→
-            </span>
+            <div className="flex flex-col items-end gap-3">
+              <Link to="/portfolio" title="Guarda il portfolio completo di tutti gli stili">
+                <Button variant="hero" size="lg" className="group">
+                  PORTFOLIO
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </Link>
+            </div>
           </div>
         </ScrollReveal>
       </div>

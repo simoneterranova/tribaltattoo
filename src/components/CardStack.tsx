@@ -61,13 +61,11 @@ const CARD_STACK_CSS = `
 
     will-change: transform;
     border-radius: 18px;
-    border: 2px solid hsl(var(--border) / 0.4);
 
-    /* Premium layered shadow with gold accent */
+    /* Shadow matching GallerySection aesthetic - no border for full image visibility */
     box-shadow:
-      0 20px 100px -10px hsl(var(--primary) / 0.15),
-      0 12px 40px -10px rgba(0, 0, 0, 0.5),
-      0 0 0 1px hsl(var(--primary) / 0.1);
+      0 32px 80px hsl(var(--shadow-dark) / 0.15),
+      0 8px 24px hsl(var(--shadow-dark) / 0.1);
   }
 
   .cs-card-face:active {

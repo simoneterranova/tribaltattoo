@@ -137,7 +137,7 @@ const shopConfig = {
   sections: {
     services: {
       label: "Servizi",
-      heading: ["I Nostri", "Rituali"],
+      heading: ["I Nostri", "Servizi"],
       counterLabel: ["Anni di", "Esperienza"],
       footnote:
         "Ogni progetto è un rito unico · I preventivi sono personalizzati in base a dimensione, complessità e posizionamento anatomico · Consulenza gratuita",

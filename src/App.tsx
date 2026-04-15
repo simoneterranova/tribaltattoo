@@ -24,6 +24,7 @@ const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const CookiePolicy = lazy(() => import("./pages/CookiePolicy"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
 const GalleryPage = lazy(() => import("./pages/GalleryPage"));
+const DisegniPage = lazy(() => import("./pages/DisegniPage"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
 const ServiziPage = lazy(() => import("./pages/ServiziPage"));
 const TatuaggiPage = lazy(() => import("./pages/TatuaggiPage"));
@@ -179,6 +180,7 @@ const App = () => {
                       {/* General pages */}
                       <Route path="/about-me" element={<AboutPage />} />
                       <Route path="/gallery" element={<GalleryPage />} />
+                      <Route path="/disegni" element={<DisegniPage />} />
                       <Route path="/contatti" element={<ContactPage />} />
                       <Route path="/servizi" element={<ServiziPage />} />
                       <Route path="/tatuaggi" element={<TatuaggiPage />} />

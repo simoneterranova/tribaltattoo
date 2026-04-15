@@ -136,7 +136,7 @@ const shopConfig = {
   sections: {
     services: {
       label: "Servizi",
-      heading: ["I Nostri", "Rituali"],
+      heading: ["I Nostri", "Servizi"],
       counterLabel: ["Anni di", "Esperienza"],
       footnote:
         "Ogni progetto è un rito unico · I preventivi sono personalizzati in base a dimensione, complessità e posizionamento anatomico · Consulenza gratuita",
@@ -286,6 +286,18 @@ const shopConfig = {
     { src: gallery13, alt: "Video dello studio Tribal Tattoo",       label: "Lo Studio"    },
   ],
 
+  // ── DISEGNI (FLASH DESIGNS) ────────────────────────────────────────────────
+  disegni: [
+    { src: gallery10, alt: "Disegno tribale dot work geometrico",     label: "Dot Work"     },
+    { src: gallery11, alt: "Disegno tribale black work",              label: "Black Work"   },
+    { src: gallery12, alt: "Disegno tribale freehand",                label: "Freehand"     },
+    { src: gallery7,  alt: "Disegno tribale geometrico",              label: "Geometrico"   },
+    { src: gallery8,  alt: "Disegno polinesiano originale",           label: "Polinesiano"  },
+    { src: gallery9,  alt: "Disegno maori tradizionale",              label: "Maori"        },
+    { src: gallery1,  alt: "Disegno polinesiano freehand",            label: "Polinesiano"  },
+    { src: gallery2,  alt: "Disegno maori su braccio",                label: "Maori"        },
+  ],
+
   // ── CONTACT & LOCATION ──────────────────────────────────────────────────────
   contact: {
     addressLines: ["Corso Roma, 51", "10024 Moncalieri TO"],
@@ -343,10 +355,10 @@ const shopConfig = {
     legalName:     "Tribal Tattoo Studio",          // ← update with legal entity
     privacyEmail:  "info@tribaltattoo.it",          // ← update
     postalAddress: "Corso Roma, 51 – 10024 – Moncalieri (TO)",
-    vatNumber:     "[Inserire Partita IVA]",
+    vatNumber:     "07519240019",
     reaNumber:     "[Inserire Numero REA]",
     shareCapital:  "[Inserire Capitale Sociale]",
-    pecEmail:      "[Inserire PEC]",
+    pecEmail:      "tribaltattoo@pec.tribaltattoo.it",
   },
 
   

@@ -1,20 +1,13 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import CardStack from "./CardStack";
+import { Button } from "@/components/ui/button";
 import shopConfig from "@/config/shopConfig";
 
-// Import design images from assets
-import design1 from "@/assets/tattoo-10.webp";
-import design2 from "@/assets/tattoo-11.webp";
-import design3 from "@/assets/tattoo-12.webp";
-import design4 from "@/assets/tattoo-7.webp";
-import design5 from "@/assets/tattoo-8.webp";
-import design6 from "@/assets/tattoo-9.webp";
-import design7 from "@/assets/tattoo-1.webp";
-import design8 from "@/assets/tattoo-2.webp";
-
-// Card stack images
-const designImages = [design1, design2, design3, design4, design5, design6, design7, design8];
+// Get design images from shopConfig
+const designImages = shopConfig.disegni.map(d => d.src);
 
 const DisegniSection = () => {
   const { label, heading } = shopConfig.sections.disegni;
@@ -93,19 +86,12 @@ const DisegniSection = () => {
           </ScrollReveal>
 
           <ScrollReveal direction="up" delay={0.2} duration={0.7}>
-            <div className="pb-1 border-2 border-accent/30 p-4 bg-card/50 backdrop-blur-sm">
-              <p className="font-body text-[10px] tracking-[0.3em] text-accent uppercase mb-2">
-                {shopConfig.city}
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="h-px w-8 bg-accent/60" />
-                <span className="font-heading text-5xl text-accent leading-none">{designImages.length}</span>
-                <div className="font-body text-xs text-muted-foreground leading-tight">
-                  <p>Disegni</p>
-                  <p>Unici</p>
-                </div>
-              </div>
-            </div>
+            <Link to="/disegni" title="Scopri i disegni e le idee per tatuaggi">
+              <Button variant="hero" size="lg" className="group">
+                DISEGNI
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </Link>
           </ScrollReveal>
         </div>
       </div>
