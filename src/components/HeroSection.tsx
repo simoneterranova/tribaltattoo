@@ -21,11 +21,21 @@ const HeroSection = () => {
 
   return (
     <section ref={sectionRef} id="hero" className="relative min-h-screen flex flex-col justify-end overflow-hidden pb-16 md:pb-24">
-      {/* Background with parallax */}
+      {/* Video Background with parallax */}
       <motion.div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${shopConfig.hero.backgroundImage})`, y }}
-      />
+        className="absolute inset-0"
+        style={{ y }}
+      >
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src={shopConfig.hero.backgroundImage} type="video/mp4" />
+        </video>
+      </motion.div>
       <motion.div 
         className="absolute inset-0 bg-gradient-to-t from-background via-background/90 to-background/40" 
         style={{ opacity }}

@@ -22,7 +22,7 @@ const FloatingCartButton = () => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-40 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full p-4 shadow-2xl transition-colors"
+        className="fixed bottom-28 right-6 z-40 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full p-4 shadow-2xl transition-colors"
         aria-label={`Carrello con ${itemCount} ${itemCount === 1 ? "articolo" : "articoli"}`}
       >
         <ShoppingCart className="h-6 w-6" />

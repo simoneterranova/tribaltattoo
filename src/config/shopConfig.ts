@@ -21,7 +21,7 @@
 
 // ── IMAGE ASSETS ──────────────────────────────────────────────────────────────
 // Replace these files in src/assets/ with Tribal Tattoo's own photos/videos.
-import heroBg    from "@/assets/hero-bg.jpg";
+import heroBg    from "@/assets/output_web.mp4";
 import artist1   from "@/assets/claudio1.webp";   // CEO – portrait 1
 import artist2   from "@/assets/claudio2.webp";   // CEO – portrait 2
 import artist3   from "@/assets/claudio3.webp";   // CEO – portrait 3
@@ -38,9 +38,11 @@ import gallery10 from "@/assets/tattoo-10.webp";
 import gallery11 from "@/assets/tattoo-11.webp";
 import gallery12 from "@/assets/tattoo-12.webp";
 import gallery13 from "@/assets/tattoo-13.webp";  
-import gallery14  from "@/assets/studio.mp4";
+import gallery14 from "@/assets/tattoo-14.webp";
+import gallery15 from "@/assets/studio.mp4";
 //import logo      from "@/assets/logo_coloured__no_bg.svg";     // Fishbone logo (red)
 import logo      from "@/assets/original_logo_no_bg.png";     // Fishbone logo (red)
+import { sr } from "date-fns/locale";
 
 
 // ── IDENTITY ──────────────────────────────────────────────────────────────────
@@ -137,7 +139,7 @@ const shopConfig = {
     services: {
       label: "Servizi",
       heading: ["I Nostri", "Servizi"],
-      counterLabel: ["Anni di", "Esperienza"],
+      counterLabel: ["Servizi", "Personalizzati"],
       footnote:
         "Ogni progetto è un rito unico · I preventivi sono personalizzati in base a dimensione, complessità e posizionamento anatomico · Consulenza gratuita",
     },
@@ -284,6 +286,8 @@ const shopConfig = {
     { src: gallery11, alt: "Tatuaggio black work tribale su petto",  label: "Black Work"   },
     { src: gallery12, alt: "Tatuaggio tribale freehand su schiena", label: "Freehand"     },
     { src: gallery13, alt: "Video dello studio Tribal Tattoo",       label: "Lo Studio"    },
+    { src: gallery14, alt: "Tatuaggio in tutto il corpo", label: "Total Body"    },
+    { src: gallery15, alt: "Studio", label: "Lo Studio"    },
   ],
 
   // ── DISEGNI (FLASH DESIGNS) ────────────────────────────────────────────────
@@ -486,7 +490,7 @@ const shopConfig = {
     instagram: "https://www.instagram.com/tribaltattoo",  // ← update
     facebook:  "https://www.facebook.com/TribaltattooItalia",
     youtube:   "https://www.youtube.com/@tribaltattooitalia",
-    // tiktok:    "https://www.tiktok.com/@tribaltattoo",
+    tiktok:    "https://www.tiktok.com/@tribaltattooitalia?_r=1&_t=ZN-95azfmUBDRG",
   },
 
   // ── FOOTER ──────────────────────────────────────────────────────────────────
