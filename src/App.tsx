@@ -7,9 +7,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { CartProvider } from "@/contexts/CartContext";
 import { BarberNotificationsProvider } from "@/hooks/useBarberNotifications";
 import LoadingScreen from "@/components/LoadingScreen";
 import { CookieBanner } from "@/components/CookieBanner";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 import ScrollToTop from "@/components/ScrollToTop";
 import { SeoHead } from "@/components/SeoHead";
 
@@ -111,18 +113,19 @@ const App = () => {
       <QueryClientProvider client={queryClient}>
         <LanguageProvider>
           <AuthProvider>
-            <BarberNotificationsProvider>
-              <TooltipProvider>
-                <SeoHead />
-                <Toaster />
-                <Sonner />
-                {isLoading && (
-                  <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />
-                )}
-                <BrowserRouter>
-                  <ScrollToTop />
-                  <Suspense fallback={<RouteLoadingFallback />}>
-                    <Routes>
+            <CartProvider>
+              <BarberNotificationsProvider>
+                <TooltipProvider>
+                  <SeoHead />
+                  <Toaster />
+                  <Sonner />
+                  {isLoading && (
+                    <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />
+                  )}
+                  <BrowserRouter>
+                    <ScrollToTop />
+                    <Suspense fallback={<RouteLoadingFallback />}>
+                      <Routes>
                       <Route path="/" element={<Index />} />
                       <Route path="/auth" element={<Auth />} />
                       <Route path="/my-bookings" element={<MyBookings />} />
@@ -191,13 +194,15 @@ const App = () => {
                     </Routes>
                   </Suspense>
                   <CookieBanner />
+                  <WhatsAppButton />
                 </BrowserRouter>
               </TooltipProvider>
             </BarberNotificationsProvider>
-          </AuthProvider>
-        </LanguageProvider>
-      </QueryClientProvider>
-    </HelmetProvider>
+          </CartProvider>
+        </AuthProvider>
+      </LanguageProvider>
+    </QueryClientProvider>
+  </HelmetProvider>
   );
 };
 

@@ -288,15 +288,163 @@ const shopConfig = {
 
   // ── DISEGNI (FLASH DESIGNS) ────────────────────────────────────────────────
   disegni: [
-    { src: gallery10, alt: "Disegno tribale dot work geometrico",     label: "Dot Work"     },
-    { src: gallery11, alt: "Disegno tribale black work",              label: "Black Work"   },
-    { src: gallery12, alt: "Disegno tribale freehand",                label: "Freehand"     },
-    { src: gallery7,  alt: "Disegno tribale geometrico",              label: "Geometrico"   },
-    { src: gallery8,  alt: "Disegno polinesiano originale",           label: "Polinesiano"  },
-    { src: gallery9,  alt: "Disegno maori tradizionale",              label: "Maori"        },
-    { src: gallery1,  alt: "Disegno polinesiano freehand",            label: "Polinesiano"  },
-    { src: gallery2,  alt: "Disegno maori su braccio",                label: "Maori"        },
+    { 
+      id: "dotwork-001",
+      src: gallery10, 
+      alt: "Disegno tribale dot work geometrico",     
+      label: "Dot Work Geometrico",
+      category: "Dot Work",
+      price: 45,
+      originalPrice: null,
+      size: "Medio (10-15cm)",
+      badge: "Popolare",
+      description: "Design geometrico realizzato con tecnica dot work. Perfetto per avambraccio o polpaccio."
+    },
+    { 
+      id: "blackwork-001",
+      src: gallery11, 
+      alt: "Disegno tribale black work",              
+      label: "Black Work Tribale",
+      category: "Black Work",
+      price: 60,
+      originalPrice: null,
+      size: "Grande (15-20cm)",
+      badge: "Nuovo",
+      description: "Potente design black work con contrasti netti. Ideale per spalla o schiena."
+    },
+    { 
+      id: "freehand-001",
+      src: gallery12, 
+      alt: "Disegno tribale freehand",                
+      label: "Freehand Organico",
+      category: "Freehand",
+      price: 55,
+      originalPrice: null,
+      size: "Medio (10-15cm)",
+      badge: null,
+      description: "Design freehand che segue il flusso naturale del corpo. Adattabile a ogni zona."
+    },
+    { 
+      id: "geometrico-001",
+      src: gallery7,  
+      alt: "Disegno tribale geometrico",              
+      label: "Geometrico Sacro",
+      category: "Geometrico",
+      price: 50,
+      originalPrice: null,
+      size: "Medio (10-15cm)",
+      badge: null,
+      description: "Forme geometriche che evocano simboli ancestrali. Versatile e potente."
+    },
+    { 
+      id: "polinesiano-001",
+      src: gallery8,  
+      alt: "Disegno polinesiano originale",           
+      label: "Polinesiano Autentico",
+      category: "Polinesiano",
+      price: 70,
+      originalPrice: 85,
+      size: "Grande (15-20cm)",
+      badge: "In Offerta",
+      description: "Autentico design polinesiano con motivi tradizionali. Arte sacra originale."
+    },
+    { 
+      id: "maori-001",
+      src: gallery9,  
+      alt: "Disegno maori tradizionale",              
+      label: "Maori Tradizionale",
+      category: "Maori",
+      price: 65,
+      originalPrice: null,
+      size: "Medio-Grande (12-18cm)",
+      badge: "Popolare",
+      description: "Motivo maori rispettoso della tradizione. Perfetto per braccia e gambe."
+    },
+    { 
+      id: "polinesiano-002",
+      src: gallery1,  
+      alt: "Disegno polinesiano freehand",            
+      label: "Polinesiano Freehand",
+      category: "Polinesiano",
+      price: 75,
+      originalPrice: null,
+      size: "Grande (15-20cm)",
+      badge: "Bestseller",
+      description: "Combinazione di tradizione polinesiana e tecnica freehand moderna."
+    },
+    { 
+      id: "maori-002",
+      src: gallery2,  
+      alt: "Disegno maori su braccio",                
+      label: "Maori Bracciale",
+      category: "Maori",
+      price: 55,
+      originalPrice: null,
+      size: "Medio (10-15cm)",
+      badge: null,
+      description: "Design maori pensato specificamente per l'avambraccio. Elegante e potente."
+    },
+    { 
+      id: "dotwork-002",
+      src: gallery3, 
+      alt: "Disegno dot work complesso",     
+      label: "Dot Work Mandala",
+      category: "Dot Work",
+      price: 80,
+      originalPrice: null,
+      size: "Grande (15-20cm)",
+      badge: "Premium",
+      description: "Complesso design mandala realizzato interamente con tecnica dot work puntinato."
+    },
+    { 
+      id: "blackwork-002",
+      src: gallery4, 
+      alt: "Disegno black work grande",              
+      label: "Black Work Totale",
+      category: "Black Work",
+      price: 90,
+      originalPrice: null,
+      size: "Extra Grande (20-25cm)",
+      badge: "Premium",
+      description: "Design black work di grande impatto visivo. Per chi cerca il massimo contrasto."
+    },
+    { 
+      id: "freehand-002",
+      src: gallery5, 
+      alt: "Disegno freehand sleeve",                
+      label: "Freehand Full Sleeve",
+      category: "Freehand",
+      price: 120,
+      originalPrice: null,
+      size: "Full Sleeve",
+      badge: "Bestseller",
+      description: "Design completo per manica intera. Disegnato per seguire perfettamente il braccio."
+    },
+    { 
+      id: "geometrico-002",
+      src: gallery6,  
+      alt: "Disegno geometrico minimale",              
+      label: "Geometrico Minimalista",
+      category: "Geometrico",
+      price: 40,
+      originalPrice: null,
+      size: "Piccolo (5-10cm)",
+      badge: null,
+      description: "Design geometrico essenziale e pulito. Perfetto per chi cerca l'eleganza minimal."
+    },
   ],
+
+  // ── E-COMMERCE DISCOUNT SETTINGS ────────────────────────────────────────────
+  discount: {
+    /** Enable bulk purchase discount */
+    enabled: true,
+    /** Percentage discount (0-100) */
+    percentage: 15,
+    /** Minimum items required to qualify for discount */
+    minItems: 3,
+    /** Display message for the discount offer */
+    message: "Acquista {minItems} o più disegni e ricevi automaticamente il {percentage}% di sconto sul totale!",
+  },
 
   // ── CONTACT & LOCATION ──────────────────────────────────────────────────────
   contact: {
@@ -316,7 +464,7 @@ const shopConfig = {
     phone:     "+39 338 839 8005",
     phoneHref: "tel:+393388398005",
 
-    email: "info@tribaltattoo.it",   // ← update with real email
+    email: "tribaltattoo@tribaltattoo.it",   // ← update with real email
 
     /**
      * Google Maps embed URL.
@@ -353,11 +501,11 @@ const shopConfig = {
   // ── LEGAL (Privacy Policy & Cookie Policy) ──────────────────────────────────
   legal: {
     legalName:     "Tribal Tattoo Studio",          // ← update with legal entity
-    privacyEmail:  "info@tribaltattoo.it",          // ← update
+    privacyEmail:  "tribaltattoo@tribaltattoo.it",          // ← update
     postalAddress: "Corso Roma, 51 – 10024 – Moncalieri (TO)",
     vatNumber:     "07519240019",
-    reaNumber:     "[Inserire Numero REA]",
-    shareCapital:  "[Inserire Capitale Sociale]",
+    //reaNumber:     "[Inserire Numero REA]",
+    //shareCapital:  "[Inserire Capitale Sociale]",
     pecEmail:      "tribaltattoo@pec.tribaltattoo.it",
   },
 
