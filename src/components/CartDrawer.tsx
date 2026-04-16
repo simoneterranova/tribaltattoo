@@ -21,7 +21,7 @@ const CartDrawer = () => {
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetContent className="w-full sm:max-w-lg bg-card border-l border-border">
-        <SheetHeader className="border-b border-border pb-4">
+        <SheetHeader className="border-b border-border pb-4 pr-10">
           <SheetTitle className="flex items-center gap-3 font-heading text-2xl">
             <ShoppingCart className="h-6 w-6 text-primary" />
             Carrello

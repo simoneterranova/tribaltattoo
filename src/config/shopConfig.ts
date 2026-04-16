@@ -120,7 +120,7 @@ const shopConfig = {
     subheadline:
       "Arte tribale originale dal 1994 — ogni segno disegnato a mano sull'energia del tuo corpo.",
 
-    bookingCta: "Prenota una Consulenza",
+    bookingCta: "Prenota",
 
     marqueeItems: [
       "Polinesiano",

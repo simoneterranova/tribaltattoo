@@ -4,7 +4,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Sparkles, ShoppingBag } from "lucide-react";
+import { X, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import shopConfig from "@/config/shopConfig";
 
@@ -83,14 +83,18 @@ const WelcomeOfferPopup = () => {
 
               {/* Content */}
               <div className="relative p-5 sm:p-6 md:p-8 text-center">
-                {/* Icon */}
+                {/* Logo */}
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 0.2, type: "spring" }}
-                  className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-primary/10 rounded-full mb-3 sm:mb-4"
+                  className="inline-flex items-center justify-center mb-3 sm:mb-4"
                 >
-                  <Sparkles className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-primary" />
+                  <img 
+                    src={shopConfig.logo} 
+                    alt={shopConfig.name} 
+                    className="h-16 w-auto sm:h-20 md:h-24 object-contain"
+                  />
                 </motion.div>
 
                 {/* Heading */}

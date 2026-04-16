@@ -157,7 +157,7 @@ const ProductCard = ({
             <Button
               variant={isInCart || justAdded ? "outline" : "default"}
               size="sm"
-              onClick={handleQuickAddToCart}
+              onClick={handleAddToCart}
               className="gap-2 flex-shrink-0"
               disabled={justAdded}
             >
@@ -184,17 +184,17 @@ const ProductCard = ({
 
       {/* Quick View Dialog */}
       <Dialog open={isQuickViewOpen} onOpenChange={setIsQuickViewOpen}>
-        <DialogContent className="max-w-4xl bg-card">
-          <DialogHeader>
-            <DialogTitle className="font-heading text-3xl">{label}</DialogTitle>
-            <DialogDescription className="font-body text-muted-foreground">
+        <DialogContent className="max-w-4xl bg-card max-h-[90vh] overflow-y-auto p-4 sm:p-6">
+          <DialogHeader className="pr-8">
+            <DialogTitle className="font-heading text-2xl sm:text-3xl">{label}</DialogTitle>
+            <DialogDescription className="font-body text-muted-foreground text-sm">
               {category} • {size}
             </DialogDescription>
           </DialogHeader>
 
-          <div className="grid md:grid-cols-2 gap-6 mt-4">
+          <div className="grid md:grid-cols-2 gap-4 sm:gap-6 mt-4">
             {/* Image */}
-            <div className="relative aspect-[3/4] rounded-sm overflow-hidden bg-muted">
+            <div className="relative aspect-[4/5] sm:aspect-[3/4] rounded-sm overflow-hidden bg-muted">
               {src.endsWith('.mp4') || src.endsWith('.webm') || src.endsWith('.mov') ? (
                 <video
                   src={src}
@@ -210,19 +210,19 @@ const ProductCard = ({
             </div>
 
             {/* Details */}
-            <div className="flex flex-col justify-between">
+            <div className="flex flex-col justify-between gap-4">
               <div>
                 {badge && (
-                  <Badge variant={badge === "In Offerta" ? "destructive" : "default"} className="mb-4">
+                  <Badge variant={badge === "In Offerta" ? "destructive" : "default"} className="mb-3 sm:mb-4">
                     {badge}
                   </Badge>
                 )}
 
-                <p className="font-body text-muted-foreground leading-relaxed mb-6">
+                <p className="font-body text-sm sm:text-base text-muted-foreground leading-relaxed mb-4 sm:mb-6">
                   {description}
                 </p>
 
-                <div className="space-y-3 mb-6">
+                <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
                   <div className="flex justify-between border-b border-border pb-2">
                     <span className="font-body text-sm text-muted-foreground">Categoria</span>
                     <span className="font-body text-sm text-foreground">{category}</span>
@@ -238,13 +238,13 @@ const ProductCard = ({
                 </div>
               </div>
 
-              <div className="space-y-4">
-                <div className="flex items-baseline gap-3">
-                  <p className="font-heading text-4xl text-primary">
+              <div className="space-y-3 sm:space-y-4">
+                <div className="flex items-baseline gap-2 sm:gap-3">
+                  <p className="font-heading text-3xl sm:text-4xl text-primary">
                     €{price.toFixed(2)}
                   </p>
                   {originalPrice && (
-                    <p className="font-body text-lg text-muted-foreground line-through">
+                    <p className="font-body text-base sm:text-lg text-muted-foreground line-through">
                       €{originalPrice.toFixed(2)}
                     </p>
                   )}
@@ -253,14 +253,13 @@ const ProductCard = ({
                 <Button
                   variant="hero"
                   size="lg"
-                  className="w-full gap-2"
+                  className="w-full gap-2 h-12 sm:h-auto"
                   onClick={() => {
                     handleAddToCart();
                     setIsQuickViewOpen(false);
-                    setTimeout(() => setIsOpen(true), 300);
                   }}
                 >
-                  <ShoppingCart className="h-5 w-5" />
+                  <ShoppingCart className="h-4 w-4 sm:h-5 sm:w-5" />
                   Aggiungi al Carrello
                 </Button>
 
