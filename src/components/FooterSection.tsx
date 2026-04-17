@@ -260,11 +260,6 @@ const FooterSection = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/tatuaggi" className="text-muted-foreground hover:text-foreground transition-colors" title="Tutti gli stili di tatuaggio">
-                    Tutti i Tatuaggi
-                  </Link>
-                </li>
-                <li>
                   <Link to="/servizi" className="text-muted-foreground hover:text-foreground transition-colors" title="Servizi dello studio">
                     Servizi
                   </Link>
@@ -272,6 +267,16 @@ const FooterSection = () => {
                 <li>
                   <Link to="/gallery" className="text-muted-foreground hover:text-foreground transition-colors" title="Guarda il portfolio completo">
                     Gallery
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/disegni" className="text-muted-foreground hover:text-foreground transition-colors" title="Disegni e flash designs">
+                    Disegni
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/piercings" className="text-muted-foreground hover:text-foreground transition-colors" title="Piercings professionali">
+                    Piercings
                   </Link>
                 </li>
                 <li>
@@ -333,13 +338,23 @@ const FooterSection = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="#testimonials" className="text-muted-foreground hover:text-foreground transition-colors" title="Leggi le recensioni dei nostri clienti">
-                    Recensioni Clienti
+                  <a href="#gallery" className="text-muted-foreground hover:text-foreground transition-colors" title="Guarda il portfolio di lavori realizzati">
+                    Gallery Tattoo
                   </a>
                 </li>
                 <li>
-                  <a href="#gallery" className="text-muted-foreground hover:text-foreground transition-colors" title="Guarda il portfolio di lavori realizzati">
-                    Portfolio Gallery
+                  <a href="#disegni" className="text-muted-foreground hover:text-foreground transition-colors" title="Sfoglia i disegni disponibili">
+                    Disegni Flash
+                  </a>
+                </li>
+                <li>
+                  <a href="#piercings" className="text-muted-foreground hover:text-foreground transition-colors" title="Guarda la gallery dei piercings">
+                    Piercings Gallery
+                  </a>
+                </li>
+                <li>
+                  <a href="#testimonials" className="text-muted-foreground hover:text-foreground transition-colors" title="Leggi le recensioni dei nostri clienti">
+                    Recensioni Clienti
                   </a>
                 </li>
               </ul>

@@ -7,6 +7,7 @@ import ServicesSection from "@/components/ServicesSection";
 import TeamSection from "@/components/TeamSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import GallerySection from "@/components/GallerySection";
+import PiercingsSection from "@/components/PiercingsSection";
 import DisegniSection from "@/components/DisegniSection";
 import FooterSection from "@/components/FooterSection";
 import { SeoHead } from "@/components/SeoHead";
@@ -48,9 +49,10 @@ const Index = () => {
       <HeroSection />
       <ServicesSection />
       <TeamSection />
-      <TestimonialsSection />
       <GallerySection />
       <DisegniSection />
+      <PiercingsSection />
+      <TestimonialsSection />
       <FooterSection />
     </motion.div>
   </>

@@ -22,9 +22,11 @@
 // ── IMAGE ASSETS ──────────────────────────────────────────────────────────────
 // Replace these files in src/assets/ with Tribal Tattoo's own photos/videos.
 import heroBg    from "@/assets/output_web.mp4";
+
 import artist1   from "@/assets/claudio1.webp";   // CEO – portrait 1
 import artist2   from "@/assets/claudio2.webp";   // CEO – portrait 2
 import artist3   from "@/assets/claudio3.webp";   // CEO – portrait 3
+
 import gallery1  from "@/assets/tattoo-1.webp";
 import gallery2  from "@/assets/tattoo-2.webp";
 import gallery3  from "@/assets/tattoo-3.webp";
@@ -40,6 +42,37 @@ import gallery12 from "@/assets/tattoo-12.webp";
 import gallery13 from "@/assets/tattoo-13.webp";  
 import gallery14 from "@/assets/tattoo-14.webp";
 import gallery15 from "@/assets/studio.mp4";
+
+import piercing1  from "@/assets/piercings-photos/piercing-1.webp";
+import piercing2  from "@/assets/piercings-photos/piercing-2.webp";
+import piercing3  from "@/assets/piercings-photos/piercing-3.webp";
+import piercing4  from "@/assets/piercings-photos/piercing-4.webp";
+import piercing5  from "@/assets/piercings-photos/piercing-5.webp";
+import piercing6  from "@/assets/piercings-photos/piercing-6.webp";
+import piercing7  from "@/assets/piercings-photos/piercing-7.webp";
+import piercing8  from "@/assets/piercings-photos/piercing-8.webp";
+import piercing9  from "@/assets/piercings-photos/piercing-9.webp";
+import piercing10 from "@/assets/piercings-photos/piercing-10.webp";
+import piercing11 from "@/assets/piercings-photos/piercing-11.webp";
+import piercing12 from "@/assets/piercings-photos/piercing-12.webp";
+import piercing13 from "@/assets/piercings-photos/piercing-13.webp";  
+import piercing14 from "@/assets/piercings-photos/piercing-14.webp";
+
+import disegni1  from "@/assets/disegni-1.webp";
+import disegni2  from "@/assets/disegni-2.webp";
+import disegni3  from "@/assets/disegni-3.webp";
+import disegni4  from "@/assets/disegni-4.webp";
+import disegni5  from "@/assets/disegni-5.webp";
+import disegni6  from "@/assets/disegni-6.webp";
+import disegni7  from "@/assets/disegni-7.webp";
+import disegni8  from "@/assets/disegni-8.webp";
+import disegni9  from "@/assets/disegni-9.webp";
+import disegni10 from "@/assets/disegni-10.webp";
+import disegni11 from "@/assets/disegni-11.webp";
+import disegni12 from "@/assets/disegni-12.webp";
+import disegni13 from "@/assets/disegni-13.webp";  
+import disegni14 from "@/assets/disegni-14.webp";
+
 //import logo      from "@/assets/logo_coloured__no_bg.svg";     // Fishbone logo (red)
 import logo      from "@/assets/original_logo_no_bg.png";     // Fishbone logo (red)
 import { sr } from "date-fns/locale";
@@ -102,10 +135,11 @@ const shopConfig = {
     bookingCta: "Prenota",
     links: [
       { label: "Servizi",    href: "#services"     },
-      { label: "Il Maestro", href: "#team"         },
-      { label: "Recensioni", href: "#testimonials" },
-      { label: "Gallery",    href: "#gallery"      },
+      { label: "Maestro", href: "#team"         },
+      { label: "Tattoo",     href: "#gallery"      },
       { label: "Disegni",    href: "#disegni"      },
+      { label: "Piercings",  href: "#piercings"    },
+      { label: "Recensioni", href: "#testimonials" },
       { label: "Contatti",   href: "#contact"      },
     ],
   },
@@ -154,7 +188,11 @@ const shopConfig = {
     },
     gallery: {
       label: "Gallery",
-      heading: "I nostri Lavori",
+      heading: "I nostri Tattoo",
+    },
+    piercings: {
+      label: "Piercings",
+      heading: "I nostri Piercings",
     },
     disegni: {
       label: "Disegni",
@@ -288,6 +326,26 @@ const shopConfig = {
     { src: gallery13, alt: "Video dello studio Tribal Tattoo",       label: "Lo Studio"    },
     { src: gallery14, alt: "Tatuaggio in tutto il corpo", label: "Total Body"    },
     { src: gallery15, alt: "Studio", label: "Lo Studio"    },
+  ],
+
+  // ── PIERCINGS ───────────────────────────────────────────────────────────────
+  // TODO: Replace with real piercing photos
+  piercings: [
+    { src: piercing1, alt: "Piercing orecchio - placeholder",      label: "Ombelico"  },
+    { src: piercing2, alt: "Piercing naso - placeholder",          label: "Braccio"      },
+    { src: piercing3, alt: "Piercing sopracciglio - placeholder",  label: "Sopracciglio" },
+    { src: piercing4, alt: "Piercing labbro - placeholder",        label: "Lingua"    },
+    { src: piercing5, alt: "Piercing lingua - placeholder",        label: "Collo"    },
+    { src: piercing6, alt: "Piercing ombelico - placeholder",      label: "Orecchio"  },
+    { src: piercing7, alt: "Studio piercing - placeholder",        label: "Orecchio" },
+    { src: piercing8, alt: "Piercing industriale - placeholder",   label: "Bocca" },
+    { src: piercing9, alt: "Piercing trago - placeholder",         label: "Braccio"     },
+    { src: piercing10, alt: "Piercing helix - placeholder",        label: "Orecchio"     },
+    { src: piercing11, alt: "Piercing septum - placeholder",       label: "Orecchio"    },
+    { src: piercing12, alt: "Piercing surface - placeholder",      label: "Ombelico"   },
+    { src: piercing13, alt: "Piercing surface - placeholder",      label: "Sopracciglio"   },
+    { src: piercing14, alt: "Piercing surface - placeholder",      label: "Capezzolo"   },
+
   ],
 
   // ── DISEGNI (FLASH DESIGNS) ────────────────────────────────────────────────
