@@ -1,39 +1,32 @@
 import { useState } from "react";
-import whatsappIcon from "@/assets/whatsapp_icon.jpg";
+import facebookIcon from "@/assets/facebook_icon.png";
+import shopConfig from "@/config/shopConfig";
 
 /**
- * WhatsAppButton - Floating chat button
+ * FacebookButton - Floating social button
  * 
  * Fixed position in bottom-right corner
- * Opens WhatsApp chat with the shop's phone number
- * - Mobile: Opens WhatsApp app directly
- * - Desktop: Opens WhatsApp Web
+ * Opens Facebook page
+ * - Mobile: Opens Facebook app directly
+ * - Desktop: Opens Facebook website
  * 
  * z-index: 90 (above navbar z-60, below toasts z-100)
  */
-export const WhatsAppButton = () => {
+export const FacebookButton = () => {
   const [isHovered, setIsHovered] = useState(false);
 
-  // Format phone number for WhatsApp (remove spaces, keep +)
-  const phoneNumber = "+393388398005"; // Gran Babar phone from shopConfig
-  
-  // Default message (optional - can be customized)
-  const defaultMessage = encodeURIComponent(
-    "Ciao! Vorrei avere informazioni sui vostri servizi."
-  );
-  
-  // WhatsApp link - works on both mobile (app) and desktop (web)
-  const whatsappUrl = `https://wa.me/${phoneNumber.replace(/[^0-9]/g, "")}?text=${defaultMessage}`;
+  // Facebook URL from shopConfig
+  const facebookUrl = shopConfig.social.facebook;
 
   return (
     <a
-      href={whatsappUrl}
+      href={facebookUrl}
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-[90] group"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      aria-label="Contattaci su WhatsApp"
+      aria-label="Seguici su Facebook"
       style={{
         // Ensure it stays above content but below toasts
         // Positioned to not overlap cookie banner (bottom-6 vs cookie banner's bottom-0)
@@ -41,12 +34,12 @@ export const WhatsAppButton = () => {
         transform: isHovered ? "translateY(-8px)" : "translateY(0)",
       }}
     >
-      {/* WhatsApp icon - pure display without background */}
+      {/* Facebook icon - pure display without background */}
       <div className="relative">
         {/* Icon image */}
         <img
-          src={whatsappIcon}
-          alt="WhatsApp"
+          src={facebookIcon}
+          alt="Facebook"
           className="w-16 h-16 object-contain drop-shadow-lg hover:drop-shadow-2xl transition-all duration-300"
         />
         
@@ -55,7 +48,7 @@ export const WhatsAppButton = () => {
           <div
             className="absolute inset-0 rounded-full animate-pulse opacity-40 blur-xl"
             style={{
-              background: "#25D366",
+              background: "#1877F2",
               zIndex: -1,
             }}
           />
@@ -70,7 +63,7 @@ export const WhatsAppButton = () => {
                    opacity-0 group-hover:opacity-100 transition-opacity duration-300
                    pointer-events-none"
       >
-        Scrivici su WhatsApp
+        Seguici su Facebook
         {/* Arrow pointer */}
         <div
           className="absolute left-full top-1/2 -translate-y-1/2 -ml-1

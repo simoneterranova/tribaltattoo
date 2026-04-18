@@ -11,7 +11,7 @@ import { CartProvider } from "@/contexts/CartContext";
 import { BarberNotificationsProvider } from "@/hooks/useBarberNotifications";
 import LoadingScreen from "@/components/LoadingScreen";
 import { CookieBanner } from "@/components/CookieBanner";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { SocialButtonSwitcher } from "@/components/SocialButtonSwitcher";
 import ScrollToTop from "@/components/ScrollToTop";
 import { SeoHead } from "@/components/SeoHead";
 
@@ -194,7 +194,7 @@ const App = () => {
                     </Routes>
                   </Suspense>
                   <CookieBanner />
-                  <WhatsAppButton />
+                  <SocialButtonSwitcher />
                 </BrowserRouter>
               </TooltipProvider>
             </BarberNotificationsProvider>
