@@ -49,7 +49,7 @@ const HeroSection = () => {
           className="mb-6"
         >
           <span className="font-body text-xs tracking-[0.4em] text-accent uppercase">
-            {shopConfig.city} — Est. {shopConfig.established}
+            {shopConfig.city} — Dal {shopConfig.established}
           </span>
         </motion.div>
 

@@ -9,6 +9,7 @@ export const services = shopConfig.services.map((s) => ({
   price: s.price,
   duration: s.duration,
   durationMinutes: s.durationMinutes,
+  category: s.category,
 }));
 
 export type ServiceId = (typeof services)[number]["id"];

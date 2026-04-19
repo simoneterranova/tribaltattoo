@@ -425,10 +425,18 @@ const FooterSection = () => {
             </div>
           </div>
 
-          {/* Bottom row of bottom bar: Mandatory Italian Corporate Info & Copyright */}
+
+          {/* Copyright row */}
+          <div className="text-center">
+            <p className="font-body text-xs text-muted-foreground/70">
+              © {shopConfig.footer?.copyrightYear || new Date().getFullYear()} {shopConfig.footer.allRightsReserved}
+            </p>
+          </div>
+
+          {/* Bottom row: Mandatory Italian Corporate Info */}
           {shopConfig.legal && (
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-4 font-body text-[10px] text-muted-foreground/60 tracking-wider uppercase border-t border-border/50 pt-6">
-              <div className="text-center lg:text-left space-y-2">
+            <div className="font-body text-[10px] text-muted-foreground/60 tracking-wider uppercase border-t border-border/50 pt-6">
+              <div className="text-center space-y-2">
                 <p>
                   {shopConfig.legal.legalName} | Sede Legale: {shopConfig.legal.postalAddress}
                 </p>
@@ -439,9 +447,6 @@ const FooterSection = () => {
                 </p>
                 {shopConfig.legal.pecEmail && <p>PEC: {shopConfig.legal.pecEmail}</p>}
               </div>
-              <p className="mt-4 lg:mt-0 text-center lg:text-right">
-                © {shopConfig.footer?.copyrightYear || new Date().getFullYear()} {shopConfig.footer.allRightsReserved}
-              </p>
             </div>
           )}
 

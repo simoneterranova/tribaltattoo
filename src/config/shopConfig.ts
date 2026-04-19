@@ -42,6 +42,7 @@ import gallery12 from "@/assets/tattoo-12.webp";
 import gallery13 from "@/assets/tattoo-13.webp";  
 import gallery14 from "@/assets/tattoo-14.webp";
 import gallery15 from "@/assets/studio.mp4";
+import gallery16 from "@/assets/Progetto video 3.mp4";
 
 import piercing1  from "@/assets/piercings-photos/piercing-1.webp";
 import piercing2  from "@/assets/piercings-photos/piercing-2.webp";
@@ -58,20 +59,20 @@ import piercing12 from "@/assets/piercings-photos/piercing-12.webp";
 import piercing13 from "@/assets/piercings-photos/piercing-13.webp";  
 import piercing14 from "@/assets/piercings-photos/piercing-14.webp";
 
-import disegni1  from "@/assets/disegni-1.webp";
-import disegni2  from "@/assets/disegni-2.webp";
-import disegni3  from "@/assets/disegni-3.webp";
-import disegni4  from "@/assets/disegni-4.webp";
-import disegni5  from "@/assets/disegni-5.webp";
-import disegni6  from "@/assets/disegni-6.webp";
-import disegni7  from "@/assets/disegni-7.webp";
-import disegni8  from "@/assets/disegni-8.webp";
-import disegni9  from "@/assets/disegni-9.webp";
-import disegni10 from "@/assets/disegni-10.webp";
-import disegni11 from "@/assets/disegni-11.webp";
-import disegni12 from "@/assets/disegni-12.webp";
-import disegni13 from "@/assets/disegni-13.webp";  
-import disegni14 from "@/assets/disegni-14.webp";
+import disegni1  from "@/assets/disegni-photos/disegni-1.webp";
+import disegni2  from "@/assets/disegni-photos/disegni-2.webp";
+import disegni3  from "@/assets/disegni-photos/disegni-3.webp";
+import disegni4  from "@/assets/disegni-photos/disegni-4.webp";
+import disegni5  from "@/assets/disegni-photos/disegni-5.webp";
+import disegni6  from "@/assets/disegni-photos/disegni-6.webp";
+import disegni7  from "@/assets/disegni-photos/disegni-7.webp";
+import disegni8  from "@/assets/disegni-photos/disegni-8.webp";
+import disegni9  from "@/assets/disegni-photos/disegni-9.webp";
+import disegni10 from "@/assets/disegni-photos/disegni-10.webp";
+import disegni11 from "@/assets/disegni-photos/disegni-11.webp";
+import disegni12 from "@/assets/disegni-photos/disegni-12.webp";
+import disegni13 from "@/assets/disegni-photos/disegni-13.webp";  
+import disegni14 from "@/assets/disegni-photos/disegni-14.webp";
 
 //import logo      from "@/assets/logo_coloured__no_bg.svg";     // Fishbone logo (red)
 import logo      from "@/assets/original_logo_no_bg.png";     // Fishbone logo (red)
@@ -210,10 +211,12 @@ const shopConfig = {
 
   // ── SERVICES ────────────────────────────────────────────────────────────────
   services: [
+    // ── TATTOO SERVICES ──────────────────────────────────────────────────────
     {
       id: "consultation",
       index: "01",
       name: "Consulenza",
+      category: "tattoo" as "tattoo" | "piercing",
       price: "Gratuita",
       duration: "30 min",
       durationMinutes: 30,
@@ -225,6 +228,7 @@ const shopConfig = {
       id: "tribal-freehand",
       index: "02",
       name: "Tribale Freehand",
+      category: "tattoo" as "tattoo" | "piercing",
       price: "Su Preventivo",
       duration: "da 1 ora",
       durationMinutes: 60,
@@ -236,6 +240,7 @@ const shopConfig = {
       id: "polynesian",
       index: "03",
       name: "Polinesiano & Maori",
+      category: "tattoo" as "tattoo" | "piercing",
       price: "Su Preventivo",
       duration: "da 2 ore",
       durationMinutes: 120,
@@ -247,6 +252,7 @@ const shopConfig = {
       id: "dot-work",
       index: "04",
       name: "Dot Work & Black Work",
+      category: "tattoo" as "tattoo" | "piercing",
       price: "Su Preventivo",
       duration: "da 1 ora",
       durationMinutes: 60,
@@ -258,6 +264,7 @@ const shopConfig = {
       id: "cover-up",
       index: "05",
       name: "Cover-up & Correzioni",
+      category: "tattoo" as "tattoo" | "piercing",
       price: "Su Preventivo",
       duration: "da 1 ora",
       durationMinutes: 60,
@@ -269,12 +276,111 @@ const shopConfig = {
       id: "aftercare",
       index: "06",
       name: "Cura Post-Tatuaggio",
+      category: "tattoo" as "tattoo" | "piercing",
       price: "Inclusa",
       duration: "inclusa",
       durationMinutes: 30,
       description:
         "Istruzioni dettagliate e assistenza continua per la guarigione del tuo tatuaggio. Il rito non finisce con l'ago.",
       badge: "Inclusa" as string | null,
+    },
+
+    // ── PIERCING SERVICES ────────────────────────────────────────────────────
+    {
+      id: "piercing-orecchio",
+      index: "07",
+      name: "Piercing Orecchio",
+      category: "piercing" as "tattoo" | "piercing",
+      price: "30€",
+      duration: "15 min",
+      durationMinutes: 15,
+      description:
+        "Piercing professionali all'orecchio: lobo, helix, tragus, conch, industrial. Sterilità assoluta e gioielli titanio medicale di qualità.",
+      badge: "Popolare" as string | null,
+    },
+    {
+      id: "piercing-naso",
+      index: "08",
+      name: "Piercing Naso/Septum",
+      category: "piercing" as "tattoo" | "piercing",
+      price: "40€",
+      duration: "20 min",
+      durationMinutes: 20,
+      description:
+        "Piercing al naso (nostril) e septum. Include gioiello in titanio medicale chirurgico e consulenza per la cura post-piercing.",
+      badge: null as string | null,
+    },
+    {
+      id: "piercing-labbro",
+      index: "09",
+      name: "Piercing Labbro",
+      category: "piercing" as "tattoo" | "piercing",
+      price: "35€",
+      duration: "15 min",
+      durationMinutes: 15,
+      description:
+        "Piercing al labbro: labret, monroe, medusa, snake bites. Procedura sicura con materiali sterili monouso e gioielli certificati.",
+      badge: null as string | null,
+    },
+    {
+      id: "piercing-lingua",
+      index: "10",
+      name: "Piercing Lingua",
+      category: "piercing" as "tattoo" | "piercing",
+      price: "45€",
+      duration: "20 min",
+      durationMinutes: 20,
+      description:
+        "Piercing alla lingua eseguito con precisione anatomica. Include barbell in titanio e istruzioni dettagliate per la guarigione.",
+      badge: null as string | null,
+    },
+    {
+      id: "piercing-ombelico",
+      index: "11",
+      name: "Piercing Ombelico",
+      category: "piercing" as "tattoo" | "piercing",
+      price: "35€",
+      duration: "20 min",
+      durationMinutes: 20,
+      description:
+        "Piercing all'ombelico con studio della conformazione anatomica. Gioielli anallergici in titanio medicale con design eleganti.",
+      badge: null as string | null,
+    },
+    {
+      id: "piercing-sopracciglio",
+      index: "12",
+      name: "Piercing Sopracciglio",
+      category: "piercing" as "tattoo" | "piercing",
+      price: "35€",
+      duration: "15 min",
+      durationMinutes: 15,
+      description:
+        "Piercing al sopracciglio con posizionamento studiato per valorizzare lo sguardo. Materiali certificati e massima igiene.",
+      badge: null as string | null,
+    },
+    {
+      id: "piercing-capezzolo",
+      index: "13",
+      name: "Piercing Capezzolo",
+      category: "piercing" as "tattoo" | "piercing",
+      price: "50€",
+      duration: "25 min",
+      durationMinutes: 25,
+      description:
+        "Piercing al capezzolo eseguito con esperienza e professionalità. Procedura delicata con attenzione massima alla sterilità.",
+      badge: null as string | null,
+    },
+    {
+      id: "piercing-cambio-gioiello",
+      index: "14",
+      name: "Cambio Gioiello",
+      category: "piercing" as "tattoo" | "piercing",
+      price: "10€",
+      duration: "10 min",
+      durationMinutes: 10,
+      description:
+        "Cambio gioiello professionale per qualsiasi tipo di piercing. Verifica dello stato di guarigione e pulizia inclusa.",
+      badge: "Servizio" as string | null,
     },
   ],
 
@@ -315,6 +421,7 @@ const shopConfig = {
     { src: gallery2, alt: "Tatuaggio maori su braccio",             label: "Maori"        },
     { src: gallery3, alt: "Dot work tribale geometrico",            label: "Dot Work"     },
     { src: gallery4, alt: "Black work tribale su schiena",          label: "Black Work"   },
+    { src: gallery15, alt: "Studio", label: "Lo Studio"    },
     { src: gallery5, alt: "Tatuaggio tribale full sleeve",          label: "Full Sleeve"  },
     { src: gallery6, alt: "Dettaglio freehand tribale",             label: "Freehand"     },
     { src: gallery7, alt: "Interno dello studio Tribal Tattoo",     label: "Lo Studio"    },
@@ -325,7 +432,7 @@ const shopConfig = {
     { src: gallery12, alt: "Tatuaggio tribale freehand su schiena", label: "Freehand"     },
     { src: gallery13, alt: "Video dello studio Tribal Tattoo",       label: "Lo Studio"    },
     { src: gallery14, alt: "Tatuaggio in tutto il corpo", label: "Total Body"    },
-    { src: gallery15, alt: "Studio", label: "Lo Studio"    },
+    { src: gallery16, alt: "Video del processo di tatuaggio", label: "Il Rito"    },
   ],
 
   // ── PIERCINGS ───────────────────────────────────────────────────────────────
@@ -352,7 +459,7 @@ const shopConfig = {
   disegni: [
     { 
       id: "dotwork-001",
-      src: gallery10, 
+      src: disegni1, 
       alt: "Disegno tribale dot work geometrico",     
       label: "Dot Work Geometrico",
       category: "Dot Work",
@@ -364,7 +471,7 @@ const shopConfig = {
     },
     { 
       id: "blackwork-001",
-      src: gallery11, 
+      src: disegni2, 
       alt: "Disegno tribale black work",              
       label: "Black Work Tribale",
       category: "Black Work",
@@ -376,7 +483,7 @@ const shopConfig = {
     },
     { 
       id: "freehand-001",
-      src: gallery12, 
+      src: disegni3, 
       alt: "Disegno tribale freehand",                
       label: "Freehand Organico",
       category: "Freehand",
@@ -388,7 +495,7 @@ const shopConfig = {
     },
     { 
       id: "geometrico-001",
-      src: gallery7,  
+      src: disegni4,  
       alt: "Disegno tribale geometrico",              
       label: "Geometrico Sacro",
       category: "Geometrico",
@@ -400,7 +507,7 @@ const shopConfig = {
     },
     { 
       id: "polinesiano-001",
-      src: gallery8,  
+      src: disegni5,  
       alt: "Disegno polinesiano originale",           
       label: "Polinesiano Autentico",
       category: "Polinesiano",
