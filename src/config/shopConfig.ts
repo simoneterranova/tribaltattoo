@@ -120,7 +120,7 @@ const shopConfig = {
     googleAnalyticsId:      "G-XXXXXXXXXX",
 
     title:
-      "Tatuaggi Tribali Moncalieri Torino | Arte Sacra Originale | Tribal Tattoo Studio",
+      "Tatuaggi Tribali Moncalieri Torino | Arte Originale | Tribal Tattoo",
     description:
       "Tatuaggi tribali a Moncalieri (Torino) dal 1994. Arte polinesiaca, maori e tribale originale — non semplici copie. Design freehand su misura, rispettoso dell'anatomia. Consulenza gratuita.",
     ogTitle:
@@ -402,16 +402,100 @@ const shopConfig = {
   // ← Replace / add with real reviews from Google / social
   testimonials: [
     {
-      name: "Cliente",
-      text: "Un'esperienza che va oltre il tatuaggio. Si sente che dietro ogni segno c'è una storia vera, un rispetto profondo per la tradizione. Unico.",
+      name: "F. T.",
+      text: "Centro aperto da 30 anni: igiene, pulizia e professionalità al TOP. Non perdetevi nella jungla dei tatuatori!",
     },
     {
-      name: "Cliente",
-      text: "Ho scelto questo studio proprio per il modo in cui il maestro disegna direttamente sul corpo. Non è un semplice tatuaggio, è un rito.",
+      name: "A. M.",
+      text: "5 anni fa il piercing all'ombelico, soddisfatta al 100%. Oggi ci ho portato mia sorella — sapevo già dove andare: TRIBAL TATTOO! Professionalità e attenzione al cliente GARANTITE. CONSIGLIATISSIMO!",
     },
     {
-      name: "Cliente",
-      text: "Professionalità e cultura tribale autentica. Ho finalmente un tatuaggio polinesiano che rispetta la vera tradizione e il mio corpo.",
+      name: "C. L.",
+      text: "Uscita soddisfatta e contenta. Professionali, competenti, posto pulito. Vivamente consigliato!",
+    },
+    {
+      name: "G.",
+      text: "Titolare bravissimo e professionale, vere opere d'arte. Ho già 3 tatuaggi stupendi — tornerò sicuramente!",
+    },
+    {
+      name: "C. S.",
+      text: "Simpatici, spiegano tutto e consigliano. Davvero bravi.",
+    },
+    {
+      name: "M. T.",
+      text: "Piercing all'ombelico: grande professionalità, pulizia e gentilezza.",
+    },
+    {
+      name: "C. C.",
+      text: "Il tempio del tattoo e del piercing, vasta gioielleria da piercing.",
+    },
+    {
+      name: "F. S.",
+      text: "Titolare gentile, simpatico e competente. Locale particolare e a tema. Super consigliato.",
+    },
+    {
+      name: "G. T.",
+      text: "Accogliente, pulito, personale competente. Buoni prezzi, da consigliare!",
+    },
+    {
+      name: "A. R.",
+      text: "Proprietario gentile, ti spiega tutto nei minimi dettagli. Ho 3 tattoo bellissimi. Luogo accogliente.",
+    },
+    {
+      name: "V. L.",
+      text: "Negozio pulito, personale gentile ed esperto, buoni prezzi.",
+    },
+    {
+      name: "M. M.",
+      text: "Professionali ed estremamente puliti! Piercing fatto meno di una settimana fa — mi sembra di averlo da una vita. Grandiiiii!",
+    },
+    {
+      name: "I. M.",
+      text: "Piercing ombelico: bravissimo, zero dolore e zero infiammazione. Consigliatissimo!",
+    },
+    {
+      name: "M. B.",
+      text: "Molto bravi. Titolare con iride tatuata — uno dei pochi casi!",
+    },
+    {
+      name: "P. L.",
+      text: "Un professionista raro.",
+    },
+    {
+      name: "S. B.",
+      text: "Ottimo lavoro, personale preparato, locale pulito.",
+    },
+    {
+      name: "G. B.",
+      text: "Competenti, puliti, tutto alla perfezione. Ottimo!",
+    },
+    {
+      name: "E. S.",
+      text: "Professionalità, gentilezza e pulizia ottima.",
+    },
+    {
+      name: "M. V.",
+      text: "Vuoi farti \"dipingere\" il corpo? Lui è il migliore. Assolutamente SÌ!",
+    },
+    {
+      name: "P. R.",
+      text: "Carino, pulito, prezzi modici.",
+    },
+    {
+      name: "R. S.",
+      text: "Professionale e competente.",
+    },
+    {
+      name: "G. V.",
+      text: "Professionalità e igiene assoluta. Consigliatissimo.",
+    },
+    {
+      name: "E. M.",
+      text: "Professionalità, igiene e bravura.",
+    },
+    {
+      name: "A. H.",
+      text: "Claudio è un grande artista: tatuaggi tribali polinesiani impeccabili e colori fantastici. Ricerca la perfezione in tutto ciò che fa.",
     },
   ],
 

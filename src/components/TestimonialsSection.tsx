@@ -259,25 +259,25 @@ const TestimonialsSection = () => {
   }, []);
 
   return (
-    <section id="testimonials" className="py-16 md:py-24 lg:py-40 border-t-2 border-accent/20 overflow-hidden relative">
+    <section id="testimonials" className="py-16 md:py-24 lg:py-40 border-t-2 border-accent/20 overflow-hidden cyber-razor-top cyber-razor-bottom relative">
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.02]"
-           style={{ backgroundImage: "linear-gradient(hsl(var(--grid-pattern) / 0.1) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--grid-pattern) / 0.1) 1px, transparent 1px)", backgroundSize: "50px 50px" }} />
+           style={{ backgroundImage: "linear-gradient(hsl(127 14% 36% / 0.1) 1px, transparent 1px), linear-gradient(90deg, hsl(127 14% 36% / 0.1) 1px, transparent 1px)", backgroundSize: "50px 50px" }} />
            
       {/* Header */}
       <div className="container mx-auto px-4 md:px-6 mb-8 md:mb-10 relative z-10">
         <ScrollReveal direction="up" duration={0.7}>
           <div className="flex items-end justify-between">
             <div>
-              <span className="font-body text-xs tracking-[0.3em] md:tracking-[0.4em] text-accent uppercase">
+              <span className="font-body text-xs tracking-[0.3em] md:tracking-[0.4em] text-accent uppercase neon-glow">
                 {shopConfig.sections.testimonials.label}
               </span>
-              <h2 className="font-heading text-4xl md:text-6xl lg:text-8xl text-foreground mt-2 leading-none">
+              <h2 className="font-heading text-4xl md:text-6xl lg:text-8xl text-foreground mt-2 leading-none cyber-glitch-2" style={{ '--og-clip-path': 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' } as React.CSSProperties}>
                 {shopConfig.sections.testimonials.heading}
-                <span className="text-primary">.</span>
+                <span className="text-primary neon-glow-red cyber-glitch-4">.</span>
               </h2>
             </div>
-            <span className="font-body text-xs text-accent tracking-widest uppercase hidden md:block">
+            <span className="font-body text-xs text-accent tracking-widest uppercase hidden md:block neon-glow">
               Drag ←→
             </span>
           </div>
@@ -348,10 +348,14 @@ const TestimonialsSection = () => {
                 }`}
               >
                 <div className={`flex items-center justify-between ${isMobile ? 'mb-4' : 'mb-6'}`}>
-                  <Quote 
-                    className={`${isMobile ? 'h-6 w-6' : 'h-8 w-8'}`}
-                    style={{ color: "var(--primary)", opacity: 0.3 }} 
-                  />
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, idx) => (
+                      <Star 
+                        key={idx}
+                        className={`${isMobile ? 'h-4 w-4' : 'h-5 w-5'} text-primary fill-primary`}
+                      />
+                    ))}
+                  </div>
                   <span className={`font-heading ${isMobile ? 'text-lg' : 'text-xl'} text-foreground`}>
                     {t.name}
                   </span>
@@ -366,7 +370,7 @@ const TestimonialsSection = () => {
                 className="t-ov"
                 style={{
                   position: "absolute", inset: 0,
-                  background: "hsl(var(--shadow-dark) / 0.32)",
+                  background: "rgba(0,0,0,0.32)",
                   pointerEvents: "none",
                   transition: "opacity 0.55s ease",
                 }}
