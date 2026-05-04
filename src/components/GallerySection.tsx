@@ -327,8 +327,8 @@ const MobileGallery = () => {
             {shopConfig.sections.gallery.label}
           </span>
           <h2 className="font-heading text-4xl md:text-6xl lg:text-8xl text-foreground mt-2 leading-none">
-            {shopConfig.sections.gallery.heading}
-            <span className="text-primary">.</span>
+            {shopConfig.sections.gallery.heading[0]}<br />
+            {shopConfig.sections.gallery.heading[1]}<span className="text-primary">.</span>
           </h2>
         </div>
         <div className="mb-6">
@@ -589,8 +589,8 @@ const DesktopGallery = () => {
                 {shopConfig.sections.gallery.label}
               </span>
               <h2 className="font-heading text-4xl md:text-6xl lg:text-8xl text-foreground mt-2 leading-none">
-                {shopConfig.sections.gallery.heading}
-                <span className="text-primary">.</span>
+                {shopConfig.sections.gallery.heading[0]}<br />
+                {shopConfig.sections.gallery.heading[1]}<span className="text-primary">.</span>
               </h2>
             </div>
             <div className="flex flex-col items-end gap-3">

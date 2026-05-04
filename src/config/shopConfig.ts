@@ -59,20 +59,64 @@ import piercing12 from "@/assets/piercings-photos/piercing-12.webp";
 import piercing13 from "@/assets/piercings-photos/piercing-13.webp";  
 import piercing14 from "@/assets/piercings-photos/piercing-14.webp";
 
-import disegni1  from "@/assets/disegni-photos/disegni-1.webp";
-import disegni2  from "@/assets/disegni-photos/disegni-2.webp";
-import disegni3  from "@/assets/disegni-photos/disegni-3.webp";
-import disegni4  from "@/assets/disegni-photos/disegni-4.webp";
-import disegni5  from "@/assets/disegni-photos/disegni-5.webp";
-import disegni6  from "@/assets/disegni-photos/disegni-6.webp";
-import disegni7  from "@/assets/disegni-photos/disegni-7.webp";
-import disegni8  from "@/assets/disegni-photos/disegni-8.webp";
-import disegni9  from "@/assets/disegni-photos/disegni-9.webp";
-import disegni10 from "@/assets/disegni-photos/disegni-10.webp";
-import disegni11 from "@/assets/disegni-photos/disegni-11.webp";
-import disegni12 from "@/assets/disegni-photos/disegni-12.webp";
-import disegni13 from "@/assets/disegni-photos/disegni-13.webp";  
-import disegni14 from "@/assets/disegni-photos/disegni-14.webp";
+import disegno1  from "@/assets/disegni-photos/disegno-1.webp";
+import disegno2  from "@/assets/disegni-photos/disegno-2.webp";
+import disegno3  from "@/assets/disegni-photos/disegno-3.webp";
+import disegno4  from "@/assets/disegni-photos/disegno-4.webp";
+import disegno5  from "@/assets/disegni-photos/disegno-5.webp";
+import disegno6  from "@/assets/disegni-photos/disegno-6.webp";
+import disegno7  from "@/assets/disegni-photos/disegno-7.webp";
+import disegno8  from "@/assets/disegni-photos/disegno-8.webp";
+import disegno9  from "@/assets/disegni-photos/disegno-9.webp";
+import disegno10 from "@/assets/disegni-photos/disegno-10.webp";
+import disegno11 from "@/assets/disegni-photos/disegno-11.webp";
+import disegno12 from "@/assets/disegni-photos/disegno-12.webp";
+import disegno13 from "@/assets/disegni-photos/disegno-13.webp";
+import disegno14 from "@/assets/disegni-photos/disegno-14.webp";
+import disegno15 from "@/assets/disegni-photos/disegno-15.webp";
+import disegno16 from "@/assets/disegni-photos/disegno-16.webp";
+import disegno17 from "@/assets/disegni-photos/disegno-17.webp";
+import disegno18 from "@/assets/disegni-photos/disegno-18.webp";
+import disegno19 from "@/assets/disegni-photos/disegno-19.webp";
+import disegno20 from "@/assets/disegni-photos/disegno-20.webp";
+import disegno21 from "@/assets/disegni-photos/disegno-21.webp";
+import disegno22 from "@/assets/disegni-photos/disegno-22.webp";
+import disegno23 from "@/assets/disegni-photos/disegno-23.webp";
+import disegno24 from "@/assets/disegni-photos/disegno-24.webp";
+import disegno25 from "@/assets/disegni-photos/disegno-25.webp";
+import disegno26 from "@/assets/disegni-photos/disegno-26.webp";
+import disegno27 from "@/assets/disegni-photos/disegno-27.webp";
+import disegno28 from "@/assets/disegni-photos/disegno-28.webp";
+import disegno29 from "@/assets/disegni-photos/disegno-29.webp";
+import disegno30 from "@/assets/disegni-photos/disegno-30.webp";
+import disegno31 from "@/assets/disegni-photos/disegno-31.webp";
+import disegno32 from "@/assets/disegni-photos/disegno-32.webp";
+import disegno33 from "@/assets/disegni-photos/disegno-33.webp";
+import disegno34 from "@/assets/disegni-photos/disegno-34.webp";
+import disegno35 from "@/assets/disegni-photos/disegno-35.webp";
+import disegno36 from "@/assets/disegni-photos/disegno-36.webp";
+import disegno37 from "@/assets/disegni-photos/disegno-37.webp";
+import disegno38 from "@/assets/disegni-photos/disegno-38.webp";
+import disegno39 from "@/assets/disegni-photos/disegno-39.webp";
+import disegno40 from "@/assets/disegni-photos/disegno-40.webp";
+import disegno41 from "@/assets/disegni-photos/disegno-41.webp";
+import disegno42 from "@/assets/disegni-photos/disegno-42.webp";
+import disegno43 from "@/assets/disegni-photos/disegno-43.webp";
+import disegno44 from "@/assets/disegni-photos/disegno-44.webp";
+import disegno45 from "@/assets/disegni-photos/disegno-45.webp";
+import disegno46 from "@/assets/disegni-photos/disegno-46.webp";
+import disegno47 from "@/assets/disegni-photos/disegno-47.webp";
+import disegno48 from "@/assets/disegni-photos/disegno-48.webp";
+import disegno49 from "@/assets/disegni-photos/disegno-49.webp";
+import disegno50 from "@/assets/disegni-photos/disegno-50.webp";
+import disegno51 from "@/assets/disegni-photos/disegno-51.webp";
+import disegno52 from "@/assets/disegni-photos/disegno-52.webp";
+import disegno53 from "@/assets/disegni-photos/disegno-53.webp";
+import disegno54 from "@/assets/disegni-photos/disegno-54.webp";
+import disegno55 from "@/assets/disegni-photos/disegno-55.webp";
+import disegno56 from "@/assets/disegni-photos/disegno-56.webp";
+import disegno57 from "@/assets/disegni-photos/disegno-57.webp";
+import disegno58 from "@/assets/disegni-photos/disegno-58.webp";
 
 //import logo      from "@/assets/logo_coloured__no_bg.svg";     // Fishbone logo (red)
 import logo      from "@/assets/original_logo_no_bg.png";     // Fishbone logo (red)
@@ -189,15 +233,15 @@ const shopConfig = {
     },
     gallery: {
       label: "Gallery",
-      heading: "I nostri Tattoo",
+      heading: ["I nostri", "Tattoo"],
     },
     piercings: {
       label: "Piercings",
-      heading: "I nostri Piercings",
+      heading: ["I nostri", " Piercings"],
     },
     disegni: {
       label: "Disegni",
-      heading: "I Nostri Disegni",
+      heading: ["I nostri", "Disegni"],
     },
     contact: {
       label: "Contatti",
@@ -520,13 +564,13 @@ const shopConfig = {
     { src: gallery15, alt: "Studio", label: "Lo Studio"    },
     { src: gallery5, alt: "Tatuaggio tribale full sleeve",          label: "Full Sleeve"  },
     { src: gallery6, alt: "Dettaglio freehand tribale",             label: "Freehand"     },
-    { src: gallery7, alt: "Interno dello studio Tribal Tattoo",     label: "Lo Studio"    },
+    { src: gallery7, alt: "Tatuaggio Polinesiano su petto",     label: "Polinesiano"    },
     { src: gallery8, alt: "Tatuaggio polinesiano su spalla",          label: "Polinesiano"  },
     { src: gallery9, alt: "Tatuaggio maori su gamba",                label: "Maori"        },
-    { src: gallery10, alt: "Tatuaggio dot work geometrico su braccio", label: "Dot Work"     },
+    { src: gallery10, alt: "Tatuaggio tribale geometrico su braccio", label: "Tribale"     },
     { src: gallery11, alt: "Tatuaggio black work tribale su petto",  label: "Black Work"   },
     { src: gallery12, alt: "Tatuaggio tribale freehand su schiena", label: "Freehand"     },
-    { src: gallery13, alt: "Video dello studio Tribal Tattoo",       label: "Lo Studio"    },
+    { src: gallery13, alt: "Face Tattoo",       label: "Face Tattoo"    },
     { src: gallery14, alt: "Tatuaggio in tutto il corpo", label: "Total Body"    },
     { src: gallery16, alt: "Video del processo di tatuaggio", label: "Il Rito"    },
   ],
@@ -553,149 +597,521 @@ const shopConfig = {
 
   // ── DISEGNI (FLASH DESIGNS) ────────────────────────────────────────────────
   disegni: [
-    { 
-      id: "dotwork-001",
-      src: disegni1, 
-      alt: "Disegno tribale dot work geometrico",     
-      label: "Dot Work Geometrico",
-      category: "Dot Work",
+    {
+      id: "polinesiano-001",
+      src: disegno1,
+      alt: "Tartaruga honu e maschera tiki in stile polinesiano-maori",
+      label: "Honu & Tiki Maschera",
+      category: "Polinesiano",
+      price: 70,
+      originalPrice: null,
+      size: "Grande (15-20cm)",
+      badge: "Popolare",
+      description: "Foglio flash polinesiano-maori: tartaruga honu simmetrica con koru e, sotto, una maschera tiki circondata da onde e uncini. Arte sacra originale."
+    },
+    {
+      id: "polinesiano-002",
+      src: disegno2,
+      alt: "Bande tribali verticali e profilo tiki polinesiano",
+      label: "Bande & Tiki Profile",
+      category: "Polinesiano",
       price: 45,
       originalPrice: null,
-      size: "Medio (10-15cm)",
-      badge: "Popolare",
-      description: "Design geometrico realizzato con tecnica dot work. Perfetto per avambraccio o polpaccio."
+      size: "Banda (5-8cm)",
+      badge: null,
+      description: "Panel con profilo tiki che scende in triangoli (denti di squalo) e bande verticali: spirali koru, clessidre e zigzag. Ideale per avambraccio o polpaccio."
     },
-    { 
+    {
+      id: "tribale-001",
+      src: disegno3,
+      alt: "Creatura manta tribale con lancia e banda geometrica simmetrica",
+      label: "Manta & Banda Geometrica",
+      category: "Tribale",
+      price: 55,
+      originalPrice: null,
+      size: "Medio (10-15cm)",
+      badge: null,
+      description: "Due elementi: creatura manta/pterosauro in volute nere con lancia orizzontale, e ampia banda simmetrica con fiore lotus, koru e triangoli. Versatile."
+    },
+    {
+      id: "polinesiano-003",
+      src: disegno4,
+      alt: "Tiki solare doppio viso e gecko tribale decorato",
+      label: "Tiki Solare & Gecko",
+      category: "Polinesiano",
+      price: 65,
+      originalPrice: null,
+      size: "Grande (15-20cm)",
+      badge: null,
+      description: "Semisfera solare con doppia maschera tiki (due paia d'occhi) al centro, raggi dentati e geometria esterna. In basso un gecko interamente decorato in stile tribale."
+    },
+    {
+      id: "polinesiano-004",
+      src: disegno5,
+      alt: "Grande tiki triangolare aggressivo e delfino tribale",
+      label: "Grande Tiki & Delfino",
+      category: "Polinesiano",
+      price: 80,
+      originalPrice: null,
+      size: "Extra Grande (20-25cm)",
+      badge: "Bestseller",
+      description: "Design triangolare per petto o spalla: tiki centrale con occhi ovali e bocca larga, onde simmetriche e bordi frastagliati. Più in basso, delfino decorato con spirali interne."
+    },
+    {
       id: "blackwork-001",
-      src: disegni2, 
-      alt: "Disegno tribale black work",              
-      label: "Black Work Tribale",
+      src: disegno6,
+      alt: "Blackwork geometrico con cerchio vuoto centrale e frammenti",
+      label: "Blackwork Cerchio Sacro",
       category: "Black Work",
       price: 60,
       originalPrice: null,
       size: "Grande (15-20cm)",
-      badge: "Nuovo",
-      description: "Potente design black work con contrasti netti. Ideale per spalla o schiena."
+      badge: null,
+      description: "Grande blocco rettangolare con cerchio vuoto al centro incorniciato da masse nere simmetriche e bordi a denti di squalo. In basso, frammenti di onde e mezzo mandala."
     },
-    { 
-      id: "freehand-001",
-      src: disegni3, 
-      alt: "Disegno tribale freehand",                
-      label: "Freehand Organico",
-      category: "Freehand",
+    {
+      id: "marino-001",
+      src: disegno7,
+      alt: "Tre grandi cetacei tribali: squalo martello, orca e capodoglio",
+      label: "Squalo, Orca & Capodoglio",
+      category: "Marino",
+      price: 85,
+      originalPrice: null,
+      size: "Extra Grande (20-25cm)",
+      badge: "Popolare",
+      description: "Foglio marino con tre creature: squalo martello dall'alto (weave e spearhead), orca di profilo con geometria lineare, capodoglio frontale con elementi polinesiani classici."
+    },
+    {
+      id: "siciliano-001",
+      src: disegno8,
+      alt: "Trinacria tribale, vaso decorato, fishhook maori e cuore Sicilia",
+      label: "Flash Siciliano Vol.1",
+      category: "Siciliano",
       price: 55,
       originalPrice: null,
       size: "Medio (10-15cm)",
-      badge: null,
-      description: "Design freehand che segue il flusso naturale del corpo. Adattabile a ogni zona."
+      badge: "Nuovo",
+      description: "Quattro motivi tribali siciliani: Trinacria con Medusa e gambe stilizzate, vaso tradizionale con bande, grande fishhook Hei Matau e cuore con mappa della Sicilia e plumerie."
     },
-    { 
+    {
+      id: "zodiac-001",
+      src: disegno9,
+      alt: "I 12 segni zodiacali reinterpretati in stile polinesiano tribale",
+      label: "Zodiac Polinesiano",
+      category: "Polinesiano",
+      price: 40,
+      originalPrice: null,
+      size: "Piccolo (5-10cm)",
+      badge: "Popolare",
+      description: "Tutti e 12 i segni zodiacali riletti come creature polinesiane: Toro-squalo, Ariete-medusa, Scorpione-anglerfish, Acquario-razza, Capricorno-nautilus, e così via. Ognuno su misura."
+    },
+    {
+      id: "siciliano-002",
+      src: disegno10,
+      alt: "Mappa tribale della Sicilia, serpente-pugnale e cornicello",
+      label: "Flash Siciliano Vol.2",
+      category: "Siciliano",
+      price: 65,
+      originalPrice: null,
+      size: "Grande (15-20cm)",
+      badge: null,
+      description: "Due mappe tribali della Sicilia con weave e volti, serpente intrecciato a pugnale (lettera S), cornicello decorato con geometrie tribali. Arte identitaria siciliana."
+    },
+    {
       id: "geometrico-001",
-      src: disegni4,  
-      alt: "Disegno tribale geometrico",              
-      label: "Geometrico Sacro",
+      src: disegno12,
+      alt: "Sole-croce tribale, emblema circolare, infinito maschera e fenice in volo",
+      label: "Sole, Emblema & Fenice",
       category: "Geometrico",
+      price: 70,
+      originalPrice: null,
+      size: "Grande (15-20cm)",
+      badge: null,
+      description: "Quattro disegni: sole-croce con core circolare a raggi segmentati, emblema circolare simmetrico, figura otto con maschere, e grande fenice tribale in volo con coda maestosa."
+    },
+    {
+      id: "natura-001",
+      src: disegno13,
+      alt: "Fiori di loto, rondini, farfalle e quadrifoglio in stile polinesiano",
+      label: "Natura Tribale",
+      category: "Natura",
       price: 50,
       originalPrice: null,
       size: "Medio (10-15cm)",
-      badge: null,
-      description: "Forme geometriche che evocano simboli ancestrali. Versatile e potente."
+      badge: "Popolare",
+      description: "Foglio natura polinesiana: due loti (uno in fiore, uno chiuso), due rondini con ali spiegate, due farfalle, un quadrifoglio e plumerie stellate. Tutto in geometrie tribali fini."
     },
-    { 
-      id: "polinesiano-001",
-      src: disegni5,  
-      alt: "Disegno polinesiano originale",           
-      label: "Polinesiano Autentico",
-      category: "Polinesiano",
-      price: 70,
-      originalPrice: 85,
-      size: "Grande (15-20cm)",
-      badge: "In Offerta",
-      description: "Autentico design polinesiano con motivi tradizionali. Arte sacra originale."
-    },
-    { 
-      id: "maori-001",
-      src: gallery9,  
-      alt: "Disegno maori tradizionale",              
-      label: "Maori Tradizionale",
-      category: "Maori",
+    {
+      id: "sardo-001",
+      src: disegno15,
+      alt: "Mappa tribale della Sardegna con Quattro Mori e coltello pattadesa",
+      label: "Flash Sardo",
+      category: "Sardo",
       price: 65,
       originalPrice: null,
-      size: "Medio-Grande (12-18cm)",
-      badge: "Popolare",
-      description: "Motivo maori rispettoso della tradizione. Perfetto per braccia e gambe."
-    },
-    { 
-      id: "polinesiano-002",
-      src: gallery1,  
-      alt: "Disegno polinesiano freehand",            
-      label: "Polinesiano Freehand",
-      category: "Polinesiano",
-      price: 75,
-      originalPrice: null,
       size: "Grande (15-20cm)",
-      badge: "Bestseller",
-      description: "Combinazione di tradizione polinesiana e tecnica freehand moderna."
+      badge: "Nuovo",
+      description: "Arte identitaria sarda: teschio in alloro, coltello resolza intrecciato, mappa con croce rossa dei Quattro Mori e teste tribali, più seconda mappa interamente riempita di geometrie."
     },
-    { 
-      id: "maori-002",
-      src: gallery2,  
-      alt: "Disegno maori su braccio",                
-      label: "Maori Bracciale",
-      category: "Maori",
+    {
+      id: "marino-002",
+      src: disegno16,
+      alt: "Gecko, squalo, tartaruga, manta ray con tiki e pesce spada tribali",
+      label: "Creature Marine & Rettili",
+      category: "Marino",
       price: 55,
       originalPrice: null,
-      size: "Medio (10-15cm)",
-      badge: null,
-      description: "Design maori pensato specificamente per l'avambraccio. Elegante e potente."
-    },
-    { 
-      id: "dotwork-002",
-      src: gallery3, 
-      alt: "Disegno dot work complesso",     
-      label: "Dot Work Mandala",
-      category: "Dot Work",
-      price: 80,
-      originalPrice: null,
       size: "Grande (15-20cm)",
-      badge: "Premium",
-      description: "Complesso design mandala realizzato interamente con tecnica dot work puntinato."
+      badge: null,
+      description: "Cinque soggetti tribali su un foglio: gecko dai piedi arricciati, squalo dall'alto, tartaruga circolare, manta ray con tiki incorporato e pesce spada che scende. Classici polinesiani."
     },
-    { 
-      id: "blackwork-002",
-      src: gallery4, 
-      alt: "Disegno black work grande",              
-      label: "Black Work Totale",
-      category: "Black Work",
-      price: 90,
-      originalPrice: null,
-      size: "Extra Grande (20-25cm)",
-      badge: "Premium",
-      description: "Design black work di grande impatto visivo. Per chi cerca il massimo contrasto."
-    },
-    { 
-      id: "freehand-002",
-      src: gallery5, 
-      alt: "Disegno freehand sleeve",                
-      label: "Freehand Full Sleeve",
-      category: "Freehand",
+    {
+      id: "polinesiano-005",
+      src: disegno17,
+      alt: "Grande design sleeve o spalla con profilo tiki e bande koru",
+      label: "Sleeve Tiki Maestoso",
+      category: "Polinesiano",
       price: 120,
       originalPrice: null,
       size: "Full Sleeve",
       badge: "Bestseller",
-      description: "Design completo per manica intera. Disegnato per seguire perfettamente il braccio."
+      description: "Pezzo verticale per manica o polpaccio: profilo tiki dominante a destra, colonne di bande kurvilinee con weave, triangoli e onde negative a sinistra. Ancoraggio con volti centrali."
     },
-    { 
-      id: "geometrico-002",
-      src: gallery6,  
-      alt: "Disegno geometrico minimale",              
-      label: "Geometrico Minimalista",
-      category: "Geometrico",
-      price: 40,
+    {
+      id: "siciliano-003",
+      src: disegno18,
+      alt: "Ruota carretto, coppola, cuore Sicilia, carretto e cavallo tribali",
+      label: "Flash Siciliano Vol.3",
+      category: "Siciliano",
+      price: 55,
       originalPrice: null,
-      size: "Piccolo (5-10cm)",
+      size: "Medio (10-15cm)",
       badge: null,
-      description: "Design geometrico essenziale e pulito. Perfetto per chi cerca l'eleganza minimal."
+      description: "Iconografia siciliana tribale: ruota di carretto con raggi decorati, coppola con intrecci, cuore con ibisco e Sicilia, piccolo carretto, bastone con volto e cavallo bardato."
+    },
+    {
+      id: "blackwork-002",
+      src: disegno19,
+      alt: "Rettangolo blackwork con cerchio vuoto e tiki V-shape triangolare",
+      label: "Blackwork Doppio Panel",
+      category: "Black Work",
+      price: 85,
+      originalPrice: null,
+      size: "Extra Grande (20-25cm)",
+      badge: "Premium",
+      description: "Due pesanti panel: rettangolo con ampio cerchio vuoto centrale (sole/vuoto) incorniciato da curve spesse e denti di squalo, e grande V-chest con tiki simmetrico spezzato al centro."
+    },
+    {
+      id: "marino-003",
+      src: disegno20,
+      alt: "Polpo tribale, tiki rotondo, mappa Sicilia, corona e coltelli",
+      label: "Polpo, Tiki & Sicilia",
+      category: "Marino",
+      price: 60,
+      originalPrice: null,
+      size: "Medio (10-15cm)",
+      badge: null,
+      description: "Mix di soggetti: polpo con tentacoli avvolgenti e testa-maschera, piccolo tiki rotondo, mappa Sicilia su ventaglio solare, volto in corona d'alloro e due coltelli tribali sovrapposti."
+    },
+    {
+      id: "siciliano-004",
+      src: disegno21,
+      alt: "Mappa Sicilia tribale, cuore plumeria, trinacria e emblema con uccelli",
+      label: "Flash Siciliano Vol.4",
+      category: "Siciliano",
+      price: 65,
+      originalPrice: null,
+      size: "Grande (15-20cm)",
+      badge: null,
+      description: "Cinque elementi: mappa Sicilia geometrica con scritta, cuore con plumerie tribali, emblema con teste di uccelli gemelle su ruota, Trinacria stilizzata e seconda mappa densa."
+    },
+    {
+      id: "geometrico-002",
+      src: disegno23,
+      alt: "Sole yin-yang con koru, simbolo meandro e grande fenice tribale",
+      label: "Sole Yin-Yang & Fenice",
+      category: "Geometrico",
+      price: 80,
+      originalPrice: null,
+      size: "Extra Grande (20-25cm)",
+      badge: "Bestseller",
+      description: "Sole tribale con yin-yang puntinato al centro, bordi a spirale quadrata e raggi di fiamma. Accanto, simbolo meandro angolare. In basso, immensa fenice/araba fenice in pieno volo."
+    },
+    {
+      id: "marino-005",
+      src: disegno24,
+      alt: "Squali tribali: piccolo squalo, grande great white, swordfish, hammerhead e cavalluccio",
+      label: "Flash Squali",
+      category: "Marino",
+      price: 70,
+      originalPrice: null,
+      size: "Grande (15-20cm)",
+      badge: null,
+      description: "Cinque pesci tribali: piccolo squalo aggressivo, grande squalo bianco pieno di weave, pesce spada, coppia hammerhead+squalo con volto centrale, e cavalluccio marino intrecciato a fishhook."
+    },
+    {
+      id: "blackwork-003",
+      src: disegno29,
+      alt: "Doppio panel blackwork con cerchio vuoto e tiki V-shape — alt",
+      label: "Blackwork Doppio Panel Vol.2",
+      category: "Black Work",
+      price: 85,
+      originalPrice: null,
+      size: "Extra Grande (20-25cm)",
+      badge: null,
+      description: "Variante fotografica del foglio 19: rettangolo con cerchio solare vuoto e V-chest con tiki speculare. Due grandi pezzi blackwork pesanti per petto, spalle o schiena."
+    },
+    {
+      id: "polinesiano-006",
+      src: disegno30,
+      alt: "Grande panel tribale a tre colonne e delfino stilizzato",
+      label: "Panel Tribale & Delfino",
+      category: "Polinesiano",
+      price: 90,
+      originalPrice: null,
+      size: "Extra Grande (20-25cm)",
+      badge: "Premium",
+      description: "Imponente panel verticale a tre colonne (curve con volto, loop a C, onde e triangoli a destra) per petto, schiena o coscia. In basso delfino tribale stilizzato rivolto a sinistra."
+    },
+    {
+      id: "polinesiano-007",
+      src: disegno31,
+      alt: "Sleeve o gamba con koru, uccello tribale e tiki mask tartaruga",
+      label: "Sleeve Koru & Tiki Mask",
+      category: "Polinesiano",
+      price: 110,
+      originalPrice: null,
+      size: "Full Sleeve",
+      badge: "Bestseller",
+      description: "Grande pezzo per manica o gamba: metà sinistra con onde koru e weave interni, metà destra con bande di triangoli. Uccello/manta in picchiata sopra e tiki mask a forma di tartaruga in basso."
+    },
+    {
+      id: "geometrico-003",
+      src: disegno32,
+      alt: "Cinque mandala ed emblemi circolari tribali",
+      label: "Cinque Mandala Tribali",
+      category: "Geometrico",
+      price: 75,
+      originalPrice: null,
+      size: "Grande (15-20cm)",
+      badge: null,
+      description: "Cinque cerchi: onde-uccelli astratti, labirinto con croce in negativo, sole con cuore interno, mandala complesso con raggi e volti, piccolo cerchio con forma geometrica centrale."
+    },
+    {
+      id: "siciliano-009",
+      src: disegno35,
+      alt: "Coltelli serramanico siciliani decorati con geometrie tribali polinesiane",
+      label: "Coltelli Serramanico Siciliani",
+      category: "Siciliano",
+      price: 65,
+      originalPrice: null,
+      size: "Grande (15-20cm)",
+      badge: "Nuovo",
+      description: "Foglio con numerosi coltelli a serramanico siciliani in posizioni variegate (aperti, chiusi, di profilo), ciascuno interamente riempito con geometrie tribali polinesiane — denti di squalo, weave e bande intrecciate. Cornici barocche agli angoli. Il serramanico, simbolo identitario siciliano, reinterpretato in chiave tribale."
+    },
+    {
+      id: "polinesiano-008",
+      src: disegno37,
+      alt: "Design verticale simmetrico: tartaruga, farfalle e fiori frangipani per schiena",
+      label: "Spine Piece: Tartaruga & Frangipani",
+      category: "Polinesiano",
+      price: 130,
+      originalPrice: null,
+      size: "Full Sleeve",
+      badge: "Premium",
+      description: "Eleganissimo pezzo per la schiena: tartaruga centrale integrata in struttura verticale di spearhead e sunburst. Ai lati, viti di frangipani e due farfalle tribali dettagliate. Per chi cerca il massimo."
+    },
+    {
+      id: "blackwork-004",
+      src: disegno38,
+      alt: "Due pesanti panel blackwork: wedge con koru e grande chest con mandala",
+      label: "Blackwork Chest & Wedge",
+      category: "Black Work",
+      price: 95,
+      originalPrice: null,
+      size: "Extra Grande (20-25cm)",
+      badge: "Premium",
+      description: "Sopra: wedge/spalla con linee massive e spirale koru centrale. Sotto: enorme pezzo petto/schiena con mandala solare e croce interna, circondato da bande di triangoli, archi e geometrie aggressive."
+    },
+    {
+      id: "polinesiano-009",
+      src: disegno39,
+      alt: "Croce con quattro tiki e armband con tiki speculari su denti di squalo",
+      label: "Croce Tiki & Armband",
+      category: "Polinesiano",
+      price: 70,
+      originalPrice: null,
+      size: "Grande (15-20cm)",
+      badge: null,
+      description: "In alto: emblema a croce con stella centrale e quattro tiki che guardano ai punti cardinali, raggi a spearhead. In basso: band rettangolare con due tiki speculari su base a denti di squalo."
+    },
+    {
+      id: "polinesiano-010",
+      src: disegno40,
+      alt: "Tartaruga con tiki ai lati per petto e panel curvato per addome",
+      label: "Tartaruga Petto & Addome",
+      category: "Polinesiano",
+      price: 90,
+      originalPrice: null,
+      size: "Extra Grande (20-25cm)",
+      badge: "Bestseller",
+      description: "Pezzo arcuato per petto/schiena: grande tartaruga tribale le cui pinne si fondono con tiki che guardano a destra e sinistra. Sotto: panel curvo per lombi con ventaglio solare e onde speculari."
+    },
+    {
+      id: "marino-007",
+      src: disegno41,
+      alt: "Tartaruga, gecko, cavalluccio marino e tre delfini tribali",
+      label: "Tartaruga, Gecko & Delfini",
+      category: "Marino",
+      price: 65,
+      originalPrice: null,
+      size: "Grande (15-20cm)",
+      badge: null,
+      description: "Foglio marino: grande tartaruga in alto, due gecko sui lati sinistri, cavalluccio marino a destra e tre delfini stilizzati in picchiata in basso. Tutti riempiti con geometrie polinesiane."
+    },
+    {
+      id: "marino-010",
+      src: disegno42,
+      alt: "Tartaruga honu, gecko, delfino in salto e lucertola in stile tribale polinesiano",
+      label: "Honu, Gecko & Delfino",
+      category: "Marino",
+      price: 65,
+      originalPrice: null,
+      size: "Grande (15-20cm)",
+      badge: "Popolare",
+      description: "Foglio flash tribale con quattro creature: tartaruga honu in alto con motivi polinesiani intrecciati, gecko sulla sinistra, delfino saltante al centro decorato con spirali interne, e lucertola in basso a destra."
+    },
+    {
+      id: "marino-011",
+      src: disegno46,
+      alt: "Tre grandi balene tribali: capodoglio con bocca aperta, balenottera e megattera — variante",
+      label: "Tre Balene Tribali Vol.2",
+      category: "Marino",
+      price: 85,
+      originalPrice: null,
+      size: "Extra Grande (20-25cm)",
+      badge: "Popolare",
+      description: "Variante fotografica del foglio balene: capodoglio in alto con bocca spalancata e denti, balenottera di profilo al centro con pattern geometrici lineari, megattera in basso con solchi gutturali stilizzati. Tutti in stile maori-polinesiano."
+    },
+    {
+      id: "tribale-004",
+      src: disegno49,
+      alt: "Coltelli a serramanico tribali sparsi — nove lame decorate con geometrie polinesiane",
+      label: "Coltelli Serramanico Tribali",
+      category: "Tribale",
+      price: 55,
+      originalPrice: null,
+      size: "Medio (10-15cm)",
+      badge: "Popolare",
+      description: "Foglio con nove coltelli a serramanico in diverse posizioni (aperti, semi-aperti, chiusi), disposti in modo sparso sulla pagina. Ogni lama e manico è interamente riempito di geometrie tribali polinesiane, denti di squalo e weave intrecciati."
+    },
+    {
+      id: "marino-012",
+      src: disegno50,
+      alt: "Tartaruga honu tribale, due delfini saltanti e sole mandala polinesiano",
+      label: "Honu, Delfini & Sole",
+      category: "Marino",
+      price: 70,
+      originalPrice: null,
+      size: "Grande (15-20cm)",
+      badge: "Nuovo",
+      description: "Foglio marino polinesiano con quattro elementi: grande tartaruga honu in alto con geometrie tribali intrecciate, sole mandala circolare a destra, due delfini stilizzati al centro decorati con weave e spirali, e creatura marina in basso. Classici dell'arte tribale del Pacifico."
+    },
+    {
+      id: "siciliano-010",
+      src: disegno51,
+      alt: "Ruota carretto, vaso tribale, uccello, ciondolo, carretto in cerchio e cavallo decorato",
+      label: "Flash Siciliano Vol.5",
+      category: "Siciliano",
+      price: 60,
+      originalPrice: null,
+      size: "Grande (15-20cm)",
+      badge: null,
+      description: "Foglio siciliano con sei motivi tribali: grande ruota di carretto con raggi decorati (in alto a sinistra), ampia forma organica/vaso con intrecci tribali (in alto a destra), piccolo uccello con fiore (centro sinistra), ciondolo ornamentale con pendenti (centro), carretto siciliano in medaglione circolare (basso sinistra) e cavallo bardato con decorazioni tribali (basso destra)."
+    },
+    {
+      id: "blackwork-005",
+      src: disegno52,
+      alt: "Arco-maschera blackwork con koru e panel rettangolare simmetrico",
+      label: "Arco Maschera & Panel",
+      category: "Black Work",
+      price: 65,
+      originalPrice: null,
+      size: "Grande (15-20cm)",
+      badge: null,
+      description: "Sopra: arco curvo sopra un triangolo centrale con linee koru e spearhead — evoca maschera o occhio. Sotto: ampio panel orizzontale con croci sovrapposte, onde speculari e bordo a denti di squalo."
+    },
+    {
+      id: "polinesiano-012",
+      src: disegno53,
+      alt: "Panel verticale con volti astratti, spearhead e banda orizzontale tribale",
+      label: "Panel Verticale Tribale",
+      category: "Polinesiano",
+      price: 70,
+      originalPrice: null,
+      size: "Grande (15-20cm)",
+      badge: null,
+      description: "Composizione mista: piccola banda orizzontale, arco semi-circolare con fiore interno, quadrato diagonale bianco su koru, e lungo panel verticale con onde interlacciate, spearhead e volti astratti."
+    },
+    {
+      id: "polinesiano-013",
+      src: disegno54,
+      alt: "Disegno a matita 3D ombreggiato: sleeve polinesiano con profondità e dettaglio",
+      label: "Sleeve 3D — Matita",
+      category: "Polinesiano",
+      price: 150,
+      originalPrice: 180,
+      size: "Full Sleeve",
+      badge: "Premium",
+      description: "Eccezionale disegno a grafite che simula un tatuaggio sleeve in 3D: strati sovrapposti di weave, bande a denti di squalo, spearhead e un occhio-maschera in cima. Realismo tattile e profondità visiva unici."
+    },
+    {
+      id: "blackwork-006",
+      src: disegno55,
+      alt: "Tartaruga abstract blackwork con curve spesse e rettangolo con cerchio",
+      label: "Tartaruga Blackwork & Panel",
+      category: "Black Work",
+      price: 70,
+      originalPrice: null,
+      size: "Grande (15-20cm)",
+      badge: null,
+      description: "Sopra: tartaruga astratta con curve massive e occhi in negativo — pura forza blackwork. Sotto: blocco rettangolare con grande cerchio vuoto al centro, circondato da strati di triangoli, onde e geometria."
+    },
+    {
+      id: "blackwork-007",
+      src: disegno56,
+      alt: "Grande scudo a mezza luna con stella a 8 punte centrale per petto o schiena",
+      label: "Scudo Stella 8 Punte",
+      category: "Black Work",
+      price: 100,
+      originalPrice: null,
+      size: "Extra Grande (20-25cm)",
+      badge: "Premium",
+      description: "Design monumentale: singolo scudo semi-circolare altamente simmetrico con stella a 8 punte inscritta in un cerchio al centro. Masse di koru, tagli geometrici e curve aggressive riempiono ogni spazio."
+    },
+    {
+      id: "natura-003",
+      src: disegno57,
+      alt: "Swoosh floreali con frangipani, farfalle tribali e infinito con fiore",
+      label: "Viti Floreali & Farfalle",
+      category: "Natura",
+      price: 50,
+      originalPrice: null,
+      size: "Medio (10-15cm)",
+      badge: "Popolare",
+      description: "Linee fluenti per avvolgere gli arti: swoosh decorati con denti di squalo, frangipani e ibisco. Simbolo infinito con fiore incorporato, due farfalle tribali dettagliate e motivo lancia centrale."
+    },
+    {
+      id: "siciliano-008",
+      src: disegno58,
+      alt: "Siciliano tribale: ruota carretto, coppola, carretto e cavallo — alt",
+      label: "Flash Siciliano Vol.3b",
+      category: "Siciliano",
+      price: 55,
+      originalPrice: null,
+      size: "Medio (10-15cm)",
+      badge: null,
+      description: "Vista alternativa del foglio siciliano: ruota di carretto, coppola intrecciata, cuore con mappa e ibisco, piccolo carretto, bastone con volto e cavallo decorato. Variante fotografica del foglio 18."
     },
   ],
 

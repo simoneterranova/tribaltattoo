@@ -354,8 +354,8 @@ const MobileGallery = () => {
             {shopConfig.sections.piercings.label}
           </span>
           <h2 className="font-heading text-4xl md:text-6xl lg:text-8xl text-foreground mt-2 leading-none">
-            {shopConfig.sections.piercings.heading}
-            <span className="text-primary">.</span>
+            {shopConfig.sections.piercings.heading[0]}<br />
+            {shopConfig.sections.piercings.heading[1]}<span className="text-primary">.</span>
           </h2>
         </div>
         <div className="mb-6">
@@ -615,8 +615,8 @@ const DesktopGallery = () => {
                 {shopConfig.sections.piercings.label}
               </span>
               <h2 className="font-heading text-4xl md:text-6xl lg:text-8xl text-foreground mt-2 leading-none">
-                {shopConfig.sections.piercings.heading}
-                <span className="text-primary">.</span>
+                {shopConfig.sections.piercings.heading[0]}<br />
+                {shopConfig.sections.piercings.heading[1]}<span className="text-primary">.</span>
               </h2>
             </div>
             <div className="flex flex-col items-end gap-3">

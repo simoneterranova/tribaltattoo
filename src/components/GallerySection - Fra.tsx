@@ -235,8 +235,8 @@ const DesktopGallery = () => {
                 {shopConfig.sections.gallery.label}
               </span>
               <h2 className="font-heading text-6xl md:text-8xl text-foreground mt-2 leading-none">
-                {shopConfig.sections.gallery.heading}
-                <span className="text-primary">.</span>
+                {shopConfig.sections.gallery.heading[0]}<br />
+                {shopConfig.sections.gallery.heading[1]}<span className="text-primary">.</span>
               </h2>
             </div>
             <span className="font-body text-xs text-muted-foreground tracking-widest uppercase hidden md:flex flex-col items-end gap-1">
@@ -351,7 +351,7 @@ const DesktopGallery = () => {
                 pointerEvents: "none",
               }}
             >
-              {shopConfig.sections.gallery.heading}
+              {shopConfig.sections.gallery.heading[0]} {shopConfig.sections.gallery.heading[1]}
             </p>
           </div>
 
@@ -586,8 +586,8 @@ const MobileGallery = () => {
             {shopConfig.sections.gallery.label}
           </span>
           <h2 className="font-heading text-5xl text-foreground mt-2 leading-none">
-            {shopConfig.sections.gallery.heading}
-            <span className="text-primary">.</span>
+            {shopConfig.sections.gallery.heading[0]}<br />
+            {shopConfig.sections.gallery.heading[1]}<span className="text-primary">.</span>
           </h2>
         </div>
       </ScrollReveal>

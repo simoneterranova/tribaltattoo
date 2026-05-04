@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import { ArrowRight, Palette, Wand2, Heart } from "lucide-react";
+import { ArrowRight, Palette, Wand2, Heart, Gem, PenTool } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
@@ -24,6 +24,20 @@ const services = [
     linkText: "Scopri di più"
   },
   {
+    icon: Gem,
+    title: "Piercing",
+    description: "Piercing professionali con materiali certificati e massima attenzione all'igiene. Orecchie, naso, sopracciglio, ombelico e molto altro.",
+    link: "/piercings",
+    linkText: "Scopri di più"
+  },
+  {
+    icon: PenTool,
+    title: "Disegni Personalizzati",
+    description: "Realizziamo disegni su misura per il tuo tatuaggio: dal bozzetto iniziale al design definitivo, ogni opera è unica e creata appositamente per te.",
+    link: "/disegni",
+    linkText: "Scopri di più"
+  },
+  {
     icon: Heart,
     title: "Cura Post-Tatuaggio",
     description: "Il maestro Claudio Ciliberti ti consiglierà le migliori tecniche e prodotti per guarire al meglio il tuo tatuaggio, così da garantire un risultato finale ottimale.",
@@ -37,7 +51,7 @@ const ServiziPage = () => {
     <>
       <Helmet>
         <title>Servizi - Tatuaggi e Cover-up | Tribal Tattoo Torino</title>
-        <meta name="description" content="Servizi professionali di tatuaggio tribale a Moncalieri: tatuaggi personalizzati, cover-up, correzioni e cura post-tatuaggio. Tribal Tattoo Studio." />
+        <meta name="description" content="Servizi professionali di Tribal Tattoo Torino: tatuaggi personalizzati, cover-up, piercing, disegni su misura e cura post-tatuaggio. Studio a Moncalieri." />
         <link rel="canonical" href={`${shopConfig.meta.siteUrl}/servizi`} />
       </Helmet>
 
