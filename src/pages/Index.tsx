@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
@@ -11,9 +12,12 @@ import PiercingsSection from "@/components/PiercingsSection";
 import DisegniSection from "@/components/DisegniSection";
 import FooterSection from "@/components/FooterSection";
 import { SeoHead } from "@/components/SeoHead";
+import { getFaqSchema } from "@/lib/seo";
+import shopConfig from "@/config/shopConfig";
 
 const Index = () => {
   const location = useLocation();
+  const faqSchema = getFaqSchema(shopConfig);
 
   // Handle scrolling to hash on mount or when hash changes
   useEffect(() => {
@@ -39,6 +43,9 @@ const Index = () => {
   return (
     <>
       <SeoHead />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      </Helmet>
       <motion.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}

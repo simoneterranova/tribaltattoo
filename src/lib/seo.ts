@@ -249,10 +249,7 @@ export function getFaqSchema(config: ShopConfig): Record<string, unknown> {
     .map((h) => `${h.days}: ${h.time}`)
     .join(". ");
 
-  const minPrice = Math.min(...config.services.map((s) => s.price));
-  const servicesList = config.services
-    .map((s) => `${s.name} (€${s.price})`)
-    .join(", ");
+  const servicesList = config.services.map((s) => s.name).join(", ");
 
   return {
     "@context": "https://schema.org",
@@ -280,10 +277,10 @@ export function getFaqSchema(config: ShopConfig): Record<string, unknown> {
         : []),
       {
         "@type": "Question",
-        name: `Quanto costa un taglio di capelli a ${config.fullName}?`,
+        name: `Quanto costa un tatuaggio a ${config.fullName}?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `I prezzi da ${config.fullName} partono da €${minPrice}. Servizi disponibili: ${servicesList}.`,
+          text: `I prezzi variano in base a dimensione e complessità del progetto. Servizi disponibili: ${servicesList}. La consulenza iniziale è gratuita.`,
         },
       },
       {

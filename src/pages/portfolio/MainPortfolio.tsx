@@ -182,7 +182,7 @@ const MainPortfolio = () => {
                 <p className="font-body text-sm text-muted-foreground uppercase tracking-wider">Stili Specializzati</p>
               </div>
               <div>
-                <p className="font-heading text-5xl text-foreground mb-2">10+</p>
+                <p className="font-heading text-5xl text-foreground mb-2">30+</p>
                 <p className="font-body text-sm text-muted-foreground uppercase tracking-wider">Anni di Esperienza</p>
               </div>
               <div>

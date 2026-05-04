@@ -213,8 +213,20 @@ const shopConfig = {
   services: [
     // ── TATTOO SERVICES ──────────────────────────────────────────────────────
     {
-      id: "consultation",
+      id: "wild-tattoo",
       index: "01",
+      name: "Wild Tattoo",
+      category: "tattoo" as "tattoo" | "piercing",
+      price: "Su Misura Globale",
+      duration: "Variabile",
+      durationMinutes: 120,
+      description:
+        "Chiama da qualsiasi parte del mondo e il maestro raggiungerà il tuo luogo per incidere magie antiche sulla tua pelle. Spese di viaggio a carico del cliente.",
+      badge: "Leggendario" as string | null,
+    },
+    {
+      id: "consultation",
+      index: "02",
       name: "Consulenza",
       category: "tattoo" as "tattoo" | "piercing",
       price: "Gratuita",
@@ -226,7 +238,7 @@ const shopConfig = {
     },
     {
       id: "tribal-freehand",
-      index: "02",
+      index: "03",
       name: "Tribale Freehand",
       category: "tattoo" as "tattoo" | "piercing",
       price: "Su Preventivo",
@@ -238,7 +250,7 @@ const shopConfig = {
     },
     {
       id: "polynesian",
-      index: "03",
+      index: "04",
       name: "Polinesiano & Maori",
       category: "tattoo" as "tattoo" | "piercing",
       price: "Su Preventivo",
@@ -250,7 +262,7 @@ const shopConfig = {
     },
     {
       id: "dot-work",
-      index: "04",
+      index: "05",
       name: "Dot Work & Black Work",
       category: "tattoo" as "tattoo" | "piercing",
       price: "Su Preventivo",
@@ -262,7 +274,7 @@ const shopConfig = {
     },
     {
       id: "cover-up",
-      index: "05",
+      index: "06",
       name: "Cover-up & Correzioni",
       category: "tattoo" as "tattoo" | "piercing",
       price: "Su Preventivo",
@@ -274,7 +286,7 @@ const shopConfig = {
     },
     {
       id: "aftercare",
-      index: "06",
+      index: "07",
       name: "Cura Post-Tatuaggio",
       category: "tattoo" as "tattoo" | "piercing",
       price: "Inclusa",
@@ -288,10 +300,10 @@ const shopConfig = {
     // ── PIERCING SERVICES ────────────────────────────────────────────────────
     {
       id: "piercing-orecchio",
-      index: "07",
+      index: "08",
       name: "Piercing Orecchio",
       category: "piercing" as "tattoo" | "piercing",
-      price: "30€",
+      price: "Su Preventivo",
       duration: "15 min",
       durationMinutes: 15,
       description:
@@ -300,10 +312,10 @@ const shopConfig = {
     },
     {
       id: "piercing-naso",
-      index: "08",
+      index: "09",
       name: "Piercing Naso/Septum",
       category: "piercing" as "tattoo" | "piercing",
-      price: "40€",
+      price: "Su Preventivo",
       duration: "20 min",
       durationMinutes: 20,
       description:
@@ -312,10 +324,10 @@ const shopConfig = {
     },
     {
       id: "piercing-labbro",
-      index: "09",
+      index: "10",
       name: "Piercing Labbro",
       category: "piercing" as "tattoo" | "piercing",
-      price: "35€",
+      price: "Su Preventivo",
       duration: "15 min",
       durationMinutes: 15,
       description:
@@ -324,10 +336,10 @@ const shopConfig = {
     },
     {
       id: "piercing-lingua",
-      index: "10",
+      index: "11",
       name: "Piercing Lingua",
       category: "piercing" as "tattoo" | "piercing",
-      price: "45€",
+      price: "Su Preventivo",
       duration: "20 min",
       durationMinutes: 20,
       description:
@@ -336,10 +348,10 @@ const shopConfig = {
     },
     {
       id: "piercing-ombelico",
-      index: "11",
+      index: "12",
       name: "Piercing Ombelico",
       category: "piercing" as "tattoo" | "piercing",
-      price: "35€",
+      price: "Su Preventivo",
       duration: "20 min",
       durationMinutes: 20,
       description:
@@ -348,10 +360,10 @@ const shopConfig = {
     },
     {
       id: "piercing-sopracciglio",
-      index: "12",
+      index: "13",
       name: "Piercing Sopracciglio",
       category: "piercing" as "tattoo" | "piercing",
-      price: "35€",
+      price: "Su Preventivo",
       duration: "15 min",
       durationMinutes: 15,
       description:
@@ -360,10 +372,10 @@ const shopConfig = {
     },
     {
       id: "piercing-capezzolo",
-      index: "13",
+      index: "14",
       name: "Piercing Capezzolo",
       category: "piercing" as "tattoo" | "piercing",
-      price: "50€",
+      price: "Su Preventivo",
       duration: "25 min",
       durationMinutes: 25,
       description:
@@ -372,10 +384,10 @@ const shopConfig = {
     },
     {
       id: "piercing-cambio-gioiello",
-      index: "14",
+      index: "15",
       name: "Cambio Gioiello",
       category: "piercing" as "tattoo" | "piercing",
-      price: "10€",
+      price: "Su Preventivo",
       duration: "10 min",
       durationMinutes: 10,
       description:

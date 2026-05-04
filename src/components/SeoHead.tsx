@@ -16,7 +16,6 @@ import {
   getServiceSchemas,
   getPersonSchemas,
   getBreadcrumbSchema,
-  getFaqSchema,
   getOgImageUrl,
 } from "@/lib/seo";
 
@@ -58,7 +57,6 @@ export function SeoHead() {
   const serviceSchemas = getServiceSchemas(shopConfig);
   const personSchemas = getPersonSchemas(shopConfig);
   const breadcrumbSchema = getBreadcrumbSchema(shopConfig);
-  const faqSchema = getFaqSchema(shopConfig);
 
   // Extract Google Fonts domain for preconnect
   const googleFontsDomain = shopConfig.theme.googleFontsUrl.includes("fonts.googleapis.com")
@@ -171,11 +169,6 @@ export function SeoHead() {
       {/* Breadcrumb Schema for Navigation */}
       <script type="application/ld+json">
         {JSON.stringify(breadcrumbSchema)}
-      </script>
-
-      {/* FAQ Schema for Local SEO — answers "near me" queries */}
-      <script type="application/ld+json">
-        {JSON.stringify(faqSchema)}
       </script>
 
       {/* Note: AggregateRating schema removed — testimonials are NOT verified reviews.

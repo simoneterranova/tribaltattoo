@@ -12,6 +12,7 @@ import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import ContactDialog from "@/components/ContactDialog";
 import shopConfig from "@/config/shopConfig";
+import { getFaqSchema } from "@/lib/seo";
 
 interface TattooStylePageProps {
   style: {
@@ -42,18 +43,23 @@ export const TattooStylePage = ({ style }: TattooStylePageProps) => {
     ? `${shopConfig.meta.siteUrl}${style.gallery[0].src}`
     : `${shopConfig.meta.siteUrl}/images/tatuaggi/gran-babar-social.jpg`;
 
-  // Generate FAQ structured data if FAQs exist
-  const faqSchema = style.faqs && style.faqs.length > 0 ? {
+  // Generate FAQ structured data: merge global studio FAQs with page-specific FAQs
+  const globalFaqSchema = getFaqSchema(shopConfig);
+  const globalQuestions = (globalFaqSchema.mainEntity as Array<Record<string, unknown>>) ?? [];
+  const pageQuestions = style.faqs && style.faqs.length > 0
+    ? style.faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
+        }
+      }))
+    : [];
+  const faqSchema = (globalQuestions.length > 0 || pageQuestions.length > 0) ? {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": style.faqs.map(faq => ({
-      "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.answer
-      }
-    }))
+    "mainEntity": [...globalQuestions, ...pageQuestions]
   } : null;
 
   return (

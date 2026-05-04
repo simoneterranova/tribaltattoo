@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
-import { Clock } from "lucide-react";
+import { Clock, Globe } from "lucide-react";
 import shopConfig from "@/config/shopConfig";
 import { cn } from "@/lib/utils";
 
@@ -124,6 +124,7 @@ const ServicesSection = () => {
           >
             {services.map((service, i) => {
               const on = active === i;
+              const isWildTattoo = service.id === "wild-tattoo";
               return (
                 <motion.div
                   key={service.id}
@@ -131,22 +132,55 @@ const ServicesSection = () => {
                   initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: i * 0.08, ease: [0.25, 0.4, 0.25, 1] }}
-                  className="relative border-b-2 border-accent/20 overflow-hidden cursor-pointer"
+                  className={cn(
+                    "relative overflow-hidden cursor-pointer",
+                    isWildTattoo 
+                      ? "border-b-[3px] border-primary/60 bg-gradient-to-r from-primary/[0.03] to-transparent" 
+                      : "border-b-2 border-accent/20"
+                  )}
                   onHoverStart={() => setActive(i)}
                   onHoverEnd={() => setActive(null)}
                   onClick={() => setActive(active === i ? null : i)}
+                  style={isWildTattoo ? {
+                    boxShadow: on 
+                      ? "0 0 30px hsl(var(--primary) / 0.3), inset 0 0 20px hsl(var(--primary) / 0.05)"
+                      : "0 0 15px hsl(var(--primary) / 0.15)"
+                  } : undefined}
                 >
                   {/* Left-to-right sweep fill effect */}
                   <motion.div
-                    className="absolute inset-0 bg-accent/5 origin-left pointer-events-none border-l-2 border-accent/40"
+                    className={cn(
+                      "absolute inset-0 origin-left pointer-events-none",
+                      isWildTattoo 
+                        ? "bg-primary/10 border-l-[4px] border-primary" 
+                        : "bg-accent/5 border-l-2 border-accent/40"
+                    )}
                     animate={{ scaleX: on ? 1 : 0 }}
                     initial={{ scaleX: 0 }}
                     transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
                   />
 
+                  {/* Wild Tattoo special glow overlay */}
+                  {isWildTattoo && (
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-primary/[0.08] via-transparent to-primary/[0.08] pointer-events-none"
+                      animate={{ 
+                        opacity: on ? [0.3, 0.5, 0.3] : [0.1, 0.2, 0.1]
+                      }}
+                      transition={{ 
+                        duration: 3, 
+                        repeat: Infinity, 
+                        ease: "easeInOut" 
+                      }}
+                    />
+                  )}
+
                   {/* Ghost index watermark */}
                   <motion.span
-                    className="absolute right-0 top-1/2 -translate-y-1/2 font-heading select-none pointer-events-none leading-none pr-2 text-accent/10"
+                    className={cn(
+                      "absolute right-0 top-1/2 -translate-y-1/2 font-heading select-none pointer-events-none leading-none pr-2",
+                      isWildTattoo ? "text-primary/20" : "text-accent/10"
+                    )}
                     style={{ fontSize: "clamp(4rem, 10vw, 8rem)" }}
                     animate={{ opacity: on ? 0.15 : 0.05 }}
                     transition={{ duration: 0.35 }}
@@ -159,24 +193,56 @@ const ServicesSection = () => {
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4">
                       {/* Name + badge */}
                       <div className="flex items-baseline gap-4 min-w-0">
-                        <span className="font-body text-xs text-muted-foreground tabular-nums shrink-0 w-6">
+                        <span className={cn(
+                          "font-body text-xs tabular-nums shrink-0 w-6",
+                          isWildTattoo ? "text-primary font-semibold" : "text-muted-foreground"
+                        )}>
                           {service.index}
                         </span>
                         <div className="min-w-0">
                           <div className="flex items-center gap-3 flex-wrap">
+                            {/* Wild Tattoo Globe Icon */}
+                            {isWildTattoo && (
+                              <motion.div
+                                animate={{ 
+                                  rotate: on ? 360 : 0,
+                                  scale: on ? 1.1 : 1
+                                }}
+                                transition={{ 
+                                  rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+                                  scale: { duration: 0.3 }
+                                }}
+                              >
+                                <Globe className="h-6 w-6 md:h-8 md:w-8 text-primary" strokeWidth={1.5} />
+                              </motion.div>
+                            )}
                             <motion.h3
                               className="font-heading leading-none"
                               style={{ fontSize: "clamp(1.6rem, 4vw, 2.8rem)" }}
-                              animate={{ color: on ? "hsl(var(--primary))" : "hsl(var(--foreground))" }}
+                              animate={{ 
+                                color: isWildTattoo 
+                                  ? "hsl(var(--primary))" 
+                                  : on 
+                                    ? "hsl(var(--primary))" 
+                                    : "hsl(var(--foreground))" 
+                              }}
                               transition={{ duration: 0.25 }}
                             >
                               {service.name}
                             </motion.h3>
                             {service.badge && (
                               <motion.span
-                                className="font-body text-[10px] tracking-[0.2em] uppercase px-2.5 py-1 border-2 border-accent/30 text-accent bg-accent/10 shrink-0"
+                                className={cn(
+                                  "font-body text-[10px] tracking-[0.2em] uppercase px-2.5 py-1 border-2 shrink-0",
+                                  isWildTattoo 
+                                    ? "border-primary text-primary bg-primary/20 font-semibold" 
+                                    : "border-accent/30 text-accent bg-accent/10"
+                                )}
                                 initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
+                                animate={{ 
+                                  opacity: 1, 
+                                  scale: isWildTattoo && on ? 1.05 : 1
+                                }}
                                 transition={{ duration: 0.4, delay: i * 0.08 + 0.3 }}
                               >
                                 {service.badge}
@@ -185,7 +251,10 @@ const ServicesSection = () => {
                           </div>
                           {/* Underline draws on hover */}
                           <motion.div
-                            className="h-[2px] bg-accent mt-1.5"
+                            className={cn(
+                              "h-[2px] mt-1.5",
+                              isWildTattoo ? "bg-primary" : "bg-accent"
+                            )}
                             animate={{ scaleX: on ? 1 : 0 }}
                             initial={{ scaleX: 0 }}
                             transition={{ duration: 0.35, ease: "easeOut" }}
@@ -197,22 +266,42 @@ const ServicesSection = () => {
                       {/* Duration + price */}
                       <div className="flex items-center gap-5 pl-10 sm:pl-0 shrink-0">
                         <motion.span
-                          className="inline-flex items-center gap-1.5 font-body text-xs tracking-[0.15em] uppercase"
+                          className={cn(
+                            "inline-flex items-center gap-1.5 font-body text-xs tracking-[0.15em] uppercase",
+                            isWildTattoo ? "text-primary/70" : ""
+                          )}
                           animate={{
-                            color: on ? "hsl(var(--foreground) / 0.6)" : "hsl(var(--muted-foreground))",
+                            color: isWildTattoo 
+                              ? "hsl(var(--primary) / 0.7)"
+                              : on 
+                                ? "hsl(var(--foreground) / 0.6)" 
+                                : "hsl(var(--muted-foreground))",
                           }}
                           transition={{ duration: 0.25 }}
                         >
-                          <Clock className="h-3 w-3" />
+                          {isWildTattoo ? (
+                            <Globe className="h-3 w-3" />
+                          ) : (
+                            <Clock className="h-3 w-3" />
+                          )}
                           {service.duration}
                         </motion.span>
                         <motion.span
-                          className="font-heading"
+                          className={cn(
+                            "font-heading",
+                            isWildTattoo && "text-primary"
+                          )}
                           style={{ fontSize: "clamp(1.8rem, 4vw, 2.5rem)" }}
                           animate={{
-                            color: on ? "hsl(var(--primary))" : "hsl(var(--foreground))",
+                            color: isWildTattoo 
+                              ? "hsl(var(--primary))"
+                              : on 
+                                ? "hsl(var(--primary))" 
+                                : "hsl(var(--foreground))",
                             scale: on ? 1.05 : 1,
-                            textShadow: on ? "0 0 20px hsl(var(--primary) / 0.6)" : "none",
+                            textShadow: on || isWildTattoo 
+                              ? "0 0 20px hsl(var(--primary) / 0.6)" 
+                              : "none",
                           }}
                           transition={{ duration: 0.25 }}
                         >
@@ -232,7 +321,10 @@ const ServicesSection = () => {
                           transition={{ duration: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
                           className="overflow-hidden"
                         >
-                          <p className="font-body text-sm text-muted-foreground leading-relaxed max-w-md pt-3 pb-1 pl-10">
+                          <p className={cn(
+                            "font-body text-sm leading-relaxed max-w-md pt-3 pb-1 pl-10",
+                            isWildTattoo ? "text-foreground/80" : "text-muted-foreground"
+                          )}>
                             {service.description}
                           </p>
                         </motion.div>
