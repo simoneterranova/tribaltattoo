@@ -160,7 +160,7 @@ const shopConfig = {
     /** og:locale */
     locale: "it_IT",
 
-    googleSiteVerification: "YOUR_GOOGLE_VERIFICATION_CODE_HERE", //metti in index.html per farlo leggere
+    googleSiteVerification: "FdE6k5NWJ32eRBlMhOl97J8-1AcSdv17jajQbJNSOJ0",
     googleAnalyticsId:      "G-XXXXXXXXXX",
 
     title:
