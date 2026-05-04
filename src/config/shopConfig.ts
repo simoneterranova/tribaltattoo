@@ -152,10 +152,10 @@ const shopConfig = {
   // ── SEO / HTML <head> ───────────────────────────────────────────────────────
   meta: {
     /** Full domain without trailing slash. */
-    siteUrl: "https://www.tribaltattoo.it",   // ← update with real domain
+    siteUrl: "https://tribaltattoo.vercel.app",
 
     /** Link di prenotazione o contatto */
-    bookingSiteUrl: "https://www.tribaltattoo.it",
+    bookingSiteUrl: "https://tribaltattoo.vercel.app",
 
     /** og:locale */
     locale: "it_IT",

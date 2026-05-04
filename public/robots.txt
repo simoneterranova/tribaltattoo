@@ -4,4 +4,4 @@ Allow: /
 # ╔════════════════════════════════════════════════════════════════╗
 # ║  Sitemap location — Automatically synced with Tribal Tattoo       ║
 # ╚════════════════════════════════════════════════════════════════╝
-Sitemap: https://www.tribaltattoo.it/sitemap.xml
+Sitemap: https://tribaltattoo.vercel.app/sitemap.xml
