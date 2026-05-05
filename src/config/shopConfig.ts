@@ -1148,6 +1148,13 @@ const shopConfig = {
     email: "tribaltattoo@tribaltattoo.it",   // ← update with real email
 
     /**
+     * PayPal.me handle — used for the "Diretto" payment button.
+     * Set to your PayPal.me username (without the URL prefix).
+     * The link will be: https://paypal.me/HANDLE/AMOUNT
+     */
+    paypalMeHandle: "tribaltattooit",  // ← update with your PayPal.me handle
+
+    /**
      * Google Maps embed URL.
      * Get it from: maps.google.com → Share → Embed a map → copy the src URL.
      */

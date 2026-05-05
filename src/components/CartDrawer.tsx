@@ -167,7 +167,7 @@ const CartDrawer = () => {
 
               {/* Action Buttons */}
               <div className="space-y-2">
-                <ContactDialog>
+                <ContactDialog totalAmount={finalPrice}>
                   <Button variant="hero" size="lg" className="w-full">
                     Completa Ordine
                   </Button>
