@@ -42,6 +42,9 @@ import gallery12 from "@/assets/tattoo-12.webp";
 import gallery13 from "@/assets/tattoo-13.webp";  
 import gallery14 from "@/assets/tattoo-14.webp";
 import gallery15 from "@/assets/studio.mp4";
+import totalBody1 from "@/assets/total_body1.png";
+import totalBody2 from "@/assets/total_body2.png";
+import totalBody3 from "@/assets/total_body3.png";
 import gallery16 from "@/assets/Progetto video 3.mp4";
 
 import piercing1  from "@/assets/piercings-photos/piercing-1.webp";
@@ -571,7 +574,9 @@ const shopConfig = {
     { src: gallery11, alt: "Tatuaggio black work tribale su petto",  label: "Black Work"   },
     { src: gallery12, alt: "Tatuaggio tribale freehand su schiena", label: "Freehand"     },
     { src: gallery13, alt: "Face Tattoo",       label: "Face Tattoo"    },
-    { src: gallery14, alt: "Tatuaggio in tutto il corpo", label: "Total Body"    },
+    { src: totalBody1, alt: "Tatuaggio in tutto il corpo - vista frontale", label: "Total Body"    },
+    { src: totalBody2, alt: "Tatuaggio in tutto il corpo - vista laterale", label: "Total Body"    },
+    { src: totalBody3, alt: "Tatuaggio in tutto il corpo - vista posteriore", label: "Total Body"    },
     { src: gallery16, alt: "Video del processo di tatuaggio", label: "Il Rito"    },
   ],
 
