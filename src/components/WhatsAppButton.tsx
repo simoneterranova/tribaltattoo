@@ -1,5 +1,5 @@
-import { useState } from "react";
 import whatsappIcon from "@/assets/whatsapp_icon.jpg";
+import { useState } from "react";
 
 /**
  * WhatsAppButton - Floating chat button
@@ -15,13 +15,13 @@ export const WhatsAppButton = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   // Format phone number for WhatsApp (remove spaces, keep +)
-  const phoneNumber = "+393388398005"; // Gran Babar phone from shopConfig
-  
+  const phoneNumber = "+393505352680"; // Gran Babar phone from shopConfig
+
   // Default message (optional - can be customized)
   const defaultMessage = encodeURIComponent(
     "Ciao! Vorrei avere informazioni sui vostri servizi."
   );
-  
+
   // WhatsApp link - works on both mobile (app) and desktop (web)
   const whatsappUrl = `https://wa.me/${phoneNumber.replace(/[^0-9]/g, "")}?text=${defaultMessage}`;
 
@@ -49,7 +49,7 @@ export const WhatsAppButton = () => {
           alt="WhatsApp"
           className="w-16 h-16 object-contain drop-shadow-lg hover:drop-shadow-2xl transition-all duration-300"
         />
-        
+
         {/* Subtle glow effect on hover */}
         {isHovered && (
           <div

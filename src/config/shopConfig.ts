@@ -21,96 +21,76 @@
 
 // ── IMAGE ASSETS ──────────────────────────────────────────────────────────────
 // Replace these files in src/assets/ with Tribal Tattoo's own photos/videos.
-import heroBg    from "@/assets/output_web.mp4";
+import heroBg from "@/assets/output_web.mp4";
 
-import artist1   from "@/assets/claudio1.webp";   // CEO – portrait 1
-import artist2   from "@/assets/claudio2.webp";   // CEO – portrait 2
-import artist3   from "@/assets/claudio3.webp";   // CEO – portrait 3
+import artist1 from "@/assets/claudio1.webp"; // CEO – portrait 1
+import artist2 from "@/assets/claudio2.webp"; // CEO – portrait 2
+import artist3 from "@/assets/claudio3.webp"; // CEO – portrait 3
 
-import gallery1  from "@/assets/tattoo-1.webp";
-import gallery2  from "@/assets/tattoo-2.webp";
-import gallery3  from "@/assets/tattoo-3.webp";
-import gallery4  from "@/assets/tattoo-4.webp";
-import gallery5  from "@/assets/tattoo-5.webp";
-import gallery6  from "@/assets/tattoo-6.webp";
-import gallery7  from "@/assets/tattoo-7.webp";
-import gallery8  from "@/assets/tattoo-8.webp";
-import gallery9  from "@/assets/tattoo-9.webp";
+import gallery16 from "@/assets/Progetto video 3.mp4";
+import gallery15 from "@/assets/studio.mp4";
+import gallery1 from "@/assets/tattoo-1.webp";
 import gallery10 from "@/assets/tattoo-10.webp";
 import gallery11 from "@/assets/tattoo-11.webp";
 import gallery12 from "@/assets/tattoo-12.webp";
-import gallery13 from "@/assets/tattoo-13.webp";  
-import gallery14 from "@/assets/tattoo-14.webp";
-import gallery15 from "@/assets/studio.mp4";
+import gallery13 from "@/assets/tattoo-13.webp";
+import gallery2 from "@/assets/tattoo-2.webp";
+import gallery3 from "@/assets/tattoo-3.webp";
+import gallery4 from "@/assets/tattoo-4.webp";
+import gallery5 from "@/assets/tattoo-5.webp";
+import gallery6 from "@/assets/tattoo-6.webp";
+import gallery7 from "@/assets/tattoo-7.webp";
+import gallery8 from "@/assets/tattoo-8.webp";
+import gallery9 from "@/assets/tattoo-9.webp";
 import totalBody1 from "@/assets/total_body1.png";
 import totalBody2 from "@/assets/total_body2.png";
 import totalBody3 from "@/assets/total_body3.png";
-import gallery16 from "@/assets/Progetto video 3.mp4";
 
-import piercing1  from "@/assets/piercings-photos/piercing-1.webp";
-import piercing2  from "@/assets/piercings-photos/piercing-2.webp";
-import piercing3  from "@/assets/piercings-photos/piercing-3.webp";
-import piercing4  from "@/assets/piercings-photos/piercing-4.webp";
-import piercing5  from "@/assets/piercings-photos/piercing-5.webp";
-import piercing6  from "@/assets/piercings-photos/piercing-6.webp";
-import piercing7  from "@/assets/piercings-photos/piercing-7.webp";
-import piercing8  from "@/assets/piercings-photos/piercing-8.webp";
-import piercing9  from "@/assets/piercings-photos/piercing-9.webp";
+import piercing1 from "@/assets/piercings-photos/piercing-1.webp";
 import piercing10 from "@/assets/piercings-photos/piercing-10.webp";
 import piercing11 from "@/assets/piercings-photos/piercing-11.webp";
 import piercing12 from "@/assets/piercings-photos/piercing-12.webp";
-import piercing13 from "@/assets/piercings-photos/piercing-13.webp";  
+import piercing13 from "@/assets/piercings-photos/piercing-13.webp";
 import piercing14 from "@/assets/piercings-photos/piercing-14.webp";
+import piercing2 from "@/assets/piercings-photos/piercing-2.webp";
+import piercing3 from "@/assets/piercings-photos/piercing-3.webp";
+import piercing4 from "@/assets/piercings-photos/piercing-4.webp";
+import piercing5 from "@/assets/piercings-photos/piercing-5.webp";
+import piercing6 from "@/assets/piercings-photos/piercing-6.webp";
+import piercing7 from "@/assets/piercings-photos/piercing-7.webp";
+import piercing8 from "@/assets/piercings-photos/piercing-8.webp";
+import piercing9 from "@/assets/piercings-photos/piercing-9.webp";
 
-import disegno1  from "@/assets/disegni-photos/disegno-1.webp";
-import disegno2  from "@/assets/disegni-photos/disegno-2.webp";
-import disegno3  from "@/assets/disegni-photos/disegno-3.webp";
-import disegno4  from "@/assets/disegni-photos/disegno-4.webp";
-import disegno5  from "@/assets/disegni-photos/disegno-5.webp";
-import disegno6  from "@/assets/disegni-photos/disegno-6.webp";
-import disegno7  from "@/assets/disegni-photos/disegno-7.webp";
-import disegno8  from "@/assets/disegni-photos/disegno-8.webp";
-import disegno9  from "@/assets/disegni-photos/disegno-9.webp";
+import disegno1 from "@/assets/disegni-photos/disegno-1.webp";
 import disegno10 from "@/assets/disegni-photos/disegno-10.webp";
-import disegno11 from "@/assets/disegni-photos/disegno-11.webp";
 import disegno12 from "@/assets/disegni-photos/disegno-12.webp";
 import disegno13 from "@/assets/disegni-photos/disegno-13.webp";
-import disegno14 from "@/assets/disegni-photos/disegno-14.webp";
 import disegno15 from "@/assets/disegni-photos/disegno-15.webp";
 import disegno16 from "@/assets/disegni-photos/disegno-16.webp";
 import disegno17 from "@/assets/disegni-photos/disegno-17.webp";
 import disegno18 from "@/assets/disegni-photos/disegno-18.webp";
 import disegno19 from "@/assets/disegni-photos/disegno-19.webp";
+import disegno2 from "@/assets/disegni-photos/disegno-2.webp";
 import disegno20 from "@/assets/disegni-photos/disegno-20.webp";
 import disegno21 from "@/assets/disegni-photos/disegno-21.webp";
-import disegno22 from "@/assets/disegni-photos/disegno-22.webp";
 import disegno23 from "@/assets/disegni-photos/disegno-23.webp";
 import disegno24 from "@/assets/disegni-photos/disegno-24.webp";
-import disegno25 from "@/assets/disegni-photos/disegno-25.webp";
-import disegno26 from "@/assets/disegni-photos/disegno-26.webp";
-import disegno27 from "@/assets/disegni-photos/disegno-27.webp";
-import disegno28 from "@/assets/disegni-photos/disegno-28.webp";
 import disegno29 from "@/assets/disegni-photos/disegno-29.webp";
+import disegno3 from "@/assets/disegni-photos/disegno-3.webp";
 import disegno30 from "@/assets/disegni-photos/disegno-30.webp";
 import disegno31 from "@/assets/disegni-photos/disegno-31.webp";
 import disegno32 from "@/assets/disegni-photos/disegno-32.webp";
-import disegno33 from "@/assets/disegni-photos/disegno-33.webp";
-import disegno34 from "@/assets/disegni-photos/disegno-34.webp";
 import disegno35 from "@/assets/disegni-photos/disegno-35.webp";
-import disegno36 from "@/assets/disegni-photos/disegno-36.webp";
 import disegno37 from "@/assets/disegni-photos/disegno-37.webp";
 import disegno38 from "@/assets/disegni-photos/disegno-38.webp";
 import disegno39 from "@/assets/disegni-photos/disegno-39.webp";
+import disegno4 from "@/assets/disegni-photos/disegno-4.webp";
 import disegno40 from "@/assets/disegni-photos/disegno-40.webp";
 import disegno41 from "@/assets/disegni-photos/disegno-41.webp";
 import disegno42 from "@/assets/disegni-photos/disegno-42.webp";
-import disegno43 from "@/assets/disegni-photos/disegno-43.webp";
-import disegno44 from "@/assets/disegni-photos/disegno-44.webp";
-import disegno45 from "@/assets/disegni-photos/disegno-45.webp";
 import disegno46 from "@/assets/disegni-photos/disegno-46.webp";
-import disegno47 from "@/assets/disegni-photos/disegno-47.webp";
-import disegno48 from "@/assets/disegni-photos/disegno-48.webp";
 import disegno49 from "@/assets/disegni-photos/disegno-49.webp";
+import disegno5 from "@/assets/disegni-photos/disegno-5.webp";
 import disegno50 from "@/assets/disegni-photos/disegno-50.webp";
 import disegno51 from "@/assets/disegni-photos/disegno-51.webp";
 import disegno52 from "@/assets/disegni-photos/disegno-52.webp";
@@ -120,10 +100,13 @@ import disegno55 from "@/assets/disegni-photos/disegno-55.webp";
 import disegno56 from "@/assets/disegni-photos/disegno-56.webp";
 import disegno57 from "@/assets/disegni-photos/disegno-57.webp";
 import disegno58 from "@/assets/disegni-photos/disegno-58.webp";
+import disegno6 from "@/assets/disegni-photos/disegno-6.webp";
+import disegno7 from "@/assets/disegni-photos/disegno-7.webp";
+import disegno8 from "@/assets/disegni-photos/disegno-8.webp";
+import disegno9 from "@/assets/disegni-photos/disegno-9.webp";
 
 //import logo      from "@/assets/logo_coloured__no_bg.svg";     // Fishbone logo (red)
-import logo      from "@/assets/original_logo_no_bg.png";     // Fishbone logo (red)
-import { sr } from "date-fns/locale";
+import logo from "@/assets/original_logo_no_bg.png"; // Fishbone logo (red)
 
 
 // ── IDENTITY ──────────────────────────────────────────────────────────────────
@@ -164,7 +147,7 @@ const shopConfig = {
     locale: "it_IT",
 
     googleSiteVerification: "FdE6k5NWJ32eRBlMhOl97J8-1AcSdv17jajQbJNSOJ0",
-    googleAnalyticsId:      "G-XXXXXXXXXX",
+    googleAnalyticsId: "G-XXXXXXXXXX",
 
     title:
       "Tatuaggi Tribali Moncalieri Torino | Arte Originale | Tribal Tattoo",
@@ -182,13 +165,13 @@ const shopConfig = {
   nav: {
     bookingCta: "Prenota",
     links: [
-      { label: "Servizi",    href: "#services"     },
-      { label: "Maestro", href: "#team"         },
-      { label: "Tattoo",     href: "#gallery"      },
-      { label: "Disegni",    href: "#disegni"      },
-      { label: "Piercings",  href: "#piercings"    },
+      { label: "Servizi", href: "#services" },
+      { label: "Maestro", href: "#team" },
+      { label: "Tattoo", href: "#gallery" },
+      { label: "Disegni", href: "#disegni" },
+      { label: "Piercings", href: "#piercings" },
       { label: "Recensioni", href: "#testimonials" },
-      { label: "Contatti",   href: "#contact"      },
+      { label: "Contatti", href: "#contact" },
     ],
   },
 
@@ -560,43 +543,43 @@ const shopConfig = {
 
   // ── GALLERY ─────────────────────────────────────────────────────────────────
   gallery: [
-    { src: gallery1, alt: "Tatuaggio polinesiano freehand",         label: "Polinesiano"  },
-    { src: gallery2, alt: "Tatuaggio maori su braccio",             label: "Maori"        },
-    { src: gallery3, alt: "Dot work tribale geometrico",            label: "Dot Work"     },
-    { src: gallery4, alt: "Black work tribale su schiena",          label: "Black Work"   },
-    { src: gallery15, alt: "Studio", label: "Lo Studio"    },
-    { src: gallery5, alt: "Tatuaggio tribale full sleeve",          label: "Full Sleeve"  },
-    { src: gallery6, alt: "Dettaglio freehand tribale",             label: "Freehand"     },
-    { src: gallery7, alt: "Tatuaggio Polinesiano su petto",     label: "Polinesiano"    },
-    { src: gallery8, alt: "Tatuaggio polinesiano su spalla",          label: "Polinesiano"  },
-    { src: gallery9, alt: "Tatuaggio maori su gamba",                label: "Maori"        },
-    { src: gallery10, alt: "Tatuaggio tribale geometrico su braccio", label: "Tribale"     },
-    { src: gallery11, alt: "Tatuaggio black work tribale su petto",  label: "Black Work"   },
-    { src: gallery12, alt: "Tatuaggio tribale freehand su schiena", label: "Freehand"     },
-    { src: gallery13, alt: "Face Tattoo",       label: "Face Tattoo"    },
-    { src: totalBody1, alt: "Tatuaggio in tutto il corpo - vista frontale", label: "Total Body"    },
-    { src: totalBody2, alt: "Tatuaggio in tutto il corpo - vista laterale", label: "Total Body"    },
-    { src: totalBody3, alt: "Tatuaggio in tutto il corpo - vista posteriore", label: "Total Body"    },
-    { src: gallery16, alt: "Video del processo di tatuaggio", label: "Il Rito"    },
+    { src: gallery1, alt: "Tatuaggio polinesiano freehand", label: "Polinesiano" },
+    { src: gallery2, alt: "Tatuaggio maori su braccio", label: "Maori" },
+    { src: gallery3, alt: "Dot work tribale geometrico", label: "Dot Work" },
+    { src: gallery4, alt: "Black work tribale su schiena", label: "Black Work" },
+    { src: gallery15, alt: "Studio", label: "Lo Studio" },
+    { src: gallery5, alt: "Tatuaggio tribale full sleeve", label: "Full Sleeve" },
+    { src: gallery6, alt: "Dettaglio freehand tribale", label: "Freehand" },
+    { src: gallery7, alt: "Tatuaggio Polinesiano su petto", label: "Polinesiano" },
+    { src: gallery8, alt: "Tatuaggio polinesiano su spalla", label: "Polinesiano" },
+    { src: gallery9, alt: "Tatuaggio maori su gamba", label: "Maori" },
+    { src: gallery10, alt: "Tatuaggio tribale geometrico su braccio", label: "Tribale" },
+    { src: gallery11, alt: "Tatuaggio black work tribale su petto", label: "Black Work" },
+    { src: gallery12, alt: "Tatuaggio tribale freehand su schiena", label: "Freehand" },
+    { src: gallery13, alt: "Face Tattoo", label: "Face Tattoo" },
+    { src: totalBody1, alt: "Tatuaggio in tutto il corpo - vista frontale", label: "Total Body" },
+    { src: totalBody2, alt: "Tatuaggio in tutto il corpo - vista laterale", label: "Total Body" },
+    { src: totalBody3, alt: "Tatuaggio in tutto il corpo - vista posteriore", label: "Total Body" },
+    { src: gallery16, alt: "Video del processo di tatuaggio", label: "Il Rito" },
   ],
 
   // ── PIERCINGS ───────────────────────────────────────────────────────────────
   // TODO: Replace with real piercing photos
   piercings: [
-    { src: piercing1, alt: "Piercing orecchio - placeholder",      label: "Ombelico"  },
-    { src: piercing2, alt: "Piercing naso - placeholder",          label: "Braccio"      },
-    { src: piercing3, alt: "Piercing sopracciglio - placeholder",  label: "Sopracciglio" },
-    { src: piercing4, alt: "Piercing labbro - placeholder",        label: "Lingua"    },
-    { src: piercing5, alt: "Piercing lingua - placeholder",        label: "Collo"    },
-    { src: piercing6, alt: "Piercing ombelico - placeholder",      label: "Orecchio"  },
-    { src: piercing7, alt: "Studio piercing - placeholder",        label: "Orecchio" },
-    { src: piercing8, alt: "Piercing industriale - placeholder",   label: "Bocca" },
-    { src: piercing9, alt: "Piercing trago - placeholder",         label: "Braccio"     },
-    { src: piercing10, alt: "Piercing helix - placeholder",        label: "Orecchio"     },
-    { src: piercing11, alt: "Piercing septum - placeholder",       label: "Orecchio"    },
-    { src: piercing12, alt: "Piercing surface - placeholder",      label: "Ombelico"   },
-    { src: piercing13, alt: "Piercing surface - placeholder",      label: "Sopracciglio"   },
-    { src: piercing14, alt: "Piercing surface - placeholder",      label: "Capezzolo"   },
+    { src: piercing1, alt: "Piercing orecchio - placeholder", label: "Ombelico" },
+    { src: piercing2, alt: "Piercing naso - placeholder", label: "Braccio" },
+    { src: piercing3, alt: "Piercing sopracciglio - placeholder", label: "Sopracciglio" },
+    { src: piercing4, alt: "Piercing labbro - placeholder", label: "Lingua" },
+    { src: piercing5, alt: "Piercing lingua - placeholder", label: "Collo" },
+    { src: piercing6, alt: "Piercing ombelico - placeholder", label: "Orecchio" },
+    { src: piercing7, alt: "Studio piercing - placeholder", label: "Orecchio" },
+    { src: piercing8, alt: "Piercing industriale - placeholder", label: "Bocca" },
+    { src: piercing9, alt: "Piercing trago - placeholder", label: "Braccio" },
+    { src: piercing10, alt: "Piercing helix - placeholder", label: "Orecchio" },
+    { src: piercing11, alt: "Piercing septum - placeholder", label: "Orecchio" },
+    { src: piercing12, alt: "Piercing surface - placeholder", label: "Ombelico" },
+    { src: piercing13, alt: "Piercing surface - placeholder", label: "Sopracciglio" },
+    { src: piercing14, alt: "Piercing surface - placeholder", label: "Capezzolo" },
 
   ],
 
@@ -1143,12 +1126,12 @@ const shopConfig = {
     priceRange: "$$",
 
     geo: {
-      latitude:  "44.9980",
+      latitude: "44.9980",
       longitude: "7.6863",
     },
 
-    phone:     "+39 338 839 8005",
-    phoneHref: "tel:+393388398005",
+    phone: "+39 350 535 2680",
+    phoneHref: "tel:+393505352680",
 
     email: "tribaltattoo@tribaltattoo.it",   // ← update with real email
 
@@ -1170,40 +1153,40 @@ const shopConfig = {
   // ── OPENING HOURS ───────────────────────────────────────────────────────────
   hours: [
     { days: "Lun – Ven", time: "10:00 – 12:30  |  15:00 – 19:30" },
-    { days: "Sabato",    time: "09:30 – 13:00  |  15:00 – 19:00" },
-    { days: "Domenica",  time: "Chiuso"                           },
+    { days: "Sabato", time: "09:30 – 13:00  |  15:00 – 19:00" },
+    { days: "Domenica", time: "Chiuso" },
   ],
 
   // ── SOCIAL LINKS ────────────────────────────────────────────────────────────
   social: {
     instagram: "https://www.instagram.com/tribaltattoo",  // ← update
-    facebook:  "https://www.facebook.com/TribaltattooItalia",
-    youtube:   "https://www.youtube.com/@tribaltattooitalia",
-    tiktok:    "https://www.tiktok.com/@tribaltattooitalia?_r=1&_t=ZN-95azfmUBDRG",
+    facebook: "https://www.facebook.com/TribaltattooItalia",
+    youtube: "https://www.youtube.com/@tribaltattooitalia",
+    tiktok: "https://www.tiktok.com/@tribaltattooitalia?_r=1&_t=ZN-95azfmUBDRG",
   },
 
   // ── FOOTER ──────────────────────────────────────────────────────────────────
   footer: {
-    copyrightYear:       "2025",
-    allRightsReserved:   "All rights reserved",
-    privacyPolicyLabel:  "Privacy Policy",
-    cookiePolicyLabel:   "Cookie Policy",
+    copyrightYear: "2025",
+    allRightsReserved: "All rights reserved",
+    privacyPolicyLabel: "Privacy Policy",
+    cookiePolicyLabel: "Cookie Policy",
     cookieSettingsLabel: "Cookie Settings",
   },
 
   // ── LEGAL (Privacy Policy & Cookie Policy) ──────────────────────────────────
   legal: {
-    legalName:     "Tribal Tattoo Studio",          // ← update with legal entity
-    privacyEmail:  "tribaltattoo@tribaltattoo.it",          // ← update
+    legalName: "Tribal Tattoo Studio",          // ← update with legal entity
+    privacyEmail: "tribaltattoo@tribaltattoo.it",          // ← update
     postalAddress: "Corso Roma, 51 – 10024 – Moncalieri (TO)",
-    vatNumber:     "07519240019",
+    vatNumber: "07519240019",
     //reaNumber:     "[Inserire Numero REA]",
     //shareCapital:  "[Inserire Capitale Sociale]",
-    pecEmail:      "tribaltattoo@pec.tribaltattoo.it",
+    pecEmail: "tribaltattoo@pec.tribaltattoo.it",
   },
 
-  
- // ── THEME ────────────────────────────────────────────────────────────────────
+
+  // ── THEME ────────────────────────────────────────────────────────────────────
   //
   // ┌──────────────────────────────────────────────────────────────────────────┐
   // │  TEMA SCURO — "Ossidiana & Oro Tribale"                                  │
@@ -1238,80 +1221,80 @@ const shopConfig = {
      */
     googleFontsUrl:
       "https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Raleway:wght@300;400;500;700&display=swap",
- 
+
     fonts: {
       heading: "Cinzel",
-      body:    "Raleway",
+      body: "Raleway",
     },
- 
+
     /** Bordi netti — estetica grezza, senza compromessi */
     radius: "0px",
- 
+
     colors: {
       // ── Sfondo — Ossidiana Calda #090805 ─────────────────────────────────
       // ✦ MODIFICA: più caldo (40 10% vs 60 6%) — ossidiana con sottotono terra
-      background:              "40 10% 4%",
- 
+      background: "40 10% 4%",
+
       // ── Testo principale — Pergamena #F2E8CE ─────────────────────────────
       // ✦ MODIFICA: leggermente più calda e satura (40 52% 87% vs 38 65% 91%)
-      foreground:              "40 52% 87%",
- 
+      foreground: "40 52% 87%",
+
       // ── Card & popover — Superficie Calda #130D02 ────────────────────────
       // ✦ MODIFICA: più profonda e calda (40 85% 5% vs 43 30% 9%)
-      card:                    "40 70% 5%",
-      cardForeground:          "40 52% 87%",
-      popover:                 "40 60% 5%",
-      popoverForeground:       "40 52% 87%",
- 
+      card: "40 70% 5%",
+      cardForeground: "40 52% 87%",
+      popover: "40 60% 5%",
+      popoverForeground: "40 52% 87%",
+
       // ── Primario / CTA — Oro Tribale #B8870B ─────────────────────────────
       // ✦ MODIFICA: oro più ricco e profondo (43 87% 38% vs 43 66% 47%)
       //   Il colore è ora più saturo e meno "dorato chiaro" — più primitivo,
       //   più antico, quasi il colore dell'ambra o dell'oro di una maschera tribale.
-      primary:                 "43 87% 38%",
-      primaryForeground:       "40 80% 8%",
- 
+      primary: "43 87% 38%",
+      primaryForeground: "40 80% 8%",
+
       // ── Secondario — Bruno scuro caldo ────────────────────────────────────
-      secondary:               "40 25% 11%",
-      secondaryForeground:     "40 52% 87%",
- 
+      secondary: "40 25% 11%",
+      secondaryForeground: "40 52% 87%",
+
       // ── Muted — Superficie smorzata calda ─────────────────────────────────
-      muted:                   "40 18% 10%",
-      mutedForeground:         "40 20% 48%",
- 
+      muted: "40 18% 10%",
+      mutedForeground: "40 20% 48%",
+
       // ── Accent — Stesso oro tribale per coerenza ──────────────────────────
-      accent:                  "43 87% 38%",
-      accentForeground:        "40 80% 8%",
- 
+      accent: "43 87% 38%",
+      accentForeground: "40 80% 8%",
+
       // ── Bordi & input — Tono caldo ────────────────────────────────────────
-      border:                  "40 22% 14%",
-      input:                   "40 18% 11%",
- 
+      border: "40 22% 14%",
+      input: "40 18% 11%",
+
       // ── Focus ring — Terracotta scura #7A2E1A ────────────────────────────
       // ✦ MODIFICA: ring in terracotta invece che nell'oro — crea contrasto
       //   visivo interessante e rafforza l'identità tribale/primitiva
-      ring:                    "12 62% 29%",
- 
+      ring: "12 62% 29%",
+
       // ── Effetti & overlay ─────────────────────────────────────────────────
-      gridPattern:             "40 22% 14%",
-      primaryGlow:             "43 87% 38%",
-      shadowLight:             "0 0% 0%",
-      shadowDark:              "0 0% 0%",
- 
+      gridPattern: "40 22% 14%",
+      primaryGlow: "43 87% 38%",
+      shadowLight: "0 0% 0%",
+      shadowDark: "0 0% 0%",
+
       // ── Sidebar ───────────────────────────────────────────────────────────
-      sidebarBackground:         "40 60% 5%",
-      sidebarForeground:         "40 52% 87%",
-      sidebarPrimary:            "43 87% 38%",
-      sidebarPrimaryForeground:  "40 80% 8%",
-      sidebarAccent:             "40 18% 10%",
-      sidebarAccentForeground:   "40 52% 87%",
-      sidebarBorder:             "40 22% 14%",
-      sidebarRing:               "43 87% 38%",
+      sidebarBackground: "40 60% 5%",
+      sidebarForeground: "40 52% 87%",
+      sidebarPrimary: "43 87% 38%",
+      sidebarPrimaryForeground: "40 80% 8%",
+      sidebarAccent: "40 18% 10%",
+      sidebarAccentForeground: "40 52% 87%",
+      sidebarBorder: "40 22% 14%",
+      sidebarRing: "43 87% 38%",
     },
   },
- 
+
   // ── INTERNAL / STORAGE ──────────────────────────────────────────────────────
   cookieConsentKey: "tribal-tattoo-cookie-consent",
 };
- 
+
 export type ShopConfig = typeof shopConfig;
 export default shopConfig;
