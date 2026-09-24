@@ -11,6 +11,7 @@ import { CartProvider } from "@/contexts/CartContext";
 import { BarberNotificationsProvider } from "@/hooks/useBarberNotifications";
 import LoadingScreen from "@/components/LoadingScreen";
 import { CookieBanner } from "@/components/CookieBanner";
+import { ChatBot } from "@/components/ChatBot";
 import { SocialButtonSwitcher } from "@/components/SocialButtonSwitcher";
 import ScrollToTop from "@/components/ScrollToTop";
 import { SeoHead } from "@/components/SeoHead";
@@ -29,6 +30,8 @@ const GalleryPage = lazy(() => import("./pages/GalleryPage"));
 const PiercingsPage = lazy(() => import("./pages/PiercingsPage"));
 const DisegniPage = lazy(() => import("./pages/DisegniPage"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
+const ConventionPage = lazy(() => import("./pages/ConventionPage"));
+const ConventionDetailPage = lazy(() => import("./pages/ConventionDetailPage"));
 const ServiziPage = lazy(() => import("./pages/ServiziPage"));
 const AftercarePage = lazy(() => import("./pages/AftercarePage"));
 
@@ -185,6 +188,8 @@ const App = () => {
                       <Route path="/gallery" element={<GalleryPage />} />
                       <Route path="/piercings" element={<PiercingsPage />} />
                       <Route path="/disegni" element={<DisegniPage />} />
+                      <Route path="/convention" element={<ConventionPage />} />
+                      <Route path="/convention/:slug" element={<ConventionDetailPage />} />
                       <Route path="/contatti" element={<ContactPage />} />
                       <Route path="/servizi" element={<ServiziPage />} />
                       <Route path="/cura-post-tatuaggio" element={<AftercarePage />} />
@@ -194,6 +199,7 @@ const App = () => {
                     </Routes>
                   </Suspense>
                   <CookieBanner />
+                  <ChatBot />
                   <SocialButtonSwitcher />
                 </BrowserRouter>
               </TooltipProvider>

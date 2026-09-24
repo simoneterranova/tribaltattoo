@@ -10,7 +10,7 @@ import { TikTokButton } from "./TikTokButton";
  * 
  * Shows each button for 5 seconds, then switches with a smooth fade transition
  * Cycles through: Instagram → WhatsApp → Facebook → YouTube → TikTok
- * Fixed position in bottom-right corner
+ * Fixed position in bottom-left corner (bottom-right is used by the chatbot launcher)
  * 
  * z-index: 90 (above navbar z-60, below toasts z-100)
  */
@@ -47,7 +47,7 @@ export const SocialButtonSwitcher = () => {
 
   return (
     <div
-      className="fixed bottom-6 right-6 z-[90] transition-opacity duration-300"
+      className="fixed bottom-6 left-6 z-[90] transition-opacity duration-300"
       style={{
         opacity: isTransitioning ? 0 : 1,
       }}

@@ -10,6 +10,7 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import GallerySection from "@/components/GallerySection";
 import PiercingsSection from "@/components/PiercingsSection";
 import DisegniSection from "@/components/DisegniSection";
+import ConventionSection from "@/components/ConventionSection";
 import FooterSection from "@/components/FooterSection";
 import { SeoHead } from "@/components/SeoHead";
 import { getFaqSchema } from "@/lib/seo";
@@ -58,6 +59,7 @@ const Index = () => {
       <TeamSection />
       <GallerySection />
       <DisegniSection />
+      <ConventionSection />
       <PiercingsSection />
       <TestimonialsSection />
       <FooterSection />

@@ -158,6 +158,11 @@ const FooterSection = () => {
                   </Link>
                 </li>
                 <li>
+                  <Link to="/convention" className="text-muted-foreground hover:text-foreground transition-colors" title="Convention ed eventi live">
+                    Convention
+                  </Link>
+                </li>
+                <li>
                   <Link to="/piercings" className="text-muted-foreground hover:text-foreground transition-colors" title="Piercings professionali">
                     Piercings
                   </Link>
@@ -228,6 +233,11 @@ const FooterSection = () => {
                 <li>
                   <a href="#disegni" className="text-muted-foreground hover:text-foreground transition-colors" title="Sfoglia i disegni disponibili">
                     Disegni Flash
+                  </a>
+                </li>
+                <li>
+                  <a href="#convention" className="text-muted-foreground hover:text-foreground transition-colors" title="Scopri le prossime convention">
+                    Convention
                   </a>
                 </li>
                 <li>

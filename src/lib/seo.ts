@@ -64,7 +64,7 @@ export function getOpeningHoursSpecification(config: ShopConfig): Array<{
     dayOfWeek: string | string[];
     opens?: string;
     closes?: string;
-  }> =[];
+  }> = [];
 
   config.hours.forEach((hour) => {
     const { days, time } = hour;
@@ -94,13 +94,13 @@ export function getOpeningHoursSpecification(config: ShopConfig): Array<{
  */
 function parseDayOfWeek(days: string): string | string[] {
   const lowerDays = days.toLowerCase();
-  
+
   // Gestisce i range italiani (Lun - Ven)
   if (lowerDays.includes("lun") && lowerDays.includes("ven")) {
     return ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
   }
   if (lowerDays.includes("lun") && lowerDays.includes("sab")) {
-    return["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    return ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   }
 
   // Mappatura giorni singoli italiani -> inglesi
@@ -126,7 +126,7 @@ export function getLocalBusinessSchema(config: ShopConfig): Record<string, unkno
 
   return {
     "@context": "https://schema.org",
-    "@type": ["HairSalon", "LocalBusiness"],
+    "@type": ["TattooParlor", "LocalBusiness"],
     name: config.fullName,
     description: config.meta.description,
     url: canonicalUrl,
@@ -265,15 +265,15 @@ export function getFaqSchema(config: ShopConfig): Record<string, unknown> {
       },
       ...(openHours
         ? [
-            {
-              "@type": "Question",
-              name: `Quali sono le ore di apertura di ${config.fullName}?`,
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: openHours,
-              },
+          {
+            "@type": "Question",
+            name: `Quali sono le ore di apertura di ${config.fullName}?`,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: openHours,
             },
-          ]
+          },
+        ]
         : []),
       {
         "@type": "Question",
@@ -304,7 +304,7 @@ export function getOgImageUrl(config: ShopConfig): string {
   if (config.meta.ogImage.startsWith("http")) {
     return config.meta.ogImage;
   }
-  
+
   // Otherwise, make it absolute using siteUrl
   return `${config.meta.siteUrl}${config.meta.ogImage}`;
 }

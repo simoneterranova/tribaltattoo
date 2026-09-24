@@ -116,6 +116,7 @@ function getPriorityForSection(href: string): string {
   if (href.includes("#services")) return "0.9";
   if (href.includes("#contact")) return "0.9";
   if (href.includes("#gallery")) return "0.8";
+  if (href.includes("#convention")) return "0.8";
   if (href.includes("#team")) return "0.8";
   if (href.includes("#testimonials")) return "0.7";
   return "0.7";

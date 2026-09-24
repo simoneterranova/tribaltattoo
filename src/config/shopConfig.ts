@@ -108,6 +108,42 @@ import disegno9 from "@/assets/disegni-photos/disegno-9.webp";
 //import logo      from "@/assets/logo_coloured__no_bg.svg";     // Fishbone logo (red)
 import logo from "@/assets/original_logo_no_bg.png"; // Fishbone logo (red)
 
+import { buildConventionEvents, type ConventionMeta } from "@/lib/conventionPhotos";
+
+// ── CONVENTION: testi curati per slug (facoltativi) ──────────────────────────
+// Chiave = slug derivato dalla copertina copertina_<slug>.<ext> in
+// src/assets/convention-photos/. Senza override i testi sono auto-derivati.
+const conventionMeta: Record<string, ConventionMeta> = {
+  catanzaro_2026: {
+    label: "Catanzaro 2026",
+    city: "Catanzaro",
+    date: "Edizione 2026",
+    description:
+      "Live freehand tribale, consulenze gratuite e flash esclusivi disegnati per l'evento. Vieni a conoscerci dal vivo.",
+  },
+  livorno_2026: {
+    label: "Livorno 2026",
+    city: "Livorno",
+    date: "Edizione 2026",
+    description:
+      "Guest spot e sessioni dal vivo: progetti polinesiani e maori disegnati a mano libera in fiera.",
+  },
+  spagna_2026: {
+    label: "Spagna 2026",
+    city: "Spagna",
+    date: "Edizione 2026",
+    description:
+      "Lo studio in tour: il maestro incide magie antiche dal vivo anche all'estero.",
+  },
+  norvegia_2026: {
+    label: "Norvegia 2026",
+    city: "Norvegia",
+    date: "Edizione 2026",
+    description:
+      "Lo studio in tour: arte tribale originale oltre confine, tra demo live e consulenze.",
+  },
+};
+
 
 // ── IDENTITY ──────────────────────────────────────────────────────────────────
 const shopConfig = {
@@ -169,6 +205,7 @@ const shopConfig = {
       { label: "Maestro", href: "#team" },
       { label: "Tattoo", href: "#gallery" },
       { label: "Disegni", href: "#disegni" },
+      { label: "Convention", href: "#convention" },
       { label: "Piercings", href: "#piercings" },
       { label: "Recensioni", href: "#testimonials" },
       { label: "Contatti", href: "#contact" },
@@ -228,6 +265,10 @@ const shopConfig = {
     disegni: {
       label: "Disegni",
       heading: ["I nostri", "Disegni"],
+    },
+    convention: {
+      label: "Convention",
+      heading: ["Le nostre", "Convention"],
     },
     contact: {
       label: "Contatti",
@@ -1103,6 +1144,18 @@ const shopConfig = {
     },
   ],
 
+  // ── CONVENTION ─────────────────────────────────────────────────────────────
+  // AUTOMATICO: le card nascono da sole dai file in src/assets/convention-photos/.
+  // Basta salvare la copertina come  copertina_<slug>.<ext>
+  //   es. copertina_catanzaro_2026.webp → card "Catanzaro 2026"
+  // Foto extra per la pagina /convention: <slug>_*.ext  (es. catanzaro_2026_01.webp)
+  //   oppure in sottocartella  convention-photos/<slug>/.
+  // Testi curati: vedi `conventionMeta` in testa al file (chiave = slug).
+  conventionMeta,
+
+  /** Non modificare: costruito automaticamente dalle copertine trovate in cartella. */
+  convention: buildConventionEvents(conventionMeta),
+
   // ── E-COMMERCE DISCOUNT SETTINGS ────────────────────────────────────────────
   discount: {
     /** Enable bulk purchase discount */
@@ -1167,11 +1220,31 @@ const shopConfig = {
 
   // ── FOOTER ──────────────────────────────────────────────────────────────────
   footer: {
-    copyrightYear: "2025",
+    copyrightYear: "2026",
     allRightsReserved: "All rights reserved",
     privacyPolicyLabel: "Privacy Policy",
     cookiePolicyLabel: "Cookie Policy",
     cookieSettingsLabel: "Cookie Settings",
+  },
+
+  // ── CHATBOT (BOTPRESS) ────────────────────────────────────────────────────────
+  /**
+   * Global AI chatbot embedded on every page (rendered once at the app root,
+   * so it persists across all routes in this single-page app).
+   *
+   * Get the two script URLs from Botpress: Webchat → Deploy Settings → Embed code.
+   * When `enabled: false` the widget is never loaded.
+   */
+  chatbot: {
+    /** Toggle the persistent chatbot on/off. */
+    enabled: true,
+
+    /** Botpress Webchat loader ("inject.js") — first script of the embed snippet. */
+    injectScriptUrl: "https://cdn.botpress.cloud/webchat/v5.0/inject.js",
+
+    /** Bot config script (second script of the embed snippet) — calls window.botpress.init(). */
+    configScriptUrl:
+      "https://files.bpcontent.cloud/2026/09/08/10/20260908105644-9INO7A3K.js",
   },
 
   // ── LEGAL (Privacy Policy & Cookie Policy) ──────────────────────────────────
