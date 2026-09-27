@@ -537,10 +537,6 @@ const shopConfig = {
       text: "Piercing ombelico: bravissimo, zero dolore e zero infiammazione. Consigliatissimo!",
     },
     {
-      name: "M. B.",
-      text: "Molto bravi. Titolare con iride tatuata — uno dei pochi casi!",
-    },
-    {
       name: "P. L.",
       text: "Un professionista raro.",
     },
